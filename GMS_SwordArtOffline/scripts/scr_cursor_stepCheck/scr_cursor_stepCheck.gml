@@ -28,10 +28,10 @@ switch(state){
 		if(isA){
 			selectedRole=instance_position(x,y,obj_role_player);
 			if(selectedRole!=noone){
-			  if(selectedRole.control==controlType.player)			
+			  //if(selectedRole.control==controlType.player)			
 				if(selectedRole.roleState==RoleState.idle){	
 					state=CursorState.selectedRole;									
-					setRoleState(selectedRole,RoleState.gray);
+					setRoleState(selectedRole,RoleState.selected);
 				}
 			}
 			

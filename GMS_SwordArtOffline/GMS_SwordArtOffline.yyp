@@ -103,6 +103,14 @@
             }
         },
         {
+            "Key": "376316ca-25db-4960-b796-016449f051b2",
+            "Value": {
+                "id": "ee049882-7d54-440c-bc3c-4faec086cf46",
+                "resourcePath": "objects\\obj_canMove\\obj_canMove.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "3792b533-93e5-4d79-80e5-89fad9bed183",
             "Value": {
                 "id": "5543669d-3e5c-4b0b-8bba-4e7e2fb86079",
@@ -188,6 +196,14 @@
                 "id": "bae0f6cf-b4f6-43a3-8d94-584b4d339aa4",
                 "resourcePath": "views\\77925b84-0b9b-4aec-80d2-db37f94416fd.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "7d273688-523d-48f5-9285-8c2dd7070394",
+            "Value": {
+                "id": "22a62e97-996d-4b86-9888-dced2db750d5",
+                "resourcePath": "sprites\\spr_canMove\\spr_canMove.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -359,6 +375,14 @@
             }
         },
         {
+            "Key": "db0689ff-0fff-49a4-9852-c52f217c676f",
+            "Value": {
+                "id": "48864aff-126b-42cd-abad-9f8804ecc578",
+                "resourcePath": "scripts\\pourWater\\pourWater.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e1b9ca72-e699-4528-a5b3-3fade0e6fe1b",
             "Value": {
                 "id": "542f94c8-8fb6-4b74-a95a-0b2b899e0b1c",
@@ -446,7 +470,8 @@
         "f3b99990-8d22-453a-8e78-78cfb036052a",
         "239c306b-efb8-4464-acfa-f352ca1ff684",
         "e4d78378-075b-4f97-bf65-218c8775bfc3",
-        "eabc56ad-675e-4e60-a947-f13247009c5d"
+        "eabc56ad-675e-4e60-a947-f13247009c5d",
+        "db0689ff-0fff-49a4-9852-c52f217c676f"
     ],
     "tutorial": ""
 }
