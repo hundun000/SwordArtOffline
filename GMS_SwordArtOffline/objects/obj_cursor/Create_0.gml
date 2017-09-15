@@ -3,3 +3,5 @@
 
 state=CursorState.free;
 selectedRole=noone;
+
+playerPath=noone;

@@ -16,7 +16,8 @@ enum RoleState{
 
 enum CursorState{
 	free,
-	selectedRole
+	selectedRole,
+	moved
 }
 
 enum RoleType{

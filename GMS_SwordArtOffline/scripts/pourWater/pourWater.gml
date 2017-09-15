@@ -3,9 +3,6 @@ var myY=argument1;
 var type=argument2;
 var movement=argument3;
 
-//show_message("Try pour:");
-//show_message(getTileIndex(myX));
-//show_message(getTileIndex(myY));
 
 
 if(movement>0&&myX>0&&myX<room_width&&myY>0&&myY<room_height&&!position_meeting(myX,myY,obj_canMove)){
