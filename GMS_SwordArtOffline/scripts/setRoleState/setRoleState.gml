@@ -3,7 +3,7 @@ var to=argument1;
 
 switch(to){
 	case RoleState.selected:
-		pourWater(selectedRole.x,selectedRole.y,selectedRole.roleType,selectedRole.MAX_MOVEMENT+1);
+		pourWater(selectedRole.x,selectedRole.y,selectedRole.roleType,selectedRole.MAX_MOVEMENT,2,2);//test range
 		break;
 	case RoleState.gray:
 		selectedRole.roleState=RoleState.gray;

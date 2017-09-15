@@ -47,12 +47,18 @@ switch(state){
 		}
 		break;
 	case CursorState.selectedRole:
-		if((dx!=0||dy!=0)&&position_meeting(x+dx*UNIT,y+dy*UNIT,obj_canMove)){
+		if((dx!=0||dy!=0)){
+			var ins=instance_position(x+dx*UNIT,y+dy*UNIT,obj_canMove);
+			if(ins!=noone&&ins.image_index==CAN_MOVE){
+			
+			
+			
 			x+=dx*UNIT;
 			y+=dy*UNIT;
 			selectedRole.x+=dx*UNIT;
 			selectedRole.y+=dy*UNIT;
 			buildPath(playerPath,x,y);
+			}
 		}
 		
 		if(isA){
