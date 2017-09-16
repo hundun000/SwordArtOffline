@@ -5,32 +5,24 @@
 #macro BTN_L vk_left
 #macro BTN_R vk_right
 
-var dx=0;
-var dy=0;
+
 var isA=keyboard_check_pressed(BTN_A);
 var isB=keyboard_check_pressed(BTN_B);
-
+var dx=keyboard_check_pressed(BTN_R)-keyboard_check_pressed(BTN_L);
+var dy=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 //var tempRoleX;
 //var tempRoleY;
 
-
-
-if(keyboard_check_pressed(BTN_U))
-	dy=-1;
-if(keyboard_check_pressed(BTN_D))
-	dy=1;
-if(keyboard_check_pressed(BTN_L))
-	dx=-1;
-if(keyboard_check_pressed(BTN_R))
-	dx=1;
 	
 switch(state){
 	case CursorState.free:
-		if(dx!=0||dy!=0){
+		if((dx!=0||dy!=0)
+		&&x+dx*UNIT<room_width&&x+dx*UNIT>0
+		&&y+dy*UNIT<room_height&&y+dy*UNIT>0){
 			x+=dx*UNIT;
 			y+=dy*UNIT;
 		}
-		if(isA){
+		else if(isA){
 			selectedRole=instance_position(x,y,obj_role_player);
 			if(selectedRole!=noone){
 			  //if(selectedRole.control==controlType.player)			
@@ -63,7 +55,7 @@ switch(state){
 			}
 		}
 		
-		if(isA){
+		else if(isA){
 			state=CursorState.moved;
 			
 			deletePath(playerPath);
@@ -74,11 +66,14 @@ switch(state){
 			setRoleState(selectedRole,RoleState.gray);
 		}
 		
-		if(isB){
+		else if(isB){
 			state=CursorState.free;
 			
 			selectedRole.x=tempRoleX;
 			selectedRole.y=tempRoleY;
+				
+			x=tempRoleX;
+			y=tempRoleY;
 					
 			deletePath(playerPath);
 			deleteCanMove();
