@@ -4,4 +4,4 @@ event_inherited();
 
 
 roleType=RoleType.walker;
-MAX_MOVEMENT=2; //for test
+MAX_MOVEMENT=5; //for test

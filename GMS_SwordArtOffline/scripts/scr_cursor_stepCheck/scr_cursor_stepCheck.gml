@@ -1,12 +1,17 @@
-
+#macro BTN_A ord("Z")
+#macro BTN_B ord("X")
+#macro BTN_U vk_up
+#macro BTN_D vk_down
+#macro BTN_L vk_left
+#macro BTN_R vk_right
 
 var dx=0;
 var dy=0;
 var isA=keyboard_check_pressed(BTN_A);
 var isB=keyboard_check_pressed(BTN_B);
 
-var tempRoleX;
-var tempRoleY;
+//var tempRoleX;
+//var tempRoleY;
 
 
 
@@ -49,10 +54,7 @@ switch(state){
 	case CursorState.selectedRole:
 		if((dx!=0||dy!=0)){
 			var ins=instance_position(x+dx*UNIT,y+dy*UNIT,obj_canMove);
-			if(ins!=noone&&ins.image_index==CAN_MOVE){
-			
-			
-			
+			if(ins!=noone&&ins.image_index==CAN_MOVE){			
 			x+=dx*UNIT;
 			y+=dy*UNIT;
 			selectedRole.x+=dx*UNIT;
@@ -64,20 +66,24 @@ switch(state){
 		if(isA){
 			state=CursorState.moved;
 			
+			deletePath(playerPath);
 
-			while(path_get_number(playerPath)>0){
-			//cut "short circuit" nodes
-				instance_destroy(instance_position(path_get_point_x(playerPath,0),path_get_point_y(playerPath,0),obj_pathNode));
-				path_delete_point(playerPath,0); 
-			}
 
-			path_delete(playerPath);
-
-			while(instance_number(obj_canMove)>0){
-				 instance_destroy(instance_find(obj_canMove,instance_number(obj_canMove)-1));
-			 }
+			deleteCanMove();
 		
 			setRoleState(selectedRole,RoleState.gray);
+		}
+		
+		if(isB){
+			state=CursorState.free;
+			
+			selectedRole.x=tempRoleX;
+			selectedRole.y=tempRoleY;
+					
+			deletePath(playerPath);
+			deleteCanMove();
+		
+			setRoleState(selectedRole,RoleState.idle);
 		}
 		
 		break;
