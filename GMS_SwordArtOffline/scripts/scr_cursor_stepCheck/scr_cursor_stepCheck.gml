@@ -56,14 +56,14 @@ switch(state){
 		}
 		
 		else if(isA){
-			state=CursorState.moved;
+			state=CursorState.roleDoMore;
 			
 			deletePath(playerPath);
 
 
 			deleteCanMove();
 		
-			setRoleState(selectedRole,RoleState.gray);
+			setRoleState(selectedRole,RoleState.doMore);
 		}
 		
 		else if(isB){
@@ -82,7 +82,79 @@ switch(state){
 		}
 		
 		break;
-	
+	case CursorState.roleDoMore:
+		if(isA){
+		//for test,fake have selected fight
+		state=CursorState.selectingEnemy;
+		
+		}	
+		else if(isB){
+			state=CursorState.free;
+			
+			selectedRole.x=tempRoleX;
+			selectedRole.y=tempRoleY;
+				
+			x=tempRoleX;
+			y=tempRoleY;
+					
+			deleteCanMove();
+		
+			setRoleState(selectedRole,RoleState.idle);
+		}
+		break;
+	case CursorState.selectingEnemy:
+			
+		//if not target a enmey,try to auto target
+		if(!position_meeting(x,y,obj_role_enemy)){	
+			var target=noone;
+			//target the canAttackTile with a enemy
+			with(obj_canMove){
+				if(position_meeting(x,y,obj_role_enemy)){
+					target=id;
+				}	
+			}
+			//if have,set cursor to there
+			if(target!=noone){
+				x=target.x;
+				y=target.y;
+			}
+		}
+		
+		//switch target
+		if((dx!=0||dy!=0)){
+			var cursoX=x;
+			var cursoY=y;
+			var target=noone;
+			//search at inputted direction
+			with(obj_canMove){
+				if(!(x==cursoX&&y==cursoY) //no current
+					&&(sign(dx)==sign(x-cursoX)||sign(dy)==sign(y-cursoY)) //inputted direction
+					&&position_meeting(x,y,obj_role_enemy)){
+					target=id;
+				}	
+			}
+			/*
+			//not found at inputted direction,search at all direction
+			if(target==noone){
+				with(obj_canMove){
+					if(!(x==cursoX&&y==cursoY) //no current
+					&&position_meeting(x,y,obj_role_enemy)){
+						target=id;
+					}
+				}	
+			}
+			*/
+			//if have,set cursor to there
+			if(target!=noone){
+				x=target.x;
+				y=target.y;
+			}
+		}
+			
+
+
+		break;
+		
 	default:
 }	
 

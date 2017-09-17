@@ -50,7 +50,7 @@
             "Key": "09069da4-7e8c-4fb0-8b03-540746365cf3",
             "Value": {
                 "id": "cbc43282-eace-4f1d-ac1e-85591d029a39",
-                "resourcePath": "scripts\\scr_macros_ect\\scr_macros_ect.yy",
+                "resourcePath": "scripts\\macros_ect\\macros_ect.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -388,6 +388,14 @@
                 "id": "338a38d9-8a43-4e7a-867b-d147399c996e",
                 "resourcePath": "views\\c6a95459-b1c1-45bd-8a77-eceec57fc69e.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "c742c77d-b41b-4a21-99e6-72984bcd4fee",
+            "Value": {
+                "id": "32e8b5c3-d581-4e75-bf80-98143994b12d",
+                "resourcePath": "objects\\obj_game\\obj_game.yy",
+                "resourceType": "GMObject"
             }
         },
         {

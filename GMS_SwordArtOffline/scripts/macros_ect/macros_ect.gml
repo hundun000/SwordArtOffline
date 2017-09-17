@@ -6,12 +6,15 @@
 enum RoleState{
 	idle,
 	selected,
+	doMore,
 	gray
 }
 
 enum CursorState{
 	free,
 	selectedRole,
+	roleDoMore,
+	selectingEnemy,
 	moved
 }
 
