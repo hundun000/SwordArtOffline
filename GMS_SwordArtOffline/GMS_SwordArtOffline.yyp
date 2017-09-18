@@ -183,11 +183,35 @@
             }
         },
         {
+            "Key": "516ec00a-76a6-4c5b-9088-f325e3ff5adb",
+            "Value": {
+                "id": "644415a6-a0c5-4364-aa04-750f9f59a0de",
+                "resourcePath": "sounds\\s_map0_bgm\\s_map0_bgm.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "51b5e3b9-994e-4881-af48-76a250202504",
             "Value": {
                 "id": "a3076e64-2c39-409b-ad25-64392bd7148e",
                 "resourcePath": "rooms\\room_mainMenu\\room_mainMenu.yy",
                 "resourceType": "GMRoom"
+            }
+        },
+        {
+            "Key": "5394f473-5eda-42ea-a2cd-9c136fbeadb0",
+            "Value": {
+                "id": "8216033b-c227-46f6-bbaa-78bfef58ab2d",
+                "resourcePath": "views\\5394f473-5eda-42ea-a2cd-9c136fbeadb0.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "58cbe2c4-6d5f-4405-ad0a-e07c4d5ddb9a",
+            "Value": {
+                "id": "8fa9d339-b53d-46cc-9c16-ff4b23cd7e76",
+                "resourcePath": "scripts\\renewRoleToTeam\\renewRoleToTeam.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -207,11 +231,27 @@
             }
         },
         {
+            "Key": "628e463d-c25c-4322-b996-5a95a1e750ca",
+            "Value": {
+                "id": "f918659a-15b7-4a84-ab92-833c47d2bc26",
+                "resourcePath": "objects\\obj_scene_map0\\obj_scene_map0.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "62e3f17a-0428-46e2-aa6b-85fab2ecd6c2",
             "Value": {
                 "id": "b2647be9-0f82-4f5c-9735-4916e2b9f959",
                 "resourcePath": "objects\\obj_mainMenu\\obj_mainMenu.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "719b377b-b6d8-4bd4-b69a-d05b380ea462",
+            "Value": {
+                "id": "fa91a734-e551-492a-bf5d-d60522573971",
+                "resourcePath": "sprites\\spr_worldMap_point\\spr_worldMap_point.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -223,11 +263,35 @@
             }
         },
         {
+            "Key": "7381044f-5a88-4ced-b8b2-3ee7debfd76b",
+            "Value": {
+                "id": "31a60d6f-c986-41d1-af33-8acdc99ff8f3",
+                "resourcePath": "objects\\obj_frontTeam\\obj_frontTeam.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "7700774c-64d5-4b65-b0c3-390f589f3631",
+            "Value": {
+                "id": "a9faa0fe-93f2-451f-9039-d1531f2ecdd4",
+                "resourcePath": "sprites\\temp_team_flag\\temp_team_flag.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "77925b84-0b9b-4aec-80d2-db37f94416fd",
             "Value": {
                 "id": "bae0f6cf-b4f6-43a3-8d94-584b4d339aa4",
                 "resourcePath": "views\\77925b84-0b9b-4aec-80d2-db37f94416fd.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "77a8932c-5abb-4f62-81d8-7886d4d09cf1",
+            "Value": {
+                "id": "6159b0d3-b96d-444a-85e3-0581853bfc11",
+                "resourcePath": "scripts\\addRoleToFront\\addRoleToFront.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -303,11 +367,35 @@
             }
         },
         {
+            "Key": "a1fc00e6-ca4c-48c0-89a7-51fc89a161de",
+            "Value": {
+                "id": "49d948ec-41bc-4f4b-900c-0a6cc48bdc3f",
+                "resourcePath": "rooms\\room_world\\room_world.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "a3723054-fbb3-43b4-897a-7c3c5e2fa4df",
             "Value": {
                 "id": "8bdaa36b-78e1-4bf1-8593-b816c5601467",
                 "resourcePath": "scripts\\setPathNodeImage\\setPathNodeImage.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "a3e46709-6146-41ce-b217-0aa80fdb285e",
+            "Value": {
+                "id": "2f2be515-ff5d-483d-aa3d-dcca2e53b7e1",
+                "resourcePath": "scripts\\addRoleToTeam\\addRoleToTeam.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "a4db8f79-d956-49e6-a2fe-a41f7fa7683a",
+            "Value": {
+                "id": "b01812ab-bb97-4ca6-aae5-714f777bd290",
+                "resourcePath": "sprites\\temp_world_map\\temp_world_map.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -407,6 +495,14 @@
             }
         },
         {
+            "Key": "cf08d3ec-1b4f-43bb-8f94-f147eb578f35",
+            "Value": {
+                "id": "92c1b652-9cc9-4fe3-8c50-eda520a45218",
+                "resourcePath": "objects\\obj_team_flag\\obj_team_flag.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "cf9d907a-b464-4bb4-be83-38fdfe519007",
             "Value": {
                 "id": "334f067e-0cd4-42ec-8c17-2fd123537475",
@@ -439,19 +535,19 @@
             }
         },
         {
-            "Key": "d5d71764-0592-44c8-91d5-304ffb586cb1",
-            "Value": {
-                "id": "813f3734-2737-42e3-9291-b59df6dd1248",
-                "resourcePath": "scripts\\scr_mainMenu\\scr_mainMenu.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "db0689ff-0fff-49a4-9852-c52f217c676f",
             "Value": {
                 "id": "48864aff-126b-42cd-abad-9f8804ecc578",
                 "resourcePath": "scripts\\pourWater\\pourWater.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "dbf4b9c0-a37d-4fea-873a-5732a1322d58",
+            "Value": {
+                "id": "d9ebbfa3-6776-4a61-9a9a-e5ce69b27375",
+                "resourcePath": "views\\dbf4b9c0-a37d-4fea-873a-5732a1322d58.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -463,11 +559,11 @@
             }
         },
         {
-            "Key": "e923177d-174e-46f1-b5ac-843221a38212",
+            "Key": "e9f0e4df-a324-4757-b867-9280588fb09f",
             "Value": {
-                "id": "dbd13ef6-6b7b-4144-8752-5272c2371ad1",
-                "resourcePath": "scripts\\scr_cursor_stepCheck\\scr_cursor_stepCheck.yy",
-                "resourceType": "GMScript"
+                "id": "558561b1-537a-4c32-b307-7de0ab97627d",
+                "resourcePath": "objects\\obj_worldTeam\\obj_worldTeam.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -535,6 +631,14 @@
             }
         },
         {
+            "Key": "fc34fa0b-bc2b-4ef4-ac04-542d131e51d4",
+            "Value": {
+                "id": "3c4fbb0e-56e4-4c9c-9331-a1017a5f5026",
+                "resourcePath": "objects\\obj_point\\obj_point.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "fc6b4c54-c292-467a-a1d7-8b5407944851",
             "Value": {
                 "id": "cdcac813-8bb7-4f9f-84c4-d1741ef6f9c2",
@@ -544,8 +648,6 @@
         }
     ],
     "script_order": [
-        "d5d71764-0592-44c8-91d5-304ffb586cb1",
-        "e923177d-174e-46f1-b5ac-843221a38212",
         "09069da4-7e8c-4fb0-8b03-540746365cf3",
         "f3b99990-8d22-453a-8e78-78cfb036052a",
         "239c306b-efb8-4464-acfa-f352ca1ff684",
@@ -554,7 +656,10 @@
         "d5822712-fc68-4cb6-b1f2-9c998928bd4f",
         "a3723054-fbb3-43b4-897a-7c3c5e2fa4df",
         "f73e1508-3c7f-494d-98d6-d4123bddca90",
-        "055b205c-3b7a-42dc-96cd-5bf0ef506ba3"
+        "055b205c-3b7a-42dc-96cd-5bf0ef506ba3",
+        "77a8932c-5abb-4f62-81d8-7886d4d09cf1",
+        "58cbe2c4-6d5f-4405-ad0a-e07c4d5ddb9a",
+        "a3e46709-6146-41ce-b217-0aa80fdb285e"
     ],
     "tutorial": ""
 }

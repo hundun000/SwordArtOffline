@@ -1,7 +1,9 @@
 #macro UNIT 64
 
 
-
+enum Weapon{
+	sword
+}
 
 enum RoleState{
 	idle,
