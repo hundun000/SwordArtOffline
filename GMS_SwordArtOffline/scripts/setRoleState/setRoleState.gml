@@ -6,7 +6,7 @@ switch(to){
 		pourWater(selectedRole.x,selectedRole.y,selectedRole.roleType,selectedRole.MAX_MOVEMENT,selectedRole.roleAttackRangFrom,selectedRole.roleAttackRangto);//test range
 		break;
 	case RoleState.doMore:
-		pourWater(selectedRole.x,selectedRole.y,selectedRole.roleType,0,selectedRole.roleAttackRangFrom,selectedRole.roleAttackRangto);//test range
+		buildCanAttackTile(selectedRole.x,selectedRole.y,selectedRole.roleAttackRangFrom,selectedRole.roleAttackRangto,false);
 		break;			
 	case RoleState.gray:
 		selectedRole.roleState=RoleState.gray;

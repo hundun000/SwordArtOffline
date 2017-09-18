@@ -15,19 +15,15 @@ var isB=keyboard_check_pressed(BTN_B);
 
 switch(curWorldPos){
 	case 0:
-	if(isD||isR)
+	if(isU||isL)
 		toWorldPos=1;
-
 	break;
 	case 1:
-	if(isU||isL)
+	if(isD||isR)
 		toWorldPos=0;
-	else if(isA){
-		
-
+	else if(isA){	
 		addRoleToFront(asuna,room_map_0,0);
-		room_goto(room_map_0);
-			
+		room_goto(room_map_0);		
 	}
 	break;
 
@@ -37,12 +33,12 @@ switch(curWorldPos){
 
 switch(toWorldPos){
 	case 0:
-		toWorldX=159;
-		toWorldY=205;	
+		toWorldX=714;
+		toWorldY=524;	
 		break;	
 	case 1:
-		toWorldX=544;
-		toWorldY=414;
+		toWorldX=630;
+		toWorldY=446;
 	break;
 
 	default:

@@ -37,7 +37,7 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 	}
 	
 	
-	//instance_create_layer(myX,myY,CAN_MOVE_LAYER,obj_canMove);
+
 	
 	
 
@@ -50,25 +50,7 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 		ins_pos.image_index=CAN_MOVE;
 	}
 	
-	var r;
-	var ddx;
-	var ddy;
-	for(r=attackRangeFrom;r<=attackRangeTo;r++){
-		for(ddx=-r;ddx<=r;ddx++){
-			ddy=r-abs(ddx);
-			if(instance_position(myX+ddx*UNIT,myY+ddy*UNIT,obj_canMove)==noone){
-				with(instance_create_layer(myX+ddx*UNIT,myY+ddy*UNIT,CAN_MOVE_LAYER,obj_canMove)){
-					image_index=CAN_ATTACK;
-				}
-			}
-			ddy=abs(ddx)-r;
-			if(instance_position(myX+ddx*UNIT,myY+ddy*UNIT,obj_canMove)==noone){
-				with(instance_create_layer(myX+ddx*UNIT,myY+ddy*UNIT,CAN_MOVE_LAYER,obj_canMove)){
-					image_index=CAN_ATTACK;
-				}
-			}
-		}
-	}
+	buildCanAttackTile(myX,myY,attackRangeFrom,attackRangeTo,true);
 	
 
 	var dx;

@@ -1,8 +1,8 @@
 {
-    "id": "fc34fa0b-bc2b-4ef4-ac04-542d131e51d4",
+    "id": "eb8fd9d3-c0e7-419e-bdbd-20d81f84f58b",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_point",
+    "name": "obj_doMoreMemu",
     "eventList": [
         
     ],
@@ -22,6 +22,6 @@
     "physicsShapePoints": null,
     "physicsStartAwake": true,
     "solid": false,
-    "spriteId": "719b377b-b6d8-4bd4-b69a-d05b380ea462",
-    "visible": false
+    "spriteId": "9707f643-bbc4-4492-a126-e9fb744d16db",
+    "visible": true
 }

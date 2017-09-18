@@ -45,7 +45,8 @@ switch(state){
 				}
 			}	
 		}
-		else if(isSP){		
+		else if(isSP){	
+			room_persistent=true;	
 			room_goto(room_world);
 		}
 		break;
@@ -63,11 +64,28 @@ switch(state){
 		
 		else if(isA){
 			state=CursorState.roleDoMore;
+			visible=false;
 			
 			deletePath(playerPath);
 
 
 			deleteCanMove();
+			
+			
+			var menuSide=sign((VIEW_WIDTH div 2)-x);
+		
+			doMoreMenu=instance_create_layer((VIEW_WIDTH div 2)+menuSide*(VIEW_WIDTH div 4)
+											,VIEW_HEIGHT div 2,"Layer_menuBoard",obj_doMoreMemu);
+			global.doMoreSelectIndex=0;
+			for(var i=0;i<NUM_DOMORE_OPTION;i++){
+				with(instance_create_layer(doMoreMenu.x,
+											doMoreMenu.y+(i-NUM_DOMORE_OPTION div 2-0.5)*(UNIT+5)
+											,"Layer_menuOption",obj_doMoreOption)){
+					image_index=i;	
+				}
+		
+			}
+			
 		
 			setRoleState(selectedRole,RoleState.doMore);
 		}
@@ -89,13 +107,34 @@ switch(state){
 		
 		break;
 	case CursorState.roleDoMore:
-		if(isA){
-		//for test,fake have selected fight
-		state=CursorState.selectingEnemy;
-		
+		if(dy!=0){
+				global.doMoreSelectIndex+=dy;
+				if(global.doMoreSelectIndex==NUM_DOMORE_OPTION)
+					global.doMoreSelectIndex=0;
+				else if(global.doMoreSelectIndex<0)
+					global.doMoreSelectIndex=NUM_DOMORE_OPTION-1;
+
+		}
+		else if(isA){
+			switch(global.doMoreSelectIndex){
+				case OPTION_FIGHT:
+					state=CursorState.selectingEnemy;
+					visible=true;
+					
+					with(obj_doMoreMemu){
+						visible=false;
+					}
+					with(obj_doMoreOption){
+						visible=false;
+					}
+					break;
+				default:
+			
+			}
 		}	
 		else if(isB){
 			state=CursorState.free;
+			visible=true;
 			
 			selectedRole.x=tempRoleX;
 			selectedRole.y=tempRoleY;
@@ -104,6 +143,9 @@ switch(state){
 			y=tempRoleY;
 					
 			deleteCanMove();
+			
+			instance_destroy(obj_doMoreMemu);
+			instance_destroy(obj_doMoreOption);
 		
 			setRoleState(selectedRole,RoleState.idle);
 		}
@@ -139,6 +181,7 @@ switch(state){
 					target=id;
 				}	
 			}
+			
 			/*
 			//not found at inputted direction,search at all direction
 			if(target==noone){
@@ -150,11 +193,30 @@ switch(state){
 				}	
 			}
 			*/
+			
 			//if have,set cursor to there
 			if(target!=noone){
 				x=target.x;
 				y=target.y;
 			}
+		}
+		else if(isA){
+		//into fight room , unfight role should be away!
+		room_persistent=true;
+			
+		
+		}
+		else if(isB){
+			state=CursorState.roleDoMore;
+			visible=false;
+			
+			with(obj_doMoreMemu){
+				visible=true;
+			}
+			with(obj_doMoreOption){
+				visible=true;
+			}
+		
 		}
 			
 
