@@ -21,7 +21,9 @@ var dy=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 
 	
 switch(state){
+
 	case CursorState.free:
+	
 		if((dx!=0||dy!=0)
 		&&x+dx*UNIT<room_width&&x+dx*UNIT>0
 		&&y+dy*UNIT<room_height&&y+dy*UNIT>0){
@@ -29,19 +31,19 @@ switch(state){
 			y+=dy*UNIT;
 		}
 		else if(isA){
-			selectedRole=instance_position(x,y,obj_role_player);
-			if(selectedRole!=noone){
+			global.operatedRole=instance_position(x,y,obj_role_player);
+			if(global.operatedRole!=noone){
 			  //if(selectedRole.control==controlType.player)			
-				if(selectedRole.roleState==RoleState.idle){	
+				if(global.operatedRole.roleState==RoleState.idle){	
 					state=CursorState.selectedRole;
 					
-					tempRoleX=selectedRole.x;
-					tempRoleY=selectedRole.y;
+					tempRoleX=global.operatedRole.x;
+					tempRoleY=global.operatedRole.y;
 					
 					playerPath=path_add();
 					buildPath(playerPath,x,y);		
 							
-					setRoleState(selectedRole,RoleState.selected);
+					setRoleState(global.operatedRole,RoleState.selected);
 				}
 			}	
 		}
@@ -50,14 +52,16 @@ switch(state){
 			room_goto(room_world);
 		}
 		break;
+		
 	case CursorState.selectedRole:
+	
 		if((dx!=0||dy!=0)){
 			var ins=instance_position(x+dx*UNIT,y+dy*UNIT,obj_canMove);
-			if(ins!=noone&&ins.image_index==CAN_MOVE){			
+			if(ins!=noone&&(ins.image_index==CAN_MOVE||ins.image_index==CAN_MOVE_ATTACK)){			
 			x+=dx*UNIT;
 			y+=dy*UNIT;
-			selectedRole.x+=dx*UNIT;
-			selectedRole.y+=dy*UNIT;
+			global.operatedRole.x+=dx*UNIT;
+			global.operatedRole.y+=dy*UNIT;
 			buildPath(playerPath,x,y);
 			}
 		}
@@ -76,6 +80,7 @@ switch(state){
 		
 			doMoreMenu=instance_create_layer((VIEW_WIDTH div 2)+menuSide*(VIEW_WIDTH div 4)
 											,VIEW_HEIGHT div 2,"Layer_menuBoard",obj_doMoreMemu);
+											
 			global.doMoreSelectIndex=0;
 			for(var i=0;i<NUM_DOMORE_OPTION;i++){
 				with(instance_create_layer(doMoreMenu.x,
@@ -87,14 +92,14 @@ switch(state){
 			}
 			
 		
-			setRoleState(selectedRole,RoleState.doMore);
+			setRoleState(global.operatedRole,RoleState.doMore);
 		}
 		
 		else if(isB){
 			state=CursorState.free;
 			
-			selectedRole.x=tempRoleX;
-			selectedRole.y=tempRoleY;
+			global.operatedRole.x=tempRoleX;
+			global.operatedRole.y=tempRoleY;
 				
 			x=tempRoleX;
 			y=tempRoleY;
@@ -102,42 +107,82 @@ switch(state){
 			deletePath(playerPath);
 			deleteCanMove();
 		
-			setRoleState(selectedRole,RoleState.idle);
+			setRoleState(global.operatedRole,RoleState.idle);
 		}
 		
 		break;
+		
 	case CursorState.roleDoMore:
+	
 		if(dy!=0){
-				global.doMoreSelectIndex+=dy;
-				if(global.doMoreSelectIndex==NUM_DOMORE_OPTION)
-					global.doMoreSelectIndex=0;
-				else if(global.doMoreSelectIndex<0)
-					global.doMoreSelectIndex=NUM_DOMORE_OPTION-1;
-
+			global.doMoreSelectIndex+=dy;
+			if(global.doMoreSelectIndex>NUM_DOMORE_OPTION-1)
+				global.doMoreSelectIndex=0;
+			else if(global.doMoreSelectIndex<0)
+				global.doMoreSelectIndex=NUM_DOMORE_OPTION-1;
 		}
 		else if(isA){
+			//do more menu option
 			switch(global.doMoreSelectIndex){
 				case OPTION_FIGHT:
 					state=CursorState.selectingEnemy;
-					visible=true;
 					
-					with(obj_doMoreMemu){
-						visible=false;
-					}
-					with(obj_doMoreOption){
-						visible=false;
-					}
+
 					break;
+				case OPTION_BAG:
+					state=CursorState.selectingBagItem;
+				
+					var menuSide1=sign((VIEW_WIDTH div 2)-x);
+		
+					itemMenu=instance_create_layer((VIEW_WIDTH div 2)+menuSide1*(VIEW_WIDTH div 4)
+					
+													,VIEW_HEIGHT div 2,"Layer_menuBoard",obj_itemMenu);
+					global.itemSelectIndex=0;
+
+					
+					break;
+				case OPTION_END:
+					//diffrenet with other case,firstly set role state,for check if team done
+					setRoleState(global.operatedRole,RoleState.gray);
+					var done=isTeamDone();
+					if(done){
+						show_message("team done");
+						state=CursorState.waitEnemy;
+					}
+					else{
+						state=CursorState.free;
+						visible=true;
+					
+						
+					}
+					
+					deleteCanMove();
+					
+					instance_destroy(obj_doMoreMemu);
+					instance_destroy(obj_doMoreOption);
+
+					
+					
+				
 				default:
 			
 			}
+			
+			with(obj_doMoreMemu){
+				visible=false;
+			}
+			with(obj_doMoreOption){
+				visible=false;
+			}
+			
+			
 		}	
 		else if(isB){
 			state=CursorState.free;
 			visible=true;
 			
-			selectedRole.x=tempRoleX;
-			selectedRole.y=tempRoleY;
+			global.operatedRole.x=tempRoleX;
+			global.operatedRole.y=tempRoleY;
 				
 			x=tempRoleX;
 			y=tempRoleY;
@@ -147,9 +192,30 @@ switch(state){
 			instance_destroy(obj_doMoreMemu);
 			instance_destroy(obj_doMoreOption);
 		
-			setRoleState(selectedRole,RoleState.idle);
+			setRoleState(global.operatedRole,RoleState.idle);
 		}
 		break;
+		
+	case CursorState.selectingBagItem:
+	
+		if(dy!=0){
+				global.itemSelectIndex=clamp(global.itemSelectIndex+dy,0,NUM_ROLE_ITEM-1);
+		}
+		else if(isB){
+			state=CursorState.roleDoMore;
+			
+			instance_destroy(obj_itemMenu);
+			
+			with(obj_doMoreMemu){
+				visible=true;
+			}
+			with(obj_doMoreOption){
+				visible=true;
+			}
+		
+		}
+		
+		break;	
 	case CursorState.selectingEnemy:
 			
 		//if not target a enmey,try to auto target
@@ -166,6 +232,7 @@ switch(state){
 				x=target.x;
 				y=target.y;
 			}
+			visible=true;
 		}
 		
 		//switch target
@@ -202,13 +269,34 @@ switch(state){
 		}
 		else if(isA){
 		//into fight room , unfight role should be away!
-		room_persistent=true;
+
+		if(x!=global.operatedRole.x||y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
+			state=CursorState.intoFightRoom;
+			room_persistent=true;
+			
+			var enemy=instance_position(x,y,obj_role_enemy);
+			enemy.persistent=true;
+			
+			with(obj_role_player) visible=false;
+			
+			global.fighter_L=enemy;
+			global.fighter_R=global.operatedRole;			
+
+			deleteCanMove();
+			
+			room_goto(room_fight);
+		}
+		
 			
 		
 		}
 		else if(isB){
 			state=CursorState.roleDoMore;
 			visible=false;
+			
+			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
+			x=tempRoleX;
+			y=tempRoleY;
 			
 			with(obj_doMoreMemu){
 				visible=true;
@@ -222,6 +310,21 @@ switch(state){
 
 
 		break;
+		
+		case CursorState.intoFightRoom:
+			setRoleState(global.operatedRole,RoleState.gray);
+			var done=isTeamDone();
+			if(done){
+				show_message("team done");
+				state=CursorState.waitEnemy;
+			}
+			else{
+				state=CursorState.free;
+				visible=true;
+					
+						
+			}
+			
 		
 	default:
 }	

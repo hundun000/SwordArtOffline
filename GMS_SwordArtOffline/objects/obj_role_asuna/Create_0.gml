@@ -2,7 +2,7 @@
 // You can write your code in this editor
 event_inherited();
 
-roleName="asuna";
+name="asuna";
 roleType=RoleType.walker;
 MAX_MOVEMENT=5; 
 roleAttackRangFrom=1;
@@ -19,8 +19,12 @@ curWeapon=noone;
 
 visible=false;
 
-
+/*
 spawnRoom=-1;
 spawnX=-1;
 spawnY=-1;
+*/
 
+addItemToRole(id,"cover drug",3);
+addItemToRole(id,"cover drug",3);
+addItemToRole(id,"cover drug",3);

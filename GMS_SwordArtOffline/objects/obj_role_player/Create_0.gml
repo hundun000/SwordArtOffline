@@ -1,13 +1,17 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+
 roleState=RoleState.idle;
-control=controlType.player;
+//control=controlType.player;
 
 
+items=ds_grid_create(NUM_ITEM_PROPERTY,NUM_ROLE_ITEM);
+num_curItem=0;
+isFront=false;
 //should be init-set for each role
 /*
-roleName=-1;
+name=-1;
 roleType=-1;
 MAX_MOVEMENT=-1; 
 roleAttackRangFrom=-1;

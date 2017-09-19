@@ -1,16 +1,19 @@
+/// @argument0 role
+/// @argument1 state
+
 var role=argument0;
 var to=argument1;
 
 switch(to){
 	case RoleState.selected:
-		pourWater(selectedRole.x,selectedRole.y,selectedRole.roleType,selectedRole.MAX_MOVEMENT,selectedRole.roleAttackRangFrom,selectedRole.roleAttackRangto);//test range
+		pourWater(role.x,role.y,role.roleType,role.MAX_MOVEMENT,role.roleAttackRangFrom,role.roleAttackRangto);//test range
 		break;
 	case RoleState.doMore:
-		buildCanAttackTile(selectedRole.x,selectedRole.y,selectedRole.roleAttackRangFrom,selectedRole.roleAttackRangto,false);
+		buildCanAttackTile(role.x,role.y,role.roleAttackRangFrom,role.roleAttackRangto);
 		break;			
 	case RoleState.gray:
-		selectedRole.roleState=RoleState.gray;
-		selectedRole.image_blend=c_gray;
+		role.roleState=RoleState.gray;
+		role.image_blend=c_gray;
 		break;
 	default:
 }

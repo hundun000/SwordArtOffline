@@ -1,8 +1,8 @@
 {
-    "id": "58cbe2c4-6d5f-4405-ad0a-e07c4d5ddb9a",
+    "id": "777f6f83-77c4-440f-b8b6-726e3d263641",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "renewRoleToTeam",
+    "name": "printRolePropertiesForDebug",
     "IsCompatibility": false,
     "IsDnD": false
 }

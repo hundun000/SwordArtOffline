@@ -22,7 +22,13 @@ switch(curWorldPos){
 	if(isD||isR)
 		toWorldPos=0;
 	else if(isA){	
+	
+		addRoleToWorld(asuna);
+		addRoleToWorld(kirito);
+		
 		addRoleToFront(asuna,room_map_0,0);
+		addRoleToFront(kirito,room_map_0,1);
+		
 		room_goto(room_map_0);		
 	}
 	break;

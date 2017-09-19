@@ -58,7 +58,7 @@ var newSlot=ds_grid_height(grid)-1;
 
 switch(name){
 	case "asuna":{
-		ds_grid_set(grid,INDEX_NAME,newSlot,role.roleName);
+		ds_grid_set(grid,INDEX_NAME,newSlot,role.name);
 		ds_grid_set(grid,INDEX_HP,newSlot,role.hp);
 		ds_grid_set(grid,INDEX_ATK,newSlot,role.atk);
 		ds_grid_set(grid,INDEX_DEF,newSlot,role.def);
@@ -74,7 +74,7 @@ switch(name){
 }
 
 /*
-ds_grid_set(grid,INDEX_NAME,newSlot,role.roleName);
+ds_grid_set(grid,INDEX_NAME,newSlot,role.name);
 ds_grid_set(grid,INDEX_HP,newSlot,role.hp);
 ds_grid_set(grid,INDEX_ATK,newSlot,role.atk);
 ds_grid_set(grid,INDEX_DEF,newSlot,role.def);

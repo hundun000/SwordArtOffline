@@ -8,6 +8,8 @@ toWorldX=0;
 toWorldY=0;
 
 asuna=instance_find(obj_role_asuna,0);
+kirito=instance_find(obj_role_kirito,0);
+
 
 
 

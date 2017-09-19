@@ -1,8 +1,8 @@
 {
-    "id": "a3e46709-6146-41ce-b217-0aa80fdb285e",
+    "id": "07c9a996-96b5-4da8-9dfd-1d6a51751225",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "addRoleToTeam",
+    "name": "isTeamDone",
     "IsCompatibility": false,
     "IsDnD": false
 }

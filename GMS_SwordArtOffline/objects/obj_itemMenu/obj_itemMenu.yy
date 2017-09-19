@@ -1,23 +1,23 @@
 {
-    "id": "e9f0e4df-a324-4757-b867-9280588fb09f",
+    "id": "d4334993-5c86-4bc0-aca0-3410cc305dff",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_worldTeam",
+    "name": "obj_itemMenu",
     "eventList": [
         {
-            "id": "3982705f-a851-4b71-8251-7f7bd9a68cdd",
+            "id": "eecb27c6-862a-41c4-a583-c70038f8c913",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "e9f0e4df-a324-4757-b867-9280588fb09f"
+            "eventtype": 8,
+            "m_owner": "d4334993-5c86-4bc0-aca0-3410cc305dff"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "parentObjectId": "00000000-0000-0000-0000-000000000000",
-    "persistent": true,
+    "persistent": false,
     "physicsAngularDamping": 0.1,
     "physicsDensity": 0.5,
     "physicsFriction": 0.2,
@@ -31,6 +31,6 @@
     "physicsShapePoints": null,
     "physicsStartAwake": true,
     "solid": false,
-    "spriteId": "00000000-0000-0000-0000-000000000000",
+    "spriteId": "f511f0d7-352c-47d4-b37b-c68f7fd11d34",
     "visible": true
 }

@@ -1,6 +1,11 @@
-#macro CAN_MOVE 0
+//#macro BLANK 0
 #macro CAN_ATTACK 1
-#macro BLANK 2
+#macro CAN_MOVE 2
+#macro CAN_MOVE_ATTACK 3
+
+
+
+
 #macro CAN_MOVE_LAYER "Instances_canMove"
 
 
@@ -18,13 +23,9 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 	//var canAttack=true;
 	//var shouldBlank=true;
 	
-	var ins_pos=instance_position(myX,myY,obj_canMove);
-	
-	var testX=getTileIndex(myX);//for debug see
-	var testY=getTileIndex(myY);//for debug see
-	
-	
 
+
+	//handle tile caused cann't move
 	switch(type){
 		case RoleType.walker:
 		if(position_meeting(myX,myY,obj_tile_hill))
@@ -32,25 +33,28 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 		default:
 	}
 	
+	//handle rival caused cann't move
 	if(position_meeting(myX,myY,obj_role_enemy)){
 		return;
 	}
 	
+	var ins_pos=instance_position(myX,myY,obj_canMove);	
 	
-
-	
-	
-
 	if(ins_pos==noone){
-			instance_create_layer(myX,myY,CAN_MOVE_LAYER,obj_canMove);
+		//this case must can move
+		var new=instance_create_layer(myX,myY,CAN_MOVE_LAYER,obj_canMove);
+		new.image_index=CAN_MOVE;
 	}
-	else{
-		if(ins_pos.image_index==CAN_MOVE)
+	else if(ins_pos.image_index==CAN_MOVE||ins_pos.image_index=CAN_MOVE_ATTACK)
+			//mean this tile can move case had processed.
 			return;
-		ins_pos.image_index=CAN_MOVE;
-	}
+	else if(ins_pos.image_index==CAN_ATTACK)
+			//renew
+			ins_pos.image_index=CAN_MOVE_ATTACK;
+
 	
-	buildCanAttackTile(myX,myY,attackRangeFrom,attackRangeTo,true);
+	//just in this tile,sign the can attack tiles
+	buildCanAttackTile(myX,myY,attackRangeFrom,attackRangeTo);
 	
 
 	var dx;
