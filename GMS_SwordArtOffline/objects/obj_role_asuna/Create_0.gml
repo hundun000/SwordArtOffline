@@ -3,11 +3,13 @@
 event_inherited();
 
 name="asuna";
+
 roleType=RoleType.walker;
 MAX_MOVEMENT=5; 
 roleAttackRangFrom=1;
-roleAttackRangto=1;
+roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
+
 hp=15;
 atk=10;
 def=5;
@@ -17,7 +19,7 @@ xp=0;
 lv=1;
 curWeapon=noone;
 
-visible=false;
+
 
 /*
 spawnRoom=-1;

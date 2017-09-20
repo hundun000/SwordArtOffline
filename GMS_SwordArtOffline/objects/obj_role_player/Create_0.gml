@@ -9,13 +9,16 @@ roleState=RoleState.idle;
 items=ds_grid_create(NUM_ITEM_PROPERTY,NUM_ROLE_ITEM);
 num_curItem=0;
 isFront=false;
+
+visible=false;
+
 //should be init-set for each role
 /*
 name=-1;
 roleType=-1;
 MAX_MOVEMENT=-1; 
 roleAttackRangFrom=-1;
-roleAttackRangto=-1;
+roleAttackRangTo=-1;
 weaponProfession=-1;
 
 hp=-1;

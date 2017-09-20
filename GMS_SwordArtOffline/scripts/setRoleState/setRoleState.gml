@@ -6,10 +6,10 @@ var to=argument1;
 
 switch(to){
 	case RoleState.selected:
-		pourWater(role.x,role.y,role.roleType,role.MAX_MOVEMENT,role.roleAttackRangFrom,role.roleAttackRangto);//test range
+		pourWater(role.x,role.y,role.roleType,role.MAX_MOVEMENT,role.roleAttackRangFrom,role.roleAttackRangTo);//test range
 		break;
 	case RoleState.doMore:
-		buildCanAttackTile(role.x,role.y,role.roleAttackRangFrom,role.roleAttackRangto);
+		buildCanAttackTile(role.x,role.y,role.roleAttackRangFrom,role.roleAttackRangTo);
 		break;			
 	case RoleState.gray:
 		role.roleState=RoleState.gray;

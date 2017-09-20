@@ -268,19 +268,34 @@ switch(state){
 			}
 		}
 		else if(isA){
+		
 		//into fight room , unfight role should be away!
 
 		if(x!=global.operatedRole.x||y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
 			state=CursorState.intoFightRoom;
 			room_persistent=true;
 			
+			//temporary set persistent for use it in fight room
 			var enemy=instance_position(x,y,obj_role_enemy);
 			enemy.persistent=true;
 			
-			with(obj_role_player) visible=false;
+			//set front persistent role disvisible
+			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
+				global.playerFrontTeam[i].visible=false;
+			
+			//culculate if enmey can attack player role
+			//cursor current target to enmey
+			var dx=x-global.operatedRole.x;
+			var dy=y-global.operatedRole.y;
+			var Manhattan_distance=(abs(dx)+abs(dy)) div 64;
+			if(Manhattan_distance>=enemy.roleAttackRangFrom&&Manhattan_distance<=enemy.roleAttackRangTo)
+				global.attackSideType=AttackSideType.both;
+			else
+				global.attackSideType=AttackSideType.onlyRight;
 			
 			global.fighter_L=enemy;
 			global.fighter_R=global.operatedRole;			
+			global.curAttackSide=FIGHT_R;
 
 			deleteCanMove();
 			
