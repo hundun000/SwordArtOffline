@@ -14,6 +14,7 @@ globalvar fightState;
 
 turnTimes=array_create(0);
 
+
 attackAnimation[0]=instance_find(obj_fightRole,0);
 attackAnimation[1]=instance_find(obj_fightRole,1);
 

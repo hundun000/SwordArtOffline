@@ -1,8 +1,8 @@
 {
-    "id": "777f6f83-77c4-440f-b8b6-726e3d263641",
+    "id": "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "printRolePropertiesForDebug",
+    "name": "getDieSpriteByRole",
     "IsCompatibility": false,
     "IsDnD": false
 }

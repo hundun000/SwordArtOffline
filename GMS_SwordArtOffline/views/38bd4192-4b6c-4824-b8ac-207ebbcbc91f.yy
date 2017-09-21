@@ -20,7 +20,8 @@
         "5602d2c7-6722-4115-a9e9-b647cafa449c",
         "f511f0d7-352c-47d4-b37b-c68f7fd11d34",
         "60da94da-51f4-465e-a6fa-4092f242c192",
-        "12293879-8716-42b5-9bbd-b88bba305de0"
+        "12293879-8716-42b5-9bbd-b88bba305de0",
+        "70acaa79-07bb-4929-af6f-d0d9ffd0e492"
     ],
     "filterType": "GMSprite",
     "folderName": "杂",

@@ -39,6 +39,14 @@
             }
         },
         {
+            "Key": "03fb2025-bca9-46e6-bfe2-bfdaad64222d",
+            "Value": {
+                "id": "bff271a1-eefe-4b1f-b1e1-d3ec1e44e237",
+                "resourcePath": "views\\03fb2025-bca9-46e6-bfe2-bfdaad64222d.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "055b205c-3b7a-42dc-96cd-5bf0ef506ba3",
             "Value": {
                 "id": "2ca80e2c-57bf-45ad-86a1-5867d28eb7ad",
@@ -135,6 +143,14 @@
             }
         },
         {
+            "Key": "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
+            "Value": {
+                "id": "1075ba0b-90c7-4d9a-a09e-ff3b1d0efa29",
+                "resourcePath": "scripts\\getDieSpriteByRole\\getDieSpriteByRole.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2feeae51-2fce-4c0a-9587-60968a73c5bf",
             "Value": {
                 "id": "38ae6fcc-b05c-4b12-9367-e75ba71fe194",
@@ -228,6 +244,14 @@
                 "id": "1787c438-4dde-4b74-963d-60bdaacebe92",
                 "resourcePath": "views\\41dd2ede-5338-4821-9dbc-b97d4ea5426f.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "431c378e-1221-438f-8639-9db52fee0314",
+            "Value": {
+                "id": "9be60172-9e6b-4e6f-abc5-f51af5b40dd1",
+                "resourcePath": "sprites\\spr_boar_die\\spr_boar_die.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -399,6 +423,14 @@
             }
         },
         {
+            "Key": "70acaa79-07bb-4929-af6f-d0d9ffd0e492",
+            "Value": {
+                "id": "085a08c0-8d73-486d-a577-8966ceb7029b",
+                "resourcePath": "sprites\\spr_fightRoomBar\\spr_fightRoomBar.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "719b377b-b6d8-4bd4-b69a-d05b380ea462",
             "Value": {
                 "id": "fa91a734-e551-492a-bf5d-d60522573971",
@@ -428,14 +460,6 @@
                 "id": "a9faa0fe-93f2-451f-9039-d1531f2ecdd4",
                 "resourcePath": "sprites\\temp_team_flag\\temp_team_flag.yy",
                 "resourceType": "GMSprite"
-            }
-        },
-        {
-            "Key": "777f6f83-77c4-440f-b8b6-726e3d263641",
-            "Value": {
-                "id": "97bdb97e-d551-4f43-baec-1308905b0a0e",
-                "resourcePath": "scripts\\printRolePropertiesForDebug\\printRolePropertiesForDebug.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -910,8 +934,8 @@
         "f3b99990-8d22-453a-8e78-78cfb036052a",
         "6fa26d83-4818-413b-8a36-d3f769696cbc",
         "c4e673f3-5aaa-45de-8e56-da8de3a89323",
-        "777f6f83-77c4-440f-b8b6-726e3d263641",
         "9704d663-e80c-49b7-b9fc-7226a7518fc1",
+        "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
         "db0689ff-0fff-49a4-9852-c52f217c676f",
         "34e745e2-d7fc-4db8-ab7a-c34725861f27",
         "f73e1508-3c7f-494d-98d6-d4123bddca90",
