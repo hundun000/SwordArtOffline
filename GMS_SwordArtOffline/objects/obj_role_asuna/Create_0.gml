@@ -15,7 +15,7 @@ atk=10;
 def=5;
 dex=8;
 curHp=hp;
-xp=0;
+xp=80;
 lv=1;
 curWeapon=noone;
 

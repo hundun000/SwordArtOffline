@@ -6,7 +6,8 @@
     "children": [
         "95bd953c-ecee-4294-bf4a-23bdfd3ec851",
         "69f2b7e4-fad6-46fe-9a08-def1af1fef2a",
-        "11ef4bc8-6c42-4df5-b830-eaf0c8c3bcc4"
+        "11ef4bc8-6c42-4df5-b830-eaf0c8c3bcc4",
+        "2885556d-5a59-40ff-b30c-680ffad74159"
     ],
     "filterType": "GMSprite",
     "folderName": "attack",

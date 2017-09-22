@@ -7,7 +7,8 @@ switch(role.name){
 	case "boar":
 		return spr_boar_attack;
 
-
+	case "kirito":
+		return spr_kirito_attack;
 
 
 }
