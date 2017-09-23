@@ -1,34 +1,26 @@
 /// @description Insert description here
 // You can write your code in this editor
-#macro BTN_A ord("Z")
-#macro BTN_B ord("X")
-#macro BTN_U vk_up
-#macro BTN_D vk_down
-#macro BTN_L vk_left
-#macro BTN_R vk_right
+
+if(global.inputReceiver!=InputReceiver.cursor) return;
 
 //for test fuction button
 #macro BTN_SP ord("Q")
-
-
-var isA=keyboard_check_pressed(BTN_A);
-var isB=keyboard_check_pressed(BTN_B);
 var isSP=keyboard_check_pressed(BTN_SP);
-var dx=keyboard_check_pressed(BTN_R)-keyboard_check_pressed(BTN_L);
-var dy=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
-//var tempRoleX;
-//var tempRoleY;
+
+
+var tempRoleX;
+var tempRoleY;
 
 	
 switch(state){
 
 	case CursorState.free:
 	
-		if((dx!=0||dy!=0)
-		&&x+dx*UNIT<room_width&&x+dx*UNIT>0
-		&&y+dy*UNIT<room_height&&y+dy*UNIT>0){
-			x+=dx*UNIT;
-			y+=dy*UNIT;
+		if((input_dx!=0||input_dy!=0)
+		&&x+input_dx*UNIT<room_width&&x+input_dx*UNIT>0
+		&&y+input_dy*UNIT<room_height&&y+input_dy*UNIT>0){
+			x+=input_dx*UNIT;
+			y+=input_dy*UNIT;
 		}
 		else if(isA){
 			global.operatedRole=instance_position(x,y,obj_role_player);
@@ -55,13 +47,13 @@ switch(state){
 		
 	case CursorState.selectedRole:
 	
-		if((dx!=0||dy!=0)){
-			var ins=instance_position(x+dx*UNIT,y+dy*UNIT,obj_canMove);
+		if((input_dx!=0||input_dy!=0)){
+			var ins=instance_position(x+input_dx*UNIT,y+input_dy*UNIT,obj_canMove);
 			if(ins!=noone&&(ins.image_index==CAN_MOVE||ins.image_index==CAN_MOVE_ATTACK)){			
-			x+=dx*UNIT;
-			y+=dy*UNIT;
-			global.operatedRole.x+=dx*UNIT;
-			global.operatedRole.y+=dy*UNIT;
+			x+=input_dx*UNIT;
+			y+=input_dy*UNIT;
+			global.operatedRole.x+=input_dx*UNIT;
+			global.operatedRole.y+=input_dy*UNIT;
 			buildPath(playerPath,x,y);
 			}
 		}
@@ -114,8 +106,8 @@ switch(state){
 		
 	case CursorState.roleDoMore:
 	
-		if(dy!=0){
-			global.doMoreSelectIndex+=dy;
+		if(input_dy!=0){
+			global.doMoreSelectIndex+=input_dy;
 			if(global.doMoreSelectIndex>NUM_DOMORE_OPTION-1)
 				global.doMoreSelectIndex=0;
 			else if(global.doMoreSelectIndex<0)
@@ -198,8 +190,8 @@ switch(state){
 		
 	case CursorState.selectingBagItem:
 	
-		if(dy!=0){
-				global.itemSelectIndex=clamp(global.itemSelectIndex+dy,0,NUM_ROLE_ITEM-1);
+		if(input_dy!=0){
+				global.itemSelectIndex=clamp(global.itemSelectIndex+input_dy,0,NUM_ROLE_ITEM-1);
 		}
 		else if(isB){
 			state=CursorState.roleDoMore;
@@ -236,14 +228,14 @@ switch(state){
 		}
 		
 		//switch target
-		if((dx!=0||dy!=0)){
+		if((input_dx!=0||input_dy!=0)){
 			var cursoX=x;
 			var cursoY=y;
 			var target=noone;
 			//search at inputted direction
 			with(obj_canMove){
 				if(!(x==cursoX&&y==cursoY) //no current
-					&&(sign(dx)==sign(x-cursoX)||sign(dy)==sign(y-cursoY)) //inputted direction
+					&&(sign(input_dx)==sign(x-cursoX)||sign(input_dy)==sign(y-cursoY)) //inputted direction
 					&&position_meeting(x,y,obj_role_enemy)){
 					target=id;
 				}	

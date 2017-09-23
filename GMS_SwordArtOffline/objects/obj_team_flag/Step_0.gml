@@ -1,14 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+
 #macro TEAM_FLAG_SPEED 8
 
+if(global.inputReceiver!=InputReceiver.worldTeamFlag) return;
 
-var isU=keyboard_check_pressed(BTN_U);
-var isD=keyboard_check_pressed(BTN_D);
-var isL=keyboard_check_pressed(BTN_L);
-var isR=keyboard_check_pressed(BTN_R);
-var isA=keyboard_check_pressed(BTN_A);
-var isB=keyboard_check_pressed(BTN_B);
+var isU=input_dy==-1;
+var isD=input_dy==1;
+var isL=input_dx=-1;
+var isR=input_dx==1;
 
 //fast return
 //if(isU+isD+isL+isR==0&&toWorldPos==curWorldPos) return;
@@ -23,12 +24,10 @@ switch(curWorldPos){
 		toWorldPos=0;
 	else if(isA){	
 	
-		addRoleToWorld(asuna);
-		addRoleToWorld(kirito);
+		addRoleToFront(global.asuna,room_map_0,0);
+		addRoleToFront(global.kirito,room_map_0,1);
 		
-		addRoleToFront(asuna,room_map_0,0);
-		addRoleToFront(kirito,room_map_0,1);
-		
+		global.inputReceiver=InputReceiver.cursor;
 		room_goto(room_map_0);		
 	}
 	break;

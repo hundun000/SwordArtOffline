@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 #macro THRESHOLD_DEX 4
-#macro STEP_reduceHpAnimation 20
+#macro STEP_reduceHpAnimation 40
 #macro LEN_FULL_HP 64
 #macro XP_SPEED 1
 
