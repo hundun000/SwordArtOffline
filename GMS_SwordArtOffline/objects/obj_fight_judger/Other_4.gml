@@ -2,6 +2,8 @@
 // You can write your code in this editor
 //printRolePropertiesForDebug(global.fighter_L);
 
+global.inputReceiver=InputReceiver.fightRoom;
+
 global.fightState=FightState.preFight;
 
 //in order to use index to point fighter L and R

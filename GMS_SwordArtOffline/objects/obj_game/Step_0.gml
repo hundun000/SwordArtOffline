@@ -10,7 +10,9 @@
 
 enum InputReceiver{
 	cursor,
-	worldTeamFlag
+	worldTeamFlag,
+	textBox,
+	fightRoom
 
 
 }
@@ -24,15 +26,23 @@ var dy=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 var reciever;
 switch(global.inputReceiver){
 	case InputReceiver.worldTeamFlag:
-		reciever=worldTeamFlag_pointer;
+		reciever=worldTeamFlag;
 		break;
 	case InputReceiver.cursor:
 		reciever=global.cursor_pointer;
 		break;
+	case InputReceiver.textBox:
+		reciever=textBoxManager;
+		break;	
+		
+	default:
+		//something ignore input
+		reciever=noone;
 }
 
-reciever.isA=isA;
-reciever.isB=isB;
-reciever.input_dx=dx;
-reciever.input_dy=dy;
-
+if(reciever!=noone){
+	reciever.isA=isA;
+	reciever.isB=isB;
+	reciever.input_dx=dx;
+	reciever.input_dy=dy;
+}

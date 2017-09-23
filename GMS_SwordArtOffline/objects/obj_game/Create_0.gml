@@ -13,8 +13,8 @@ global.playerWorldTeam=array_create(0);
 
 
 globalvar cursor_pointer;
-worldTeamFlag_pointer=instance_find(obj_team_flag,0);  //its a single instance
-
+worldTeamFlag=instance_find(obj_team_flag,0);  //its a single instance
+textBoxManager=instance_find(obj_textBox_manager,0);  //its a single instance
 
 globalvar inputReceiver;
 global.inputReceiver=InputReceiver.worldTeamFlag;

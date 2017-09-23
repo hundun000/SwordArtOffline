@@ -40,6 +40,7 @@ enum RoleType{
 	walker
 }
 
-enum controlType{
-	player
+enum ControlType{
+	player,
+	enemy
 }

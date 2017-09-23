@@ -1,8 +1,8 @@
 {
-    "id": "0905dcef-1a1b-4a9e-a4d8-af3e00864cf7",
+    "id": "34e745e2-d7fc-4db8-ab7a-c34725861f27",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "runTextBox",
+    "name": "old_buildCanAttackTile",
     "IsCompatibility": false,
     "IsDnD": false
 }

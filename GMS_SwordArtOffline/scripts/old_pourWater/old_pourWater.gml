@@ -1,12 +1,5 @@
 //#macro BLANK 0
-#macro CAN_ATTACK 1
-#macro CAN_MOVE 2
-#macro CAN_MOVE_ATTACK 3
 
-
-
-
-#macro CAN_MOVE_LAYER "Instances_canMove"
 
 
 var myX=argument0;
@@ -54,7 +47,7 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 
 	
 	//just in this tile,sign the can attack tiles
-	buildCanAttackTile(myX,myY,attackRangeFrom,attackRangeTo);
+	//buildCanAttackTile(myX,myY,attackRangeFrom,attackRangeTo);
 	
 
 	var dx;
@@ -62,16 +55,16 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 	
 	dx=1;
 	dy=0;
-	pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
+	//pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
 	dx=-1;
 	dy=0;
-	pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
+	//pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
 	dx=0;
 	dy=1;
-	pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
+	//pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
 	dx=0;
 	dy=-1;
-	pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
+	//pourWater(myX+dx*UNIT,myY+dy*UNIT,type,movement-1,attackRangeFrom,attackRangeTo);
 	
 
 	

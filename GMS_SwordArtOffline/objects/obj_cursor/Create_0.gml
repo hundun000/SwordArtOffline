@@ -9,8 +9,6 @@ playerPath=noone;
 
 
 
-//***********as the inplemet pf inputable********
-
 
 
 

@@ -18,7 +18,7 @@ name="boar";
 curHp=-1;
 
 roleType=RoleType.walker;
-MAX_MOVEMENT=5; 
+MAX_MOVEMENT=2; 
 roleAttackRangFrom=1;
 roleAttackRangTo=1;
 curWeapon=noone;

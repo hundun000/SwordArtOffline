@@ -1,10 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-isPropertiesInit=false;
 
-name=-1;
-lv=-1;
+globalvar mapEnemies;
+global.mapEnemies=ds_list_create();
 
-
-
-ds_list_add(global.mapEnemies,self);
+test=10;

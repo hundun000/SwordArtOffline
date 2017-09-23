@@ -1,15 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(global.inputReceiver!=InputReceiver.cursor) return;
+if(global.inputReceiver!=InputReceiver.cursor)	return;
+
 
 //for test fuction button
 #macro BTN_SP ord("Q")
 var isSP=keyboard_check_pressed(BTN_SP);
 
 
-var tempRoleX;
-var tempRoleY;
+
 
 	
 switch(state){
@@ -232,10 +232,12 @@ switch(state){
 			var cursoX=x;
 			var cursoY=y;
 			var target=noone;
+			var intoWith_input_dx=input_dx;
+			var intoWith_input_dy=input_dy;
 			//search at inputted direction
 			with(obj_canMove){
 				if(!(x==cursoX&&y==cursoY) //no current
-					&&(sign(input_dx)==sign(x-cursoX)||sign(input_dy)==sign(y-cursoY)) //inputted direction
+					&&(sign(intoWith_input_dx)==sign(x-cursoX)||sign(intoWith_input_dy)==sign(y-cursoY)) //inputted direction
 					&&position_meeting(x,y,obj_role_enemy)){
 					target=id;
 				}	

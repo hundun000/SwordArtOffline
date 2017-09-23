@@ -3,6 +3,7 @@
 
 #macro THRESHOLD_DEX 4
 #macro STEP_reduceHpAnimation 40
+#macro FIGHT_END_DELAY 60
 #macro LEN_FULL_HP 64
 #macro XP_SPEED 1
 
@@ -94,7 +95,6 @@ switch(global.fightState){
 				}
 				else{
 					flag_player_die=true;
-
 				}
 				
 				//set reduce animation as normal hp bar
@@ -192,7 +192,8 @@ switch(global.fightState){
 		break;
 	case FightState.processXp:
 		if(flag_player_die){
-			//-----------say something
+			//-----------say something---------
+			
 			
 			global.fightState=FightState.fightEnd;
 			return;
@@ -204,7 +205,8 @@ switch(global.fightState){
 				//died must be other side
 				waitAddXp=clamp(fighter[!global.curAttackSide].xp
 							*(5-(fighter[!global.curAttackSide].lv-fighter[global.curAttackSide].lv))
-							,10,100);
+							,10,100);	
+							
 			}
 			else{
 				waitAddXp=3;
@@ -260,7 +262,7 @@ switch(global.fightState){
 	case FightState.fightEnd:
 		
 		if(fightEnd_delay==-1){
-			fightEnd_delay=120;
+			fightEnd_delay=FIGHT_END_DELAY;
 		}
 		else if(fightEnd_delay>0){
 			fightEnd_delay--;
