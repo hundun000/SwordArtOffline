@@ -21,6 +21,20 @@ switch(argument0){
 		ans[INDEX_DEX]=4;
 		ans[INDEX_XP]=15;
 		break;
+		case 3:
+		ans[INDEX_HP]=20;
+		ans[INDEX_ATK]=9;
+		ans[INDEX_DEF]=5;
+		ans[INDEX_DEX]=6;
+		ans[INDEX_XP]=15;
+		break;
+		case 4:
+		ans[INDEX_HP]=15;
+		ans[INDEX_ATK]=10;
+		ans[INDEX_DEF]=6;
+		ans[INDEX_DEX]=8;
+		ans[INDEX_XP]=15;
+		break;
 
 	}
 

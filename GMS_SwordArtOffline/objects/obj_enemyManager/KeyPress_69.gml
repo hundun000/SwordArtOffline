@@ -1,10 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(!ds_list_empty(global.frontEnemies)){
+
+deleteCanMove();
+
 
 	//****************** process one enemy ***************************
-	var enemy=ds_list_find_value(global.frontEnemies, 0);
+	var enemy=ds_list_find_value(global.frontEnemies, ii);
 	
 	newPourWater(enemy.x,enemy.y,enemy.roleType,enemy.MAX_MOVEMENT
 		,enemy.roleAttackRangFrom,enemy.roleAttackRangTo,ControlType.enemy,true);
@@ -12,6 +14,7 @@ if(!ds_list_empty(global.frontEnemies)){
 	
 	var i;
 	//------------------ renew list_canAttack ----------------------
+	ds_list_clear(enemy.list_canAttack);
 	for(i=0;i<instance_number(obj_canMove);i++){
 		//get the ith canMove
 		var ins_canMove=instance_find(obj_canMove,i);
@@ -45,9 +48,9 @@ if(!ds_list_empty(global.frontEnemies)){
 		var i_fightInfo=getFightInfo(enemy,i_player);
 		var i_worth=0;
 		//calculate math expectation
-		var exp_rival_damage=i_fightInfo[RIVAL_pre_damage]*i_fightInfo[RIVAL_hit_rate]
+		var exp_rival_damage=i_fightInfo[RIVAL_pre_damage]*i_fightInfo[RIVAL_hit_rate]*0.01
 							*(1+i_fightInfo[RIVAL_critical_rate]*0.01*2);
-		var exp_my_damage=i_fightInfo[MY_pre_damage]*i_fightInfo[MY_hit_rate]
+		var exp_my_damage=i_fightInfo[MY_pre_damage]*i_fightInfo[MY_hit_rate]*0.01
 						*(1+i_fightInfo[MY_critical_rate]*0.01*2);
 						
 		//can kill player
@@ -77,10 +80,14 @@ if(!ds_list_empty(global.frontEnemies)){
 	}
 
 
+	
 
 
-
-
-
+if(ii+1<ds_list_size(global.frontEnemies)){
+	ii++;
 }
+else{
+	ii=0
+}
+enemy.MAX_MOVEMENT++;
 	

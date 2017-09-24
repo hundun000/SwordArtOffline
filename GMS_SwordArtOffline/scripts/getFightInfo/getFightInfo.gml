@@ -39,8 +39,7 @@ ans[1]=1+(dif<=-THRESHOLD_DEX);
 var dx=fighter[0].x-fighter[1].x;
 var dy=fighter[0].y-fighter[1].y;
 var Manhattan_distance=(abs(dx)+abs(dy)) div UNIT;
-if(Manhattan_distance<fighter[0].roleAttackRangFrom||Manhattan_distance>fighter[0].roleAttackRangTo)
-	ans[0]=0;
+//only set rival side,consider caller is me.And as enemy is forecast,it isn't actul in range
 if(Manhattan_distance<fighter[1].roleAttackRangFrom||Manhattan_distance>fighter[1].roleAttackRangTo)
 	ans[1]=0;
 

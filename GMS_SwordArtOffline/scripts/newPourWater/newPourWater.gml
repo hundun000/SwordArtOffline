@@ -28,7 +28,7 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 	//var canMove=true;
 	//var canAttack=true;
 	//var shouldBlank=true;
-	
+	//show_debug_message(string(myX/64-0.5)+" "+string(myY/64-0.5));
 
 
 	//handle tile caused cann't move
@@ -65,17 +65,24 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 		//this case must can move
 		var new=instance_create_layer(myX,myY,CAN_MOVE_LAYER,obj_canMove);
 		
-
 		new.visible=tileVisible;
 		
 		new.image_index=CAN_MOVE;
+		new.remain_movement=movement;
 	}
-	else if(ins_pos.image_index==CAN_MOVE||ins_pos.image_index=CAN_MOVE_ATTACK)
-			//mean this tile can move case had processed.
+	else if(ins_pos.image_index==CAN_MOVE||ins_pos.image_index=CAN_MOVE_ATTACK){
+			if(movement>ins_pos.remain_movement)
+				//can be update,repour this tile
+				ins_pos.remain_movement=movement;
+			else
+				//had pour as more movement,no need repour
 			return;
-	else if(ins_pos.image_index==CAN_ATTACK)
+	}
+	else if(ins_pos.image_index==CAN_ATTACK){
 			//renew
 			ins_pos.image_index=CAN_MOVE_ATTACK;
+			ins_pos.remain_movement=movement;
+	}
 
 	
 	//just in this tile,sign the can attack tiles

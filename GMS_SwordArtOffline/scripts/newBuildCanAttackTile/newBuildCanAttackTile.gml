@@ -20,9 +20,11 @@ var r;
 						here.visible=tileVisible;
 						
 						here.image_index=CAN_ATTACK;
+						
 				}
 				else if(here.image_index==CAN_MOVE){
 					//in here==CAN_ATTACK case,renew to can_move_attack
 					here.image_index=CAN_MOVE_ATTACK;
 				}
+				here.flag_canAttack=true;
 			}
