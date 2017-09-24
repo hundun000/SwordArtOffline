@@ -12,7 +12,7 @@ var isSP=keyboard_check_pressed(BTN_SP);
 
 
 	
-switch(state){
+switch(cursorstate){
 
 	case CursorState.free:
 	
@@ -27,7 +27,7 @@ switch(state){
 			if(global.operatedRole!=noone){
 			  //if(selectedRole.control==controlType.player)			
 				if(global.operatedRole.roleState==RoleState.idle){	
-					state=CursorState.selectedRole;
+					cursorstate=CursorState.selectedRole;
 					
 					tempRoleX=global.operatedRole.x;
 					tempRoleY=global.operatedRole.y;
@@ -59,7 +59,7 @@ switch(state){
 		}
 		
 		else if(isA){
-			state=CursorState.roleDoMore;
+			cursorstate=CursorState.roleDoMore;
 			visible=false;
 			
 			deletePath(playerPath);
@@ -67,16 +67,17 @@ switch(state){
 
 			deleteCanMove();
 			
+			var center=getCameraCenter(view_camera[0]);
+			var menuSide=sign(center[0]-x+1);
 			
-			var menuSide=sign((VIEW_WIDTH div 2)-x);
+			show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
 		
-			doMoreMenu=instance_create_layer((VIEW_WIDTH div 2)+menuSide*(VIEW_WIDTH div 4)
-											,VIEW_HEIGHT div 2,"Layer_menuBoard",obj_doMoreMemu);
+			doMoreMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);
 											
 			global.doMoreSelectIndex=0;
 			for(var i=0;i<NUM_DOMORE_OPTION;i++){
 				with(instance_create_layer(doMoreMenu.x,
-											doMoreMenu.y+(i-NUM_DOMORE_OPTION div 2-0.5)*(UNIT+5)
+											doMoreMenu.y+(i-NUM_DOMORE_OPTION *0.5-0.5)*(UNIT+5)
 											,"Layer_menuOption",obj_doMoreOption)){
 					image_index=i;	
 				}
@@ -88,7 +89,7 @@ switch(state){
 		}
 		
 		else if(isB){
-			state=CursorState.free;
+			cursorstate=CursorState.free;
 			
 			global.operatedRole.x=tempRoleX;
 			global.operatedRole.y=tempRoleY;
@@ -117,32 +118,34 @@ switch(state){
 			//do more menu option
 			switch(global.doMoreSelectIndex){
 				case OPTION_FIGHT:
-					state=CursorState.selectingEnemy;
+					target=noone;
+					cursorstate=CursorState.selectingEnemy;
 					
 
 					break;
 				case OPTION_BAG:
-					state=CursorState.selectingBagItem;
+					cursorstate=CursorState.selectingBagItem;
 				
-					var menuSide1=sign((VIEW_WIDTH div 2)-x);
+					var center=getCameraCenter(view_camera[0]);
+					var menuSide=sign(center[0]-x+1);
 		
-					itemMenu=instance_create_layer((VIEW_WIDTH div 2)+menuSide1*(VIEW_WIDTH div 4)
+					show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
 					
-													,VIEW_HEIGHT div 2,"Layer_menuBoard",obj_itemMenu);
+					itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
 					global.itemSelectIndex=0;
 
 					
 					break;
 				case OPTION_END:
-					//diffrenet with other case,firstly set role state,for check if team done
+					//diffrenet with other case,firstly set role cursorstate,for check if team done
 					setRoleState(global.operatedRole,RoleState.gray);
 					var done=isTeamDone();
 					if(done){
 						show_message("team done");
-						state=CursorState.waitEnemy;
+						cursorstate=CursorState.waitEnemy;
 					}
 					else{
-						state=CursorState.free;
+						cursorstate=CursorState.free;
 						visible=true;
 					
 						
@@ -170,7 +173,7 @@ switch(state){
 			
 		}	
 		else if(isB){
-			state=CursorState.free;
+			cursorstate=CursorState.free;
 			visible=true;
 			
 			global.operatedRole.x=tempRoleX;
@@ -194,7 +197,7 @@ switch(state){
 				global.itemSelectIndex=clamp(global.itemSelectIndex+input_dy,0,NUM_ROLE_ITEM-1);
 		}
 		else if(isB){
-			state=CursorState.roleDoMore;
+			cursorstate=CursorState.roleDoMore;
 			
 			instance_destroy(obj_itemMenu);
 			
@@ -211,14 +214,16 @@ switch(state){
 	case CursorState.selectingEnemy:
 			
 		//if not target a enmey,try to auto target
-		if(!position_meeting(x,y,obj_role_enemy)){	
-			var target=noone;
+		if(target==noone){	
 			//target the canAttackTile with a enemy
-			with(obj_canMove){
-				if(position_meeting(x,y,obj_role_enemy)){
-					target=id;
+			var temp_for_with=noone;
+			with(obj_canMove){//this state only can attack tile,so no need to check
+				var pos_ins=instance_position(x,y,obj_role_enemy);
+				if(pos_ins!=noone){
+					temp_for_with=pos_ins;
 				}	
 			}
+			target=temp_for_with;
 			//if have,set cursor to there
 			if(target!=noone){
 				x=target.x;
@@ -231,18 +236,20 @@ switch(state){
 		if((input_dx!=0||input_dy!=0)){
 			var cursoX=x;
 			var cursoY=y;
-			var target=noone;
 			var intoWith_input_dx=input_dx;
 			var intoWith_input_dy=input_dy;
 			//search at inputted direction
-			with(obj_canMove){
+			var temp_for_with=noone;
+			with(obj_canMove){//this state only can attack tile,so no need to check
+				var pos_ins=instance_position(x,y,obj_role_enemy);
 				if(!(x==cursoX&&y==cursoY) //no current
 					&&(sign(intoWith_input_dx)==sign(x-cursoX)||sign(intoWith_input_dy)==sign(y-cursoY)) //inputted direction
-					&&position_meeting(x,y,obj_role_enemy)){
-					target=id;
+					&&pos_ins!=noone){
+					temp_for_with=pos_ins;
 				}	
 			}
-			
+			if(temp_for_with!=noone)
+				target=temp_for_with;
 			/*
 			//not found at inputted direction,search at all direction
 			if(target==noone){
@@ -260,34 +267,26 @@ switch(state){
 				x=target.x;
 				y=target.y;
 			}
+
 		}
 		else if(isA){
 		
 		//into fight room , unfight role should be away!
 
 		if(x!=global.operatedRole.x||y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
-			state=CursorState.intoFightRoom;
+			cursorstate=CursorState.intoFightRoom;
 			room_persistent=true;
 			
 			//temporary set persistent for use it in fight room
-			var enemy=instance_position(x,y,obj_role_enemy);
-			enemy.persistent=true;
+			target.persistent=true;
 			
 			//set front persistent role disvisible
 			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
 				global.playerFrontTeam[i].visible=false;
 			
-			//culculate if enmey can attack player role
-			//cursor current target to enmey
-			var dx=x-global.operatedRole.x;
-			var dy=y-global.operatedRole.y;
-			var Manhattan_distance=(abs(dx)+abs(dy)) div 64;
-			if(Manhattan_distance>=enemy.roleAttackRangFrom&&Manhattan_distance<=enemy.roleAttackRangTo)
-				global.attackSideType=AttackSideType.both;
-			else
-				global.attackSideType=AttackSideType.onlyRight;
+
 			
-			global.fighter_L=enemy;
+			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
 			global.curAttackSide=FIGHT_R;
 
@@ -300,7 +299,7 @@ switch(state){
 		
 		}
 		else if(isB){
-			state=CursorState.roleDoMore;
+			cursorstate=CursorState.roleDoMore;
 			visible=false;
 			
 			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
@@ -325,10 +324,10 @@ switch(state){
 			var done=isTeamDone();
 			if(done){
 				show_message("team done");
-				state=CursorState.waitEnemy;
+				cursorstate=CursorState.waitEnemy;
 			}
 			else{
-				state=CursorState.free;
+				cursorstate=CursorState.free;
 				visible=true;
 					
 						

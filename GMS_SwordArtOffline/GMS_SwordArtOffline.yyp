@@ -351,6 +351,14 @@
             }
         },
         {
+            "Key": "49ec7cdf-b873-42b3-bc69-f383cf421339",
+            "Value": {
+                "id": "26f74e6a-41b1-4f47-8a34-ba454296c5b1",
+                "resourcePath": "scripts\\getCameraCenter\\getCameraCenter.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "4be8cc71-1fe9-430d-8b0a-1d8d30e50d5f",
             "Value": {
                 "id": "94bab928-ad2d-4260-bfe3-4318e2441f76",
@@ -511,6 +519,14 @@
             }
         },
         {
+            "Key": "68cc8c49-ae4f-43f1-a946-5c8e8841d0d3",
+            "Value": {
+                "id": "a24fc180-56e9-4020-8f5c-1af5c76aa421",
+                "resourcePath": "sprites\\spr_fightForecastBoard\\spr_fightForecastBoard.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "69f2b7e4-fad6-46fe-9a08-def1af1fef2a",
             "Value": {
                 "id": "cdd8db73-0ea2-44d2-9416-faf6e9d8980c",
@@ -668,6 +684,14 @@
                 "id": "71437c51-487e-4689-ad5b-3b5d442045b3",
                 "resourcePath": "objects\\obj_tile\\obj_tile.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "8a984917-2ad7-4db2-9393-09d0a0753aa4",
+            "Value": {
+                "id": "d7f0f36f-3b84-4b29-bd10-5d99bda4222e",
+                "resourcePath": "scripts\\getFightInfo\\getFightInfo.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1211,6 +1235,8 @@
         "32df98c4-ca2f-4686-833a-1d8f7ca1c42c",
         "9ed5ffdf-bdc2-4de6-aa8d-e10a02287093",
         "78b6009a-2f3a-4a97-8e70-6fadc4e7fc18",
+        "8a984917-2ad7-4db2-9393-09d0a0753aa4",
+        "49ec7cdf-b873-42b3-bc69-f383cf421339",
         "db0689ff-0fff-49a4-9852-c52f217c676f",
         "34e745e2-d7fc-4db8-ab7a-c34725861f27",
         "f73e1508-3c7f-494d-98d6-d4123bddca90",

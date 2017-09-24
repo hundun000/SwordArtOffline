@@ -7,4 +7,5 @@ lv=-1;
 
 
 
-ds_list_add(global.mapEnemies,self);
+ds_list_add(global.frontEnemies,self);
+list_canAttack=ds_list_create();

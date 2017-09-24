@@ -16,7 +16,7 @@
         "f173a4eb-a8d5-4fb6-a0c2-e7373fef31cf"
     ],
     "filterType": "GMObject",
-    "folderName": "MapRoom",
+    "folderName": "Front",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

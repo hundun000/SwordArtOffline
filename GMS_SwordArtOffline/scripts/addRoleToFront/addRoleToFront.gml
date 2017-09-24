@@ -30,6 +30,7 @@ role.y=posY;
 role.visible=true;
 role.isFront=true;
 
+
 var newIndex=array_length_1d(global.playerFrontTeam);
 global.playerFrontTeam[newIndex]=role;
 

@@ -11,7 +11,9 @@
         "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
         "32df98c4-ca2f-4686-833a-1d8f7ca1c42c",
         "9ed5ffdf-bdc2-4de6-aa8d-e10a02287093",
-        "78b6009a-2f3a-4a97-8e70-6fadc4e7fc18"
+        "78b6009a-2f3a-4a97-8e70-6fadc4e7fc18",
+        "8a984917-2ad7-4db2-9393-09d0a0753aa4",
+        "49ec7cdf-b873-42b3-bc69-f383cf421339"
     ],
     "filterType": "GMScript",
     "folderName": "ToolGetter",

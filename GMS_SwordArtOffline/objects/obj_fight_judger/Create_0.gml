@@ -11,7 +11,6 @@
 globalvar fighter_L;
 globalvar fighter_R;
 globalvar curAttackSide;//value is FIGHT_L(0) or FIGHT_R(1)
-globalvar attackSideType;//other side is out of attack range makes  one side attack case
 globalvar fightState;
 globalvar isHit;
 

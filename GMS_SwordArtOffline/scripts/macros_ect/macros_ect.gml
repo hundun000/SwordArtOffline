@@ -13,6 +13,8 @@
 #macro INDEX_ITEM_NAME 0
 #macro INDEX_ITEM_QUALITY 1
 
+#macro DEPTH_ROLE 500
+
 enum Weapon{
 	sword
 }

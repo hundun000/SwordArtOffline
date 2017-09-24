@@ -1,7 +1,4 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-globalvar frontEnemies;
-global.frontEnemies=ds_list_create();
-
-
+depth=DEPTH_ROLE;

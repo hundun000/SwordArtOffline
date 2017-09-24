@@ -18,11 +18,7 @@ enum FightState{
 	fightEnd
 }
 
-enum AttackSideType{
-	onlyLeft,
-	onlyRight,
-	both
-}
+
 
 //show_debug_message(global.fightState);
 
@@ -32,10 +28,11 @@ switch(global.fightState){
 	case FightState.preFight:
 		//show_debug_message("into preFight");
 		//init turnTimes
-		var dif=fighter[FIGHT_R].dex-fighter[FIGHT_L].dex;
-		turnTimes[FIGHT_L]=1+(dif<=-THRESHOLD_DEX);
-		turnTimes[FIGHT_R]=1+(dif>=THRESHOLD_DEX);
+		var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R]);//for this arguments ,follow index 0<=>Left,1<=>Right
+		turnTimes[0]=ans_list[0];
+		turnTimes[1]=ans_list[1];
 		
+		/*
 		//process if is one side attack
 		switch(global.attackSideType){
 			case AttackSideType.onlyLeft:
@@ -46,6 +43,28 @@ switch(global.fightState){
 				break;
 			default:	
 		}
+		*/
+		
+		var side=FIGHT_L;
+		//let two side use the same codes by the two-times loop
+		for(var i=0;i<2;i++){
+
+			//hitRate range in (33,100)% ,线性增加
+			hitRate[side]=ans_list[2+side]; 
+
+			preDamage[side]=ans_list[4+side];
+	
+			//criticalRate range in (0,50)% ,线性增加
+			criticalRate[side]=ans_list[6+side];
+	
+			//toggle side
+			side=!side;
+		}
+		
+		
+		
+		
+		
 		
 		//init animation
 		attackAnimation[FIGHT_L].sprite_index=getAttackSpriteByRole(fighter[FIGHT_L]);

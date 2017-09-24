@@ -3,10 +3,12 @@
 event_inherited();
 
 
-state=CursorState.free;
+cursorstate=CursorState.free;
 
 playerPath=noone;
 
+
+fightForecastInfo=noone;
 
 
 
