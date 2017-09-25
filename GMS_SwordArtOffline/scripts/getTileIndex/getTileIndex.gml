@@ -1,1 +1,1 @@
-return (int64(argument0/UNIT));
+return (argument0 div UNIT);

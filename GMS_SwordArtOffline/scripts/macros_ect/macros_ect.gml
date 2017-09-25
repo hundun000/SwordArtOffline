@@ -33,7 +33,7 @@ enum CursorState{
 	roleDoMore,
 	selectingBagItem,
 	selectingEnemy,
-	intoFightRoom,
+	oneRoleEnd,
 	waitEnemy,
 	moved
 }

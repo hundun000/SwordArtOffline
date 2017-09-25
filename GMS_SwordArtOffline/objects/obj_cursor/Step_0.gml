@@ -274,7 +274,7 @@ switch(cursorstate){
 		//into fight room , unfight role should be away!
 
 		if(x!=global.operatedRole.x||y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
-			cursorstate=CursorState.intoFightRoom;
+			cursorstate=CursorState.oneRoleEnd;
 			room_persistent=true;
 			
 			//temporary set persistent for use it in fight room
@@ -319,18 +319,18 @@ switch(cursorstate){
 
 		break;
 		
-		case CursorState.intoFightRoom:
+		case CursorState.oneRoleEnd:
 			setRoleState(global.operatedRole,RoleState.gray);
+			
 			var done=isTeamDone();
 			if(done){
 				show_message("team done");
 				cursorstate=CursorState.waitEnemy;
+				global.playerTeamDone=true;
 			}
 			else{
 				cursorstate=CursorState.free;
-				visible=true;
-					
-						
+				visible=true;	
 			}
 			
 		

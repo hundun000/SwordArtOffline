@@ -10,6 +10,8 @@ playerPath=noone;
 
 fightForecastInfo=noone;
 
+globalvar playerTeamDone;
+global.playerTeamDone=false;
 
 
 
