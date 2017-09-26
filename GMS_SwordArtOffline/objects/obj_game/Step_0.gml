@@ -29,7 +29,7 @@ switch(global.inputReceiver){
 		reciever=worldTeamFlag;
 		break;
 	case InputReceiver.cursor:
-		reciever=global.cursor_pointer;
+		reciever=playerFrontManager;
 		break;
 	case InputReceiver.textBox:
 		reciever=textBoxManager;

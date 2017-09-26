@@ -27,16 +27,7 @@ enum RoleState{
 	gray
 }
 
-enum CursorState{
-	free,
-	selectedRole,
-	roleDoMore,
-	selectingBagItem,
-	selectingEnemy,
-	oneRoleEnd,
-	waitEnemy,
-	moved
-}
+
 
 enum RoleType{
 	walker

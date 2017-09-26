@@ -28,6 +28,7 @@ switch(curWorldPos){
 		addRoleToFront(global.kirito,room_map_0,1);
 		
 		global.inputReceiver=InputReceiver.cursor;
+		global.curMap=0;
 		room_goto(room_map_0);		
 	}
 	break;

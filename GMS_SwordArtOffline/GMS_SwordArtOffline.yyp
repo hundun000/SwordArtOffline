@@ -199,6 +199,14 @@
             }
         },
         {
+            "Key": "2c84e736-5086-4378-b2b6-01d63605ca1c",
+            "Value": {
+                "id": "c3f8ee71-b94d-4de3-9e17-bca9bdfc2e32",
+                "resourcePath": "objects\\obj_cursor\\obj_cursor.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
             "Value": {
                 "id": "1075ba0b-90c7-4d9a-a09e-ff3b1d0efa29",
@@ -482,7 +490,7 @@
             "Key": "5c62423c-7d14-45ef-8053-8bd725208814",
             "Value": {
                 "id": "459a1ddf-903e-4441-a99f-8bdebf9c2a23",
-                "resourcePath": "objects\\obj_cursor\\obj_cursor.yy",
+                "resourcePath": "objects\\obj_playerFrontManager\\obj_playerFrontManager.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -516,6 +524,14 @@
                 "id": "b2647be9-0f82-4f5c-9735-4916e2b9f959",
                 "resourcePath": "objects\\obj_mainMenu\\obj_mainMenu.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "6383a299-eb78-4414-bb6c-9e3c31de7989",
+            "Value": {
+                "id": "43c434d4-c78f-42a1-8fa1-d444ec16e436",
+                "resourcePath": "scripts\\checkPlayerWin\\checkPlayerWin.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -615,6 +631,14 @@
             }
         },
         {
+            "Key": "7704ac1a-c592-4dfe-a942-36dadd687bfd",
+            "Value": {
+                "id": "1bf6e14f-c546-4902-bde0-02bae389962c",
+                "resourcePath": "sprites\\spr_title\\spr_title.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "77925b84-0b9b-4aec-80d2-db37f94416fd",
             "Value": {
                 "id": "bae0f6cf-b4f6-43a3-8d94-584b4d339aa4",
@@ -684,6 +708,14 @@
                 "id": "71437c51-487e-4689-ad5b-3b5d442045b3",
                 "resourcePath": "objects\\obj_tile\\obj_tile.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "86d7bd74-dfc0-48f4-b95e-6487798da62f",
+            "Value": {
+                "id": "83ad801a-9d4e-41a5-9892-b33547c05568",
+                "resourcePath": "sprites\\spr_playerControl\\spr_playerControl.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -935,6 +967,14 @@
             }
         },
         {
+            "Key": "b24b83f8-e2be-4fd0-8c35-b91ecdf5bb26",
+            "Value": {
+                "id": "4b149667-ad87-47df-9063-163dc5e5bb2f",
+                "resourcePath": "notes\\AboutSideTurn.yy",
+                "resourceType": "GMNotes"
+            }
+        },
+        {
             "Key": "b34f3845-85ec-4319-bbc0-530edb6e7f9b",
             "Value": {
                 "id": "f046628a-8489-437e-899f-608f95474f84",
@@ -964,6 +1004,14 @@
                 "id": "41093e83-bb22-4b98-aae2-3321327ebacd",
                 "resourcePath": "sprites\\spr_item\\spr_item.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "c03b8596-c106-440f-b06e-9e555eaea5fa",
+            "Value": {
+                "id": "03b46fbc-58fe-4261-bfbd-0e75605c3988",
+                "resourcePath": "fonts\\fightForecastFont\\fightForecastFont.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -1227,6 +1275,7 @@
         "09069da4-7e8c-4fb0-8b03-540746365cf3",
         "239c306b-efb8-4464-acfa-f352ca1ff684",
         "50a5fe16-da7c-4531-8cad-e04142943764",
+        "0905dcef-1a1b-4a9e-a4d8-af3e00864cf7",
         "f3b99990-8d22-453a-8e78-78cfb036052a",
         "6fa26d83-4818-413b-8a36-d3f769696cbc",
         "c4e673f3-5aaa-45de-8e56-da8de3a89323",
@@ -1249,7 +1298,7 @@
         "58cbe2c4-6d5f-4405-ad0a-e07c4d5ddb9a",
         "a3e46709-6146-41ce-b217-0aa80fdb285e",
         "07c9a996-96b5-4da8-9dfd-1d6a51751225",
-        "0905dcef-1a1b-4a9e-a4d8-af3e00864cf7"
+        "6383a299-eb78-4414-bb6c-9e3c31de7989"
     ],
     "tutorial": ""
 }

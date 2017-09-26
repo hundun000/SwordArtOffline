@@ -133,6 +133,7 @@ if(waitAddXp>=0){
 if(waitAddXp==0&&flag_lv_up){
 //Xp add finish ,no long draw Xp ,maybe draw lv up 
 	if(flag_lv_up){
+		draw_set_font(fightRoomFont_mid);
 		var lvUp_width=100;
 		var lvUp_height=100;
 		draw_set_color(c_white);
@@ -144,6 +145,15 @@ if(waitAddXp==0&&flag_lv_up){
 		draw_set_font(fightRoomFont_small);
 		var str="lv "+string(fighter[FIGHT_R].lv)+" -> "+string(fighter[FIGHT_R].lv+1);
 		draw_text(room_width/2-lvUp_width/2+2,i_y+2,str);
+		if(lv_isAdd[INDEX_ATK]>0)
+			str="atk "+string(fighter[FIGHT_R].atk)+" -> "+string(fighter[FIGHT_R].atk+lv_isAdd[INDEX_ATK]);
+		draw_text(room_width/2-lvUp_width/2+2,i_y+2+1*(font_get_size(fightRoomFont_small)+2),str);
+		if(lv_isAdd[INDEX_DEF]>0)
+			str="def "+string(fighter[FIGHT_R].def)+" -> "+string(fighter[FIGHT_R].def+lv_isAdd[INDEX_DEF]);
+		draw_text(room_width/2-lvUp_width/2+2,i_y+2+2*(font_get_size(fightRoomFont_small)+2),str);
+		if(lv_isAdd[INDEX_DEX]>0)
+			str="dex "+string(fighter[FIGHT_R].dex)+" -> "+string(fighter[FIGHT_R].dex+lv_isAdd[INDEX_DEX]);
+		draw_text(room_width/2-lvUp_width/2+2,i_y+2+3*(font_get_size(fightRoomFont_small)+2),str);
 		
 	}
 }

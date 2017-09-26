@@ -12,28 +12,40 @@ var isSP=keyboard_check_pressed(BTN_SP);
 
 
 	
-switch(cursorstate){
-
+switch(cursorState){
+	case CursorState.turnStart:
+		show_debug_message("cursor turn start");
+		for(var i=0;i<array_length_1d(global.playerFrontTeam);i++){
+			setRoleState(global.playerFrontTeam[i],RoleState.idle);
+		}
+		//global.cursor_pointer.visible=true;
+		//!!!!!!!!!!!!!!1 in future ,should set to leader
+		global.cursor_pointer.x=global.playerFrontTeam[0].x;
+		global.cursor_pointer.y=global.playerFrontTeam[0].y;
+		
+		cursorState=CursorState.free;
+		break;
+		
 	case CursorState.free:
 	
 		if((input_dx!=0||input_dy!=0)
-		&&x+input_dx*UNIT<room_width&&x+input_dx*UNIT>0
-		&&y+input_dy*UNIT<room_height&&y+input_dy*UNIT>0){
-			x+=input_dx*UNIT;
-			y+=input_dy*UNIT;
+		&&global.cursor_pointer.x+input_dx*UNIT<room_width&&global.cursor_pointer.x+input_dx*UNIT>0
+		&&global.cursor_pointer.y+input_dy*UNIT<room_height&&global.cursor_pointer.y+input_dy*UNIT>0){
+			global.cursor_pointer.x+=input_dx*UNIT;
+			global.cursor_pointer.y+=input_dy*UNIT;
 		}
 		else if(isA){
-			global.operatedRole=instance_position(x,y,obj_role_player);
+			global.operatedRole=instance_position(global.cursor_pointer.x,global.cursor_pointer.y,obj_role_player);
 			if(global.operatedRole!=noone){
 			  //if(selectedRole.control==controlType.player)			
 				if(global.operatedRole.roleState==RoleState.idle){	
-					cursorstate=CursorState.selectedRole;
+					cursorState=CursorState.selectedRole;
 					
 					tempRoleX=global.operatedRole.x;
 					tempRoleY=global.operatedRole.y;
 					
 					playerPath=path_add();
-					buildPath(playerPath,x,y);		
+					buildPath(playerPath,global.cursor_pointer.x,global.cursor_pointer.y);		
 							
 					setRoleState(global.operatedRole,RoleState.selected);
 				}
@@ -48,19 +60,19 @@ switch(cursorstate){
 	case CursorState.selectedRole:
 	
 		if((input_dx!=0||input_dy!=0)){
-			var ins=instance_position(x+input_dx*UNIT,y+input_dy*UNIT,obj_canMove);
+			var ins=instance_position(global.cursor_pointer.x+input_dx*UNIT,global.cursor_pointer.y+input_dy*UNIT,obj_canMove);
 			if(ins!=noone&&(ins.image_index==CAN_MOVE||ins.image_index==CAN_MOVE_ATTACK)){			
-			x+=input_dx*UNIT;
-			y+=input_dy*UNIT;
+			global.cursor_pointer.x+=input_dx*UNIT;
+			global.cursor_pointer.y+=input_dy*UNIT;
 			global.operatedRole.x+=input_dx*UNIT;
 			global.operatedRole.y+=input_dy*UNIT;
-			buildPath(playerPath,x,y);
+			buildPath(playerPath,global.cursor_pointer.x,global.cursor_pointer.y);
 			}
 		}
 		
 		else if(isA){
-			cursorstate=CursorState.roleDoMore;
-			visible=false;
+			cursorState=CursorState.roleDoMore;
+			//global.cursor_pointer.visible=false;
 			
 			deletePath(playerPath);
 
@@ -68,9 +80,9 @@ switch(cursorstate){
 			deleteCanMove();
 			
 			var center=getCameraCenter(view_camera[0]);
-			var menuSide=sign(center[0]-x+1);
+			var menuSide=sign(center[0]-global.cursor_pointer.x+1);
 			
-			show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
+			//show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
 		
 			doMoreMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);
 											
@@ -89,13 +101,13 @@ switch(cursorstate){
 		}
 		
 		else if(isB){
-			cursorstate=CursorState.free;
+			cursorState=CursorState.free;
 			
 			global.operatedRole.x=tempRoleX;
 			global.operatedRole.y=tempRoleY;
 				
-			x=tempRoleX;
-			y=tempRoleY;
+			global.cursor_pointer.x=tempRoleX;
+			global.cursor_pointer.y=tempRoleY;
 					
 			deletePath(playerPath);
 			deleteCanMove();
@@ -119,17 +131,17 @@ switch(cursorstate){
 			switch(global.doMoreSelectIndex){
 				case OPTION_FIGHT:
 					target=noone;
-					cursorstate=CursorState.selectingEnemy;
+					cursorState=CursorState.selectingEnemy;
 					
 
 					break;
 				case OPTION_BAG:
-					cursorstate=CursorState.selectingBagItem;
+					cursorState=CursorState.selectingBagItem;
 				
 					var center=getCameraCenter(view_camera[0]);
-					var menuSide=sign(center[0]-x+1);
+					var menuSide=sign(center[0]-global.cursor_pointer.x+1);
 		
-					show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
+				//	show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
 					
 					itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
 					global.itemSelectIndex=0;
@@ -137,19 +149,9 @@ switch(cursorstate){
 					
 					break;
 				case OPTION_END:
-					//diffrenet with other case,firstly set role cursorstate,for check if team done
-					setRoleState(global.operatedRole,RoleState.gray);
-					var done=isTeamDone();
-					if(done){
-						show_message("team done");
-						cursorstate=CursorState.waitEnemy;
-					}
-					else{
-						cursorstate=CursorState.free;
-						visible=true;
+					cursorState=CursorState.nextPlayer;
 					
-						
-					}
+					
 					
 					deleteCanMove();
 					
@@ -173,14 +175,14 @@ switch(cursorstate){
 			
 		}	
 		else if(isB){
-			cursorstate=CursorState.free;
-			visible=true;
+			cursorState=CursorState.free;
+			//global.cursor_pointer.visible=true;
 			
 			global.operatedRole.x=tempRoleX;
 			global.operatedRole.y=tempRoleY;
 				
-			x=tempRoleX;
-			y=tempRoleY;
+			global.cursor_pointer.x=tempRoleX;
+			global.cursor_pointer.y=tempRoleY;
 					
 			deleteCanMove();
 			
@@ -197,7 +199,7 @@ switch(cursorstate){
 				global.itemSelectIndex=clamp(global.itemSelectIndex+input_dy,0,NUM_ROLE_ITEM-1);
 		}
 		else if(isB){
-			cursorstate=CursorState.roleDoMore;
+			cursorState=CursorState.roleDoMore;
 			
 			instance_destroy(obj_itemMenu);
 			
@@ -226,16 +228,17 @@ switch(cursorstate){
 			target=temp_for_with;
 			//if have,set cursor to there
 			if(target!=noone){
-				x=target.x;
-				y=target.y;
+				fightForecastInfo=noone;
+				global.cursor_pointer.x=target.x;
+				global.cursor_pointer.y=target.y;
 			}
-			visible=true;
+			//global.cursor_pointer.visible=true;
 		}
 		
 		//switch target
 		if((input_dx!=0||input_dy!=0)){
-			var cursoX=x;
-			var cursoY=y;
+			var cursoX=global.cursor_pointer.x;
+			var cursoY=global.cursor_pointer.y;
 			var intoWith_input_dx=input_dx;
 			var intoWith_input_dy=input_dy;
 			//search at inputted direction
@@ -264,8 +267,10 @@ switch(cursorstate){
 			
 			//if have,set cursor to there
 			if(target!=noone){
-				x=target.x;
-				y=target.y;
+				//fightForecastInfo need change targrt
+				fightForecastInfo=noone;
+				global.cursor_pointer.x=target.x;
+				global.cursor_pointer.y=target.y;
 			}
 
 		}
@@ -273,18 +278,17 @@ switch(cursorstate){
 		
 		//into fight room , unfight role should be away!
 
-		if(x!=global.operatedRole.x||y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
-			cursorstate=CursorState.oneRoleEnd;
+		if(global.cursor_pointer.x!=global.operatedRole.x||global.cursor_pointer.y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
+
 			room_persistent=true;
 			
 			//temporary set persistent for use it in fight room
+			//enemy's room start event will reset persistent
 			target.persistent=true;
 			
 			//set front persistent role disvisible
 			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
 				global.playerFrontTeam[i].visible=false;
-			
-
 			
 			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
@@ -293,18 +297,22 @@ switch(cursorstate){
 			deleteCanMove();
 			
 			room_goto(room_fight);
+			
+			room_enter_counter=0;
+			cursorState=CursorState.nextPlayer;
 		}
 		
 			
 		
 		}
 		else if(isB){
-			cursorstate=CursorState.roleDoMore;
-			visible=false;
+			cursorState=CursorState.roleDoMore;
+			//global.cursor_pointer.visible=false;
 			
+
 			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
-			x=tempRoleX;
-			y=tempRoleY;
+			global.cursor_pointerx=tempRoleX;
+			global.cursor_pointery=tempRoleY;
 			
 			with(obj_doMoreMemu){
 				visible=true;
@@ -319,21 +327,27 @@ switch(cursorstate){
 
 		break;
 		
-		case CursorState.oneRoleEnd:
+		case CursorState.nextPlayer:
 			setRoleState(global.operatedRole,RoleState.gray);
 			
 			var done=isTeamDone();
 			if(done){
-				show_message("team done");
-				cursorstate=CursorState.waitEnemy;
-				global.playerTeamDone=true;
+				cursorState=CursorState.playerSideEnd;
+				//global.playerTeamDone=true;
 			}
 			else{
-				cursorstate=CursorState.free;
-				visible=true;	
+				cursorState=CursorState.free;
+				//global.cursor_pointer.visible=true;	
 			}
+			break;
 			
-		
+		case CursorState.playerSideEnd:	
+			show_message("team done");
+			cursorState=CursorState.waitEnemy;
+			with(obj_enemyManager){
+				enemyManagerState=EnemyManagerState.turnStart;
+			}
+			break;
 	default:
 }	
 

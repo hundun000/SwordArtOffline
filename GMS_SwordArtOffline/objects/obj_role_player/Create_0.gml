@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-roleState=RoleState.idle;
+//roleState=RoleState.idle;
 //control=controlType.player;
 
 

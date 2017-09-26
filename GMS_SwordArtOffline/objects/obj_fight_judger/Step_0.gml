@@ -26,7 +26,7 @@ enum FightState{
 
 switch(global.fightState){
 	case FightState.preFight:
-		//show_debug_message("into preFight");
+		//show_("into preFight");
 		//init turnTimes
 		var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R]);//for this arguments ,follow index 0<=>Left,1<=>Right
 		turnTimes[0]=ans_list[0];
@@ -251,6 +251,7 @@ switch(global.fightState){
 				
 			if(fighter[FIGHT_R].xp>=100){
 				fighter[FIGHT_R].xp-=100;
+
 				flag_lv_up=true;
 				var lv_up_delay=120;
 				lv_up_countDown=lv_up_delay;
@@ -266,8 +267,15 @@ switch(global.fightState){
 		
 			if(flag_lv_up){
 				lv_up_countDown--;
-				if(lv_up_countDown==0)
+				if(lv_up_countDown==0){
 					flag_lv_up=false;
+					
+					fighter[FIGHT_R].lv++;
+					fighter[FIGHT_R].hp+=lv_isAdd[INDEX_HP];
+					fighter[FIGHT_R].atk+=lv_isAdd[INDEX_ATK];
+					fighter[FIGHT_R].def+=lv_isAdd[INDEX_DEF];
+					fighter[FIGHT_R].dex+=lv_isAdd[INDEX_DEX];
+				}
 			}
 			else{
 				fightEnd_delay=-1;
@@ -290,7 +298,13 @@ switch(global.fightState){
 		
 			if(flag_enemy_die){
 				//destroy the died enemy
+				ds_list_delete(global.frontEnemies,ds_list_find_index(global.frontEnemies,fighter[!global.curAttackSide])); 
+				with(obj_enemyManager){
+					//after delete a enemy,next enemy should be the same index
+					ii--;
+				}
 				instance_destroy(fighter[!global.curAttackSide]);
+				
 			}	
 				//!!!!!!!!!!!!!!!! ignore player die
 			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)

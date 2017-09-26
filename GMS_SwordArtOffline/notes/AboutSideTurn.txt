@@ -1,0 +1,2 @@
+In Cursor,cursoState.turnEnd will set EnemyManager.enemyManagerState=initTarget;
+In EnemyManager,enemyManagerState.enemyEnd will set Cursor.cursoState=cursor.free;

@@ -13,7 +13,7 @@ tempCursorX=-1;
 tempCursorY=-1;
 
 ins_cursor=noone;
-with(obj_cursor){
+with(obj_playerFrontManager){
 	ins_cursor=id;
 }
 */

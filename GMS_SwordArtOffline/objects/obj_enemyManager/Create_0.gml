@@ -5,21 +5,29 @@ globalvar frontEnemies;
 global.frontEnemies=ds_list_create();
 
 
-ii=0;
-enemyManagerState=EnemyManagerState.initTarget;
+ii=-1;
 
-global.playerTeamDone=false;
+//for room event,room_enter_counter==2 mean the timeing that goto fight room,then back here
+room_enter_counter=-1;
+
+
+enemyManagerState=EnemyManagerState.waitPlayer;
+
+//global.playerTeamDone=false;
 
 enum EnemyManagerState{
-	waitPlayer,
+	turnStart,
 	initTarget,
 	moving,
 	moved,
 	fighting,
 	nextEnemy,
+	enemySideEnd,
+	waitPlayer,
+	outFront
 }
 
-delayCounter=0;
+delayCounter=-1;
 
 enemy=noone;
 attackTarget=noone;

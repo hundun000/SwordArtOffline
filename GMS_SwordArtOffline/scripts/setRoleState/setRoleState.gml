@@ -5,6 +5,10 @@ var role=argument0;
 var to=argument1;
 
 switch(to){
+	case RoleState.idle:
+		role.roleState=RoleState.idle;
+		role.image_blend=c_white;
+		break;
 	case RoleState.selected:
 		newPourWater(role.x,role.y,role.roleType,role.MAX_MOVEMENT,role.roleAttackRangFrom,role.roleAttackRangTo,ControlType.player,true);
 		break;
