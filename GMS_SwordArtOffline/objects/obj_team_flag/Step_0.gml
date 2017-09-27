@@ -26,6 +26,7 @@ switch(curWorldPos){
 	
 		addRoleToFront(global.asuna,room_map_0,0);
 		addRoleToFront(global.kirito,room_map_0,1);
+		addRoleToFront(global.silica,room_map_0,2);
 		
 		global.inputReceiver=InputReceiver.cursor;
 		global.curMap=0;

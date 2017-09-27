@@ -1,5 +1,6 @@
 /// @argument0 fighter_0
 /// @argument1 fighter_1
+/// @argument2 is_exp_attackTimes As enemmy AI get fightInfo,it position always out of player's attack range,this cause a wrong attackTime
 
 /* return list*
 0~1 attack times(consider attack side type)
@@ -33,15 +34,28 @@ fighter[1]=argument1;
 //******** 0~1 attack times(consider attack side type) ********
 var dif=fighter[0].dex-fighter[1].dex;
 ans[0]=1+(dif>=THRESHOLD_DEX);
-ans[1]=1+(dif<=-THRESHOLD_DEX);
+ans[1]=1;//+(dif<=-THRESHOLD_DEX);
 
 //consider attack side type
 var dx=fighter[0].x-fighter[1].x;
 var dy=fighter[0].y-fighter[1].y;
 var Manhattan_distance=(abs(dx)+abs(dy)) div UNIT;
-//only set rival side,consider caller is me.And as enemy is forecast,it isn't actul in range
-if(Manhattan_distance<fighter[1].roleAttackRangFrom||Manhattan_distance>fighter[1].roleAttackRangTo)
-	ans[1]=0;
+
+
+
+if(argument2){
+	//if only consider expetation,simply compare both sides attack range
+	if(fighter[0].roleAttackRangFrom<fighter[1].roleAttackRangFrom||fighter[0].roleAttackRangTo>fighter[1].roleAttackRangTo)
+		ans[1]=0;
+}
+else{
+	//only set rival side,consider caller is me.And as enemy is forecast,it isn't actul in range
+	if(Manhattan_distance<fighter[0].roleAttackRangFrom||Manhattan_distance>fighter[0].roleAttackRangTo)
+		ans[0]=0;
+	else if(Manhattan_distance<fighter[1].roleAttackRangFrom||Manhattan_distance>fighter[1].roleAttackRangTo)
+		ans[1]=0;	
+}
+
 
 var curAnsIndex=2;
 
@@ -53,7 +67,7 @@ for(var side=0;side<2;side++){
 	//hitRate range in (33,100)% ,线性增加
 	ans[curAnsIndex+side]=floor(clamp(33+(fighter[side].dex-fighter[!side].dex*0.3)*6,33,100)); 
 	
-	ans[curAnsIndex+2+side]=fighter[side].atk-fighter[!side].def;
+	ans[curAnsIndex+2+side]=clamp(fighter[side].atk-fighter[!side].def,0,fighter[side].atk);
 	
 	//criticalRate range in (0,50)% ,线性增加
 	ans[curAnsIndex+4+side]=floor(clamp((fighter[side].dex-fighter[!side].dex*0.5)*1.5,0,50)); 

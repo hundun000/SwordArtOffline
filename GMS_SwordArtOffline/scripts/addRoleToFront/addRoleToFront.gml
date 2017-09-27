@@ -22,6 +22,10 @@ switch(targetRoom){
 				posX=3.5*UNIT;
 				posY=3.5*UNIT;
 				break;
+			case 2:
+				posX=2.5*UNIT;
+				posY=2.5*UNIT;
+				break;	
 		}
 }
 

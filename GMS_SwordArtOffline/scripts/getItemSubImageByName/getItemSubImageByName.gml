@@ -2,7 +2,7 @@
 
 switch(argument0){
 	case "cover drug":
-		return 0;
+		return 1;
 
 	default:
 		return 0;	

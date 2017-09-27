@@ -25,12 +25,23 @@ enum FightState{
 
 
 switch(global.fightState){
+
 	case FightState.preFight:
 		//show_("into preFight");
+		//mean found side
+		
+		if(global.curAttackSide==FIGHT_L)
+			var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);
+			
+		else
+			var ans_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
+			
+		//!!!!!!!!!!!!!!!!!!! global.curAttackSide<=>found<=>ans[0] !!!!!!!!!!!!!!!
+		
+		
 		//init turnTimes
-		var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R]);//for this arguments ,follow index 0<=>Left,1<=>Right
-		turnTimes[0]=ans_list[0];
-		turnTimes[1]=ans_list[1];
+		turnTimes[global.curAttackSide]=ans_list[0];
+		turnTimes[!global.curAttackSide]=ans_list[1];
 		
 		/*
 		//process if is one side attack
@@ -45,17 +56,17 @@ switch(global.fightState){
 		}
 		*/
 		
-		var side=FIGHT_L;
+		var side=global.curAttackSide;
 		//let two side use the same codes by the two-times loop
 		for(var i=0;i<2;i++){
 
 			//hitRate range in (33,100)% ,线性增加
-			hitRate[side]=ans_list[2+side]; 
+			hitRate[side]=ans_list[2+i]; 
 
-			preDamage[side]=ans_list[4+side];
+			preDamage[side]=ans_list[4+i];
 	
 			//criticalRate range in (0,50)% ,线性增加
-			criticalRate[side]=ans_list[6+side];
+			criticalRate[side]=ans_list[6+i];
 	
 			//toggle side
 			side=!side;
@@ -131,7 +142,12 @@ switch(global.fightState){
 			
 		}
 	
-		if(turnTimes[global.curAttackSide]>0){
+		if(turnTimes[global.curAttackSide]>0||turnTimes[!global.curAttackSide]>0){
+			
+			if(turnTimes[global.curAttackSide]==0){
+				global.curAttackSide=!global.curAttackSide;
+			}
+			
 			turnTimes[global.curAttackSide]--;
 			
 			//*******************process data***************
@@ -275,6 +291,8 @@ switch(global.fightState){
 					fighter[FIGHT_R].atk+=lv_isAdd[INDEX_ATK];
 					fighter[FIGHT_R].def+=lv_isAdd[INDEX_DEF];
 					fighter[FIGHT_R].dex+=lv_isAdd[INDEX_DEX];
+					
+					fighter[FIGHT_R].curHp+=lv_isAdd[INDEX_HP];
 				}
 			}
 			else{

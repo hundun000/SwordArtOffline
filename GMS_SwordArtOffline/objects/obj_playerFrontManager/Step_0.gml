@@ -71,6 +71,14 @@ switch(cursorState){
 		}
 		
 		else if(isA){
+			var stop_at_hold_tile=false;
+			with(global.operatedRole){
+				if(collision_point(x,y,obj_role_player,false,true))
+					stop_at_hold_tile=true;
+			}
+			if(stop_at_hold_tile)
+				return;
+				
 			cursorState=CursorState.roleDoMore;
 			//global.cursor_pointer.visible=false;
 			
@@ -293,7 +301,8 @@ switch(cursorState){
 			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
 			global.curAttackSide=FIGHT_R;
-
+			//global.fight_found_side=FIGHT_R;
+			
 			deleteCanMove();
 			
 			room_goto(room_fight);
@@ -311,8 +320,8 @@ switch(cursorState){
 			
 
 			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
-			global.cursor_pointerx=tempRoleX;
-			global.cursor_pointery=tempRoleY;
+			global.cursor_pointer.x=global.operatedRole.x;
+			global.cursor_pointer.y=global.operatedRole.y;
 			
 			with(obj_doMoreMemu){
 				visible=true;

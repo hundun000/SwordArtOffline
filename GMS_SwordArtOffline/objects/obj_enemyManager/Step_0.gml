@@ -49,7 +49,7 @@ switch(enemyManagerState){
 			var i_player=ds_list_find_value(enemy.list_canAttack,i);
 			var i_worth=1000;//base
 			// attention!!!By argument as this,in follow code,my<=>enemy(fight founder),rival<=>player
-			var i_fightInfo=getFightInfo(enemy,i_player);
+			var i_fightInfo=getFightInfo(enemy,i_player,true);
 			
 			
 			show_debug_message("start print worth detail of"+i_player.name);
@@ -200,7 +200,8 @@ switch(enemyManagerState){
 			global.fighter_L=enemy;
 			global.fighter_R=attackTarget;			
 			global.curAttackSide=FIGHT_L;
-
+			//global.fight_found_side=FIGHT_L;
+			
 			deleteCanMove();
 			
 			room_goto(room_fight);

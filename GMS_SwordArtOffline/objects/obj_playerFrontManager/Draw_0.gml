@@ -6,10 +6,11 @@ switch(cursorState){
 	case CursorState.selectingEnemy:
 	if(target!=noone){
 		if(fightForecastInfo==noone){
-			fightForecastInfo=getFightInfo(global.operatedRole,target);
+			fightForecastInfo=getFightInfo(global.operatedRole,target,false);
 		}
 		
 			draw_set_font(fightForecastFont);
+			draw_set_color(c_black);
 			//------------- draw board-------------------
 			var center=getCameraCenter(view_camera[0]);
 			var menuSide=sign(center[0]-global.cursor_pointer.x+1);

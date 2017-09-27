@@ -6,7 +6,8 @@
     "children": [
         "12e3ef93-804b-48d9-b7a2-7a0b1fd1d755",
         "b75fe54f-9e8d-46fb-b128-0e00a82ffae8",
-        "ed507de3-a901-459e-926d-7cf26e7e7521"
+        "ed507de3-a901-459e-926d-7cf26e7e7521",
+        "4b3bb381-fc17-4446-a8c3-ad296d1b1936"
     ],
     "filterType": "GMSprite",
     "folderName": "idle",

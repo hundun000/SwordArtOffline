@@ -26,7 +26,10 @@ global.inputReceiver=InputReceiver.worldTeamFlag;
 //********* data init*************
 globalvar asuna;
 globalvar kirito;
+globalvar silica;
 global.asuna=instance_find(obj_role_asuna,0);
 global.kirito=instance_find(obj_role_kirito,0);
+global.silica=instance_find(obj_role_silica,0);
 addRoleToWorld(global.asuna);
 addRoleToWorld(global.kirito);
+addRoleToWorld(global.silica);

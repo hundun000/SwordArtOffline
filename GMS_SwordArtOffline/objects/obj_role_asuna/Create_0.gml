@@ -10,7 +10,7 @@ roleAttackRangFrom=1;
 roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
 
-hp=15;
+hp=40;
 atk=10;
 def=5;
 dex=8;

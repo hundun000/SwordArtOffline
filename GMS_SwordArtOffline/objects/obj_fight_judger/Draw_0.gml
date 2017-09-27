@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 
+
 	var top_y=145;
 	var bottom_y=150;
 	var left_x;
@@ -25,33 +26,7 @@
 	
 	
 if(reduceHpAnimationCountDown>=0 && reduceHpAnimationCountDown<STEP_reduceHpAnimation){
-
-/*
-	//other side
-	var rate_remainHp=(fighter[!global.curAttackSide].curHp-actulDamage) div fighter[!global.curAttackSide].hp;
-	var rate_reduceAnimation=reduceHpAnimationCountDown div STEP_reduceHpAnimation;
-			
-	var len_beforeHpBar=LEN_FULL_HP* fighter[!global.curAttackSide].curHp div fighter[!global.curAttackSide].hp;
-	var len_remainHpBar=LEN_FULL_HP*rate_remainHp;
-	//var len_reducedHpBar=(len_beforeHpBar-len_remainHpBar)*(1-rate_reduceAnimation);
-	//var len_curHpBar=len_beforeHpBar-len_reducedHpBar;
-			
-	//cur side
-	var rate_remainHp1=fighter[global.curAttackSide].curHp div fighter[global.curAttackSide].hp;
-	var len_remainHpBar1=LEN_FULL_HP*rate_remainHp1;
-			
-	//!!!!!!!!!!!!!temporarily only use part
-			
-	var color_reduceHpBar=c_gray;
 	
-	if(rate_remainHp>0.5)
-		color_curHpBar=c_green;
-	else if(rate_remainHp>0.25)
-		color_curHpBar=c_yellow;
-	else
-		color_curHpBar=c_red;
-	*/	
-			
 	num_remainHp[global.curAttackSide]=fighter[global.curAttackSide].curHp; 
 	num_remainHp[!global.curAttackSide]=(fighter[!global.curAttackSide].curHp-actulDamage) ;		
 }
@@ -133,7 +108,7 @@ if(waitAddXp>=0){
 if(waitAddXp==0&&flag_lv_up){
 //Xp add finish ,no long draw Xp ,maybe draw lv up 
 	if(flag_lv_up){
-		draw_set_font(fightRoomFont_mid);
+		draw_set_font(fightRoomFont_big);
 		var lvUp_width=100;
 		var lvUp_height=100;
 		draw_set_color(c_white);
@@ -147,12 +122,18 @@ if(waitAddXp==0&&flag_lv_up){
 		draw_text(room_width/2-lvUp_width/2+2,i_y+2,str);
 		if(lv_isAdd[INDEX_ATK]>0)
 			str="atk "+string(fighter[FIGHT_R].atk)+" -> "+string(fighter[FIGHT_R].atk+lv_isAdd[INDEX_ATK]);
+		else
+			str="atk "+string(fighter[FIGHT_R].atk);	
 		draw_text(room_width/2-lvUp_width/2+2,i_y+2+1*(font_get_size(fightRoomFont_small)+2),str);
 		if(lv_isAdd[INDEX_DEF]>0)
 			str="def "+string(fighter[FIGHT_R].def)+" -> "+string(fighter[FIGHT_R].def+lv_isAdd[INDEX_DEF]);
+		else
+			str="def "+string(fighter[FIGHT_R].atk);	
 		draw_text(room_width/2-lvUp_width/2+2,i_y+2+2*(font_get_size(fightRoomFont_small)+2),str);
 		if(lv_isAdd[INDEX_DEX]>0)
 			str="dex "+string(fighter[FIGHT_R].dex)+" -> "+string(fighter[FIGHT_R].dex+lv_isAdd[INDEX_DEX]);
+		else
+			str="dex "+string(fighter[FIGHT_R].atk);	
 		draw_text(room_width/2-lvUp_width/2+2,i_y+2+3*(font_get_size(fightRoomFont_small)+2),str);
 		
 	}

@@ -6,7 +6,7 @@
 #macro DEPTH_FRONT -201
 #macro DEPTH_BACK -200
 
-
+//globalvar fight_found_side;
 
 globalvar fighter_L;
 globalvar fighter_R;

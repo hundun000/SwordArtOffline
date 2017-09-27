@@ -6,6 +6,9 @@ switch(role.name){
 		
 	case "kirito":
 		return spr_kirito_critical;
+		
+	case "silica":
+		return spr_silica_attack;	
 
 
 }
