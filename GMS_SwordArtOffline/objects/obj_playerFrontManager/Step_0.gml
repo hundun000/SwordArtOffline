@@ -301,6 +301,7 @@ switch(cursorState){
 			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
 			global.curAttackSide=FIGHT_R;
+			global.fightBackRoom=room;
 			//global.fight_found_side=FIGHT_R;
 			
 			deleteCanMove();
@@ -337,6 +338,10 @@ switch(cursorState){
 		break;
 		
 		case CursorState.nextPlayer:
+		
+			if(checkPlayerWin(room))
+				processPlayerWin(room);
+		
 			setRoleState(global.operatedRole,RoleState.gray);
 			
 			var done=isTeamDone();

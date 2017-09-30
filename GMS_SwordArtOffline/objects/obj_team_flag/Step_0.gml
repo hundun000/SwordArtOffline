@@ -16,22 +16,15 @@ var isR=input_dx==1;
 
 switch(curWorldPos){
 	case 0:
-	if(isU||isL)
-		toWorldPos=1;
+	if(isA){	
+		global.curMap=0;
+		room_goto(room_fake_1_0);		
+	}
 	break;
 	case 1:
 	if(isD||isR)
 		toWorldPos=0;
-	else if(isA){	
 	
-		addRoleToFront(global.asuna,room_map_0,0);
-		addRoleToFront(global.kirito,room_map_0,1);
-		addRoleToFront(global.silica,room_map_0,2);
-		
-		global.inputReceiver=InputReceiver.cursor;
-		global.curMap=0;
-		room_goto(room_map_0);		
-	}
 	break;
 
 	default:
@@ -40,12 +33,12 @@ switch(curWorldPos){
 
 switch(toWorldPos){
 	case 0:
-		toWorldX=714;
-		toWorldY=524;	
+		toWorldX=660;
+		toWorldY=579;	
 		break;	
 	case 1:
-		toWorldX=630;
-		toWorldY=446;
+		toWorldX=539;
+		toWorldY=496;
 	break;
 
 	default:

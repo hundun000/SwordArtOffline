@@ -27,6 +27,16 @@ switch(targetRoom){
 				posY=2.5*UNIT;
 				break;	
 		}
+		
+	case room_battle_1_1:
+		switch(posIndex){
+			case 0:
+				posX=1.5*UNIT;
+				posY=6.5*UNIT;
+				break;
+				
+		}	
+		
 }
 
 role.x=posX;

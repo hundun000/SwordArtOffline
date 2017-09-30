@@ -12,7 +12,10 @@ globalvar fighter_L;
 globalvar fighter_R;
 globalvar curAttackSide;//value is FIGHT_L(0) or FIGHT_R(1)
 globalvar fightState;
+globalvar fightBackRoom;
 globalvar isHit;
+
+
 
 attackAnimation[0]=instance_find(obj_fightRole,0);
 attackAnimation[1]=instance_find(obj_fightRole,1);

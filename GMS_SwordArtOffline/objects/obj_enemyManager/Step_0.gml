@@ -200,6 +200,7 @@ switch(enemyManagerState){
 			global.fighter_L=enemy;
 			global.fighter_R=attackTarget;			
 			global.curAttackSide=FIGHT_L;
+			global.fightBackRoom=room;
 			//global.fight_found_side=FIGHT_L;
 			
 			deleteCanMove();
@@ -219,11 +220,9 @@ switch(enemyManagerState){
 		//blank wait fight room back,and room start event change state
 		break;
 	case EnemyManagerState.nextEnemy:
-		if(checkPlayerWin()){
-			show_message("PlayerWin");
-			enemyManagerState=EnemyManagerState.outFront;
-			return;
-		}
+		
+		if(checkPlayerWin(room))
+			processPlayerWin(room);
 		
 		if(ii+1<ds_list_size(global.frontEnemies)){
 			ii++;

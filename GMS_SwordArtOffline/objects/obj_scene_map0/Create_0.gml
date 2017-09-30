@@ -6,8 +6,19 @@
 /*
 with(obj_textBox_manager)
 	backInputReciever=InputReceiver.cursor;
-addTextBox("asuna","Nice to meet you.",0);
-addTextBox("kirito","Nice to meet you,too.",1);
-addTextBox("asuna","My name is Asuna.",0);
-addTextBox("kirito","My name is Kirito.",1);
+addSceneTextBox("asuna","Nice to meet you.",0);
+addSceneTextBox("kirito","Nice to meet you,too.",1);
+addSceneTextBox("asuna","My name is Asuna.",0);
+addSceneTextBox("kirito","My name is Kirito.",1);
 */
+
+global.inputReceiver=InputReceiver.textBox;
+with(obj_textBox_manager){
+	backInputReciever=InputReceiver.cursor;
+	backRoom=noone;
+	
+	scenceState=ScenceState.nextElement;
+}
+
+addSceneTextBox("asuna","We are in the front now.",0);
+addSceneTextBox("kirito","Have a good time.",1);

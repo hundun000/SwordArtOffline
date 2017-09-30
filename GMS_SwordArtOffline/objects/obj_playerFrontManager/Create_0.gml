@@ -16,7 +16,8 @@ enum CursorState{
 	waitEnemy
 }
 
-cursorState=CursorState.turnStart;
+
+cursorState=noone;
 
 playerPath=noone;
 target=noone;

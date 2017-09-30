@@ -33,3 +33,5 @@ enum EnemyState{
 	afterFight
 
 }
+
+show_debug_message(string(id)+" created.");

@@ -4,8 +4,8 @@ globalvar doMoreSelectIndex;
 globalvar itemSelectIndex;
 globalvar operatedRole;
 
-globalvar curMap;
-global.curMap=-1;
+globalvar storyLine;
+global.storyLine=-1;
 globalvar playerFrontTeam;
 global.playerFrontTeam=array_create(0);
 globalvar playerWorldTeam;

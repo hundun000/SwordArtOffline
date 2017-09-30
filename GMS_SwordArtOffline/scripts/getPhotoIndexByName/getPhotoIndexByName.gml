@@ -8,5 +8,6 @@ switch(name){
 	case "kirito":
 		return 2;
 
-
+	case "klein":
+		return 3;
 }

@@ -34,7 +34,7 @@ fighter[1]=argument1;
 //******** 0~1 attack times(consider attack side type) ********
 var dif=fighter[0].dex-fighter[1].dex;
 ans[0]=1+(dif>=THRESHOLD_DEX);
-ans[1]=1;//+(dif<=-THRESHOLD_DEX);
+ans[1]=1+(dif<=-THRESHOLD_DEX);
 
 //consider attack side type
 var dx=fighter[0].x-fighter[1].x;

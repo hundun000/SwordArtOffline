@@ -329,7 +329,7 @@ switch(global.fightState){
 				global.playerFrontTeam[i].visible=true;		
 				
 			
-			room_goto(room_map_0);
+			room_goto(global.fightBackRoom);
 		}
 		break;
 		
