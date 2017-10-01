@@ -13,4 +13,4 @@ with(obj_textBox_manager){
 addSceneDelay(40);
 addSceneTextBox("kirito","Well,I will defeat these boars.",0);
 
-addSceneChangeRoom(noone,InputReceiver.cursor,CursorState.turnStart);
+addSceneChangeRoom(noone,InputReceiver.cursor);

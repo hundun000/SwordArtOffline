@@ -43,7 +43,6 @@ delayTimes=ds_queue_create();
 
 backInputReciever=noone;
 backRoom=noone;
-backState=noone;
 
 isSerie=false;
 

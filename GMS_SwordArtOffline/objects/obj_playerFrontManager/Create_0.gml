@@ -13,7 +13,8 @@ enum CursorState{
 	
 	moved,
 	playerSideEnd,
-	waitEnemy
+	waitEnemy,
+	notInBattle
 }
 
 

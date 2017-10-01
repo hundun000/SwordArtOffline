@@ -71,6 +71,7 @@ switch(cursorState){
 		}
 		
 		else if(isA){
+			//if tile have player role,operatRole can move at,but can stop to do more,so check this.
 			var stop_at_hold_tile=false;
 			with(global.operatedRole){
 				if(collision_point(x,y,obj_role_player,false,true))
@@ -80,18 +81,13 @@ switch(cursorState){
 				return;
 				
 			cursorState=CursorState.roleDoMore;
-			//global.cursor_pointer.visible=false;
-			
+		
 			deletePath(playerPath);
-
-
 			deleteCanMove();
 			
 			var center=getCameraCenter(view_camera[0]);
 			var menuSide=sign(center[0]-global.cursor_pointer.x+1);
 			
-			//show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
-		
 			doMoreMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);
 											
 			global.doMoreSelectIndex=0;
@@ -101,7 +97,6 @@ switch(cursorState){
 											,"Layer_menuOption",obj_doMoreOption)){
 					image_index=i;	
 				}
-		
 			}
 			
 		
@@ -339,8 +334,11 @@ switch(cursorState){
 		
 		case CursorState.nextPlayer:
 		
-			if(checkPlayerWin(room))
+			if(checkPlayerWin(room)){
+				cursorState=CursorState.notInBattle;
 				processPlayerWin(room);
+				return;
+			}
 		
 			setRoleState(global.operatedRole,RoleState.gray);
 			

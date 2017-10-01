@@ -2,7 +2,7 @@
 // You can write your code in this editor
 if(scenceState==ScenceState.showText){
 
-		show_debug_message("draw into 1");
+		
 	
 		//draw role photo
 		draw_sprite(spr_role_photo,subImageIndex,rolePhotoX[rolePhotoSide],box_top_y);
@@ -24,7 +24,7 @@ if(scenceState==ScenceState.showText){
 	}
 	else if(scenceState==ScenceState.nextElement&&isSerie){
 
-		show_debug_message("draw into 2");
+		
 
 		//draw box
 		draw_sprite(spr_textBox,0,0,box_top_y);

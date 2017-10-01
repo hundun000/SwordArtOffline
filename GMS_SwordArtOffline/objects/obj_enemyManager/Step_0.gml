@@ -221,8 +221,11 @@ switch(enemyManagerState){
 		break;
 	case EnemyManagerState.nextEnemy:
 		
-		if(checkPlayerWin(room))
+		if(checkPlayerWin(room)){
+			enemyManagerState=EnemyManagerState.notInBattle;
 			processPlayerWin(room);
+			return;
+		}
 		
 		if(ii+1<ds_list_size(global.frontEnemies)){
 			ii++;

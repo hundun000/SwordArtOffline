@@ -4,7 +4,7 @@
 
 var var_room=argument0;
 var re=argument1;
-var state=argument2;
+
 
 var textBoxManager=instance_find(obj_textBox_manager,0);
 ds_queue_enqueue(textBoxManager.scenceElements,ScenceElement.changeRoom);

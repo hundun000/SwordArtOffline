@@ -8,7 +8,18 @@ toWorldPos=0;
 toWorldX=0;
 toWorldY=0;
 
+worldDoMoreSelectedIndex=-1;
 
+enum WorldMapState{
+	worldFree,
+	worldMoving,
+	worldDoMoreSelect,
+	worldWantIntoBattle,
+
+
+}
+
+worldMapState=WorldMapState.worldFree;
 
 
 

@@ -96,12 +96,8 @@ if(backInputReciever!=noone){
 						*/
 				
 				
-						global.inputReceiver=backInputReciever;
-						backInputReciever=noone;
-				
-						if(backRoom!=noone){
-							room_goto(backRoom);
-						}
+						leaveScene();
+						
 
 						break;
 				
@@ -109,7 +105,9 @@ if(backInputReciever!=noone){
 				
 				}
 			}
-
+			else{
+				leaveScene();
+			}
 				
 				
 			

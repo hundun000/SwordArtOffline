@@ -24,7 +24,7 @@ enum EnemyManagerState{
 	nextEnemy,
 	enemySideEnd,
 	waitPlayer,
-	outFront
+	notInBattle
 }
 
 delayCounter=-1;
