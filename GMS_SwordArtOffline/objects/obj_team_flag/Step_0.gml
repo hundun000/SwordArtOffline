@@ -20,6 +20,16 @@ switch(worldMapState){
 		
 		if(isA){
 			worldDoMoreSelectedIndex=0;
+			
+			//renew option	
+			num_option=0;
+			option=array_create(5);
+			if(curWorldPos==global.storyLine)
+				option[num_option++]=option_model[0];
+			else
+				option[num_option++]=option_model[1];
+			option[num_option++]=option_model[5];
+			
 			worldMapState=WorldMapState.worldDoMoreSelect;
 		}
 		else{
@@ -75,15 +85,13 @@ switch(worldMapState){
 		
 	case WorldMapState.worldDoMoreSelect:
 		if(isA){
-			switch(worldDoMoreSelectedIndex){
-				case 0:
-					worldMapState=WorldMapState.worldWantIntoBattle;
-					break;
-				case 1:
-				
-					break;
-				default:
-			}
+			if(option[worldDoMoreSelectedIndex]==option_model[0])
+				worldMapState=WorldMapState.worldWantIntoBattle;
+			else if(option[worldDoMoreSelectedIndex]==option_model[1])	
+				show_message("Option shop");
+			else if(option[worldDoMoreSelectedIndex]==option_model[5])	
+				show_message("Option save");
+
 		}
 		else if(isB){
 			worldDoMoreSelectedIndex=-1;
@@ -103,14 +111,27 @@ switch(worldMapState){
 	case WorldMapState.worldWantIntoBattle:
 		switch(curWorldPos){
 			case 0:
+				//handle battle front init
+				addRoleToWorld(global.kirito);
+				addRoleToFront(global.kirito,room_battle_1_1,0);
+				
 				room_goto(room_fake_1_0);
 				break;
 			case 1:
-				show_message("want into pos 1 battle");
+				//flag handle battle front init
+				addRoleToWorld(global.asuna);
+				addRoleToFront(global.kirito,room_battle_2_1,0);
+				addRoleToFront(global.asuna,room_battle_2_1,1);
+			
+				room_goto(room_fake_2_0);
+				
 				break;
 
-				default:
+			default:
 		}	
+		//reset state
+		worldMapState=WorldMapState.worldFree; 
+		visible=false;
 		break;
 }
 

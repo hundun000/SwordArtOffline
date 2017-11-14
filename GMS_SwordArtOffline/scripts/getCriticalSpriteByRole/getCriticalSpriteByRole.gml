@@ -9,6 +9,11 @@ switch(role.name){
 		
 	case "silica":
 		return spr_silica_attack;	
+		
+	case "boar":
+		return spr_boar_critical;	
+	case "minotaur":
+		return spr_minotaur_critical;	
 
 
 }

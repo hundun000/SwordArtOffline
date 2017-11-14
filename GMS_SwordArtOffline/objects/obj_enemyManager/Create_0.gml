@@ -17,6 +17,7 @@ enemyManagerState=EnemyManagerState.waitPlayer;
 
 enum EnemyManagerState{
 	turnStart,
+	waitTurnStartAnimation,
 	initTarget,
 	moving,
 	moved,
@@ -24,7 +25,8 @@ enum EnemyManagerState{
 	nextEnemy,
 	enemySideEnd,
 	waitPlayer,
-	notInBattle
+	notInBattle,
+	waitPlayerWinAnimation
 }
 
 delayCounter=-1;

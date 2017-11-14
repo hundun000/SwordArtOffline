@@ -1,22 +1,18 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(inMap_stroryLine!=global.storyLine){
+if(image_index!=global.storyLine){
 
+/*-------------I forget why I write these,but now I want unuse them.
 	global.inputReceiver=InputReceiver.textBox;
 	with(obj_textBox_manager){
-		scenceState=ScenceState.nextElement;
+		//scenceState=ScenceState.noScene;
 		
 		backInputReciever=InputReceiver.worldTeamFlag;
 		backRoom=noone;
 	}
+*/
 	
-	switch(global.storyLine){
-		case 1:
-			image_index=1;
-			break;
-		default:
-	}
 
-	inMap_stroryLine=global.storyLine;
+	image_index=global.storyLine;
 
 }

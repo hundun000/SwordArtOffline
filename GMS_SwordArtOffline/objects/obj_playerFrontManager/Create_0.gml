@@ -4,6 +4,7 @@ event_inherited();
 
 enum CursorState{
 	turnStart,
+	waitTurnStartAnimation,
 	free,
 	selectedRole,
 	roleDoMore,
@@ -14,7 +15,8 @@ enum CursorState{
 	moved,
 	playerSideEnd,
 	waitEnemy,
-	notInBattle
+	notInBattle,
+	waitPlayerWinAnimation
 }
 
 

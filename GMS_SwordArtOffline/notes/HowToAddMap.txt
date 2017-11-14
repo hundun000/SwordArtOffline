@@ -1,0 +1,7 @@
+1.Use map_model duplicate get layers.
+2.Paint tile layer.
+3.Create instance.
+4.Enmeny instance set level,new level should add to script::getRoleProperties.
+5.Add room_goto to TeamFlag::case WorldMapState.worldWantIntoBattle.With map role registtion to world and front.
+
+

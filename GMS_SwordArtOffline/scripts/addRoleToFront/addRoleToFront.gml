@@ -27,12 +27,25 @@ switch(targetRoom){
 				posY=2.5*UNIT;
 				break;	
 		}
-		
+		break;
 	case room_battle_1_1:
 		switch(posIndex){
 			case 0:
 				posX=1.5*UNIT;
 				posY=6.5*UNIT;
+				break;
+				
+		}	
+		break;
+	case room_battle_2_1:
+		switch(posIndex){
+			case 0:
+				posX=5.5*UNIT;
+				posY=9.5*UNIT;
+				break;
+			case 1:
+				posX=4.5*UNIT;
+				posY=9.5*UNIT;
 				break;
 				
 		}	
@@ -42,10 +55,9 @@ switch(targetRoom){
 role.x=posX;
 role.y=posY;
 role.visible=true;
-role.isFront=true;
+role.isFront=true; //use flag to sign role is in TeamFront
 
 
-var newIndex=array_length_1d(global.playerFrontTeam);
-global.playerFrontTeam[newIndex]=role;
+ds_list_add(global.playerFrontTeam,role);
 
 

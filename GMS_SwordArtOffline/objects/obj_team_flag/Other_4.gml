@@ -1,4 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
-with(obj_role_player)
-	visible=false;
+if(room==room_world){
+	visible=true;
+	with(obj_role_player)
+		visible=false;
+}
+	
+

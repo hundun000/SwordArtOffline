@@ -8,13 +8,11 @@ if(worldMapState==WorldMapState.worldDoMoreSelect){
 	draw_rectangle(0,0,150,300,false);
 	
 
-	option[0]="Into Battle";
-	option[1]="Into Save";
-	num_option=array_length_1d(option);
 	
 	draw_set_font(fightRoomFont_big);
 	var fontSize=font_get_size(fightRoomFont_big);
 	for(var i=0;i<num_option;i++){
+			
 		if(i==worldDoMoreSelectedIndex)
 			draw_set_color(c_orange);
 		else

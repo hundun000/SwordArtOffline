@@ -3,12 +3,21 @@
 switch(enemyManagerState){
 	case EnemyManagerState.turnStart:
 		ii=0;
-		enemyManagerState=EnemyManagerState.initTarget;
-
+		//turn start animation
+		var view_x=camera_get_view_x(view_camera[0]);
+		var view_y=camera_get_view_y(view_camera[0]);
+		enemyManagerState=EnemyManagerState.waitTurnStartAnimation;
+		instance_create_depth(view_x,view_y,1,obj_enemyTurnStart);
+		break;
+		
+	case EnemyManagerState.waitTurnStartAnimation:
+		//wait animation obj destroy itself
+		if(!instance_exists(obj_enemyTurnStart)){
+			enemyManagerState=EnemyManagerState.initTarget;
+		}
 		break;
 
 	case EnemyManagerState.initTarget:
-
 
 		show_debug_message("initTarget for ii="+string(ii));
 		//****************** process one enemy ***************************
@@ -40,7 +49,6 @@ switch(enemyManagerState){
 			}
 		}
 	
-
 
 		//--------------------- select most value role from list_canAttack -------------------\
 		ds_list_clear(enemy.list_worth);
@@ -192,8 +200,10 @@ switch(enemyManagerState){
 			
 			
 			//set front persistent role disvisible
-			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
-				global.playerFrontTeam[i].visible=false;
+			for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+					frontRole.visible=false;
+			}
 			
 
 
@@ -222,30 +232,36 @@ switch(enemyManagerState){
 	case EnemyManagerState.nextEnemy:
 		
 		if(checkPlayerWin(room)){
-			enemyManagerState=EnemyManagerState.notInBattle;
-			processPlayerWin(room);
-			return;
+			//player win animation
+			enemyManagerState=EnemyManagerState.waitPlayerWinAnimation;
+			instance_create_depth(0,0,1,obj_playerWin);
 		}
-		
-		if(ii+1<ds_list_size(global.frontEnemies)){
-			ii++;
-			enemyManagerState=EnemyManagerState.initTarget;
-		}
-		else{
-			//show_message("enemy done");
-			enemyManagerState=EnemyManagerState.enemySideEnd;
+		else{		
+			if(ii+1<ds_list_size(global.frontEnemies)){	
+				enemyManagerState=EnemyManagerState.initTarget;
+				ii++;
+			}
+			else{
+				//show_message("enemy done");
+				enemyManagerState=EnemyManagerState.enemySideEnd;
+			}
 		}
 		
 		break;
 	case EnemyManagerState.enemySideEnd:
-			show_message("enemy team done");
+			show_debug_message("enemy team done");
 			enemyManagerState=EnemyManagerState.waitPlayer;
 			with(obj_playerFrontManager){
 				cursorState=CursorState.turnStart;
 			}
 			global.inputReceiver=InputReceiver.cursor;
 			break;
-		
+	case  EnemyManagerState.waitPlayerWinAnimation:
+		if(!instance_exists(obj_playerWin)){
+			enemyManagerState=EnemyManagerState.notInBattle;
+			processPlayerWin(room);
+		}
+		break;
 	default:
 		break;
 

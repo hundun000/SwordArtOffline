@@ -1,5 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
+//about draw x,y
+
+var view_x=camera_get_view_x(view_camera[0]);
+var view_y=camera_get_view_y(view_camera[0]);
+
+var box_top_y=VIEW_HEIGHT-sprite_get_height(spr_textBox)+view_y;
+var rolePhotoX;
+rolePhotoX[0]=0+view_x;
+rolePhotoX[1]=VIEW_WIDTH-264+view_x;
+
 if(scenceState==ScenceState.showText){
 
 		
@@ -10,7 +20,7 @@ if(scenceState==ScenceState.showText){
 
 
 		//draw box
-		draw_sprite(spr_textBox,0,0,box_top_y);
+		draw_sprite(spr_textBox,0,view_x,box_top_y);
 
 
 
@@ -18,7 +28,7 @@ if(scenceState==ScenceState.showText){
 		draw_set_font(textBoxFont_mainText);
 		draw_set_color(c_white);
 
-		draw_text_ext(2,box_top_y,curText,fontSize+2,VIEW_HEIGHT);
+		draw_text_ext(view_x+2,box_top_y,curText,fontSize+2,VIEW_HEIGHT);
 	
 	
 	}
@@ -26,6 +36,6 @@ if(scenceState==ScenceState.showText){
 
 		
 
-		//draw box
-		draw_sprite(spr_textBox,0,0,box_top_y);
+		//draw blank box
+		draw_sprite(spr_textBox,0,view_x,box_top_y);
 	}

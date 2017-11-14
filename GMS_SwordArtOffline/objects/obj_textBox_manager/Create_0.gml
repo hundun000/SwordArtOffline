@@ -82,10 +82,7 @@ curDelay=-1;
 
 
 
-//about draw x,y
-box_top_y=VIEW_HEIGHT-sprite_get_height(spr_textBox);
-rolePhotoX[0]=0;
-rolePhotoX[1]=VIEW_WIDTH-264;
+
 //2*sprite_get_width(spr_textBoxRolePhoto);
 fontSize=font_get_size(textBoxFont_mainText);
 

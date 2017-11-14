@@ -5,11 +5,11 @@ globalvar itemSelectIndex;
 globalvar operatedRole;
 
 globalvar storyLine;
-global.storyLine=-1;
+global.storyLine=0;
 globalvar playerFrontTeam;
-global.playerFrontTeam=array_create(0);
+global.playerFrontTeam=ds_list_create();
 globalvar playerWorldTeam;
-global.playerWorldTeam=array_create(0);
+global.playerWorldTeam=ds_list_create();
 
 
 
@@ -27,9 +27,8 @@ global.inputReceiver=InputReceiver.worldTeamFlag;
 globalvar asuna;
 globalvar kirito;
 globalvar silica;
+
 global.asuna=instance_find(obj_role_asuna,0);
 global.kirito=instance_find(obj_role_kirito,0);
 global.silica=instance_find(obj_role_silica,0);
-addRoleToWorld(global.asuna);
-addRoleToWorld(global.kirito);
-addRoleToWorld(global.silica);
+

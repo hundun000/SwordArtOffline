@@ -82,7 +82,7 @@ if(backInputReciever!=noone){
 				
 					case ScenceElement.changeRoom:
 
-						scenceState=ScenceState.noScene;
+						
 				
 						/*
 						switch(backInputReciever){
@@ -126,7 +126,12 @@ if(backInputReciever!=noone){
 			
 			break;
 			
+		case ScenceState.noScene:	
+			noscene=1;//set a useless statement for test
+			break;
+			
 		default:	
+			
 
 	}
 

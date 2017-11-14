@@ -15,15 +15,30 @@ var isSP=keyboard_check_pressed(BTN_SP);
 switch(cursorState){
 	case CursorState.turnStart:
 		show_debug_message("cursor turn start");
-		for(var i=0;i<array_length_1d(global.playerFrontTeam);i++){
-			setRoleState(global.playerFrontTeam[i],RoleState.idle);
-		}
-		//global.cursor_pointer.visible=true;
-		//!!!!!!!!!!!!!!1 in future ,should set to leader
-		global.cursor_pointer.x=global.playerFrontTeam[0].x;
-		global.cursor_pointer.y=global.playerFrontTeam[0].y;
 		
-		cursorState=CursorState.free;
+		
+		for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+			
+			setRoleState(ds_list_find_value(global.playerFrontTeam,i),RoleState.idle);
+		}
+		//set to leader
+		global.cursor_pointer.x=global.kirito.x;
+		global.cursor_pointer.y=global.kirito.y;
+		
+		
+		
+		//turn start animation
+		var view_x=camera_get_view_x(view_camera[0]);
+		var view_y=camera_get_view_y(view_camera[0]);
+		cursorState=CursorState.waitTurnStartAnimation;
+		instance_create_depth(view_x,view_y,1,obj_playerTurnStart);
+		break;
+		
+	case CursorState.waitTurnStartAnimation:
+		//wait animation obj destroy itself
+		if(!instance_exists(obj_playerTurnStart)){
+			cursorState=CursorState.free;
+		}
 		break;
 		
 	case CursorState.free:
@@ -290,8 +305,10 @@ switch(cursorState){
 			target.persistent=true;
 			
 			//set front persistent role disvisible
-			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
-				global.playerFrontTeam[i].visible=false;
+			for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+					frontRole.visible=false;
+			}
 			
 			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
@@ -335,29 +352,35 @@ switch(cursorState){
 		case CursorState.nextPlayer:
 		
 			if(checkPlayerWin(room)){
-				cursorState=CursorState.notInBattle;
-				processPlayerWin(room);
-				return;
-			}
-		
-			setRoleState(global.operatedRole,RoleState.gray);
-			
-			var done=isTeamDone();
-			if(done){
-				cursorState=CursorState.playerSideEnd;
-				//global.playerTeamDone=true;
+				cursorState=CursorState.waitPlayerWinAnimation;
+				instance_create_depth(0,0,1,obj_playerWin);
 			}
 			else{
-				cursorState=CursorState.free;
-				//global.cursor_pointer.visible=true;	
+				setRoleState(global.operatedRole,RoleState.gray);
+			
+				var done=isTeamDone();
+				if(done){
+					cursorState=CursorState.playerSideEnd;
+					//global.playerTeamDone=true;
+				}
+				else{
+					cursorState=CursorState.free;
+					//global.cursor_pointer.visible=true;	
+				}
 			}
 			break;
 			
 		case CursorState.playerSideEnd:	
-			show_message("team done");
+			show_debug_message("player team done");
 			cursorState=CursorState.waitEnemy;
 			with(obj_enemyManager){
 				enemyManagerState=EnemyManagerState.turnStart;
+			}
+			break;
+		case  CursorState.waitPlayerWinAnimation:
+			if(!instance_exists(obj_playerWin)){
+				cursorState=CursorState.notInBattle;
+				processPlayerWin(room);
 			}
 			break;
 	default:

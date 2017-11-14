@@ -9,5 +9,7 @@ switch(role.name){
 		return spr_kirito_miss;
 	case "silica":
 		return spr_silica_miss;
+	case "minotaur":
+		return spr_minotaur_miss;
 
 }

@@ -227,9 +227,12 @@ switch(global.fightState){
 		break;
 	case FightState.processXp:
 		if(flag_player_die){
-			//-----------say something---------
+			//create scene_roleDying which handle later death in battle map
+			var sceneDying=instance_create_depth(0,0,1,obj_scene_roleDying);
+			//died must be other side
+			sceneDying.diedRole=fighter[!global.curAttackSide];
 			
-			
+			fightEnd_delay=-1;
 			global.fightState=FightState.fightEnd;
 			return;
 		}
@@ -324,9 +327,13 @@ switch(global.fightState){
 				instance_destroy(fighter[!global.curAttackSide]);
 				
 			}	
-				//!!!!!!!!!!!!!!!! ignore player die
-			for(var i=0;i<array_length_1d(global.playerFrontTeam);i++)
-				global.playerFrontTeam[i].visible=true;		
+
+			//!!!!!!!on matter if plyer role die!!!!!!!
+			for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+					frontRole.visible=true;
+			}	
+
 				
 			
 			room_goto(global.fightBackRoom);

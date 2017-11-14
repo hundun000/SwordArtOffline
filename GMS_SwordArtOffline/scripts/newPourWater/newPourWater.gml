@@ -31,16 +31,14 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 	//show_debug_message(string(myX/64-0.5)+" "+string(myY/64-0.5));
 
 
-	//handle tile caused cann't move
+	//handle walkType caused cann't move
 	switch(type){
 		case RoleType.walker:
-		if(position_meeting(myX,myY,obj_tile_hill))
+		if(position_meeting(myX,myY,obj_tile_hill)||position_meeting(myX,myY,obj_tile_water))
 			return;
 		default:
 	}
 	
-	
-
 	//handle rival caused cann't move
 	switch(controlType){
 		case ControlType.player:
@@ -55,7 +53,11 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 			break;	
 	}	
 	
-	
+	//handle always cann't move
+	if(position_meeting(myX,myY,obj_fake_role)){
+		return;
+	}
+
 	
 	
 	

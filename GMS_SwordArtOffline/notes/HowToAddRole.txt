@@ -1,0 +1,5 @@
+For enemy role:
+1.add idle,normal attack,critical attack,miss sprits.
+2.add obj.Use duplicate get what to be set in create event.
+3.add various toolGetter scripts.
+4.If it have new moveType,add to Paths script.

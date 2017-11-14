@@ -19,6 +19,11 @@ enum WorldMapState{
 
 }
 
+
+option_model[0]="Into Battle";
+option_model[1]="Into Shop";
+option_model[5]="Into Save";
+	
 worldMapState=WorldMapState.worldFree;
 
 

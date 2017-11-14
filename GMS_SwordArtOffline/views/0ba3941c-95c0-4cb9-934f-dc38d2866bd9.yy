@@ -9,7 +9,7 @@
         "34229542-a482-453b-bd79-bd0f75fdb5d6"
     ],
     "filterType": "GMObject",
-    "folderName": "Strory_1",
+    "folderName": "Story_1",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

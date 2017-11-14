@@ -13,6 +13,7 @@ switch(role.name){
 	case "silica":
 		return spr_silica_attack;
 	
-
+	case "minotaur":
+		return spr_minotaur_attack;
 
 }

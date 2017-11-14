@@ -11,7 +11,8 @@
         "99235589-1f48-4551-8c6f-47b2b8109e11",
         "6a269fef-fc8f-4067-9ef1-43128691d41b",
         "52382c08-17a0-4cef-83fb-6395378ef0bb",
-        "57fcbced-b18d-4493-ba3a-99921102b972"
+        "57fcbced-b18d-4493-ba3a-99921102b972",
+        "342486a6-b3b8-43ec-9022-d87b459579ca"
     ],
     "filterType": "GMObject",
     "folderName": "Fake",
