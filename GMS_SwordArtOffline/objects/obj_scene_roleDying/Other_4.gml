@@ -1,21 +1,33 @@
 /// @description Insert description here
 // You can write your code in this editor
-var lastReceiver=global.inputReceive;
+var lastReceiver=global.inputReceiver;
 global.inputReceiver=InputReceiver.textBox;
 with(obj_textBox_manager){
 	//wake up for handle scene
 	scenceState=ScenceState.nextElement;
 }
 
-var roleName=diedRole.name;
-addSceneTextBox(roleName,getDyingMessageByName(roleName),0);
-addSceneChangeRoom(noone,lastReceiver);
+//add scene element
+addSceneDelay(60);
+addSceneTextBox(diedRole.name,getDyingMessageByName(diedRole.name),0);
 
-ds_list_delete(global.playerWorldTeam,(ds_list_find_index(global.playerWorldTeam,diedRole)));
-ds_list_delete(global.playerFrontTeam,(ds_list_find_index(global.playerFrontTeam,diedRole)));		
 
+//while scence showing,role's sprite changed.
+diedRole.sprite_index=getDisappearSpriteByRole(diedRole);
+
+//delete role form World Team but not destroy instance.
+deleteRoleFromFront(diedRole);
+deleteRoleFromWorld(diedRole);
+
+
+//check game over
 if(diedRole==global.kirito){
-	show_message("lead die");	
+	show_message("lead die");
+	addSceneChangeRoom(room_world,InputReceiver.worldTeamFlag);//lock input for debug
 }
+else{
+	addSceneChangeRoom(noone,lastReceiver);
+}
+
 
 instance_destroy(id);

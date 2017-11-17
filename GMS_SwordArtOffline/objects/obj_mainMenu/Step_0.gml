@@ -1,33 +1,23 @@
 /// @description Insert description here
 // You can write your code in this editor
-var move=0;
-move+=max(keyboard_check_pressed(BTN_U),0);
-move+=max(keyboard_check_pressed(BTN_D),0);
+if(global.inputReceiver!=InputReceiver.mainMenu) return;
 
-
-if(move!=0){
-	curOption+=move;
-	if(curOption<0)
-		curOption=array_length_1d(option)-1;
-	 else if(curOption==array_length_1d(option))
-		curOption=0;
-
+if(input_dy!=0){
+		targetOptionIndex=(numOption+targetOptionIndex+input_dy)%numOption;
 }
 
-
-var push=0;
-push+=max(keyboard_check_released(ord("Z")),0);
-if(push!=0){
-	switch(curOption){
+if(isA){
+	switch(targetOptionIndex){
 		case 0:
-			room_goto_next();
+			show_message("continue game");
 			break;
-		case 1:
-	
-		break;	
-	case 2:
-		game_end();
-		break;
-	default:	
+		case 1:			
+			room_goto(room_world);
+			break;	
+		case 2:
+			game_end();
+			break;
+		default:	
 	}
 }
+

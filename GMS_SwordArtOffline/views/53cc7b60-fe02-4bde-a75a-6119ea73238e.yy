@@ -6,7 +6,10 @@
     "children": [
         "0ba3941c-95c0-4cb9-934f-dc38d2866bd9",
         "b1931cd1-a08e-4bb3-afa3-be9a56507666",
-        "5a47f620-fd7f-49f6-8c5e-b2d30f73a633"
+        "5a47f620-fd7f-49f6-8c5e-b2d30f73a633",
+        "1002271a-7c45-44b5-9f36-e12ec5bf0394",
+        "d1778c3d-8f5d-4e35-bd98-125863c340ef",
+        "310a9401-ac2d-401c-bdba-8b03545258ce"
     ],
     "filterType": "GMObject",
     "folderName": "Scene",

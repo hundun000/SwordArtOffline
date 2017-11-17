@@ -232,9 +232,20 @@ switch(enemyManagerState){
 	case EnemyManagerState.nextEnemy:
 		
 		if(checkPlayerWin(room)){
-			//player win animation
+			//------------player win animation
+			//set cursor to leader
+			global.cursor_pointer.x=global.kirito.x;
+			global.cursor_pointer.y=global.kirito.y;
+			//view camera should move immidiately
+			with(obj_camera){
+					x=clamp(x,follower.x-h_border,follower.x+h_border);
+					y=clamp(y,follower.y-v_border,follower.y+v_border);
+			}
+			var view_x=camera_get_view_x(view_camera[0]);
+			var view_y=camera_get_view_y(view_camera[0]);
+			instance_create_depth(view_x,view_y,1,obj_playerWin);
 			enemyManagerState=EnemyManagerState.waitPlayerWinAnimation;
-			instance_create_depth(0,0,1,obj_playerWin);
+
 		}
 		else{		
 			if(ii+1<ds_list_size(global.frontEnemies)){	
@@ -253,6 +264,14 @@ switch(enemyManagerState){
 			enemyManagerState=EnemyManagerState.waitPlayer;
 			with(obj_playerFrontManager){
 				cursorState=CursorState.turnStart;
+			}
+			//set cursor to leader
+			global.cursor_pointer.x=global.kirito.x;
+			global.cursor_pointer.y=global.kirito.y;
+			//view camera should move immidiately
+			with(obj_camera){
+					x=clamp(x,follower.x-h_border,follower.x+h_border);
+					y=clamp(y,follower.y-v_border,follower.y+v_border);
 			}
 			global.inputReceiver=InputReceiver.cursor;
 			break;

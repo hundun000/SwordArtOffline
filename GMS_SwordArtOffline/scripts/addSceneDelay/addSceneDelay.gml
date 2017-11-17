@@ -1,4 +1,4 @@
-/// @argument0 delay_time
+/// @argument0 delay_time_step
 
 
 var time=argument0

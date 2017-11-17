@@ -9,7 +9,7 @@ roleAttackRangFrom=1;
 roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
 hp=40;
-atk=12;
+atk=22;
 def=6;
 dex=10;  //for test
 curHp=hp;
@@ -18,11 +18,5 @@ lv=1;
 curWeapon=noone;
 
 visible=false;
-
-/*
-spawnRoom=-1;
-spawnX=-1;
-spawnY=-1;
-*/
 
 addItemToRole(id,"cover drug",5);

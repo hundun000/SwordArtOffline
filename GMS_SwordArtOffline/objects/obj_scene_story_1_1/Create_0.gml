@@ -4,10 +4,7 @@
 //bgm=audio_play_sound(s_map0_bgm,1,1);
 
 
-global.inputReceiver=InputReceiver.textBox;
-with(obj_textBox_manager){
-	scenceState=ScenceState.nextElement;
-}
+event_inherited();
 
 
 addSceneDelay(40);

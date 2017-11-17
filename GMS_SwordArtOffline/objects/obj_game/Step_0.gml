@@ -12,7 +12,8 @@ enum InputReceiver{
 	cursor,
 	worldTeamFlag,
 	textBox,
-	fightRoom
+	fightRoom,
+	mainMenu
 
 
 }
@@ -34,7 +35,9 @@ switch(global.inputReceiver){
 	case InputReceiver.textBox:
 		reciever=textBoxManager;
 		break;	
-		
+	case InputReceiver.mainMenu:
+		reciever=mainMenu;
+		break;		
 	default:
 		//something ignore input
 		reciever=noone;

@@ -1,5 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
+macros_ect();
+
 globalvar doMoreSelectIndex;
 globalvar itemSelectIndex;
 globalvar operatedRole;
@@ -15,20 +17,20 @@ global.playerWorldTeam=ds_list_create();
 
 
 globalvar cursor_pointer;
-worldTeamFlag=instance_find(obj_team_flag,0);  //its a single instance
-textBoxManager=instance_find(obj_textBox_manager,0);  //its a single instance
-playerFrontManager=instance_find(obj_playerFrontManager,0);
+//others init in Obj_worldMap.Creat
+mainMenu=instance_find(obj_mainMenu,0);
+
 
 globalvar inputReceiver;
-global.inputReceiver=InputReceiver.worldTeamFlag;
+
 
 
 //********* data init*************
+global.inputReceiver=InputReceiver.mainMenu;
+
+//init in Obj_worldMap.Creat
 globalvar asuna;
 globalvar kirito;
 globalvar silica;
 
-global.asuna=instance_find(obj_role_asuna,0);
-global.kirito=instance_find(obj_role_kirito,0);
-global.silica=instance_find(obj_role_silica,0);
 

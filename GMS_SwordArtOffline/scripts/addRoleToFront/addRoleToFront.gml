@@ -59,5 +59,5 @@ role.isFront=true; //use flag to sign role is in TeamFront
 
 
 ds_list_add(global.playerFrontTeam,role);
-
+role.isFront=true;
 

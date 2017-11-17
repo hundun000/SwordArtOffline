@@ -12,11 +12,7 @@ addSceneTextBox("asuna","My name is Asuna.",0);
 addSceneTextBox("kirito","My name is Kirito.",1);
 */
 
-global.inputReceiver=InputReceiver.textBox;
-with(obj_textBox_manager){
-	//wake up for handle scene
-	scenceState=ScenceState.nextElement;
-}
+event_inherited();
 
 
 addSceneDelay(20);
