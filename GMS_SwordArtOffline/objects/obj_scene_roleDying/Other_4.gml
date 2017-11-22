@@ -23,7 +23,7 @@ deleteRoleFromWorld(diedRole);
 //check game over
 if(diedRole==global.kirito){
 	show_message("lead die");
-	addSceneChangeRoom(room_world,InputReceiver.worldTeamFlag);//lock input for debug
+	addSceneChangeRoom(room_mainMenu,InputReceiver.mainMenu);//lock input for debug
 }
 else{
 	addSceneChangeRoom(noone,lastReceiver);

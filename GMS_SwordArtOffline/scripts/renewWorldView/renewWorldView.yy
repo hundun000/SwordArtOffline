@@ -1,8 +1,8 @@
 {
-    "id": "a3e46709-6146-41ce-b217-0aa80fdb285e",
+    "id": "29a700ad-031e-4c46-b8ca-85308c68bedc",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "Unsued_setRoleFrontToTeam",
+    "name": "renewWorldView",
     "IsCompatibility": false,
     "IsDnD": false
 }

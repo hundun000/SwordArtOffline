@@ -15,7 +15,7 @@ dex=10;  //for test
 curHp=hp;
 xp=0;
 lv=1;
-curWeapon=noone;
+curWeapon=noone; //unsued now
 
 visible=false;
 

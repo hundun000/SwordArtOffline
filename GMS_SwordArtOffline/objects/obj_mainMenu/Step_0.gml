@@ -9,10 +9,12 @@ if(input_dy!=0){
 if(isA){
 	switch(targetOptionIndex){
 		case 0:
-			show_message("continue game");
+			room_goto(room_world);
+			loadGame();
 			break;
 		case 1:			
 			room_goto(room_world);
+			resetWorldData();
 			break;	
 		case 2:
 			game_end();

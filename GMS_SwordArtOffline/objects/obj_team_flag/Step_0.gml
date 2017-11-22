@@ -24,17 +24,18 @@ switch(worldMapState){
 			//renew option	
 			num_option=0;
 			option=array_create(5);
-			if(curWorldPos==global.storyLine)
+			if(global.curWorldPos==global.storyLine)
 				option[num_option++]=option_model[0];
 			else
 				option[num_option++]=option_model[1];
+			option[num_option++]=option_model[4];	
 			option[num_option++]=option_model[5];
 			
 			worldMapState=WorldMapState.worldDoMoreSelect;
 		}
 		else{
 			//determine which pos to go
-			switch(curWorldPos){
+			switch(global.curWorldPos){
 				case 0:
 					if(global.storyLine>=1)
 					if(isU||isL){
@@ -50,20 +51,10 @@ switch(worldMapState){
 					default:
 			}
 			
-			if(curWorldPos!=toWorldPos){
+			if(global.curWorldPos!=toWorldPos){
 				//get the x,y of the pos to go
-				switch(toWorldPos){
-					case 0:
-						toWorldX=660;
-						toWorldY=579;	
-						break;	
-					case 1:
-						toWorldX=539;
-						toWorldY=496;
-					break;
-
-					default:
-				}
+				toWorldX=global.thisGame.worldX[toWorldPos];
+				toWorldY=global.thisGame.worldY[toWorldPos];
 		
 				//add motion to go
 				move_towards_point(toWorldX,toWorldY,TEAM_FLAG_SPEED);
@@ -78,7 +69,7 @@ switch(worldMapState){
 			x=toWorldX;
 			y=toWorldY;
 			speed=0;
-			curWorldPos=toWorldPos;
+			global.curWorldPos=toWorldPos;
 			worldMapState=WorldMapState.worldFree;	
 		}
 		break;
@@ -89,8 +80,16 @@ switch(worldMapState){
 				worldMapState=WorldMapState.worldWantIntoBattle;
 			else if(option[worldDoMoreSelectedIndex]==option_model[1])	
 				show_message("Option shop");
-			else if(option[worldDoMoreSelectedIndex]==option_model[5])	
+			else if(option[worldDoMoreSelectedIndex]==option_model[4]){
+				loadGame();
+				renewWorldView();
+				show_message("Option load");
+			}	
+			else if(option[worldDoMoreSelectedIndex]==option_model[5]){
+				saveGame();
 				show_message("Option save");
+			}
+				
 
 		}
 		else if(isB){
@@ -109,7 +108,7 @@ switch(worldMapState){
 		break;
 		
 	case WorldMapState.worldWantIntoBattle:
-		switch(curWorldPos){
+		switch(global.curWorldPos){
 			case 0:
 				//handle battle front init
 				addRoleToWorld(global.kirito);

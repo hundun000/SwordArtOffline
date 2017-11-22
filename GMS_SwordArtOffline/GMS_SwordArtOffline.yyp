@@ -311,6 +311,14 @@
             }
         },
         {
+            "Key": "29a700ad-031e-4c46-b8ca-85308c68bedc",
+            "Value": {
+                "id": "3c325a33-aa64-475b-82a5-448d60965f3d",
+                "resourcePath": "scripts\\renewWorldView\\renewWorldView.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "2b1a9fbb-feed-47f0-95a6-39baea8683a7",
             "Value": {
                 "id": "e95e8515-5c7e-42cf-9ed6-9ffcb07dfcaf",
@@ -1087,6 +1095,14 @@
             }
         },
         {
+            "Key": "896996f8-c327-435c-931e-271e09fc4464",
+            "Value": {
+                "id": "409c1559-9a5b-43a8-bb36-3039e57ec001",
+                "resourcePath": "views\\896996f8-c327-435c-931e-271e09fc4464.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "8a984917-2ad7-4db2-9393-09d0a0753aa4",
             "Value": {
                 "id": "d7f0f36f-3b84-4b29-bd10-5d99bda4222e",
@@ -1319,14 +1335,6 @@
             }
         },
         {
-            "Key": "a3e46709-6146-41ce-b217-0aa80fdb285e",
-            "Value": {
-                "id": "2f2be515-ff5d-483d-aa3d-dcca2e53b7e1",
-                "resourcePath": "scripts\\Unsued_setRoleFrontToTeam\\Unsued_setRoleFrontToTeam.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "a44284a3-3f16-49cf-912f-207f76252b17",
             "Value": {
                 "id": "1054aa60-3554-4b1a-bc1c-fc05d6ae872d",
@@ -1348,6 +1356,14 @@
                 "id": "b01812ab-bb97-4ca6-aae5-714f777bd290",
                 "resourcePath": "sprites\\spr_world_map\\spr_world_map.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a538841e-c559-47fe-83d2-b25b48147f00",
+            "Value": {
+                "id": "87c82875-d026-4530-8256-bda008b22557",
+                "resourcePath": "scripts\\getRoleByName\\getRoleByName.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1599,6 +1615,14 @@
             }
         },
         {
+            "Key": "cb5c82b1-6dda-4a4e-91f3-7bcbc1bb865a",
+            "Value": {
+                "id": "224303b1-9758-4c9b-8482-a984a922b057",
+                "resourcePath": "views\\cb5c82b1-6dda-4a4e-91f3-7bcbc1bb865a.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "cba1b9c6-132a-485a-82e6-d9e59b7062f1",
             "Value": {
                 "id": "4fe39e04-539a-4944-ad9f-1e9f5d59a7f3",
@@ -1703,11 +1727,27 @@
             }
         },
         {
+            "Key": "db2a1230-ea1e-4a6e-95dd-9ab9f39a6e24",
+            "Value": {
+                "id": "43ccfcc8-d6aa-41be-af10-cc3b3c145cb9",
+                "resourcePath": "scripts\\resetWorldData\\resetWorldData.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "dc74db42-b7c9-4c1c-a82c-ddf5a32edc2b",
             "Value": {
                 "id": "d0ca8f25-3630-46b9-b3fb-b5c98fd54ae5",
                 "resourcePath": "objects\\obj_role_silica\\obj_role_silica.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "e0f29333-d5ee-4678-ad83-6e71b08a1a36",
+            "Value": {
+                "id": "8e7347b8-cf0a-4fc8-a77f-1ef900db7aaf",
+                "resourcePath": "scripts\\saveGame\\saveGame.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1895,6 +1935,14 @@
             }
         },
         {
+            "Key": "fd400825-ecf1-49a2-a49e-8ef602f7fdd6",
+            "Value": {
+                "id": "8bd8a80e-87e5-42fa-b4f9-affcfcc3446c",
+                "resourcePath": "scripts\\loadGame\\loadGame.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "fe69a8a1-81fd-441e-a3a1-544de7300297",
             "Value": {
                 "id": "8d7864d6-ca86-4a7f-815b-01872c82415f",
@@ -1928,6 +1976,7 @@
         "9ed5ffdf-bdc2-4de6-aa8d-e10a02287093",
         "9704d663-e80c-49b7-b9fc-7226a7518fc1",
         "7a57e4ef-3795-4a1e-a1c3-75a6439573df",
+        "a538841e-c559-47fe-83d2-b25b48147f00",
         "db0689ff-0fff-49a4-9852-c52f217c676f",
         "34e745e2-d7fc-4db8-ab7a-c34725861f27",
         "f73e1508-3c7f-494d-98d6-d4123bddca90",
@@ -1938,8 +1987,6 @@
         "5afbe0fa-3685-401a-8709-7946d68bc3ae",
         "77a8932c-5abb-4f62-81d8-7886d4d09cf1",
         "58cbe2c4-6d5f-4405-ad0a-e07c4d5ddb9a",
-        "a3e46709-6146-41ce-b217-0aa80fdb285e",
-        "07c9a996-96b5-4da8-9dfd-1d6a51751225",
         "e5d235e6-04a9-4001-9605-bb8ebf380066",
         "877d6053-5e36-4a81-9a42-6631123a91e7",
         "0ee02145-894c-4183-8440-9dca9d0e20bf",
@@ -1947,8 +1994,13 @@
         "0905dcef-1a1b-4a9e-a4d8-af3e00864cf7",
         "b285f562-1825-4391-b62e-12ec974e3d51",
         "ff00e354-d8c6-4653-a877-d0a9a3e67533",
+        "29a700ad-031e-4c46-b8ca-85308c68bedc",
+        "fd400825-ecf1-49a2-a49e-8ef602f7fdd6",
+        "e0f29333-d5ee-4678-ad83-6e71b08a1a36",
+        "db2a1230-ea1e-4a6e-95dd-9ab9f39a6e24",
         "547d7f06-f9a7-454e-9c5d-8ee00e2496c1",
-        "6383a299-eb78-4414-bb6c-9e3c31de7989"
+        "6383a299-eb78-4414-bb6c-9e3c31de7989",
+        "07c9a996-96b5-4da8-9dfd-1d6a51751225"
     ],
     "tutorial": ""
 }
