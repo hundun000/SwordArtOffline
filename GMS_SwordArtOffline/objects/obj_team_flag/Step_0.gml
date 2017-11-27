@@ -23,7 +23,7 @@ switch(worldMapState){
 			
 			//renew option	
 			num_option=0;
-			option=array_create(5);
+			option=array_create(num_optionModel);
 			if(global.curWorldPos==global.storyLine)
 				option[num_option++]=option_model[0];
 			else

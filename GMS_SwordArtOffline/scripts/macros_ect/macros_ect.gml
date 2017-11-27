@@ -5,6 +5,7 @@
 #macro NUM_DOMORE_OPTION 5
 #macro OPTION_FIGHT 0
 #macro OPTION_BAG 1
+#macro OPTION_TALK 3
 #macro OPTION_END 4
 
 
@@ -14,6 +15,12 @@
 #macro INDEX_ITEM_QUALITY 1
 
 #macro DEPTH_ROLE 500
+
+#macro INDEX_HP 0
+#macro INDEX_ATK 1
+#macro INDEX_DEF 2
+#macro INDEX_DEX 3
+#macro INDEX_XP 4
 
 enum Weapon{
 	sword

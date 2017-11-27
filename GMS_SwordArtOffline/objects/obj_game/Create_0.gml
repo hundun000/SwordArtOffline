@@ -2,19 +2,20 @@
 // You can write your code in this editor
 macros_ect();
 
-globalvar doMoreSelectIndex;
+
 globalvar itemSelectIndex;
 globalvar operatedRole;
+globalvar curWorldPos;
 
 globalvar storyLine;
-global.storyLine=0;
+
 globalvar playerFrontTeam;
-global.playerFrontTeam=ds_list_create();
+
 globalvar playerWorldTeam;
-global.playerWorldTeam=ds_list_create();
+
 
 globalvar thisGame;
-thisGame=id;
+global.thisGame=id;
 
 
 globalvar cursor_pointer;

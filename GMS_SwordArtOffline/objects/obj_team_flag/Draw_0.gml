@@ -4,21 +4,28 @@ draw_self();
 
 if(worldMapState==WorldMapState.worldDoMoreSelect){
 	
-	draw_set_color(c_white);
-	draw_rectangle(0,0,150,300,false);
-	
+
+	draw_sprite(spr_worldMenu,0,0,0);
 
 	
-	draw_set_font(fightRoomFont_big);
-	var fontSize=font_get_size(fightRoomFont_big);
+
+	var size=sprite_get_height(spr_worldOption);
 	for(var i=0;i<num_option;i++){
 			
+		var blendColor;
 		if(i==worldDoMoreSelectedIndex)
-			draw_set_color(c_orange);
+			blendColor=c_orange;
 		else
-			draw_set_color(c_black);
-			
-		draw_text(0,i*(5+fontSize),option[i]);	
+			blendColor=c_white;
+		
+		for(var j=0;j<num_optionModel;j++){
+			if(option[i]==option_model[j])
+				draw_sprite_ext(spr_worldOption,j,0,i*(5+size),1,1,0,blendColor,1);
+		}
+		
+		
+		
+		
 	}
 	
 

@@ -12,10 +12,12 @@
         "f511f0d7-352c-47d4-b37b-c68f7fd11d34",
         "d908b556-e27a-43e8-b465-e3d6df8ca621",
         "8ad15812-d3f0-4951-a4ad-0cb035029e99",
-        "68cc8c49-ae4f-43f1-a946-5c8e8841d0d3"
+        "68cc8c49-ae4f-43f1-a946-5c8e8841d0d3",
+        "a86fb7db-f0b5-4047-b724-e69ad08a04f1",
+        "d85759e3-9eca-48bb-999a-071c8b0ced38"
     ],
     "filterType": "GMSprite",
-    "folderName": "Menu_Bar",
+    "folderName": "Menu&Bar",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

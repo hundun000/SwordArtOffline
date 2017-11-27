@@ -4,7 +4,26 @@
     "mvc": "1.0",
     "name": "obj_doMoreMemu",
     "eventList": [
-        
+        {
+            "id": "368ceba1-6266-4e3c-bea8-9e36fcff7baa",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "eb8fd9d3-c0e7-419e-bdbd-20d81f84f58b"
+        },
+        {
+            "id": "9b90e2dd-8b46-41de-94fd-69beefafabcc",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "eb8fd9d3-c0e7-419e-bdbd-20d81f84f58b"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "parentObjectId": "00000000-0000-0000-0000-000000000000",

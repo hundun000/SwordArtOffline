@@ -100,17 +100,7 @@ switch(cursorState){
 			var center=getCameraCenter(view_camera[0]);
 			var menuSide=sign(center[0]-global.cursor_pointer.x+1);
 			
-			doMoreMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);
-											
-			global.doMoreSelectIndex=0;
-			for(var i=0;i<NUM_DOMORE_OPTION;i++){
-				with(instance_create_layer(doMoreMenu.x,
-											doMoreMenu.y+(i-NUM_DOMORE_OPTION *0.5-0.5)*(UNIT+5)
-											,"Layer_menuOption",obj_doMoreOption)){
-					image_index=i;	
-				}
-			}
-			
+			instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);		
 		
 			setRoleState(global.operatedRole,RoleState.doMore);
 		}
@@ -135,15 +125,13 @@ switch(cursorState){
 	case CursorState.roleDoMore:
 	
 		if(input_dy!=0){
-			global.doMoreSelectIndex+=input_dy;
-			if(global.doMoreSelectIndex>NUM_DOMORE_OPTION-1)
-				global.doMoreSelectIndex=0;
-			else if(global.doMoreSelectIndex<0)
-				global.doMoreSelectIndex=NUM_DOMORE_OPTION-1;
+			var doMoreMemu=instance_find(obj_doMoreMemu,0);
+			doMoreMemu.doMoreSelectIndex=(NUM_DOMORE_OPTION+doMoreMemu.doMoreSelectIndex+input_dy)%(NUM_DOMORE_OPTION);
 		}
 		else if(isA){
 			//do more menu option
-			switch(global.doMoreSelectIndex){
+			var doMoreMemu=instance_find(obj_doMoreMemu,0);
+			switch(doMoreMemu.doMoreSelectIndex){
 				case OPTION_FIGHT:
 					target=noone;
 					cursorState=CursorState.selectingEnemy;
@@ -163,27 +151,21 @@ switch(cursorState){
 
 					
 					break;
+				case OPTION_TALK:
+					createSingleMessage("This function has not been implemented",global.operatedRole.name);
+					return;
+					
 				case OPTION_END:
 					cursorState=CursorState.nextPlayer;
-					
-					
-					
-					deleteCanMove();
-					
+				
+					deleteCanMove();				
 					instance_destroy(obj_doMoreMemu);
-					instance_destroy(obj_doMoreOption);
-
-					
-					
 				
 				default:
 			
 			}
 			
 			with(obj_doMoreMemu){
-				visible=false;
-			}
-			with(obj_doMoreOption){
 				visible=false;
 			}
 			
@@ -198,11 +180,11 @@ switch(cursorState){
 				
 			global.cursor_pointer.x=tempRoleX;
 			global.cursor_pointer.y=tempRoleY;
-					
+			
+			
 			deleteCanMove();
 			
 			instance_destroy(obj_doMoreMemu);
-			instance_destroy(obj_doMoreOption);
 		
 			setRoleState(global.operatedRole,RoleState.idle);
 		}
@@ -210,8 +192,38 @@ switch(cursorState){
 		
 	case CursorState.selectingBagItem:
 	
-		if(input_dy!=0){
-				global.itemSelectIndex=clamp(global.itemSelectIndex+input_dy,0,NUM_ROLE_ITEM-1);
+		if(input_dy!=0&&global.operatedRole.num_curItem!=0){
+			global.itemSelectIndex=(global.itemSelectIndex+input_dy+global.operatedRole.num_curItem)%global.operatedRole.num_curItem;
+		}
+		else if(isA){
+			var itemName=ds_grid_get(global.operatedRole.items,global.itemSelectIndex,INDEX_ITEM_NAME);
+			if(canUseItem(itemName,global.operatedRole)){
+				cursorState=CursorState.nextPlayer;
+				
+				UseItem(global.operatedRole,global.itemSelectIndex);					
+				
+				deleteCanMove();		
+					
+				instance_destroy(obj_doMoreMemu);
+	
+				
+				instance_destroy(obj_itemMenu);
+			}
+			else{	
+				createSingleMessage("Cannot use this item.","system");
+				
+				cursorState=CursorState.roleDoMore;
+			
+				instance_destroy(obj_itemMenu);
+			
+				with(obj_doMoreMemu){
+					visible=true;
+				}
+
+				
+				
+			}
+			
 		}
 		else if(isB){
 			cursorState=CursorState.roleDoMore;
@@ -221,9 +233,7 @@ switch(cursorState){
 			with(obj_doMoreMemu){
 				visible=true;
 			}
-			with(obj_doMoreOption){
-				visible=true;
-			}
+
 		
 		}
 		
@@ -336,10 +346,7 @@ switch(cursorState){
 			with(obj_doMoreMemu){
 				visible=true;
 			}
-			with(obj_doMoreOption){
-				visible=true;
-			}
-		
+
 		}
 			
 

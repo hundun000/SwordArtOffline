@@ -8,7 +8,8 @@
         "880f4b40-fe7a-4ae2-859e-81abef35a0b4",
         "0905dcef-1a1b-4a9e-a4d8-af3e00864cf7",
         "b285f562-1825-4391-b62e-12ec974e3d51",
-        "ff00e354-d8c6-4653-a877-d0a9a3e67533"
+        "ff00e354-d8c6-4653-a877-d0a9a3e67533",
+        "4db4bdd2-dff8-4e67-8a78-cd7b0544d94f"
     ],
     "filterType": "GMScript",
     "folderName": "Scene",

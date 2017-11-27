@@ -19,4 +19,3 @@ curWeapon=noone; //unsued now
 
 visible=false;
 
-addItemToRole(id,"cover drug",5);

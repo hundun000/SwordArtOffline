@@ -29,4 +29,3 @@ spawnY=-1;
 
 addItemToRole(id,"cover drug",3);
 addItemToRole(id,"cover drug",3);
-addItemToRole(id,"cover drug",3);

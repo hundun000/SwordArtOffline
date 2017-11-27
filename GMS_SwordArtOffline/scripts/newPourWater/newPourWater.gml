@@ -10,6 +10,7 @@
 #macro CAN_ATTACK 1
 #macro CAN_MOVE 2
 #macro CAN_MOVE_ATTACK 3
+#macro CAN_FRIEND 4
 #macro CAN_MOVE_LAYER "Instances_canMove"
 
 

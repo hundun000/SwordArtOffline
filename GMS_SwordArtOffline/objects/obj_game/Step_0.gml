@@ -19,10 +19,10 @@ enum InputReceiver{
 }
 
 
-var isA=keyboard_check_pressed(BTN_A);
-var isB=keyboard_check_pressed(BTN_B);
-var dx=keyboard_check_pressed(BTN_R)-keyboard_check_pressed(BTN_L);
-var dy=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
+var isA_game=keyboard_check_pressed(BTN_A);
+var isB_game=keyboard_check_pressed(BTN_B);
+var dx_game=keyboard_check_pressed(BTN_R)-keyboard_check_pressed(BTN_L);
+var dy_game=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 
 var reciever;
 switch(global.inputReceiver){
@@ -43,9 +43,19 @@ switch(global.inputReceiver){
 		reciever=noone;
 }
 
+
+//reset all inputable
+with(obj_interface_inputable){
+	isA=false;
+	isB=false;
+	input_dx=0;
+	input_dy=0;
+}
+
+//only set the reciever
 if(reciever!=noone){
-	reciever.isA=isA;
-	reciever.isB=isB;
-	reciever.input_dx=dx;
-	reciever.input_dy=dy;
+	reciever.isA=isA_game;
+	reciever.isB=isB_game;
+	reciever.input_dx=dx_game;
+	reciever.input_dy=dy_game;
 }

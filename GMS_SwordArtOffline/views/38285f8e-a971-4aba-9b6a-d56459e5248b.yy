@@ -8,7 +8,8 @@
         "c742c77d-b41b-4a21-99e6-72984bcd4fee",
         "6dcaaa6f-366f-4967-8b7e-0aa5a2f4794e",
         "96ac61d7-8bec-47cd-888c-2ccacf849914",
-        "926e8b80-e167-4d10-a572-45565e84ebc4"
+        "926e8b80-e167-4d10-a572-45565e84ebc4",
+        "12399a0b-de59-4950-969f-c61e55f2348d"
     ],
     "filterType": "GMObject",
     "folderName": "Abstract",
