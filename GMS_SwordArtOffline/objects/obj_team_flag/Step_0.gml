@@ -28,6 +28,7 @@ switch(worldMapState){
 				option[num_option++]=option_model[0];
 			else
 				option[num_option++]=option_model[1];
+			option[num_option++]=option_model[2];	
 			option[num_option++]=option_model[4];	
 			option[num_option++]=option_model[5];
 			
@@ -80,6 +81,9 @@ switch(worldMapState){
 				worldMapState=WorldMapState.worldWantIntoBattle;
 			else if(option[worldDoMoreSelectedIndex]==option_model[1])	
 				show_message("Option shop");
+			else if(option[worldDoMoreSelectedIndex]==option_model[2]){
+				room_goto(room_team);
+			}
 			else if(option[worldDoMoreSelectedIndex]==option_model[4]){
 				loadGame();
 				renewWorldView();
@@ -128,9 +132,7 @@ switch(worldMapState){
 
 			default:
 		}	
-		//reset state
-		worldMapState=WorldMapState.worldFree; 
-		visible=false;
+
 		break;
 }
 

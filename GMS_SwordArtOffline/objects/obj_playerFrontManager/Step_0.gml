@@ -48,7 +48,7 @@ switch(cursorState){
 		}
 		else if(isA){
 			global.operatedRole=instance_position(global.cursor_pointer.x,global.cursor_pointer.y,obj_role_player);
-			if(global.operatedRole!=noone){
+			if(global.operatedRole!=noone&&global.operatedRole.isFront){
 			  //if(selectedRole.control==controlType.player)			
 				if(global.operatedRole.roleState==RoleState.idle){	
 					cursorState=CursorState.selectedRole;
@@ -317,11 +317,13 @@ switch(cursorState){
 					frontRole.visible=false;
 			}
 			
+			
+			
+			
 			global.fighter_L=target;
 			global.fighter_R=global.operatedRole;			
 			global.curAttackSide=FIGHT_R;
 			global.fightBackRoom=room;
-			//global.fight_found_side=FIGHT_R;
 			
 			deleteCanMove();
 			

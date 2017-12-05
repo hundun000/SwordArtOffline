@@ -22,7 +22,7 @@ for(i=0;i<num_playerWorldTeam;i++){
 	ini_write_real(sectionName,keyName+"hp",role.hp);
 	ini_write_real(sectionName,keyName+"atk",role.atk);
 	ini_write_real(sectionName,keyName+"def",role.def);
-	ini_write_real(sectionName,keyName+"fex",role.dex);
+	ini_write_real(sectionName,keyName+"dex",role.dex);
 	ini_write_real(sectionName,keyName+"curHp",role.curHp);
 	ini_write_real(sectionName,keyName+"xp",role.xp);
 	ini_write_real(sectionName,keyName+"lv",role.lv);

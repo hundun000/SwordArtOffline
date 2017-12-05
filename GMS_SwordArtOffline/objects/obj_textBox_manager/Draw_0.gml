@@ -28,7 +28,7 @@ if(scenceState==ScenceState.showText){
 		draw_set_font(textBoxFont_mainText);
 		draw_set_color(c_white);
 
-		draw_text_ext(view_x+2,box_top_y,curText,fontSize+2,VIEW_HEIGHT);
+		draw_text_ext(view_x+2,box_top_y,curText,font_get_size(textBoxFont_mainText)+2,VIEW_HEIGHT);
 	
 	
 	}

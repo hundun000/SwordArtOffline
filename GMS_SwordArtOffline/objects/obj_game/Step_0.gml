@@ -12,8 +12,9 @@ enum InputReceiver{
 	cursor,
 	worldTeamFlag,
 	textBox,
-	fightRoom,
-	mainMenu
+	mainMenu,
+	teamRoomManager,
+	fightRoom
 
 
 }
@@ -37,19 +38,13 @@ switch(global.inputReceiver){
 		break;	
 	case InputReceiver.mainMenu:
 		reciever=mainMenu;
-		break;		
+		break;	
+	case InputReceiver.teamRoomManager:
+		reciever=teamRoomManager;
+		break;
 	default:
 		//something ignore input
 		reciever=noone;
-}
-
-
-//reset all inputable
-with(obj_interface_inputable){
-	isA=false;
-	isB=false;
-	input_dx=0;
-	input_dy=0;
 }
 
 //only set the reciever

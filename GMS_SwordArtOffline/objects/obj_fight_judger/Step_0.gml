@@ -22,7 +22,7 @@ enum FightState{
 
 //show_debug_message(global.fightState);
 
-
+if(global.inputReceiver!=InputReceiver.fightRoom) return;
 
 switch(global.fightState){
 
@@ -36,7 +36,7 @@ switch(global.fightState){
 		else
 			var ans_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
 			
-		//!!!!!!!!!!!!!!!!!!! global.curAttackSide<=>found<=>ans[0] !!!!!!!!!!!!!!!
+		//!!!!!!!!!!!!!!!!!!! global.curAttackSide<=>founder<=>ans[0] !!!!!!!!!!!!!!!
 		
 		
 		//init turnTimes
@@ -87,6 +87,8 @@ switch(global.fightState){
 		startDelay=STEP_reduceHpAnimation;
 		reduceHpAnimationCountDown=-1; //distinguish countdown==0 and init==-1
 		global.fightState=FightState.waitStartDelay;
+		
+		randomise();
 		
 		break;
 		

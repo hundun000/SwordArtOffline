@@ -83,8 +83,6 @@ curDelay=-1;
 
 
 
-//2*sprite_get_width(spr_textBoxRolePhoto);
-fontSize=font_get_size(textBoxFont_mainText);
 
 //about dynamic draw
 textSpeed=1;

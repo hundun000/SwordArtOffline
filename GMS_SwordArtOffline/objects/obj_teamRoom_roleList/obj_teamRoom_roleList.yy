@@ -1,18 +1,28 @@
 {
-    "id": "7ba77743-342e-4490-aa2e-426d3eec864b",
+    "id": "b362678e-02d6-414a-810f-7c48b1f609a9",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_world_map",
+    "name": "obj_teamRoom_roleList",
     "eventList": [
         {
-            "id": "a8de33f9-5369-4358-ab32-2c32e9c8b258",
+            "id": "ef7334c0-7209-4759-834d-1b319ece1d16",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 4,
-            "eventtype": 7,
-            "m_owner": "7ba77743-342e-4490-aa2e-426d3eec864b"
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "b362678e-02d6-414a-810f-7c48b1f609a9"
+        },
+        {
+            "id": "c8c5e659-bdca-46a7-9fa2-5cf1ab6e2f0c",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "b362678e-02d6-414a-810f-7c48b1f609a9"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -31,6 +41,6 @@
     "physicsShapePoints": null,
     "physicsStartAwake": true,
     "solid": false,
-    "spriteId": "a4db8f79-d956-49e6-a2fe-a41f7fa7683a",
+    "spriteId": "5aa0d2c4-8b4e-4f8d-bcb1-4f2862b3cb30",
     "visible": true
 }

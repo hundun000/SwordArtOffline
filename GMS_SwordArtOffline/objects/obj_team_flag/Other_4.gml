@@ -5,6 +5,8 @@
 if(room==room_world){
 	//blind inputreciever with romm
 	global.inputReceiver=InputReceiver.worldTeamFlag;
+	//reset state
+	worldMapState=WorldMapState.worldFree; 
 	visible=true;
 	with(obj_role_player)
 		visible=false;
