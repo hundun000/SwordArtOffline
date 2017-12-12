@@ -4,7 +4,7 @@ event_inherited();
 
 name="kirito";
 roleType=RoleType.walker;
-MAX_MOVEMENT=4; 
+MAX_MOVEMENT=8; 
 roleAttackRangFrom=1;
 roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
@@ -21,3 +21,5 @@ visible=false;
 
 addItemToRole(id,"cover drug",5);
 addItemToRole(id,"cover drug",4);
+
+

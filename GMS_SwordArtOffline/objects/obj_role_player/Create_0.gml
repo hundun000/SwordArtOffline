@@ -7,7 +7,7 @@
 
 
 items=ds_grid_create(NUM_ITEM_PROPERTY,NUM_ROLE_ITEM);
-num_curItem=0;
+curNumItem=0;
 isFront=false;
 
 visible=false;

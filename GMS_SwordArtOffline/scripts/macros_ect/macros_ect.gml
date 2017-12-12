@@ -10,7 +10,10 @@
 
 
 #macro NUM_ROLE_ITEM 3
+#macro NUM_BOX_ITEM 6
 #macro NUM_ITEM_PROPERTY 3
+
+
 #macro INDEX_ITEM_NAME 0
 #macro INDEX_ITEM_QUALITY 1
 

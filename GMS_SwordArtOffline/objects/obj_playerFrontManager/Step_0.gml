@@ -192,15 +192,15 @@ switch(cursorState){
 		
 	case CursorState.selectingBagItem:
 	
-		if(input_dy!=0&&global.operatedRole.num_curItem!=0){
-			global.itemSelectIndex=(global.itemSelectIndex+input_dy+global.operatedRole.num_curItem)%global.operatedRole.num_curItem;
+		if(input_dy!=0&&global.operatedRole.curNumItem!=0){
+			global.itemSelectIndex=(global.itemSelectIndex+input_dy+global.operatedRole.curNumItem)%global.operatedRole.curNumItem;
 		}
 		else if(isA){
-			var itemName=ds_grid_get(global.operatedRole.items,global.itemSelectIndex,INDEX_ITEM_NAME);
+			var itemName=ds_grid_get(global.operatedRole.items,INDEX_ITEM_NAME,global.itemSelectIndex);
 			if(canUseItem(itemName,global.operatedRole)){
 				cursorState=CursorState.nextPlayer;
 				
-				UseItem(global.operatedRole,global.itemSelectIndex);					
+				useItemAtFront(global.operatedRole,global.itemSelectIndex);					
 				
 				deleteCanMove();		
 					

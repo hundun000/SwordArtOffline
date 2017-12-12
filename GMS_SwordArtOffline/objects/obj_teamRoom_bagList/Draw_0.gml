@@ -4,19 +4,38 @@
 var i;
 var x_text=x;
 var y_text=y;
+var space=20;
 
-var role=manager.selectedRole;
-var size=ds_list_size(role.items);
-for(i=0;i<size;i++){
-	var item=ds_list_find_value(role.items,i);
-	draw_set_color(c_black);
+var role=manager.selectedTeamRole;
+var size=role.curNumItem;
+if(size>0){
+	for(i=0;i<size;i++){
+		var itemName=ds_grid_get(role.items,i,INDEX_ITEM_NAME);
+		var itemQuality=ds_grid_get(role.items,i,INDEX_ITEM_QUALITY);
 	
-	if(item==manager.selectedBagItem){
-		if(teamRoomState==TeamRoomState.selectingBagItem)
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+5),item.name+"<<");
-		else
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+5),item.name+">>");
+	
+		if(i==manager.selectedBagItemIndex){
+			draw_set_color(c_orange);
+			if(manager.teamRoomState==TeamRoomState.selectingBagItem){
+				draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality)+"<<");
+			}
+			else {
+				draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality)+">>");
+			}
+		}
+		else{
+			draw_set_color(c_black);
+			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality));
+		}
 	}
-	else
-		draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+5),item.name);
+}
+else{
+	if(manager.teamRoomState==TeamRoomState.selectingBagItem){
+		draw_set_color(c_orange);
+		draw_text(x_text,y_text,"no item<<");
+	}
+	else{
+		draw_set_color(c_black);
+		draw_text(x_text,y_text,"no item");
+	}
 }

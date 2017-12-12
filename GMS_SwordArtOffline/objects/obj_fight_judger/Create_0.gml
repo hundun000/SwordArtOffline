@@ -8,12 +8,12 @@
 
 //globalvar fight_found_side;
 
-globalvar fighter_L;
-globalvar fighter_R;
-globalvar curAttackSide;//value is FIGHT_L(0) or FIGHT_R(1)
-globalvar fightState;
-globalvar fightBackRoom;
-globalvar isHit;
+//globalvar fighter_L;
+//globalvar fighter_R;
+//globalvar curAttackSide;//value is FIGHT_L(0) or FIGHT_R(1)
+//globalvar fightState;
+//globalvar fightBackRoom;
+//globalvar isHit;
 
 
 

@@ -7,15 +7,22 @@ var defultValue=-1;
 ini_open("Save.sav");
 
 var sectionName;
+var i,j;
 
 sectionName="World Data";
 global.storyLine=ini_read_real(sectionName,"storyLine",defultValue);
 global.curWorldPos=ini_read_real(sectionName,"curWorldPos",defultValue);
+global.curNumPublicBoxItem=ini_read_real(sectionName,"curNumPublicBoxItem",defultValue);
+for(i=0;i<global.curNumPublicBoxItem;i++){
+	var itemProperty=ini_read_string(sectionName,"publicBoxItem_"+string(i)+"_name",defultValue);
+	ds_grid_set(global.publicBox,i,INDEX_ITEM_NAME,itemProperty);
+	itemProperty=ini_read_real(sectionName,"publicBoxItem_"+string(i)+"_quality",defultValue);
+	ds_grid_set(global.publicBox,i,INDEX_ITEM_QUALITY,itemProperty);
+}
 
-
-ds_list_clear(global.playerWorldTeam);
 sectionName="Role Data";
-var i,j;
+ds_list_clear(global.playerWorldTeam);
+
 var num_playerWorldTeam=ini_read_real(sectionName,"num_playerWorldTeam",defultValue);
 for(i=0;i<num_playerWorldTeam;i++){
 	var keyName="role"+string(i)+"_";	
@@ -33,9 +40,9 @@ for(i=0;i<num_playerWorldTeam;i++){
 	
 	
 	ds_grid_clear(role.items,noone);
-	var num_curItem=ini_read_real(sectionName,keyName+"num_curItem",defultValue);
-	role.num_curItem=num_curItem;
-	for(j=0;j<num_curItem;j++){
+	var curNumItem=ini_read_real(sectionName,keyName+"curNumItem",defultValue);
+	role.curNumItem=curNumItem;
+	for(j=0;j<curNumItem;j++){
 		var itemProperty=ini_read_string(sectionName,keyName+"item_"+string(j)+"_name",defultValue);
 		ds_grid_set(role.items,j,INDEX_ITEM_NAME,itemProperty);
 		itemProperty=ini_read_real(sectionName,keyName+"item_"+string(j)+"_quality",defultValue);

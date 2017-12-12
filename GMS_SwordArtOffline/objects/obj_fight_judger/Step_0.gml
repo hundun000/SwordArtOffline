@@ -98,7 +98,7 @@ switch(global.fightState){
 			startDelay--;
 		}
 		else{
-			fightState=FightState.startAttackAnimation;
+			global.fightState=FightState.startAttackAnimation;
 		}
 		
 		break;
@@ -220,7 +220,7 @@ switch(global.fightState){
 			attackAnimation[!global.curAttackSide].sprite_index=getDieSpriteByRole(fighter[!global.curAttackSide]);
 			attackAnimation[!global.curAttackSide].image_speed=1;
 			//mean only need one animation finish
-			isHit=1;
+			global.isHit=1;
 			global.fightState=FightState.waitResultAnimation;
 		}
 		break;

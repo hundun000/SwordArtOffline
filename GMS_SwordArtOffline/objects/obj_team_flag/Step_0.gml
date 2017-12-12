@@ -115,7 +115,7 @@ switch(worldMapState){
 		switch(global.curWorldPos){
 			case 0:
 				//handle battle front init
-				addRoleToWorld(global.kirito);
+				//*** kiroto add to world when resetWorldData	
 				addRoleToFront(global.kirito,room_battle_1_1,0);
 				
 				room_goto(room_fake_1_0);
