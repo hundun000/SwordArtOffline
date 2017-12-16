@@ -18,6 +18,10 @@ worldTeamFlag=noone;
 
 
 
+global.font_CN_textBox=font_add("ARIALUNI_fixed.ttf",32,0,0,32,128);
+global.font_CN_teamRoom=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
+
+
 
 
 

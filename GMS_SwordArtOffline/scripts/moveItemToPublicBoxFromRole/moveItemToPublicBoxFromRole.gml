@@ -14,4 +14,6 @@ if(global.curNumPublicBoxItem<NUM_BOX_ITEM){
 	removeItemFromRole(role,item_index);
 	return "move "+item_name+"x"+string(quality)+" from "+role.name+" to box";
 }
+else
+	return "cann't move because box is full";
 

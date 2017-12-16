@@ -19,5 +19,5 @@ global.publicBox=ds_grid_create(NUM_BOX_ITEM,NUM_ITEM_PROPERTY);
 
 addRoleToWorld(global.kirito);
 
-addItemToPublicBox("cover drug",8);
-addItemToPublicBox("cover drug",9);
+addItemToPublicBox("好伤药",8);
+addItemToPublicBox("伤药",9);

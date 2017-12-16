@@ -27,6 +27,6 @@ spawnX=-1;
 spawnY=-1;
 */
 
-addItemToRole(id,"cover drug",3);
-addItemToRole(id,"cover drug",3);
-addItemToRole(id,"cover drug",3);
+addItemToRole(id,"伤药",3);
+addItemToRole(id,"伤药",3);
+addItemToRole(id,"伤药",3);

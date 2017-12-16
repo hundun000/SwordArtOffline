@@ -21,7 +21,7 @@ selectedBagItemIndex=-1;
 selectedItemOperationIndex=-1;
 selectedBoxItemIndex=-1;
 
-textItemInfo="";
+//textItemInfo="";
 textOperationInfo="";
 
 #macro OPERATE_USE 0

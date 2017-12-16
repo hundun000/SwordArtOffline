@@ -14,12 +14,12 @@ for(i=0;i<size;i++){
 	if(role==manager.selectedTeamRole){
 		draw_set_color(c_orange);
 		if(manager.teamRoomState==TeamRoomState.selectingRole)
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),role.name+"<<");
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),role.name+"<<");
 		else
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),role.name+">>");
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),role.name+">>");
 	}
 	else{
 		draw_set_color(c_black);
-		draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),role.name);
+		draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),role.name);
 	}
 }

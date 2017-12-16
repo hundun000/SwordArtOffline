@@ -19,7 +19,7 @@ curWeapon=noone; //unsued now
 
 visible=false;
 
-addItemToRole(id,"cover drug",5);
-addItemToRole(id,"cover drug",4);
+addItemToRole(id,"好伤药",5);
+addItemToRole(id,"伤药",4);
 
 

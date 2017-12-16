@@ -9,8 +9,8 @@ switch(teamRoomState){
 			teamRoomState=TeamRoomState.selectingBagItem;			
 			if(selectedTeamRole.curNumItem>0){
 				selectedBagItemIndex=0;
-				var itemName=ds_grid_get(selectedTeamRole.items,selectedBagItemIndex,INDEX_ITEM_NAME);
-				textItemInfo=getItemInfo(itemName);
+				//var itemName=ds_grid_get(selectedTeamRole.items,selectedBagItemIndex,INDEX_ITEM_NAME);
+				//textItemInfo=getItemInfo(itemName);
 			}
 			else
 				selectedBagItemIndex=-1;
@@ -35,19 +35,26 @@ switch(teamRoomState){
 			teamRoomState=TeamRoomState.selectingRole;
 			selectedBagItemIndex=-1;
 			selectedBoxItemIndex=-1;
-			textItemInfo="";
+			//textItemInfo="";
 		}
 		else if(input_dy!=0){
 			if(selectedBagItemIndex!=-1){
 				selectedBagItemIndex=clamp(selectedBagItemIndex+input_dy,0,selectedTeamRole.curNumItem-1);
-				var itemName=ds_grid_get(selectedTeamRole.items,selectedBagItemIndex,INDEX_ITEM_NAME);
-				textItemInfo=getItemInfo(itemName);
+				//var itemName=ds_grid_get(selectedTeamRole.items,selectedBagItemIndex,INDEX_ITEM_NAME);
+				//textItemInfo=getItemInfo(itemName);
 			}
 		}		
 		break;
 	case TeamRoomState.selectingBoxItem:
 		if(isA){
-			
+			//must be operation"get from box"
+			if(selectedBoxItemIndex!=-1){
+				textOperationInfo=moveItemFromPublicBoxToRole(selectedTeamRole,selectedBoxItemIndex);
+				renewSelectedBagItemCausedByMoved();
+				selectedBoxItemIndex=-1;
+			}
+			else
+				textOperationInfo="box no item to get";
 		}
 		else if(isB){
 			teamRoomState=TeamRoomState.selectingItemOperation;
@@ -64,12 +71,20 @@ switch(teamRoomState){
 				case OPERATE_USE:
 					break;
 				case OPERATE_DISCARD:
-					textOperationInfo=removeItemFromRole(selectedTeamRole,selectedBagItemIndex);		
-					renewSelectedBagItemCausedByMoved();
+					if(selectedBagItemIndex!=-1){
+						textOperationInfo=removeItemFromRole(selectedTeamRole,selectedBagItemIndex);		
+						renewSelectedBagItemCausedByMoved();
+					}
+					else
+						textOperationInfo="bag no item to discard";
 					break;
 				case OPERATE_PUT_TO_BOX:
-					textOperationInfo=moveItemToPublicBoxFromRole(selectedTeamRole,selectedBagItemIndex);
-					renewSelectedBagItemCausedByMoved();
+					if(selectedBagItemIndex!=-1){
+						textOperationInfo=moveItemToPublicBoxFromRole(selectedTeamRole,selectedBagItemIndex);
+						renewSelectedBagItemCausedByMoved();
+					}
+					else
+						textOperationInfo="bag no item to put";
 					break;
 				case OPERATE_GET_FROM_BOX:
 					teamRoomState=TeamRoomState.selectingBoxItem;

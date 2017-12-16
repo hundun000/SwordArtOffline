@@ -17,15 +17,15 @@ if(size>0){
 		if(i==manager.selectedBagItemIndex){
 			draw_set_color(c_orange);
 			if(manager.teamRoomState==TeamRoomState.selectingBagItem){
-				draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality)+"<<");
+				draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality)+"<<");
 			}
 			else {
-				draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality)+">>");
+				draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality)+">>");
 			}
 		}
 		else{
 			draw_set_color(c_black);
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),itemName+"x"+string(itemQuality));
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality));
 		}
 	}
 }

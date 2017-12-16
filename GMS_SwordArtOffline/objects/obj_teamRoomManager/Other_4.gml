@@ -8,7 +8,7 @@ if(room==room_team){
 	else
 		selectedTeamRole=noone;	
 		
-	
+	draw_set_font(global.font_CN_teamRoom);
 		
 		
 }

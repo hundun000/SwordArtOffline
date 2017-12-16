@@ -13,14 +13,14 @@ for(i=0;i<size;i++){
 	if(i==manager.selectedItemOperationIndex){
 		draw_set_color(c_orange);
 		if(manager.teamRoomState==TeamRoomState.selectingItemOperation){
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),manager.operationName[i]+"<<");
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),manager.operationName[i]+"<<");
 		}
 		else {
-			draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),manager.operationName[i]+">>");
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),manager.operationName[i]+">>");
 		}
 	}
 	else{
 		draw_set_color(c_black);
-		draw_text(x_text,y_text+i*(font_get_size(font_teamRoom)+space),manager.operationName[i]);
+		draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),manager.operationName[i]);
 	}
 }

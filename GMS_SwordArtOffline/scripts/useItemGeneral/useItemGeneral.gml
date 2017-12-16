@@ -11,7 +11,7 @@ var returnArg;
 var messageText=itemName+" Used.";
 
 switch(itemName){
-	case "cover drug":
+	case "伤药":
 	
 		returnArg[0]=spr_workItem_coverDrug;
 		
@@ -20,6 +20,15 @@ switch(itemName){
 		messageText+=role.name+" cover from "+string(before)+" to "+string(role.curHp);
 		
 		break;
+	case "好伤药":
+	
+		returnArg[0]=spr_workItem_goodCoverDrug;
+		
+		var before=role.curHp;
+		role.curHp=clamp(role.curHp+20,role.curHp,role.hp);
+		messageText+=role.name+" cover from "+string(before)+" to "+string(role.curHp);
+		
+		break;		
 	default:
 		messageText="no defined itemName";
 }

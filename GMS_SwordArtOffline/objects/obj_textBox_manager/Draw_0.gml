@@ -17,18 +17,15 @@ if(scenceState==ScenceState.showText){
 		//draw role photo
 		draw_sprite(spr_role_photo,subImageIndex,rolePhotoX[rolePhotoSide],box_top_y);
 
-
-
 		//draw box
 		draw_sprite(spr_textBox,0,view_x,box_top_y);
 
-
-
 		//draw text
-		draw_set_font(textBoxFont_mainText);
+		//draw_set_font(textBoxFont_mainText);
+		draw_set_font(global.font_CN_textBox);
 		draw_set_color(c_white);
 
-		draw_text_ext(view_x+2,box_top_y,curText,font_get_size(textBoxFont_mainText)+2,VIEW_HEIGHT);
+		draw_text_ext(view_x+2,box_top_y,curText,font_get_size(global.font_CN_textBox)+2,VIEW_HEIGHT);
 	
 	
 	}
