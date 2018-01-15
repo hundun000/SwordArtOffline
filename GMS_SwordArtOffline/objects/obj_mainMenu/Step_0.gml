@@ -13,8 +13,10 @@ if(isA){
 			loadGame();
 			break;
 		case 1:			
-			room_goto(room_world);
+			//room_goto(room_world);
 			resetWorldData();
+			room_goto(room_home);
+			
 			break;	
 		case 2:
 			game_end();

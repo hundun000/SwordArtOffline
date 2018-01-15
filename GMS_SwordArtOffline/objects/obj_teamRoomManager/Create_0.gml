@@ -29,7 +29,7 @@ textOperationInfo="";
 #macro OPERATE_GET_FROM_BOX 2
 #macro OPERATE_DISCARD 3
 
-operationName[OPERATE_USE]="use";
-operationName[OPERATE_PUT_TO_BOX]="put to box";
-operationName[OPERATE_GET_FROM_BOX]="get from box";
-operationName[OPERATE_DISCARD]="discard";
+operationName[OPERATE_USE]="使用道具";
+operationName[OPERATE_PUT_TO_BOX]="放入运输队";
+operationName[OPERATE_GET_FROM_BOX]="从运输队取出";
+operationName[OPERATE_DISCARD]="丢弃";

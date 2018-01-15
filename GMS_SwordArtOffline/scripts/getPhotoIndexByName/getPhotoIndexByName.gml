@@ -13,4 +13,7 @@ switch(name){
 
 	case "klein":
 		return 3;
+		
+	case "silica":	
+		return 4;
 }

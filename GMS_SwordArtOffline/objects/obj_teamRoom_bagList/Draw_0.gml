@@ -32,10 +32,10 @@ if(size>0){
 else{
 	if(manager.teamRoomState==TeamRoomState.selectingBagItem){
 		draw_set_color(c_orange);
-		draw_text(x_text,y_text,"no item<<");
+		draw_text(x_text,y_text,"空<<");
 	}
 	else{
 		draw_set_color(c_black);
-		draw_text(x_text,y_text,"no item");
+		draw_text(x_text,y_text,"空");
 	}
 }

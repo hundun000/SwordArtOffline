@@ -88,3 +88,4 @@ curDelay=-1;
 textSpeed=1;
 curText="";
 curLen=0;
+numWordPerLine=5;

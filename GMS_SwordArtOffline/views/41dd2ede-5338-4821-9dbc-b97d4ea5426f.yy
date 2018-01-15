@@ -16,7 +16,8 @@
         "934a5e85-ac9a-4faa-9778-baf7f2e48dbc",
         "7dd4344d-da6e-4d9b-957a-760700baa6a0",
         "81915424-ff2d-4179-90dd-29935eb00b30",
-        "8b9ef83b-29c7-43db-8a60-1b51a9f2006b"
+        "8b9ef83b-29c7-43db-8a60-1b51a9f2006b",
+        "12d0b3d3-eb95-44f4-971e-0cb56e2acf05"
     ],
     "filterType": "GMObject",
     "folderName": "Front",

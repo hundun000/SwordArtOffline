@@ -2,6 +2,9 @@
 // You can write your code in this editor
 if(global.inputReceiver!=InputReceiver.teamRoomManager)	return;
 
+if(isA||isB||input_dx!=0||input_dy!=0)
+	textOperationInfo="";
+
 switch(teamRoomState){
 	
 	case TeamRoomState.selectingRole:
@@ -54,11 +57,11 @@ switch(teamRoomState){
 				selectedBoxItemIndex=-1;
 			}
 			else
-				textOperationInfo="box no item to get";
+				textOperationInfo="无道具可操作";
 		}
 		else if(isB){
 			teamRoomState=TeamRoomState.selectingItemOperation;
-			selectedItemOperationIndex=0;
+			selectedBoxItemIndex=-1;
 		}
 		else if(input_dy!=0){
 			if(selectedBoxItemIndex!=-1)
@@ -69,6 +72,15 @@ switch(teamRoomState){
 		if(isA){
 			switch(selectedItemOperationIndex){
 				case OPERATE_USE:
+					var item_name=ds_grid_get(selectedTeamRole.items,selectedBagItemIndex,INDEX_ITEM_NAME);
+					var usable=canUseItem(item_name,selectedTeamRole);
+					if(usable==true){
+						var useReturn=useItemGeneral(selectedTeamRole,selectedBagItemIndex);
+						textOperationInfo=usable[1];
+					}
+					else{
+						textOperationInfo=usable;
+					}
 					break;
 				case OPERATE_DISCARD:
 					if(selectedBagItemIndex!=-1){
@@ -76,7 +88,7 @@ switch(teamRoomState){
 						renewSelectedBagItemCausedByMoved();
 					}
 					else
-						textOperationInfo="bag no item to discard";
+						textOperationInfo="无道具可操作";
 					break;
 				case OPERATE_PUT_TO_BOX:
 					if(selectedBagItemIndex!=-1){
@@ -84,7 +96,7 @@ switch(teamRoomState){
 						renewSelectedBagItemCausedByMoved();
 					}
 					else
-						textOperationInfo="bag no item to put";
+						textOperationInfo="无道具可操作";
 					break;
 				case OPERATE_GET_FROM_BOX:
 					teamRoomState=TeamRoomState.selectingBoxItem;

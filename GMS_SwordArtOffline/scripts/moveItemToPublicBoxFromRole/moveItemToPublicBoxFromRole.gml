@@ -12,8 +12,8 @@ if(global.curNumPublicBoxItem<NUM_BOX_ITEM){
 	ds_grid_set(global.publicBox,global.curNumPublicBoxItem,INDEX_ITEM_QUALITY,quality);  
 	global.curNumPublicBoxItem++;
 	removeItemFromRole(role,item_index);
-	return "move "+item_name+"x"+string(quality)+" from "+role.name+" to box";
+	return "把"+item_name+"x"+string(quality)+"从"+role.name+"行囊移至运输队。";
 }
 else
-	return "cann't move because box is full";
+	return "运输队已满，无法移动道具。";
 

@@ -18,6 +18,7 @@
 #macro INDEX_ITEM_QUALITY 1
 
 #macro DEPTH_ROLE 500
+#macro DEPTH_FIGHT_FORECAST 200
 
 #macro INDEX_HP 0
 #macro INDEX_ATK 1

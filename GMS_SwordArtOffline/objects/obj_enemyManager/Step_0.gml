@@ -266,8 +266,8 @@ switch(enemyManagerState){
 				cursorState=CursorState.turnStart;
 			}
 			//set cursor to leader
-			global.cursor_pointer.x=global.kirito.x;
-			global.cursor_pointer.y=global.kirito.y;
+			global.cursor_point_to.x=global.kirito.x;
+			global.cursor_point_to.y=global.kirito.y;
 			//view camera should move immidiately
 			with(obj_camera){
 					x=clamp(x,follower.x-h_border,follower.x+h_border);

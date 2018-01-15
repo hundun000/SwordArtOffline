@@ -2,10 +2,14 @@
 // You can write your code in this editor
 draw_self();
 
+var x_menu=50;
+var y_menu=50;
+
+
 if(worldMapState==WorldMapState.worldDoMoreSelect){
 	
 
-	draw_sprite(spr_worldMenu,0,0,0);
+	draw_sprite(spr_worldMenu,0,x_menu,y_menu);
 
 	
 
@@ -20,7 +24,7 @@ if(worldMapState==WorldMapState.worldDoMoreSelect){
 		
 		for(var j=0;j<num_optionModel;j++){
 			if(option[i]==option_model[j])
-				draw_sprite_ext(spr_worldOption,j,0,i*(5+size),1,1,0,blendColor,1);
+				draw_sprite_ext(spr_worldOption,j,x_menu,y_menu+i*(5+size),1,1,0,blendColor,1);
 		}
 		
 		

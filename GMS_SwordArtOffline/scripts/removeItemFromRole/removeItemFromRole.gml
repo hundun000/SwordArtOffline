@@ -20,5 +20,5 @@ if(role.curNumItem>item_index){
 	ds_grid_set(role.items,i-1,INDEX_ITEM_NAME,noone); 
 	ds_grid_set(role.items,i-1,INDEX_ITEM_QUALITY,noone); 
 	role.curNumItem--;
-	return "remove "+item_name+"x"+string(quality)+" from "+role.name;
+	return "把"+item_name+"x"+string(quality)+"从"+role.name+"身上移除了。";
 }

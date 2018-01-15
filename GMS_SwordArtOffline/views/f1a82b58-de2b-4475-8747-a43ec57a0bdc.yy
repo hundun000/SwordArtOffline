@@ -9,7 +9,7 @@
         "15ac8761-1c94-4d59-a3ca-cac1dbe0f414"
     ],
     "filterType": "GMRoom",
-    "folderName": "Strory_1",
+    "folderName": "Story_1",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

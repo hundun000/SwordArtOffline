@@ -46,10 +46,14 @@ switch(worldMapState){
 				case 1:
 					if(isD||isR)
 						toWorldPos=0;
-	
+					else if(isL)
+						toWorldPos=2;
+					break;					
+				case 2:
+					if(isR)
+						toWorldPos=1;
 					break;
-
-					default:
+				default:	
 			}
 			
 			if(global.curWorldPos!=toWorldPos){
@@ -127,7 +131,13 @@ switch(worldMapState){
 				addRoleToFront(global.asuna,room_battle_2_1,1);
 			
 				room_goto(room_fake_2_0);
+				break;
+			case 2:
+				addRoleToWorld(global.silica);
+				addRoleToFront(global.kirito,room_battle_3_1,0);
+				addRoleToFront(global.silica,room_battle_3_1,1);				
 				
+				room_goto(room_fake_3_0);
 				break;
 
 			default:

@@ -13,14 +13,9 @@ for(i=0;i<size;i++){
 		var itemQuality=ds_grid_get(global.publicBox,i,INDEX_ITEM_QUALITY);
 	
 	
-		if(i==manager.selectedBoxItemIndex){
+		if(i==manager.selectedBoxItemIndex&&manager.teamRoomState==TeamRoomState.selectingBoxItem){
 			draw_set_color(c_orange);
-			if(manager.teamRoomState==TeamRoomState.selectingBoxItem){
-				draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality)+"<<");
-			}
-			else {
-				draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality)+">>");
-			}
+			draw_text(x_text,y_text+i*(font_get_size(global.font_CN_teamRoom)+space),itemName+"x"+string(itemQuality)+"<<");
 		}
 		else{
 			draw_set_color(c_black);

@@ -15,5 +15,6 @@ switch(role.name){
 	
 	case "minotaur":
 		return spr_minotaur_attack;
-
+	case "hunterFlower":
+		return spr_hunterFlower_attack;
 }

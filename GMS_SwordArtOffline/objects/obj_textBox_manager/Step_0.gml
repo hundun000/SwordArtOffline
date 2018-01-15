@@ -50,7 +50,7 @@ switch(scenceState){
 	
 					isSerie=(curText!="");
 	
-					text=ds_queue_dequeue(texts)+"\n>>继续";
+					text=ds_queue_dequeue(texts)+" \n>>继续";
 					subImageIndex=getPhotoIndexByName(ds_queue_dequeue(names));
 					rolePhotoSide=ds_queue_dequeue(sides);
 					

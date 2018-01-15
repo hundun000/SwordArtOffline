@@ -7,5 +7,6 @@ switch(role.name){
 		return spr_minotaur_die;
 	case "kirito":
 		return spr_kirito_die;
-
+	case "hunterFlower":
+		return spr_hunterFlower_die;
 }

@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+
+
 if(global.inputReceiver!=InputReceiver.cursor)	return;
 
 
@@ -71,7 +73,7 @@ switch(cursorState){
 		
 	case CursorState.selectedRole:
 	
-		if((input_dx!=0||input_dy!=0)){
+		if((input_dx!=0&&input_dy==0)||(input_dx==0&&input_dy!=0)){
 			var ins=instance_position(global.cursor_pointer.x+input_dx*UNIT,global.cursor_pointer.y+input_dy*UNIT,obj_canMove);
 			if(ins!=noone&&(ins.image_index==CAN_MOVE||ins.image_index==CAN_MOVE_ATTACK)){			
 			global.cursor_pointer.x+=input_dx*UNIT;
@@ -99,8 +101,10 @@ switch(cursorState){
 			
 			var center=getCameraCenter(view_camera[0]);
 			var menuSide=sign(center[0]-global.cursor_pointer.x+1);
+			var menu_x=center[0]+menuSide*center[2];
+			var menu_y=center[1];
 			
-			instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_doMoreMemu);		
+			ins_doMoreMemu=instance_create_layer(menu_x,menu_y,"Layer_menuBoard",obj_doMoreMemu);		
 		
 			setRoleState(global.operatedRole,RoleState.doMore);
 		}
@@ -125,8 +129,7 @@ switch(cursorState){
 	case CursorState.roleDoMore:
 	
 		if(input_dy!=0){
-			var doMoreMemu=instance_find(obj_doMoreMemu,0);
-			doMoreMemu.doMoreSelectIndex=(NUM_DOMORE_OPTION+doMoreMemu.doMoreSelectIndex+input_dy)%(NUM_DOMORE_OPTION);
+			ins_doMoreMemu.doMoreSelectIndex=(NUM_DOMORE_OPTION+ins_doMoreMemu.doMoreSelectIndex+input_dy)%(NUM_DOMORE_OPTION);
 		}
 		else if(isA){
 			//do more menu option
@@ -135,8 +138,7 @@ switch(cursorState){
 				case OPTION_FIGHT:
 					target=noone;
 					cursorState=CursorState.selectingEnemy;
-					
-
+					ins_doMoreMemu.visible=false;
 					break;
 				case OPTION_BAG:
 					cursorState=CursorState.selectingBagItem;
@@ -149,25 +151,25 @@ switch(cursorState){
 					itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
 					global.itemSelectIndex=0;
 
-					
+					ins_doMoreMemu.visible=false;
 					break;
 				case OPTION_TALK:
 					createSingleMessage("This function has not been implemented",global.operatedRole.name);
+					isA=false;
+					ins_doMoreMemu.visible=false;
 					return;
 					
 				case OPTION_END:
 					cursorState=CursorState.nextPlayer;
 				
 					deleteCanMove();				
-					instance_destroy(obj_doMoreMemu);
+					instance_destroy(ins_doMoreMemu);
 				
 				default:
 			
 			}
 			
-			with(obj_doMoreMemu){
-				visible=false;
-			}
+
 			
 			
 		}	
@@ -184,7 +186,7 @@ switch(cursorState){
 			
 			deleteCanMove();
 			
-			instance_destroy(obj_doMoreMemu);
+			instance_destroy(ins_doMoreMemu);
 		
 			setRoleState(global.operatedRole,RoleState.idle);
 		}
@@ -197,31 +199,27 @@ switch(cursorState){
 		}
 		else if(isA){
 			var itemName=ds_grid_get(global.operatedRole.items,INDEX_ITEM_NAME,global.itemSelectIndex);
-			if(canUseItem(itemName,global.operatedRole)){
+			var usable=canUseItem(itemName,global.operatedRole);
+			if(usable==true){
 				cursorState=CursorState.nextPlayer;
 				
 				useItemAtFront(global.operatedRole,global.itemSelectIndex);					
 				
 				deleteCanMove();		
 					
-				instance_destroy(obj_doMoreMemu);
+				instance_destroy(ins_doMoreMemu);
 	
 				
 				instance_destroy(obj_itemMenu);
 			}
 			else{	
-				createSingleMessage("Cannot use this item.","system");
+				createSingleMessage(usable,"system");
 				
 				cursorState=CursorState.roleDoMore;
 			
 				instance_destroy(obj_itemMenu);
 			
-				with(obj_doMoreMemu){
-					visible=true;
-				}
-
-				
-				
+				ins_doMoreMemu.visible=true;				
 			}
 			
 		}
@@ -230,11 +228,7 @@ switch(cursorState){
 			
 			instance_destroy(obj_itemMenu);
 			
-			with(obj_doMoreMemu){
-				visible=true;
-			}
-
-		
+			ins_doMoreMemu.visible=true;
 		}
 		
 		break;	
@@ -252,10 +246,24 @@ switch(cursorState){
 			}
 			target=temp_for_with;
 			//if have,set cursor to there
-			if(target!=noone){
-				fightForecastInfo=noone;
+			if(target!=noone){		
+				
 				global.cursor_pointer.x=target.x;
 				global.cursor_pointer.y=target.y;
+				
+				var center=getCameraCenter(view_camera[0]);
+				var menuSide=sign(center[0]-global.cursor_pointer.x+1);
+				var board_top=center[1];
+				var board_left=center[0]+menuSide*center[2];
+				var board_x=center[0]+menuSide*center[2];
+				var board_y=center[1];
+				
+				ins_fightForecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
+				ins_fightForecast.enemyRole=target;
+				ins_fightForecast.playerRole=global.operatedRole;
+				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);
+				
+
 			}
 			//global.cursor_pointer.visible=true;
 		}
@@ -290,12 +298,15 @@ switch(cursorState){
 			}
 			*/
 			
-			//if have,set cursor to there
+			//if have another,change cursor to there
 			if(target!=noone){
-				//fightForecastInfo need change targrt
-				fightForecastInfo=noone;
 				global.cursor_pointer.x=target.x;
 				global.cursor_pointer.y=target.y;
+				
+				//fightForecastInfo need change targrt
+				ins_fightForecast.enemyRole=target;
+				ins_fightForecast.playerRole=global.operatedRole;
+				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);		
 			}
 
 		}
@@ -303,38 +314,33 @@ switch(cursorState){
 		
 		//into fight room , unfight role should be away!
 
-		if(global.cursor_pointer.x!=global.operatedRole.x||global.cursor_pointer.y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
+			if(global.cursor_pointer.x!=global.operatedRole.x||global.cursor_pointer.y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
 
-			room_persistent=true;
+				room_persistent=true;
 			
-			//temporary set persistent for use it in fight room
-			//enemy's room start event will reset persistent
-			target.persistent=true;
+				//temporary set persistent for use it in fight room
+				//enemy's room start event will reset persistent
+				target.persistent=true;
 			
-			//set front persistent role disvisible
-			for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
-					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
-					frontRole.visible=false;
+				//set front persistent role disvisible
+				for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+						var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+						frontRole.visible=false;
+				}		
+				global.fighter_L=target;
+				global.fighter_R=global.operatedRole;			
+				global.curAttackSide=FIGHT_R;
+				global.fightBackRoom=room;
+			
+				deleteCanMove();
+			
+				room_goto(room_fight);
+			
+				room_enter_counter=0;
+				cursorState=CursorState.nextPlayer;
+				
+				instance_destroy(ins_fightForecast);
 			}
-			
-			
-			
-			
-			global.fighter_L=target;
-			global.fighter_R=global.operatedRole;			
-			global.curAttackSide=FIGHT_R;
-			global.fightBackRoom=room;
-			
-			deleteCanMove();
-			
-			room_goto(room_fight);
-			
-			room_enter_counter=0;
-			cursorState=CursorState.nextPlayer;
-		}
-		
-			
-		
 		}
 		else if(isB){
 			cursorState=CursorState.roleDoMore;
@@ -345,9 +351,9 @@ switch(cursorState){
 			global.cursor_pointer.x=global.operatedRole.x;
 			global.cursor_pointer.y=global.operatedRole.y;
 			
-			with(obj_doMoreMemu){
-				visible=true;
-			}
+			ins_doMoreMemu.visible=true;
+			
+			instance_destroy(ins_fightForecast);
 
 		}
 			
@@ -361,13 +367,9 @@ switch(cursorState){
 				//set cursor to leader
 				global.cursor_pointer.x=global.kirito.x;
 				global.cursor_pointer.y=global.kirito.y;
-				//view camera should move immidiately
-				with(obj_camera){
-						x=clamp(x,follower.x-h_border,follower.x+h_border);
-						y=clamp(y,follower.y-v_border,follower.y+v_border);
-				}
-				var view_x=camera_get_view_x(view_camera[0]);
-				var view_y=camera_get_view_y(view_camera[0]);
+
+				var view_x=global.cursor_pointer.x
+				var view_y=global.cursor_pointer.y
 				cursorState=CursorState.waitPlayerWinAnimation;
 				instance_create_depth(view_x,view_y,1,obj_playerWin);
 			}

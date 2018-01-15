@@ -11,5 +11,6 @@ switch(role.name){
 		return spr_silica_miss;
 	case "minotaur":
 		return spr_minotaur_miss;
-
+	case "hunterFlower":
+		return spr_hunterFlower_miss;
 }

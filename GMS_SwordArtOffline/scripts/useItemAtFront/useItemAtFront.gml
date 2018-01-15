@@ -2,6 +2,7 @@
 ///@argument1 itemIndex
 
 var arg=useItemGeneral(argument0,argument1);
+var role=argument0;
 
 var spriteWorkItem=arg[0];
 var messageText=arg[1];

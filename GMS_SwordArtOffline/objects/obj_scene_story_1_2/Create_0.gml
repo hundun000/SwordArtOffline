@@ -18,16 +18,13 @@ event_inherited();
 addSceneDelay(20);
 
 addSceneMovement("kirito",1,3,4);
-addSceneTextBox("kirito","It seems that you have learnt how to fight.",0);
-/*
-addSceneTextBox("klein","Thanks for your help,guy.",1);
-addSceneTextBox("kirito","Oh,I have to log out now for dinner.",0);
-addSceneTextBox("klein","Me too.",1);
-addSceneTextBox("kirito","So...Wait,why I cann't find the log out option?",0);
-addSceneTextBox("klein","Neither am I.",1);
-addSceneTextBox("kirito","Look,a system message say we should go to the Main Squar.",0);
-*/
-addSceneTextBox("klein","Let's go.There must be someone give us a explaination.",1);
-
+addSceneTextBox("kirito","你这边也解决了？",0);
+addSceneTextBox("klein","是的，谢谢，看来我学会了战斗技巧。",1);
+addSceneTextBox("kirito","噢，我得下线了。",0);
+addSceneTextBox("klein","我也是。",1);
+addSceneTextBox("kirito","那么……等等，为什么没有登出键？",0);
+addSceneTextBox("klein","我也没找到，为什么会变成这样？",1);
+addSceneTextBox("kirito","看，系统提示我们到中央广场集合。",0);
+addSceneTextBox("klein","看来我们能在那里得到解释。",1);
 
 addSceneChangeRoom(room_world,InputReceiver.worldTeamFlag);

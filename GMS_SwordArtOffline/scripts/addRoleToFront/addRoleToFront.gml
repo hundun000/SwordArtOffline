@@ -12,27 +12,11 @@ var posX;
 var posY;
 
 switch(targetRoom){
-	case room_map_0:
-		switch(posIndex){
-			case 0:
-				posX=4.5*UNIT;
-				posY=2.5*UNIT;
-				break;
-			case 1:
-				posX=3.5*UNIT;
-				posY=3.5*UNIT;
-				break;
-			case 2:
-				posX=2.5*UNIT;
-				posY=2.5*UNIT;
-				break;	
-		}
-		break;
 	case room_battle_1_1:
 		switch(posIndex){
 			case 0:
-				posX=1.5*UNIT;
-				posY=6.5*UNIT;
+				posX=1*UNIT;
+				posY=6*UNIT;
 				break;
 				
 		}	
@@ -40,17 +24,33 @@ switch(targetRoom){
 	case room_battle_2_1:
 		switch(posIndex){
 			case 0:
-				posX=5.5*UNIT;
-				posY=9.5*UNIT;
+				posX=5*UNIT;
+				posY=9*UNIT;
 				break;
 			case 1:
-				posX=4.5*UNIT;
-				posY=9.5*UNIT;
+				posX=4*UNIT;
+				posY=9*UNIT;
 				break;
 				
 		}	
+		break;
+	case room_battle_3_1:
+		switch(posIndex){
+			case 0:
+				posX=14*UNIT;
+				posY=9*UNIT;
+				break;
+			case 1:
+				posX=8*UNIT;
+				posY=2*UNIT;
+				break;
+				
+		}
+		break;
 		
 }
+posX+=0.5*UNIT;
+posY+=0.5*UNIT;
 
 role.x=posX;
 role.y=posY;

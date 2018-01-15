@@ -4,11 +4,11 @@ var itemName=argument0;
 
 switch(itemName){
 	case "伤药":	
-		return "cove 10 hp for role";
+		return "回复10点HP。";
 		break;
 	case "好伤药":	
-		return "cove 20 hp for role";
+		return "回复20点HP。";
 		break;	
 	default:
-		return "no defined itemName";
+		return "信息 道具名未定义！";
 }

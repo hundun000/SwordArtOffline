@@ -12,7 +12,9 @@
         "6a269fef-fc8f-4067-9ef1-43128691d41b",
         "52382c08-17a0-4cef-83fb-6395378ef0bb",
         "57fcbced-b18d-4493-ba3a-99921102b972",
-        "342486a6-b3b8-43ec-9022-d87b459579ca"
+        "342486a6-b3b8-43ec-9022-d87b459579ca",
+        "1ae734b6-aad5-4386-acf1-adbb998897fc",
+        "a5b9b5f0-c8de-49da-8c7c-98d913cdae9a"
     ],
     "filterType": "GMObject",
     "folderName": "Fake",

@@ -1,5 +1,4 @@
 instance_destroy(obj_role_player);
-
 var createX=0;
 instance_create_layer(createX,0,0,obj_role_kirito);  createX+=64;
 instance_create_layer(createX,0,0,obj_role_asuna);  createX+=64;

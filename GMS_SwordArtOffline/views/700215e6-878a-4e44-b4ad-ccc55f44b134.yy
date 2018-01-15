@@ -11,7 +11,8 @@
         "500170fa-6c39-4d0c-ba2e-1b887aae4e60",
         "e2c439c2-fed0-4dc3-a070-4a0411bd15df",
         "9aba930b-1237-4e87-b25d-e803dfc7f4ab",
-        "6c679b66-8ad7-4a8b-9c9c-e51833237904"
+        "6c679b66-8ad7-4a8b-9c9c-e51833237904",
+        "ab4016f5-66d2-493b-92f3-a79fa1785c3d"
     ],
     "filterType": "GMSprite",
     "folderName": "idle",

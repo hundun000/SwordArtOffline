@@ -13,6 +13,7 @@ mainMenu=instance_find(obj_mainMenu,0);
 textBoxManager=instance_find(obj_textBox_manager,0); 
 playerFrontManager=instance_find(obj_playerFrontManager,0);
 teamRoomManager=instance_find(obj_teamRoomManager,0);
+homeManager=instance_find(obj_homeManager,0);
 //others init in Obj_worldMap.Creat
 worldTeamFlag=noone;  
 
@@ -20,7 +21,8 @@ worldTeamFlag=noone;
 
 global.font_CN_textBox=font_add("ARIALUNI_fixed.ttf",32,0,0,32,128);
 global.font_CN_teamRoom=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
-
+global.font_CN_homeMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
+global.font_CN_mainMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 
 
 
@@ -35,7 +37,8 @@ worldX[0]=660;
 worldY[0]=579;
 worldX[1]=539;
 worldY[1]=496;	
-
+worldX[2]=338;
+worldY[2]=478;
 
 resetWorldData();
 

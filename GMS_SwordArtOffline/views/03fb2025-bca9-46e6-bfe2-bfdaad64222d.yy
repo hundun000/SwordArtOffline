@@ -6,7 +6,8 @@
     "children": [
         "431c378e-1221-438f-8639-9db52fee0314",
         "94d4a11d-40a3-4bc9-b54b-534b6e040ed4",
-        "bfe5334a-2fb1-4021-a15b-a3db3aa56894"
+        "bfe5334a-2fb1-4021-a15b-a3db3aa56894",
+        "9e758c4a-4652-4e4e-ad47-ab1d35c5cd0a"
     ],
     "filterType": "GMSprite",
     "folderName": "die",
