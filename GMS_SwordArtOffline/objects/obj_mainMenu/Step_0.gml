@@ -9,11 +9,11 @@ if(input_dy!=0){
 if(isA){
 	switch(targetOptionIndex){
 		case 0:
-			room_goto(room_world);
 			loadGame();
+			room_goto(room_home);
+			
 			break;
 		case 1:			
-			//room_goto(room_world);
 			resetWorldData();
 			room_goto(room_home);
 			

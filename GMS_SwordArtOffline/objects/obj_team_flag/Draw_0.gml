@@ -6,7 +6,7 @@ var x_menu=50;
 var y_menu=50;
 
 
-if(worldMapState==WorldMapState.worldDoMoreSelect){
+if(worldMapState==worldDoMoreSelect){
 	
 
 	draw_sprite(spr_worldMenu,0,x_menu,y_menu);

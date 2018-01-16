@@ -8,8 +8,12 @@ global.asuna=instance_find(obj_role_asuna,0);
 global.kirito=instance_find(obj_role_kirito,0);
 global.silica=instance_find(obj_role_silica,0);
 
-global.curWorldPos=0;
-global.storyLine=0;
+with(global.thisGame.worldMapManager){
+	curWorldPos=0;
+	storyLine=0;
+}
+
+
 global.playerFrontTeam=ds_list_create();
 global.playerWorldTeam=ds_list_create();
 

@@ -6,9 +6,16 @@ var x_image=x;
 var y_image=y;
 var imageLength=384;
 
+
+var imageIndex;
+var drawnSprite;
+
+
 var role=manager.selectedTeamRole;
-var imageIndex=getPhotoIndexByName(role.name);
+drawnSprite=spr_role_photo;
+imageIndex=getPhotoIndexByName(role.name);
 
-var resize=imageLength/sprite_get_height(spr_role_photo);
 
-draw_sprite_ext(spr_role_photo,imageIndex,x_image,y_image,resize,resize,0,c_white,1);
+
+var resize=imageLength/sprite_get_height(drawnSprite);
+draw_sprite_ext(drawnSprite,imageIndex,x_image,y_image,resize,resize,0,c_white,1);

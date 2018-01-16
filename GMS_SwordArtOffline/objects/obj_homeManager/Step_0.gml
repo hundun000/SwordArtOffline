@@ -8,7 +8,10 @@ if(isA){
 	{
 		case HOME_GOTO_MAP:
 			room_goto(room_world);	
-		break;
+			break;
+		case HOME_EDIT_TEAM:
+			room_goto(room_team);
+			break;
 		
 		default:
 	}

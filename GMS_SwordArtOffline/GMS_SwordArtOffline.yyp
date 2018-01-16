@@ -327,6 +327,14 @@
             }
         },
         {
+            "Key": "1f64bef8-4b41-4983-a211-f70ff34ef6d1",
+            "Value": {
+                "id": "ca5580cc-e3b6-4e59-833d-4c1cc5da2652",
+                "resourcePath": "views\\1f64bef8-4b41-4983-a211-f70ff34ef6d1.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "1fa009b0-c6de-462e-a481-023bda8006bd",
             "Value": {
                 "id": "fc7d029d-4888-4d3e-a60b-ecb198659c5f",
@@ -428,14 +436,6 @@
                 "id": "7128b5c3-f916-4f12-9290-8cb85b734907",
                 "resourcePath": "rooms\\room_battle_2_1\\room_battle_2_1.yy",
                 "resourceType": "GMRoom"
-            }
-        },
-        {
-            "Key": "29a700ad-031e-4c46-b8ca-85308c68bedc",
-            "Value": {
-                "id": "3c325a33-aa64-475b-82a5-448d60965f3d",
-                "resourcePath": "scripts\\renewWorldView\\renewWorldView.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -1095,6 +1095,14 @@
             }
         },
         {
+            "Key": "647c4f4e-ff30-4d82-b0e1-a3476f2842a5",
+            "Value": {
+                "id": "b49e96f0-640d-486b-be1d-6650293805f4",
+                "resourcePath": "sprites\\spr_teamPos\\spr_teamPos.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "675c5aa4-6e98-4b28-a9af-a6c271a149e2",
             "Value": {
                 "id": "b086c4db-1695-4b4f-999c-20cabeb1aa94",
@@ -1380,6 +1388,14 @@
                 "id": "5077125c-dc01-4384-b21d-997e15d759a5",
                 "resourcePath": "objects\\obj_enemyManager\\obj_enemyManager.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "843cf7eb-8f53-4d86-8fa8-98bc7bc5c37a",
+            "Value": {
+                "id": "33422dab-8e5a-4d0c-86ea-870665c4b9fa",
+                "resourcePath": "scripts\\isWorldPosHasBattle\\isWorldPosHasBattle.yy",
+                "resourceType": "GMScript"
             }
         },
         {
@@ -1804,6 +1820,14 @@
                 "id": "e58b99c4-da3b-4d38-99bb-47d199733f1f",
                 "resourcePath": "sprites\\spr_worldOption\\spr_worldOption.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a8912081-69ee-4639-81b9-ea33b035877e",
+            "Value": {
+                "id": "6b816ab7-66ad-47cc-a1c9-6bea6822ba59",
+                "resourcePath": "objects\\obj_teamFlag\\obj_teamFlag.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -2319,6 +2343,14 @@
             }
         },
         {
+            "Key": "e2b9a17f-01ef-40a2-81ba-6c707608d92c",
+            "Value": {
+                "id": "448232fe-6855-4177-935d-33c86fbbe295",
+                "resourcePath": "objects\\obj_teamRoom_roleOperationList\\obj_teamRoom_roleOperationList.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "e2c439c2-fed0-4dc3-a070-4a0411bd15df",
             "Value": {
                 "id": "d6b9fcf6-14e8-4f67-9b7d-23e208b75535",
@@ -2587,7 +2619,6 @@
         "b285f562-1825-4391-b62e-12ec974e3d51",
         "ff00e354-d8c6-4653-a877-d0a9a3e67533",
         "4db4bdd2-dff8-4e67-8a78-cd7b0544d94f",
-        "29a700ad-031e-4c46-b8ca-85308c68bedc",
         "fd400825-ecf1-49a2-a49e-8ef602f7fdd6",
         "e0f29333-d5ee-4678-ad83-6e71b08a1a36",
         "db2a1230-ea1e-4a6e-95dd-9ab9f39a6e24",
@@ -2611,7 +2642,8 @@
         "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
         "9ed5ffdf-bdc2-4de6-aa8d-e10a02287093",
         "9704d663-e80c-49b7-b9fc-7226a7518fc1",
-        "7a57e4ef-3795-4a1e-a1c3-75a6439573df"
+        "7a57e4ef-3795-4a1e-a1c3-75a6439573df",
+        "843cf7eb-8f53-4d86-8fa8-98bc7bc5c37a"
     ],
     "tutorial": ""
 }

@@ -4,7 +4,7 @@
 
 #macro TEAM_FLAG_SPEED 8
 
-if(global.inputReceiver!=InputReceiver.worldTeamFlag) return;
+
 
 var isU=input_dy==-1;
 var isD=input_dy==1;
@@ -14,6 +14,8 @@ var isR=input_dx==1;
 //fast return
 //if(isU+isD+isL+isR==0&&toWorldPos==curWorldPos) return;
 
+
+/*
 switch(worldMapState){
 	
 	case WorldMapState.worldFree:
@@ -90,7 +92,7 @@ switch(worldMapState){
 			}
 			else if(option[worldDoMoreSelectedIndex]==option_model[4]){
 				loadGame();
-				renewWorldView();
+				//renewWorldView();
 				show_message("Option load");
 			}	
 			else if(option[worldDoMoreSelectedIndex]==option_model[5]){
@@ -145,7 +147,7 @@ switch(worldMapState){
 
 		break;
 }
-
+*/
 
 
 

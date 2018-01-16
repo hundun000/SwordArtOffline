@@ -9,5 +9,5 @@ addSceneMovement("silica",4,3,8);
 addSceneTextBox("silica","谢谢你帮了我。",0);
 
 
-addSceneChangeRoom(room_world,InputReceiver.worldTeamFlag);
+addSceneChangeRoom(room_world,InputReceiver.worldMapManager);
 

@@ -9,8 +9,8 @@ var sectionName;
 var i,j;
 
 sectionName="World Data";
-ini_write_real(sectionName,"storyLine",global.storyLine);
-ini_write_real(sectionName,"curWorldPos",global.curWorldPos);
+ini_write_real(sectionName,"storyLine",global.thisGame.worldMapManager.storyLine);
+ini_write_real(sectionName,"curWorldPos",global.thisGame.worldMapManager.curWorldPos);
 ini_write_real(sectionName,"curNumPublicBoxItem",global.curNumPublicBoxItem);
 for(i=0;i<global.curNumPublicBoxItem;i++){
 	var itemProperty=ds_grid_get(global.publicBox,i,INDEX_ITEM_NAME);

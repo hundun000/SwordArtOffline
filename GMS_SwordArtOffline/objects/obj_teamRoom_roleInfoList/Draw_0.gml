@@ -8,7 +8,6 @@ var space=20;
 
 var role=manager.selectedTeamRole;
 
-draw_set_color(c_black);
 draw_text(x_text,y_text+0*(font_get_size(global.font_CN_teamRoom)+space),+"名字:"+role.name);
 draw_text(x_text,y_text+1*(font_get_size(global.font_CN_teamRoom)+space),+"生命值:"+string(role.hp));
 draw_text(x_text,y_text+2*(font_get_size(global.font_CN_teamRoom)+space),+"攻击力:"+string(role.atk));

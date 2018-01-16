@@ -3,15 +3,15 @@
 switch(argument0){
 	case room_battle_1_1:
 		room_goto(room_fake_1_2);
-		global.storyLine=1;
+		global.thisGame.worldMapManager.storyLine=1;
 		break;
 	case room_battle_2_1:
 		room_goto(room_fake_2_2);
-		global.storyLine=2;
+		global.thisGame.worldMapManager.storyLine=2;
 		break;	
 	case room_battle_3_1:
 		room_goto(room_fake_3_2);
-		global.storyLine=3;
+		global.thisGame.worldMapManager.storyLine=3;
 		break;			
 
 	default:

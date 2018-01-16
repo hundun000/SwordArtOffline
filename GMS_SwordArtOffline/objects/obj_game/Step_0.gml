@@ -10,7 +10,7 @@
 
 enum InputReceiver{
 	cursor,
-	worldTeamFlag,
+	worldMapManager,
 	textBox,
 	mainMenu,
 	teamRoomManager,
@@ -28,8 +28,8 @@ var dy_game=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 
 var reciever;
 switch(global.inputReceiver){
-	case InputReceiver.worldTeamFlag:
-		reciever=worldTeamFlag;
+	case InputReceiver.worldMapManager:
+		reciever=worldMapManager;
 		break;
 	case InputReceiver.cursor:
 		reciever=playerFrontManager;

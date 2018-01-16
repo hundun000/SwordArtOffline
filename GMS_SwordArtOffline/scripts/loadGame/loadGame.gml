@@ -10,8 +10,8 @@ var sectionName;
 var i,j;
 
 sectionName="World Data";
-global.storyLine=ini_read_real(sectionName,"storyLine",defultValue);
-global.curWorldPos=ini_read_real(sectionName,"curWorldPos",defultValue);
+global.thisGame.worldMapManager.storyLine=ini_read_real(sectionName,"storyLine",defultValue);
+global.thisGame.worldMapManager.curWorldPos=ini_read_real(sectionName,"curWorldPos",defultValue);
 global.curNumPublicBoxItem=ini_read_real(sectionName,"curNumPublicBoxItem",defultValue);
 for(i=0;i<global.curNumPublicBoxItem;i++){
 	var itemProperty=ini_read_string(sectionName,"publicBoxItem_"+string(i)+"_name",defultValue);
