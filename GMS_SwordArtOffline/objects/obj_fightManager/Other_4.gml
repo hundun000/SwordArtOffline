@@ -4,7 +4,7 @@
 
 global.inputReceiver=InputReceiver.fightRoom;
 
-global.fightState=FightState.preFight;
+fightState=FightState.preFight;
 
 //in order to use index to point fighter L and R
 fighter[FIGHT_L]=global.fighter_L;

@@ -1,28 +1,28 @@
 {
-    "id": "6fa90a41-fb66-472e-b917-3458d5fe03a5",
+    "id": "132ab8b8-36f2-4264-b2c2-be7af6bd791c",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_fightRole",
+    "name": "obj_fighterName",
     "eventList": [
         {
-            "id": "52f79210-a3c8-43e3-bafe-cc4298f005fc",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 3,
-            "m_owner": "6fa90a41-fb66-472e-b917-3458d5fe03a5"
-        },
-        {
-            "id": "1480cb63-6b70-4e87-a8ab-f2d409e7d580",
+            "id": "b3a5b79c-d2ba-4c18-8b77-31c56128ca95",
             "modelName": "GMEvent",
             "mvc": "1.0",
             "IsDnD": false,
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
-            "m_owner": "6fa90a41-fb66-472e-b917-3458d5fe03a5"
+            "m_owner": "132ab8b8-36f2-4264-b2c2-be7af6bd791c"
+        },
+        {
+            "id": "0dc40646-f903-4eed-88aa-c40e3f008bcd",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "132ab8b8-36f2-4264-b2c2-be7af6bd791c"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -43,6 +43,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "11ef4bc8-6c42-4df5-b830-eaf0c8c3bcc4",
+    "spriteId": "97e21150-2245-4f50-85e2-fde03e3d02fa",
     "visible": true
 }

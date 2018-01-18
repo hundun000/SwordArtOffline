@@ -1,0 +1,1 @@
+side=FIGHT_R;

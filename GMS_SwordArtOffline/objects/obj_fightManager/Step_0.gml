@@ -4,7 +4,7 @@
 #macro THRESHOLD_DEX 4
 #macro STEP_reduceHpAnimation 40
 #macro FIGHT_END_DELAY 60
-#macro LEN_FULL_HP 64
+
 #macro XP_SPEED 1
 
 enum FightState{
@@ -18,13 +18,9 @@ enum FightState{
 	fightEnd
 }
 
-
-
-//show_debug_message(global.fightState);
-
 if(global.inputReceiver!=InputReceiver.fightRoom) return;
 
-switch(global.fightState){
+switch(fightState){
 
 	case FightState.preFight:
 		//show_("into preFight");
@@ -43,18 +39,6 @@ switch(global.fightState){
 		turnTimes[global.curAttackSide]=ans_list[0];
 		turnTimes[!global.curAttackSide]=ans_list[1];
 		
-		/*
-		//process if is one side attack
-		switch(global.attackSideType){
-			case AttackSideType.onlyLeft:
-				turnTimes[FIGHT_R]=0;
-				break;
-			case AttackSideType.onlyRight:
-				turnTimes[FIGHT_L]=0;
-				break;
-			default:	
-		}
-		*/
 		
 		var side=global.curAttackSide;
 		//let two side use the same codes by the two-times loop
@@ -86,7 +70,7 @@ switch(global.fightState){
 		
 		startDelay=STEP_reduceHpAnimation;
 		reduceHpAnimationCountDown=-1; //distinguish countdown==0 and init==-1
-		global.fightState=FightState.waitStartDelay;
+		fightState=FightState.waitStartDelay;
 		
 		randomise();
 		
@@ -98,7 +82,7 @@ switch(global.fightState){
 			startDelay--;
 		}
 		else{
-			global.fightState=FightState.startAttackAnimation;
+			fightState=FightState.startAttackAnimation;
 		}
 		
 		break;
@@ -132,7 +116,7 @@ switch(global.fightState){
 				//set reduce animation as normal hp bar
 				reduceHpAnimationCountDown=-1;
 				
-				global.fightState=FightState.startResultAnimation;
+				fightState=FightState.startResultAnimation;
 				return;
 			}
 			else{
@@ -160,12 +144,12 @@ switch(global.fightState){
 			
 			if(isCriticalHappen){
 				actulDamage=clamp(preDamage[global.curAttackSide]*3,0,fighter[!global.curAttackSide].curHp);	
-				global.isHit=true;
+				isHit=true;
 			}
 			else{
 				//ramdom hit
-				global.isHit=(random(100)<hitRate[global.curAttackSide]);
-				if(global.isHit)
+				isHit=(random(100)<hitRate[global.curAttackSide]);
+				if(isHit)
 					actulDamage=clamp(preDamage[global.curAttackSide],0,fighter[!global.curAttackSide].curHp);		
 				else
 					actulDamage=0;
@@ -186,16 +170,17 @@ switch(global.fightState){
 			
 			//default set to miss sprite,just image speed set depend on isHit
 			attackAnimation[!global.curAttackSide].sprite_index=getMissSpriteByRole(fighter[!global.curAttackSide]);
-			attackAnimation[!global.curAttackSide].image_speed=(!global.isHit);
+			attackAnimation[!global.curAttackSide].image_speed=(!isHit);
 
 			attackAnimation[global.curAttackSide].depth=DEPTH_FRONT;
 			attackAnimation[!global.curAttackSide].depth=DEPTH_BACK;
 			
+
 			
 			//*******************process state change****************
 			//wait attack animation,and reuce HP animation
 			reduceHpAnimationCountDown=STEP_reduceHpAnimation;
-			global.fightState=FightState.waitAttackAnimationEnd;
+			fightState=FightState.waitAttackAnimationEnd;
 		}
 		else{
 		//both side done
@@ -205,7 +190,7 @@ switch(global.fightState){
 			reduceHpAnimationCountDown=-1;
 
 
-			global.fightState=FightState.processXp;
+			fightState=FightState.processXp;
 		}
 		
 		
@@ -220,8 +205,8 @@ switch(global.fightState){
 			attackAnimation[!global.curAttackSide].sprite_index=getDieSpriteByRole(fighter[!global.curAttackSide]);
 			attackAnimation[!global.curAttackSide].image_speed=1;
 			//mean only need one animation finish
-			global.isHit=1;
-			global.fightState=FightState.waitResultAnimation;
+			isHit=1;
+			fightState=FightState.waitResultAnimation;
 		}
 		break;
 	case FightState.waitResultAnimation:
@@ -235,7 +220,7 @@ switch(global.fightState){
 			sceneDying.diedRole=fighter[!global.curAttackSide];
 			
 			fightEnd_delay=-1;
-			global.fightState=FightState.fightEnd;
+			fightState=FightState.fightEnd;
 			return;
 		}
 		
@@ -302,7 +287,7 @@ switch(global.fightState){
 			}
 			else{
 				fightEnd_delay=-1;
-				global.fightState=FightState.fightEnd;
+				fightState=FightState.fightEnd;
 			}
 				
 		}
@@ -345,3 +330,24 @@ switch(global.fightState){
 	default:
 		show_debug_message("enter swtich default");
 }
+
+
+
+
+//************************ set HP bar data ****************
+if(reduceHpAnimationCountDown>=0 && reduceHpAnimationCountDown<STEP_reduceHpAnimation){	
+num_remainHp[global.curAttackSide]=fighter[global.curAttackSide].curHp; 
+num_remainHp[!global.curAttackSide]=(fighter[!global.curAttackSide].curHp-actulDamage) ;		
+}
+else{   
+num_remainHp[FIGHT_L]=fighter[FIGHT_L].curHp;
+num_remainHp[FIGHT_R]=fighter[FIGHT_R].curHp;
+}
+rate_remainHp[FIGHT_L]=num_remainHp[FIGHT_L]/fighter[FIGHT_L].hp; 
+rate_remainHp[FIGHT_R]=num_remainHp[FIGHT_R]/fighter[FIGHT_R].hp; 
+
+
+
+
+
+

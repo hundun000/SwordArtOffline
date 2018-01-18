@@ -6,15 +6,11 @@
 #macro DEPTH_FRONT -201
 #macro DEPTH_BACK -200
 
-//globalvar fight_found_side;
-
-//globalvar fighter_L;
-//globalvar fighter_R;
-//globalvar curAttackSide;//value is FIGHT_L(0) or FIGHT_R(1)
-//globalvar fightState;
-//globalvar fightBackRoom;
-//globalvar isHit;
-
+//******** HP bar data ***********
+rate_remainHp[0]=-1;
+rate_remainHp[1]=-1;
+num_remainHp[0]=-1;
+num_remainHp[1]=-1;	
 
 
 attackAnimation[0]=instance_find(obj_fightRole,0);

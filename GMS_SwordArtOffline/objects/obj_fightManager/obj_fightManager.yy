@@ -2,7 +2,7 @@
     "id": "145ccd85-288d-42c8-be24-1f2a635b0641",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "obj_fight_judger",
+    "name": "obj_fightManager",
     "eventList": [
         {
             "id": "b14b9afe-4f16-497d-9d99-a4c08e9035a5",
@@ -56,6 +56,7 @@
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
+    "overriddenProperties": null,
     "parentObjectId": "00000000-0000-0000-0000-000000000000",
     "persistent": false,
     "physicsAngularDamping": 0.1,
@@ -70,7 +71,8 @@
     "physicsShape": 1,
     "physicsShapePoints": null,
     "physicsStartAwake": true,
+    "properties": null,
     "solid": false,
-    "spriteId": "5aa0d2c4-8b4e-4f8d-bcb1-4f2862b3cb30",
+    "spriteId": "d0782ca4-cc99-4f84-9448-d491917d8b55",
     "visible": true
 }

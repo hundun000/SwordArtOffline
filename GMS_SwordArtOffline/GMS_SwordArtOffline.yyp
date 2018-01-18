@@ -239,6 +239,14 @@
             }
         },
         {
+            "Key": "132ab8b8-36f2-4264-b2c2-be7af6bd791c",
+            "Value": {
+                "id": "814eb340-1932-4c7a-8788-0ebb59fd324f",
+                "resourcePath": "objects\\obj_fighterName\\obj_fighterName.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "13ae92d1-d901-43f5-8c58-90509da2b1a9",
             "Value": {
                 "id": "cd1742a0-e675-466e-86e8-951abe434bcd",
@@ -250,7 +258,7 @@
             "Key": "145ccd85-288d-42c8-be24-1f2a635b0641",
             "Value": {
                 "id": "d4480fbc-4faa-4ad3-a31d-a0dce1e19f99",
-                "resourcePath": "objects\\obj_fight_judger\\obj_fight_judger.yy",
+                "resourcePath": "objects\\obj_fightManager\\obj_fightManager.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -799,6 +807,14 @@
             }
         },
         {
+            "Key": "4ca39888-35e3-452e-afbe-d715dacec829",
+            "Value": {
+                "id": "d1bc327a-779a-47bc-88bb-367f879ee0bd",
+                "resourcePath": "views\\4ca39888-35e3-452e-afbe-d715dacec829.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "4caa7704-36bf-425f-b0d5-64c5dd1d4efd",
             "Value": {
                 "id": "3c7ebf3d-2a3e-4729-a7c6-61e25ce7097e",
@@ -860,6 +876,14 @@
                 "id": "98114f9b-7363-453b-a3f0-da5a3a4179a0",
                 "resourcePath": "notes\\HowToAddMap.yy",
                 "resourceType": "GMNotes"
+            }
+        },
+        {
+            "Key": "509c5c98-8e7b-4629-987c-dbdf1f8e3182",
+            "Value": {
+                "id": "b433fce3-8e0e-48de-b4f2-192957c7218f",
+                "resourcePath": "sprites\\spr_hpBar\\spr_hpBar.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -1535,6 +1559,14 @@
             }
         },
         {
+            "Key": "910912e4-6437-4cd2-bc87-3728c2933ddc",
+            "Value": {
+                "id": "bb14f853-9b77-460c-9c0e-e661cba16708",
+                "resourcePath": "sprites\\spr_fightInfo\\spr_fightInfo.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "926e8b80-e167-4d10-a572-45565e84ebc4",
             "Value": {
                 "id": "2f3fa925-1ccc-4d1c-9b52-ad4c3b594a82",
@@ -1644,6 +1676,22 @@
                 "id": "16330d2f-ff04-48b6-9933-c92dd8600c83",
                 "resourcePath": "sprites\\spr_domoreMemu\\spr_domoreMemu.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "97e21150-2245-4f50-85e2-fde03e3d02fa",
+            "Value": {
+                "id": "82bed99b-c16a-4947-9886-1d1930f4ded7",
+                "resourcePath": "sprites\\spr_fighterName\\spr_fighterName.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "9844b1c7-23e1-41e1-9a1c-f27e40907e07",
+            "Value": {
+                "id": "883db3e4-f0e1-4609-b4b7-f4cb0a7e6a44",
+                "resourcePath": "objects\\obj_fightInfoBar\\obj_fightInfoBar.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -2007,6 +2055,14 @@
             }
         },
         {
+            "Key": "b9c6533a-727a-4fd0-8595-587522801dfd",
+            "Value": {
+                "id": "46720aa2-7f2e-4eaf-ad6d-1042487ad34c",
+                "resourcePath": "objects\\obj_hpBar\\obj_hpBar.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "bb9a65d0-cdcd-41e5-99cb-a2b149d05e6d",
             "Value": {
                 "id": "41093e83-bb22-4b98-aae2-3321327ebacd",
@@ -2204,6 +2260,14 @@
                 "id": "334f067e-0cd4-42ec-8c17-2fd123537475",
                 "resourcePath": "views\\cf9d907a-b464-4bb4-be83-38fdfe519007.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "d0782ca4-cc99-4f84-9448-d491917d8b55",
+            "Value": {
+                "id": "ce64112d-69ba-4a13-a08e-727d8928f3b0",
+                "resourcePath": "sprites\\sprite90\\sprite90.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

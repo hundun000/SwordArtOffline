@@ -12,11 +12,16 @@ if(isA){
 		case HOME_EDIT_TEAM:
 			room_goto(room_team);
 			break;
-		
+		case HOME_LOAD:
+			loadGame();
+			show_message("Game load");
+			break;
+		case HOME_SAVE:	
+			saveGame();
+			show_message("Game save");	
+			break;
 		default:
 	}
-
-
 }
 else if(input_dy!=0){
 	selectedHomeOptionIndex+=input_dy;
