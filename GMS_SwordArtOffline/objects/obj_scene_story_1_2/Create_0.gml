@@ -27,4 +27,4 @@ addSceneTextBox("klein","我也没找到，为什么会变成这样？",1);
 addSceneTextBox("kirito","看，系统提示我们到中央广场集合。",0);
 addSceneTextBox("klein","看来我们能在那里得到解释。",1);
 
-addSceneChangeRoom(room_world,InputReceiver.worldMapManager);
+addSceneChangeRoom(room_home,InputReceiver.homeManager);

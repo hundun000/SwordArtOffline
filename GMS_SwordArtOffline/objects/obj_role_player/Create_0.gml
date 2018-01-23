@@ -8,9 +8,11 @@
 
 items=ds_grid_create(NUM_ITEM_PROPERTY,NUM_ROLE_ITEM);
 curNumItem=0;
+curWeaponIndex=-1;
 isFront=false;
 
 visible=false;
+
 
 //should be init-set for each role
 /*

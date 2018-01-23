@@ -22,4 +22,4 @@ visible=false;
 addItemToRole(id,"好伤药",5);
 addItemToRole(id,"伤药",4);
 
-
+addItemToRole(id,"木剑",1);

@@ -206,11 +206,11 @@ switch(enemyManagerState){
 			}
 			
 
-
-			global.fighter_L=enemy;
-			global.fighter_R=attackTarget;			
-			global.curAttackSide=FIGHT_L;
-			global.fightBackRoom=room;
+			var fightManager=global.thisGame.fightManager;
+			fightManager.fighter[FIGHT_L]=enemy;
+			fightManager.fighter[FIGHT_R]=attackTarget;			
+			fightManager.curAttackSide=FIGHT_L;
+			fightManager.fightBackRoom=room;
 			//global.fight_found_side=FIGHT_L;
 			
 			deleteCanMove();

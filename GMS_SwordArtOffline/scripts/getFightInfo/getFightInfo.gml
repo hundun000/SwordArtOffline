@@ -23,8 +23,8 @@
 
 var ans=array_create(2);
 var fighter=array_create(2);
-fighter[0]=argument0;
-fighter[1]=argument1;
+fighter[MY_attack_times]=argument0;
+fighter[MY_attack_times+1]=argument1;
 
 
 //if(fighter[0]==fighter[1]) return noone;
@@ -33,8 +33,8 @@ fighter[1]=argument1;
 
 //******** 0~1 attack times(consider attack side type) ********
 var dif=fighter[0].dex-fighter[1].dex;
-ans[0]=1+(dif>=THRESHOLD_DEX);
-ans[1]=1+(dif<=-THRESHOLD_DEX);
+ans[MY_attack_times]=1+(dif>=THRESHOLD_DEX);
+ans[MY_attack_times+1]=1+(dif<=-THRESHOLD_DEX);
 
 //consider attack side type
 var dx=fighter[0].x-fighter[1].x;
@@ -46,18 +46,16 @@ var Manhattan_distance=(abs(dx)+abs(dy)) div UNIT;
 if(argument2){
 	//if only consider expetation,simply compare both sides attack range
 	if(fighter[0].roleAttackRangFrom<fighter[1].roleAttackRangFrom||fighter[0].roleAttackRangTo>fighter[1].roleAttackRangTo)
-		ans[1]=0;
+		ans[MY_attack_times+1]=0;
 }
 else{
 	//only set rival side,consider caller is me.And as enemy is forecast,it isn't actul in range
 	if(Manhattan_distance<fighter[0].roleAttackRangFrom||Manhattan_distance>fighter[0].roleAttackRangTo)
-		ans[0]=0;
+		ans[MY_attack_times]=0;
 	else if(Manhattan_distance<fighter[1].roleAttackRangFrom||Manhattan_distance>fighter[1].roleAttackRangTo)
-		ans[1]=0;	
+		ans[MY_attack_times+1]=0;	
 }
 
-
-var curAnsIndex=2;
 
 
 //******** 2~3 hit rates 4~5 pre damages 6~7 critical rates ********
@@ -65,15 +63,24 @@ var curAnsIndex=2;
 for(var side=0;side<2;side++){
 
 	//hitRate range in (33,100)% ,线性增加
-	ans[curAnsIndex+side]=floor(clamp(33+(fighter[side].dex-fighter[!side].dex*0.3)*6,33,100)); 
+	ans[MY_hit_rate+side]=floor(clamp(33+(fighter[side].dex-fighter[!side].dex*0.3)*6,33,100)); 
 	
-	ans[curAnsIndex+2+side]=clamp(fighter[side].atk-fighter[!side].def,0,fighter[side].atk);
+	relocateCurWeapon(fighter[side]);
+	var weaponDamage=getWeaponDamageByName(getRoleCurWeaponName(fighter[side]));
+	
+	if(weaponDamage==-1){	
+		ans[MY_attack_times+side]=0;	
+		ans[MY_pre_damage+side]=clamp(fighter[side].atk-fighter[!side].def,0,fighter[side].atk);	
+	}
+	else{
+		ans[MY_pre_damage+side]=clamp(fighter[side].atk+weaponDamage-fighter[!side].def,0,fighter[side].atk);	
+	}
 	
 	//criticalRate range in (0,50)% ,线性增加
-	ans[curAnsIndex+4+side]=floor(clamp((fighter[side].dex-fighter[!side].dex*0.5)*1.5,0,50)); 
+	ans[MY_critical_rate+side]=floor(clamp((fighter[side].dex-fighter[!side].dex*0.5)*1.5,0,50)); 
 	
 }
-curAnsIndex+=6;
+
 
 
 

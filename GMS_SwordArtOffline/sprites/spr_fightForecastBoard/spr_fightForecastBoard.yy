@@ -13,6 +13,7 @@
     "bboxmode": 0,
     "colkind": 1,
     "coltolerance": 0,
+    "edgeFiltering": false,
     "frames": [
         {
             "id": "6e7a5925-16a5-41c0-824f-da30e3af27aa",
@@ -33,6 +34,13 @@
                     "mvc": "1.0",
                     "FrameId": "6e7a5925-16a5-41c0-824f-da30e3af27aa",
                     "LayerId": "3c82329f-4db6-4aba-b317-f3ee4aad6047"
+                },
+                {
+                    "id": "ffb890b3-90b7-4182-a945-863183388f90",
+                    "modelName": "GMSpriteImage",
+                    "mvc": "1.0",
+                    "FrameId": "6e7a5925-16a5-41c0-824f-da30e3af27aa",
+                    "LayerId": "13f28593-63bf-48c8-b5f3-42bb5b62c0f9"
                 }
             ]
         }
@@ -41,6 +49,17 @@
     "gridY": 0,
     "height": 400,
     "layers": [
+        {
+            "id": "13f28593-63bf-48c8-b5f3-42bb5b62c0f9",
+            "modelName": "GMImageLayer",
+            "mvc": "1.0",
+            "SpriteId": "68cc8c49-ae4f-43f1-a946-5c8e8841d0d3",
+            "blendMode": 0,
+            "isLocked": false,
+            "name": "Layer 1",
+            "opacity": 100,
+            "visible": true
+        },
         {
             "id": "3c82329f-4db6-4aba-b317-f3ee4aad6047",
             "modelName": "GMImageLayer",
@@ -54,6 +73,7 @@
         }
     ],
     "origin": 4,
+    "originLocked": false,
     "playbackSpeed": 15,
     "playbackSpeedType": 0,
     "premultiplyAlpha": false,

@@ -15,15 +15,15 @@ playerFrontManager=instance_find(obj_playerFrontManager,0);
 teamRoomManager=instance_find(obj_teamRoomManager,0);
 homeManager=instance_find(obj_homeManager,0);
 worldMapManager=instance_find(obj_worldMapManager,0);
-
+fightManager=instance_find(obj_fightManager,0);
 
 
 global.font_CN_textBox=font_add("ARIALUNI_fixed.ttf",32,0,0,32,128);
 global.font_CN_teamRoom=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 global.font_CN_homeMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 global.font_CN_mainMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
-
-
+global.font_CN_fightForecast=font_add("ARIALUNI_fixed.ttf",15,0,0,32,128);
+global.font_CN_fightRoom=font_add("ARIALUNI_fixed.ttf",30,0,0,32,128);
 
 
 					

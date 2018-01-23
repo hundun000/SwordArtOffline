@@ -37,6 +37,7 @@ var itemQuality=ds_grid_get(role.items,itemIndex,INDEX_ITEM_QUALITY);
 if(itemQuality-1>0)
 	ds_grid_set(role.items,itemIndex,INDEX_ITEM_QUALITY,itemQuality-1);
 else{	
+	//use out
 	ds_grid_set(role.items,itemIndex,INDEX_ITEM_QUALITY,noone);
 	ds_grid_set(role.items,itemIndex,INDEX_ITEM_NAME,noone);
 	role.curNumItem--;

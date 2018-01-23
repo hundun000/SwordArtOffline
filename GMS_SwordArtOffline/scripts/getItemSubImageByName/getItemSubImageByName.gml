@@ -5,6 +5,8 @@ switch(argument0){
 		return 1;
 	case "好伤药":
 		return 2;
+	case "木剑":
+		return 3;
 	default:
 		return 0;	
 }

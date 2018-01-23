@@ -18,7 +18,7 @@ for(var i=0;i<global.operatedRole.curNumItem;i++){
 }
 
 //draw the sign of the selected item  
-var rectangle_y1=y+y_offset*0.5+(global.itemSelectIndex-NUM_ROLE_ITEM*0.5-0.5)*text_space;
+var rectangle_y1=y+y_offset*0.5+(manager.itemSelectIndex-NUM_ROLE_ITEM*0.5-0.5)*text_space;
 draw_set_color(c_orange);
 draw_rectangle(x-sprite_width*0.46,rectangle_y1
 			   ,x+sprite_width*0.46,rectangle_y1+UNIT

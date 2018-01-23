@@ -24,7 +24,6 @@
 		}
 		else if(manager.isHit==1){
 			image_index=0;
-			show_debug_message("miss animation end");
 		}	
 
 	

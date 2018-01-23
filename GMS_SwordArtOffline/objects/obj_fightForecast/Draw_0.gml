@@ -4,7 +4,7 @@ draw_self();
 //------------- draw text -----------------
 //index 0<=>left_side<=>enemy,1<=>right_side<=>player
 
-draw_set_font(fightForecastFont);
+draw_set_font(global.font_CN_fightForecast);
 draw_set_color(c_black);
 
 var text_left;
@@ -18,5 +18,12 @@ for(var side=0;side<=1;side++){
 	draw_text(text_left[side],y+1*text_top_space-90
 				,string(fightForecastInfo[4+!side])+" X "+string(fightForecastInfo[0+!side]));
 	draw_text(text_left[side],y+2*text_top_space-90,fightForecastInfo[2+!side]);
-	draw_text(text_left[side],y+3*text_top_space-90,fightForecastInfo[6+!side]);					
+	draw_text(text_left[side],y+3*text_top_space-90,fightForecastInfo[6+!side]);
 }
+
+
+var weaponName;
+weaponName=getRoleCurWeaponName(playerRole);
+draw_text(text_left[1],y-1*text_top_space-90,weaponName);	
+weaponName=getRoleCurWeaponName(enemyRole);
+draw_text(text_left[0],y+4*text_top_space-90,weaponName);	

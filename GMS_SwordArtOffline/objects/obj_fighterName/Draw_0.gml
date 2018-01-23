@@ -6,6 +6,6 @@ var name_left_x=x;
 var name_top_y=y;
 
 //***************draw name**********************
-draw_set_font(fightRoomFont_mid);
+draw_set_font(global.font_CN_fightRoom);
 draw_set_color(c_black);
 draw_text(name_left_x,name_top_y,fighterName);

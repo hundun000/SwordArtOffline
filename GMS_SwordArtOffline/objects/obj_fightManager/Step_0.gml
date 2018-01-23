@@ -7,16 +7,7 @@
 
 #macro XP_SPEED 1
 
-enum FightState{
-	preFight,
-	waitStartDelay,
-	startAttackAnimation,
-	waitAttackAnimationEnd,
-	startResultAnimation,
-	waitResultAnimation,
-	processXp,
-	fightEnd
-}
+
 
 if(global.inputReceiver!=InputReceiver.fightRoom) return;
 
@@ -26,21 +17,20 @@ switch(fightState){
 		//show_("into preFight");
 		//mean found side
 		
-		if(global.curAttackSide==FIGHT_L)
-			var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);
-			
+		if(curAttackSide==FIGHT_L)
+			var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);			
 		else
 			var ans_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
 			
-		//!!!!!!!!!!!!!!!!!!! global.curAttackSide<=>founder<=>ans[0] !!!!!!!!!!!!!!!
+		//!!!!!!!!!!!!!!!!!!! curAttackSide<=>founder<=>ans[0] !!!!!!!!!!!!!!!
 		
 		
 		//init turnTimes
-		turnTimes[global.curAttackSide]=ans_list[0];
-		turnTimes[!global.curAttackSide]=ans_list[1];
+		turnTimes[curAttackSide]=ans_list[0];
+		turnTimes[!curAttackSide]=ans_list[1];
 		
 		
-		var side=global.curAttackSide;
+		var side=curAttackSide;
 		//let two side use the same codes by the two-times loop
 		for(var i=0;i<2;i++){
 
@@ -64,7 +54,7 @@ switch(fightState){
 		//init animation
 		attackAnimation[FIGHT_L].sprite_index=getAttackSpriteByRole(fighter[FIGHT_L]);
 		attackAnimation[FIGHT_R].sprite_index=getAttackSpriteByRole(fighter[FIGHT_R]);
-		attackAnimation[FIGHT_L].image_xscale=-1;
+		attackAnimation[FIGHT_L].image_xscale*=-1;
 		attackAnimation[FIGHT_L].image_speed=0;
 		attackAnimation[FIGHT_R].image_speed=0;
 		
@@ -100,13 +90,14 @@ switch(fightState){
 		else if(reduceHpAnimationCountDown==0){//distinguish countdown==0 and init==-1
 			
 			//the Hp reduction actully happen here
-			fighter[!global.curAttackSide].curHp-=actulDamage;
+			fighter[!curAttackSide].curHp-=actulDamage;
 			
-			if(fighter[!global.curAttackSide].curHp==0){
+			
+			if(fighter[!curAttackSide].curHp==0){
 			//rival die,fight state to result	
 				
 				//simply check who die
-				if(global.curAttackSide==FIGHT_R){
+				if(curAttackSide==FIGHT_R){
 					flag_enemy_die=true;	
 				}
 				else{
@@ -123,34 +114,36 @@ switch(fightState){
 			//countinue to next turn
 			
 				//switch attack side
-				global.curAttackSide=!global.curAttackSide;
+				curAttackSide=!curAttackSide;
 			}
 			
 		}
 	
-		if(turnTimes[global.curAttackSide]>0||turnTimes[!global.curAttackSide]>0){
-			
-			if(turnTimes[global.curAttackSide]==0){
-				global.curAttackSide=!global.curAttackSide;
+		if(turnTimes[curAttackSide]>0||turnTimes[!curAttackSide]>0){
+		//any side not end
+		
+			//set to that side	
+			if(turnTimes[curAttackSide]==0){
+				curAttackSide=!curAttackSide;
 			}
 			
-			turnTimes[global.curAttackSide]--;
+			turnTimes[curAttackSide]--;
 			
 			//*******************process data***************
 			//oprate the role Hp data will happen after Hp reduce animation finished
 			
 			//ramdom critical
-			isCriticalHappen=(random(100)<criticalRate[global.curAttackSide]);
+			isCriticalHappen=(random(100)<criticalRate[curAttackSide]);
 			
 			if(isCriticalHappen){
-				actulDamage=clamp(preDamage[global.curAttackSide]*3,0,fighter[!global.curAttackSide].curHp);	
+				actulDamage=clamp(preDamage[curAttackSide]*3,0,fighter[!curAttackSide].curHp);	
 				isHit=true;
 			}
 			else{
 				//ramdom hit
-				isHit=(random(100)<hitRate[global.curAttackSide]);
+				isHit=(random(100)<hitRate[curAttackSide]);
 				if(isHit)
-					actulDamage=clamp(preDamage[global.curAttackSide],0,fighter[!global.curAttackSide].curHp);		
+					actulDamage=clamp(preDamage[curAttackSide],0,fighter[!curAttackSide].curHp);		
 				else
 					actulDamage=0;
 			}
@@ -161,19 +154,20 @@ switch(fightState){
 
 			//current side animation can be normal or critical,while speed must set to 1
 			if(isCriticalHappen){
-				attackAnimation[global.curAttackSide].sprite_index=getCriticalSpriteByRole(fighter[global.curAttackSide]);
+				attackAnimation[curAttackSide].sprite_index=getCriticalSpriteByRole(fighter[curAttackSide]);
 			}
 			else{
-				attackAnimation[global.curAttackSide].sprite_index=getAttackSpriteByRole(fighter[global.curAttackSide]);
+				attackAnimation[curAttackSide].sprite_index=getAttackSpriteByRole(fighter[curAttackSide]);
 			}
-			attackAnimation[global.curAttackSide].image_speed=1;
+			attackAnimation[curAttackSide].image_speed=1;
 			
 			//default set to miss sprite,just image speed set depend on isHit
-			attackAnimation[!global.curAttackSide].sprite_index=getMissSpriteByRole(fighter[!global.curAttackSide]);
-			attackAnimation[!global.curAttackSide].image_speed=(!isHit);
+			attackAnimation[!curAttackSide].sprite_index=getMissSpriteByRole(fighter[!curAttackSide]);
+			attackAnimation[!curAttackSide].image_speed=(!isHit);
 
-			attackAnimation[global.curAttackSide].depth=DEPTH_FRONT;
-			attackAnimation[!global.curAttackSide].depth=DEPTH_BACK;
+			var curDepth=attackAnimation[curAttackSide].depth;
+			attackAnimation[curAttackSide].depth=curDepth-1;
+			attackAnimation[!curAttackSide].depth=curDepth;
 			
 
 			
@@ -202,8 +196,8 @@ switch(fightState){
 		if(flag_enemy_die||flag_player_die){
 			//*******************process die animation****************
 			//must be other side die
-			attackAnimation[!global.curAttackSide].sprite_index=getDieSpriteByRole(fighter[!global.curAttackSide]);
-			attackAnimation[!global.curAttackSide].image_speed=1;
+			attackAnimation[!curAttackSide].sprite_index=getDieSpriteByRole(fighter[!curAttackSide]);
+			attackAnimation[!curAttackSide].image_speed=1;
 			//mean only need one animation finish
 			isHit=1;
 			fightState=FightState.waitResultAnimation;
@@ -217,7 +211,7 @@ switch(fightState){
 			//create scene_roleDying which handle later death in battle map
 			var sceneDying=instance_create_depth(0,0,1,obj_scene_roleDying);
 			//died must be other side
-			sceneDying.diedRole=fighter[!global.curAttackSide];
+			sceneDying.diedRole=fighter[!curAttackSide];
 			
 			fightEnd_delay=-1;
 			fightState=FightState.fightEnd;
@@ -228,17 +222,14 @@ switch(fightState){
 		//if waitAddXp not init		
 			if(flag_enemy_die){
 				//died must be other side
-				waitAddXp=clamp(fighter[!global.curAttackSide].xp
-							*(5-(fighter[!global.curAttackSide].lv-fighter[global.curAttackSide].lv))
+				waitAddXp=clamp(fighter[!curAttackSide].xp
+							*(5-(fighter[!curAttackSide].lv-fighter[curAttackSide].lv))
 							,10,100);	
 							
 			}
 			else{
 				waitAddXp=3;
 			}	
-			depth=DEPTH_FRONT;
-			attackAnimation[0].depth=DEPTH_BACK;
-			attackAnimation[1].depth=DEPTH_BACK;
 		}
 
 
@@ -306,16 +297,17 @@ switch(fightState){
 		
 			if(flag_enemy_die){
 				//destroy the died enemy
-				ds_list_delete(global.frontEnemies,ds_list_find_index(global.frontEnemies,fighter[!global.curAttackSide])); 
+				ds_list_delete(global.frontEnemies,ds_list_find_index(global.frontEnemies,fighter[!curAttackSide])); 
 				with(obj_enemyManager){
 					//after delete a enemy,next enemy should be the same index
 					ii--;
 				}
-				instance_destroy(fighter[!global.curAttackSide]);
+				//destroy in room end
+				deadRole=fighter[!curAttackSide];
 				
 			}	
 
-			//!!!!!!!on matter if plyer role die!!!!!!!
+			//not handle plyer role die here
 			for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
 					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
 					frontRole.visible=true;
@@ -323,7 +315,7 @@ switch(fightState){
 
 				
 			
-			room_goto(global.fightBackRoom);
+			room_goto(fightBackRoom);
 		}
 		break;
 		
@@ -336,8 +328,8 @@ switch(fightState){
 
 //************************ set HP bar data ****************
 if(reduceHpAnimationCountDown>=0 && reduceHpAnimationCountDown<STEP_reduceHpAnimation){	
-num_remainHp[global.curAttackSide]=fighter[global.curAttackSide].curHp; 
-num_remainHp[!global.curAttackSide]=(fighter[!global.curAttackSide].curHp-actulDamage) ;		
+num_remainHp[curAttackSide]=fighter[curAttackSide].curHp; 
+num_remainHp[!curAttackSide]=(fighter[!curAttackSide].curHp-actulDamage) ;		
 }
 else{   
 num_remainHp[FIGHT_L]=fighter[FIGHT_L].curHp;

@@ -3,17 +3,33 @@
 #macro FIGHT_L 0
 #macro FIGHT_R 1
 
-#macro DEPTH_FRONT -201
-#macro DEPTH_BACK -200
+enum FightState{
+	noInFightRoom,
+	preFight,
+	waitStartDelay,
+	startAttackAnimation,
+	waitAttackAnimationEnd,
+	startResultAnimation,
+	waitResultAnimation,
+	processXp,
+	fightEnd,
+}
+
+fighter[FIGHT_L]=noone;
+fighter[FIGHT_R]=noone;
+fightBackRoom=noone;
+fightState=FightState.noInFightRoom;
+
+deadRole=noone;
 
 //******** HP bar data ***********
-rate_remainHp[0]=-1;
-rate_remainHp[1]=-1;
-num_remainHp[0]=-1;
-num_remainHp[1]=-1;	
+rate_remainHp[FIGHT_L]=-1;
+rate_remainHp[FIGHT_R]=-1;
+num_remainHp[FIGHT_L]=-1;
+num_remainHp[FIGHT_R]=-1;	
 
 
-attackAnimation[0]=instance_find(obj_fightRole,0);
-attackAnimation[1]=instance_find(obj_fightRole,1);
+attackAnimation[FIGHT_L]=noone;
+attackAnimation[FIGHT_R]=noone;
 
 random_set_seed(4);

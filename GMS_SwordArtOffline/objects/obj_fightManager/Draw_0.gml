@@ -1,28 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-//********draw Xp image**********
-if(waitAddXp>=0){
-	//bar
-	var xp_bar_y=room_height/2;
-	draw_sprite(spr_xpBar,0,room_width/2,xp_bar_y);
-	//xp
-	var xp_full_width=131;
-	var xp_width=fighter[FIGHT_R].xp/100*xp_full_width;
-	var xp_height=8;
-	var xp_top_y=xp_bar_y-xp_height/2;
-	var xp_left_x=room_width/2-81;
-	draw_set_color(c_orange);
-	draw_rectangle(xp_left_x,xp_top_y,xp_left_x+xp_width,xp_top_y+xp_height,false);
-	//number
-	draw_set_font(fightRoomFont_mid);
-	draw_text(xp_left_x+xp_full_width+1,xp_top_y-4,fighter[FIGHT_R].xp);
-	//lv up
-	if(flag_lv_up){
-		draw_sprite(spr_xpBar,1,room_width/2,xp_bar_y);
-	}
-			
-}	
+	
 	
 //********draw if lv up image**********
 if(waitAddXp==0&&flag_lv_up){

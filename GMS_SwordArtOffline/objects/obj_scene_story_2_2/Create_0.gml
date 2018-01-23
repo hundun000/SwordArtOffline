@@ -9,5 +9,5 @@ addSceneDelay(20);
 addSceneTextBox("kirito","I must leave.",0);
 
 
-addSceneChangeRoom(room_world,InputReceiver.worldMapManager);
+addSceneChangeRoom(room_home,InputReceiver.homeManager);
 

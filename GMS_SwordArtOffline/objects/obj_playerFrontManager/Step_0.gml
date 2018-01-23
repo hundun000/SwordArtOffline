@@ -145,11 +145,9 @@ switch(cursorState){
 				
 					var center=getCameraCenter(view_camera[0]);
 					var menuSide=sign(center[0]-global.cursor_pointer.x+1);
-		
-				//	show_debug_message(string(center[0]/64)+" "+string(center[1]/64)+" "+string(center[2]/64));
 					
-					itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
-					global.itemSelectIndex=0;
+					ins_itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
+					itemSelectIndex=0;
 
 					ins_doMoreMemu.visible=false;
 					break;
@@ -195,29 +193,29 @@ switch(cursorState){
 	case CursorState.selectingBagItem:
 	
 		if(input_dy!=0&&global.operatedRole.curNumItem!=0){
-			global.itemSelectIndex=(global.itemSelectIndex+input_dy+global.operatedRole.curNumItem)%global.operatedRole.curNumItem;
+			itemSelectIndex=clamp(itemSelectIndex+input_dy,0,global.operatedRole.curNumItem-1);
 		}
 		else if(isA){
-			var itemName=ds_grid_get(global.operatedRole.items,INDEX_ITEM_NAME,global.itemSelectIndex);
+			var itemName=ds_grid_get(global.operatedRole.items,itemSelectIndex,INDEX_ITEM_NAME);
 			var usable=canUseItem(itemName,global.operatedRole);
 			if(usable==true){
 				cursorState=CursorState.nextPlayer;
 				
-				useItemAtFront(global.operatedRole,global.itemSelectIndex);					
+				useItemAtFront(global.operatedRole,itemSelectIndex);					
 				
 				deleteCanMove();		
 					
 				instance_destroy(ins_doMoreMemu);
 	
 				
-				instance_destroy(obj_itemMenu);
+				instance_destroy(ins__itemMenu);
 			}
 			else{	
 				createSingleMessage(usable,"system");
 				
 				cursorState=CursorState.roleDoMore;
 			
-				instance_destroy(obj_itemMenu);
+				instance_destroy(ins__itemMenu);
 			
 				ins_doMoreMemu.visible=true;				
 			}
@@ -226,7 +224,7 @@ switch(cursorState){
 		else if(isB){
 			cursorState=CursorState.roleDoMore;
 			
-			instance_destroy(obj_itemMenu);
+			instance_destroy(ins__itemMenu);
 			
 			ins_doMoreMemu.visible=true;
 		}
@@ -265,7 +263,6 @@ switch(cursorState){
 				
 
 			}
-			//global.cursor_pointer.visible=true;
 		}
 		
 		//switch target
@@ -324,13 +321,15 @@ switch(cursorState){
 			
 				//set front persistent role disvisible
 				for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
-						var frontRole=ds_list_find_value(global.playerFrontTeam, i);
-						frontRole.visible=false;
+					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+					frontRole.visible=false;
 				}		
-				global.fighter_L=target;
-				global.fighter_R=global.operatedRole;			
-				global.curAttackSide=FIGHT_R;
-				global.fightBackRoom=room;
+				
+				var fightManager=global.thisGame.fightManager;
+				fightManager.fighter[FIGHT_L]=target;
+				fightManager.fighter[FIGHT_R]=global.operatedRole;			
+				fightManager.curAttackSide=FIGHT_R;
+				fightManager.fightBackRoom=room;
 			
 				deleteCanMove();
 			
@@ -361,46 +360,46 @@ switch(cursorState){
 
 		break;
 		
-		case CursorState.nextPlayer:
+	case CursorState.nextPlayer:
 		
-			if(checkPlayerWin(room)){
-				//set cursor to leader
-				global.cursor_pointer.x=global.kirito.x;
-				global.cursor_pointer.y=global.kirito.y;
+		if(checkPlayerWin(room)){
+			//set cursor to leader
+			global.cursor_pointer.x=global.kirito.x;
+			global.cursor_pointer.y=global.kirito.y;
 
-				var view_x=global.cursor_pointer.x
-				var view_y=global.cursor_pointer.y
-				cursorState=CursorState.waitPlayerWinAnimation;
-				instance_create_depth(view_x,view_y,1,obj_playerWin);
+			var view_x=global.cursor_pointer.x
+			var view_y=global.cursor_pointer.y
+			cursorState=CursorState.waitPlayerWinAnimation;
+			instance_create_depth(view_x,view_y,1,obj_playerWin);
+		}
+		else{
+			setRoleState(global.operatedRole,RoleState.gray);
+			
+			var done=isTeamDone();
+			if(done){
+				cursorState=CursorState.playerSideEnd;
+				//global.playerTeamDone=true;
 			}
 			else{
-				setRoleState(global.operatedRole,RoleState.gray);
+				cursorState=CursorState.free;
+				//global.cursor_pointer.visible=true;	
+			}
+		}
+		break;
 			
-				var done=isTeamDone();
-				if(done){
-					cursorState=CursorState.playerSideEnd;
-					//global.playerTeamDone=true;
-				}
-				else{
-					cursorState=CursorState.free;
-					//global.cursor_pointer.visible=true;	
-				}
-			}
-			break;
-			
-		case CursorState.playerSideEnd:	
-			show_debug_message("player team done");
-			cursorState=CursorState.waitEnemy;
-			with(obj_enemyManager){
-				enemyManagerState=EnemyManagerState.turnStart;
-			}
-			break;
-		case  CursorState.waitPlayerWinAnimation:
-			if(!instance_exists(obj_playerWin)){
-				cursorState=CursorState.notInBattle;
-				processPlayerWin(room);
-			}
-			break;
+	case CursorState.playerSideEnd:	
+		show_debug_message("player team done");
+		cursorState=CursorState.waitEnemy;
+		with(obj_enemyManager){
+			enemyManagerState=EnemyManagerState.turnStart;
+		}
+		break;
+	case  CursorState.waitPlayerWinAnimation:
+		if(!instance_exists(obj_playerWin)){
+			cursorState=CursorState.notInBattle;
+			processPlayerWin(room);
+		}
+		break;
 	default:
 }	
 
