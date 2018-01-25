@@ -19,8 +19,6 @@ visible=false;
 name=-1;
 roleType=-1;
 MAX_MOVEMENT=-1; 
-roleAttackRangFrom=-1;
-roleAttackRangTo=-1;
 weaponProfession=-1;
 
 hp=-1;

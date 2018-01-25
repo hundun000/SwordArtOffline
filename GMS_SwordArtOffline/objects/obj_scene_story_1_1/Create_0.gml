@@ -7,7 +7,7 @@
 event_inherited();
 
 
-addSceneDelay(40);
-addSceneTextBox("kirito","那么，就由我来打败这些野猪吧。",0);
+//addSceneDelay(40);
+//addSceneTextBox("kirito","那么，就由我来打败这些野猪吧。",0);
 
 addSceneChangeRoom(noone,InputReceiver.cursor);

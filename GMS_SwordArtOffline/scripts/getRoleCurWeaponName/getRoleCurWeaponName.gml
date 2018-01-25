@@ -1,9 +1,9 @@
 ///@argument0 role
 var role=argument0;
 
-relocateCurWeapon(role);
+var weaponIns=getRoleCurWeaponInstance(role);
 
-if(role.curWeaponIndex==-1)
+if(weaponIns==noone)
 	return "无武器";
 else
-	return ds_grid_get(role.items,role.curWeaponIndex,INDEX_ITEM_NAME);	
+	return weaponIns.name;	

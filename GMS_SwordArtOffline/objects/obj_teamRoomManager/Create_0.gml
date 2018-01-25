@@ -54,8 +54,7 @@ roleOperationName[ROLE_OPERATE_TO_POS_6]="编入出击队伍6号位";
 
 #macro NUM_TEAM_POS 6
 roleInTeamPos=ds_list_create();
-ds_list_set(roleInTeamPos,0,global.kirito);
-for(var i=1;i<NUM_TEAM_POS;i++)
+for(var i=0;i<NUM_TEAM_POS;i++)
 	ds_list_set(roleInTeamPos,i,noone);
 
 

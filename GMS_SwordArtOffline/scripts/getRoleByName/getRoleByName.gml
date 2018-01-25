@@ -2,10 +2,10 @@ var name=argument0;
 
 switch(name){
 	case "kirito":
-		return instance_find(obj_role_kirito,0);
+		return global.instanceManager.ins_kirito;
 	case "asuna":
-		return instance_find(obj_role_asuna,0);
+		return global.instanceManager.ins_asuna;
 	case "silica":
-		return instance_find(obj_role_silica,0);
+		return global.instanceManager.ins_silica;
 		
 }

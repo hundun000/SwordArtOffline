@@ -1,5 +1,5 @@
 {
-    "id": "765222bf-684a-4ba0-b87d-669fc6ae3a83",
+    "id": "5fe3e3d0-1fd7-4586-b16f-f58a03b3f96d",
     "modelName": "GMScript",
     "mvc": "1.0",
     "name": "isWeapon",

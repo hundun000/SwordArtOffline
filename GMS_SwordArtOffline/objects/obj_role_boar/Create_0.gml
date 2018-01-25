@@ -8,8 +8,6 @@ curHp=-1;
 
 roleType=RoleType.walker;
 MAX_MOVEMENT=5; 
-roleAttackRangFrom=1;
-roleAttackRangTo=1;
 curWeapon=noone;
 
 addItemToRole(id,"利爪",1);

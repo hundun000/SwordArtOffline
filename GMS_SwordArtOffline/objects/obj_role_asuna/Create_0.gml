@@ -6,8 +6,6 @@ name="asuna";
 
 roleType=RoleType.walker;
 MAX_MOVEMENT=5; 
-roleAttackRangFrom=1;
-roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
 
 hp=40;

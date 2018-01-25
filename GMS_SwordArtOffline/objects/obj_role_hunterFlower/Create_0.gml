@@ -8,6 +8,4 @@ curHp=-1;
 
 roleType=RoleType.walker;
 MAX_MOVEMENT=3; 
-roleAttackRangFrom=1;
-roleAttackRangTo=2;
 curWeapon=noone;

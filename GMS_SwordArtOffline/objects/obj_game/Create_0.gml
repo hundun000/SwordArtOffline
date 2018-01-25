@@ -7,15 +7,15 @@ macros_ect();
 global.thisGame=id;
 
 
-
-
 mainMenu=instance_find(obj_mainMenu,0);
-textBoxManager=instance_find(obj_textBox_manager,0); 
-playerFrontManager=instance_find(obj_playerFrontManager,0);
-teamRoomManager=instance_find(obj_teamRoomManager,0);
-homeManager=instance_find(obj_homeManager,0);
-worldMapManager=instance_find(obj_worldMapManager,0);
-fightManager=instance_find(obj_fightManager,0);
+
+textBoxManager=noone;
+playerFrontManager=noone;
+enemyFrontManager=noone;
+teamRoomManager=noone;
+homeManager=noone;
+worldMapManager=noone;
+fightManager=noone;
 
 
 global.font_CN_textBox=font_add("ARIALUNI_fixed.ttf",32,0,0,32,128);
@@ -31,8 +31,5 @@ global.font_CN_fightRoom=font_add("ARIALUNI_fixed.ttf",30,0,0,32,128);
 //********* data init*************
 global.inputReceiver=InputReceiver.mainMenu;
 
-
-
-resetWorldData();
 
 

@@ -9,6 +9,7 @@ if(input_dy!=0){
 if(isA){
 	switch(targetOptionIndex){
 		case 0:
+			resetWorldData();
 			loadGame();
 			room_goto(room_home);
 			

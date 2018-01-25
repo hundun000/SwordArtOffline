@@ -5,8 +5,6 @@ event_inherited();
 name="kirito";
 roleType=RoleType.walker;
 MAX_MOVEMENT=8; 
-roleAttackRangFrom=1;
-roleAttackRangTo=1;
 weaponProfession=Weapon.sword;
 hp=40;
 atk=22;

@@ -32,7 +32,7 @@ switch(teamRoomState){
 						selectedBagItemIndex=-1;
 					break;
 				case ROLE_OPERATE_LEAVE:
-					if(selectedTeamRole==global.kirito)
+					if(selectedTeamRole==global.instanceManager.ins_kirito)
 						textOperationInfo="主角无法离开出击队伍1号位。";
 					else{
 						var pos=ds_list_find_index(roleInTeamPos,selectedTeamRole);	

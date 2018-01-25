@@ -41,18 +41,28 @@ var dx=fighter[0].x-fighter[1].x;
 var dy=fighter[0].y-fighter[1].y;
 var Manhattan_distance=(abs(dx)+abs(dy)) div UNIT;
 
+var weaponIns;
+weaponIns[0]=getRoleCurWeaponInstance(fighter[0]);
+weaponIns[1]=getRoleCurWeaponInstance(fighter[1]);
+var attackRangFrom;
+attackRangFrom[0]=weaponIns[0].weaponAttackRangFrom;
+attackRangFrom[1]=weaponIns[1].weaponAttackRangFrom;
+var attackRangTo;
+attackRangTo[0]=weaponIns[0].weaponAttackRangTo;
+attackRangTo[1]=weaponIns[1].weaponAttackRangTo;
+
 
 
 if(argument2){
 	//if only consider expetation,simply compare both sides attack range
-	if(fighter[0].roleAttackRangFrom<fighter[1].roleAttackRangFrom||fighter[0].roleAttackRangTo>fighter[1].roleAttackRangTo)
+	if(attackRangFrom[0]<attackRangFrom[1]||attackRangTo[0]>attackRangTo[1])
 		ans[MY_attack_times+1]=0;
 }
 else{
 	//only set rival side,consider caller is me.And as enemy is forecast,it isn't actul in range
-	if(Manhattan_distance<fighter[0].roleAttackRangFrom||Manhattan_distance>fighter[0].roleAttackRangTo)
+	if(Manhattan_distance<attackRangFrom[0]||Manhattan_distance>attackRangTo[0])
 		ans[MY_attack_times]=0;
-	else if(Manhattan_distance<fighter[1].roleAttackRangFrom||Manhattan_distance>fighter[1].roleAttackRangTo)
+	else if(Manhattan_distance<attackRangFrom[1]||Manhattan_distance>attackRangTo[1])
 		ans[MY_attack_times+1]=0;	
 }
 
@@ -66,7 +76,9 @@ for(var side=0;side<2;side++){
 	ans[MY_hit_rate+side]=floor(clamp(33+(fighter[side].dex-fighter[!side].dex*0.3)*6,33,100)); 
 	
 	relocateCurWeapon(fighter[side]);
-	var weaponDamage=getWeaponDamageByName(getRoleCurWeaponName(fighter[side]));
+	
+	var weaponIns=getItemInstanceByName(getRoleCurWeaponName(fighter[side]));	
+	var weaponDamage=weaponIns.damage;
 	
 	if(weaponDamage==-1){	
 		ans[MY_attack_times+side]=0;	

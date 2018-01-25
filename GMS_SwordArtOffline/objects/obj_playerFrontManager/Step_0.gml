@@ -49,19 +49,19 @@ switch(cursorState){
 			global.cursor_pointer.y+=input_dy*UNIT;
 		}
 		else if(isA){
-			global.operatedRole=instance_position(global.cursor_pointer.x,global.cursor_pointer.y,obj_role_player);
-			if(global.operatedRole!=noone&&global.operatedRole.isFront){
+			operatedRole=instance_position(global.cursor_pointer.x,global.cursor_pointer.y,obj_role_player);
+			if(operatedRole!=noone&&operatedRole.isFront){
 			  //if(selectedRole.control==controlType.player)			
-				if(global.operatedRole.roleState==RoleState.idle){	
+				if(operatedRole.roleState==RoleState.idle){	
 					cursorState=CursorState.selectedRole;
 					
-					tempRoleX=global.operatedRole.x;
-					tempRoleY=global.operatedRole.y;
+					tempRoleX=operatedRole.x;
+					tempRoleY=operatedRole.y;
 					
 					playerPath=path_add();
 					buildPath(playerPath,global.cursor_pointer.x,global.cursor_pointer.y);		
 							
-					setRoleState(global.operatedRole,RoleState.selected);
+					setRoleState(operatedRole,RoleState.selected);
 				}
 			}	
 		}
@@ -78,8 +78,8 @@ switch(cursorState){
 			if(ins!=noone&&(ins.image_index==CAN_MOVE||ins.image_index==CAN_MOVE_ATTACK)){			
 			global.cursor_pointer.x+=input_dx*UNIT;
 			global.cursor_pointer.y+=input_dy*UNIT;
-			global.operatedRole.x+=input_dx*UNIT;
-			global.operatedRole.y+=input_dy*UNIT;
+			operatedRole.x+=input_dx*UNIT;
+			operatedRole.y+=input_dy*UNIT;
 			buildPath(playerPath,global.cursor_pointer.x,global.cursor_pointer.y);
 			}
 		}
@@ -87,7 +87,7 @@ switch(cursorState){
 		else if(isA){
 			//if tile have player role,operatRole can move at,but can stop to do more,so check this.
 			var stop_at_hold_tile=false;
-			with(global.operatedRole){
+			with(operatedRole){
 				if(collision_point(x,y,obj_role_player,false,true))
 					stop_at_hold_tile=true;
 			}
@@ -106,14 +106,14 @@ switch(cursorState){
 			
 			ins_doMoreMemu=instance_create_layer(menu_x,menu_y,"Layer_menuBoard",obj_doMoreMemu);		
 		
-			setRoleState(global.operatedRole,RoleState.doMore);
+			setRoleState(operatedRole,RoleState.doMore);
 		}
 		
 		else if(isB){
 			cursorState=CursorState.free;
 			
-			global.operatedRole.x=tempRoleX;
-			global.operatedRole.y=tempRoleY;
+			operatedRole.x=tempRoleX;
+			operatedRole.y=tempRoleY;
 				
 			global.cursor_pointer.x=tempRoleX;
 			global.cursor_pointer.y=tempRoleY;
@@ -121,7 +121,7 @@ switch(cursorState){
 			deletePath(playerPath);
 			deleteCanMove();
 		
-			setRoleState(global.operatedRole,RoleState.idle);
+			setRoleState(operatedRole,RoleState.idle);
 		}
 		
 		break;
@@ -152,7 +152,7 @@ switch(cursorState){
 					ins_doMoreMemu.visible=false;
 					break;
 				case OPTION_TALK:
-					createSingleMessage("This function has not been implemented",global.operatedRole.name);
+					createSingleMessage("This function has not been implemented",operatedRole.name);
 					isA=false;
 					ins_doMoreMemu.visible=false;
 					return;
@@ -175,8 +175,8 @@ switch(cursorState){
 			cursorState=CursorState.free;
 			//global.cursor_pointer.visible=true;
 			
-			global.operatedRole.x=tempRoleX;
-			global.operatedRole.y=tempRoleY;
+			operatedRole.x=tempRoleX;
+			operatedRole.y=tempRoleY;
 				
 			global.cursor_pointer.x=tempRoleX;
 			global.cursor_pointer.y=tempRoleY;
@@ -186,45 +186,47 @@ switch(cursorState){
 			
 			instance_destroy(ins_doMoreMemu);
 		
-			setRoleState(global.operatedRole,RoleState.idle);
+			setRoleState(operatedRole,RoleState.idle);
 		}
 		break;
 		
 	case CursorState.selectingBagItem:
 	
-		if(input_dy!=0&&global.operatedRole.curNumItem!=0){
-			itemSelectIndex=clamp(itemSelectIndex+input_dy,0,global.operatedRole.curNumItem-1);
+		if(input_dy!=0&&operatedRole.curNumItem!=0){
+			itemSelectIndex=clamp(itemSelectIndex+input_dy,0,operatedRole.curNumItem-1);
 		}
 		else if(isA){
-			var itemName=ds_grid_get(global.operatedRole.items,itemSelectIndex,INDEX_ITEM_NAME);
-			var usable=canUseItem(itemName,global.operatedRole);
-			if(usable==true){
-				cursorState=CursorState.nextPlayer;
+			var itemName=ds_grid_get(operatedRole.items,itemSelectIndex,INDEX_ITEM_NAME);
+			
+			if(isWeapon(itemName)){
+				curWeaponIndex=itemSelectIndex;
 				
-				useItemAtFront(global.operatedRole,itemSelectIndex);					
-				
-				deleteCanMove();		
-					
-				instance_destroy(ins_doMoreMemu);
-	
-				
-				instance_destroy(ins__itemMenu);
+				createSingleMessage("已切换至该武器。","system");				
+				cursorState=CursorState.roleDoMore;			
+				instance_destroy(ins_itemMenu);			
+				ins_doMoreMemu.visible=true;
 			}
-			else{	
-				createSingleMessage(usable,"system");
-				
-				cursorState=CursorState.roleDoMore;
-			
-				instance_destroy(ins__itemMenu);
-			
-				ins_doMoreMemu.visible=true;				
-			}
-			
+			else{
+				var usable=canUseItem(itemName,operatedRole);
+				if(usable==true){
+					cursorState=CursorState.nextPlayer;				
+					useItemAtFront(operatedRole,itemSelectIndex);								
+					deleteCanMove();							
+					instance_destroy(ins_doMoreMemu);				
+					instance_destroy(ins_itemMenu);
+				}
+				else{	
+					createSingleMessage(usable,"system");				
+					cursorState=CursorState.roleDoMore;			
+					instance_destroy(ins_itemMenu);			
+					ins_doMoreMemu.visible=true;				
+				}
+			}									
 		}
 		else if(isB){
 			cursorState=CursorState.roleDoMore;
 			
-			instance_destroy(ins__itemMenu);
+			instance_destroy(ins_itemMenu);
 			
 			ins_doMoreMemu.visible=true;
 		}
@@ -258,7 +260,7 @@ switch(cursorState){
 				
 				ins_fightForecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
 				ins_fightForecast.enemyRole=target;
-				ins_fightForecast.playerRole=global.operatedRole;
+				ins_fightForecast.playerRole=operatedRole;
 				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);
 				
 
@@ -302,7 +304,7 @@ switch(cursorState){
 				
 				//fightForecastInfo need change targrt
 				ins_fightForecast.enemyRole=target;
-				ins_fightForecast.playerRole=global.operatedRole;
+				ins_fightForecast.playerRole=operatedRole;
 				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);		
 			}
 
@@ -311,7 +313,7 @@ switch(cursorState){
 		
 		//into fight room , unfight role should be away!
 
-			if(global.cursor_pointer.x!=global.operatedRole.x||global.cursor_pointer.y!=global.operatedRole.y){  //means truely target to a enemy ,not player role
+			if(global.cursor_pointer.x!=operatedRole.x||global.cursor_pointer.y!=operatedRole.y){  //means truely target to a enemy ,not player role
 
 				room_persistent=true;
 			
@@ -327,7 +329,7 @@ switch(cursorState){
 				
 				var fightManager=global.thisGame.fightManager;
 				fightManager.fighter[FIGHT_L]=target;
-				fightManager.fighter[FIGHT_R]=global.operatedRole;			
+				fightManager.fighter[FIGHT_R]=operatedRole;			
 				fightManager.curAttackSide=FIGHT_R;
 				fightManager.fightBackRoom=room;
 			
@@ -347,8 +349,8 @@ switch(cursorState){
 			
 
 			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
-			global.cursor_pointer.x=global.operatedRole.x;
-			global.cursor_pointer.y=global.operatedRole.y;
+			global.cursor_pointer.x=operatedRole.x;
+			global.cursor_pointer.y=operatedRole.y;
 			
 			ins_doMoreMemu.visible=true;
 			
@@ -364,8 +366,8 @@ switch(cursorState){
 		
 		if(checkPlayerWin(room)){
 			//set cursor to leader
-			global.cursor_pointer.x=global.kirito.x;
-			global.cursor_pointer.y=global.kirito.y;
+			global.cursor_pointer.x=global.instanceManager.ins_kirito.x;
+			global.cursor_pointer.y=global.instanceManager.ins_kirito.y;
 
 			var view_x=global.cursor_pointer.x
 			var view_y=global.cursor_pointer.y
@@ -373,7 +375,7 @@ switch(cursorState){
 			instance_create_depth(view_x,view_y,1,obj_playerWin);
 		}
 		else{
-			setRoleState(global.operatedRole,RoleState.gray);
+			setRoleState(operatedRole,RoleState.gray);
 			
 			var done=isTeamDone();
 			if(done){

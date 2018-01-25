@@ -15,7 +15,8 @@
         "68cc8c49-ae4f-43f1-a946-5c8e8841d0d3",
         "a86fb7db-f0b5-4047-b724-e69ad08a04f1",
         "d85759e3-9eca-48bb-999a-071c8b0ced38",
-        "0e40c6c6-0dc7-4082-8ab2-6ec041ab5c14"
+        "0e40c6c6-0dc7-4082-8ab2-6ec041ab5c14",
+        "48961e5e-7474-4ab0-9e5a-f5588685c867"
     ],
     "filterType": "GMSprite",
     "folderName": "Menu&Bar",

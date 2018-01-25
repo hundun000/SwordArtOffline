@@ -52,22 +52,22 @@ switch(worldMapState){
 				case 0:
 					//handle battle front init
 					//*** kiroto add to world when resetWorldData	
-					addRoleToFront(global.kirito,room_battle_1_1,0);
+					addRoleToFront(global.instanceManager.ins_kirito,room_battle_1_1,0);
 				
 					room_goto(room_fake_1_0);
 					break;
 				case 1:
 					//flag handle battle front init
-					addRoleToWorld(global.asuna);
-					addRoleToFront(global.kirito,room_battle_2_1,0);
-					addRoleToFront(global.asuna,room_battle_2_1,1);
+					addRoleToWorld(global.instanceManager.ins_asuna);
+					addRoleToFront(global.instanceManager.ins_kirito,room_battle_2_1,0);
+					addRoleToFront(global.instanceManager.ins_asuna,room_battle_2_1,1);
 			
 					room_goto(room_fake_2_0);
 					break;
 				case 2:
-					addRoleToWorld(global.silica);
-					addRoleToFront(global.kirito,room_battle_3_1,0);
-					addRoleToFront(global.silica,room_battle_3_1,1);				
+					addRoleToWorld(global.instanceManager.ins_silica);
+					addRoleToFront(global.instanceManager.ins_kirito,room_battle_3_1,0);
+					addRoleToFront(global.instanceManager.ins_silica,room_battle_3_1,1);				
 				
 					room_goto(room_fake_3_0);
 					break;

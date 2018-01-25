@@ -6,8 +6,6 @@ name="silica";
 
 roleType=RoleType.walker;
 MAX_MOVEMENT=5; 
-roleAttackRangFrom=2;
-roleAttackRangTo=3;
 weaponProfession=Weapon.sword;
 
 hp=40;

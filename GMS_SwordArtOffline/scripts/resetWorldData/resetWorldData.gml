@@ -1,18 +1,8 @@
-instance_destroy(obj_role_player);
-var createX=0;
-instance_create_layer(createX,0,0,obj_role_kirito);  createX+=64;
-instance_create_layer(createX,0,0,obj_role_asuna);  createX+=64;
-instance_create_layer(createX,0,0,obj_role_silica);  createX+=64;
+instance_destroy(obj_instanceManager);
+instance_create_depth(0,0,0,obj_instanceManager);
 
-global.asuna=instance_find(obj_role_asuna,0);
-global.kirito=instance_find(obj_role_kirito,0);
-global.silica=instance_find(obj_role_silica,0);
-
-with(global.thisGame.worldMapManager){
-	curWorldPos=0;
-	storyLine=0;
-}
-
+global.thisGame.worldMapManager.curWorldPos=0;
+global.thisGame.worldMapManager.storyLine=0;
 
 global.playerFrontTeam=ds_list_create();
 global.playerWorldTeam=ds_list_create();
@@ -20,7 +10,9 @@ global.playerWorldTeam=ds_list_create();
 global.curNumPublicBoxItem=0;
 global.publicBox=ds_grid_create(NUM_BOX_ITEM,NUM_ITEM_PROPERTY);
 
-addRoleToWorld(global.kirito);
+var role;
+role=getRoleByName("kirito");
+addRoleToWorld(role);
 
 addItemToPublicBox("好伤药",8);
 addItemToPublicBox("伤药",9);

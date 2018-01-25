@@ -1,12 +1,9 @@
-///@argument0 weaponName
-var weaponName=argument0; 
+///@argument0 itemName
 
+var itemName=argument0;
+var itemIns=getItemInstanceByName(itemName);
 
-switch(weaponName){
-	case "木剑":	
-	case "利爪":
-		return true;
-	
-	default:	
-		return false;
-}
+if(itemIns.itemType==ItemType.weapon_sword)
+	return true;
+else
+	return false;

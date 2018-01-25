@@ -23,7 +23,8 @@ else{
 	var textItemInfo;
 	if(manager.selectedBagItemIndex!=-1){
 		var itemName=ds_grid_get(manager.selectedTeamRole.items,manager.selectedBagItemIndex,INDEX_ITEM_NAME);
-		textItemInfo=getItemInfo(itemName);
+		var itemIns=getItemInstanceByName(itemName);
+		textItemInfo=itemIns.introduction;
 	}
 	else{
 		textItemInfo="haven't select item";

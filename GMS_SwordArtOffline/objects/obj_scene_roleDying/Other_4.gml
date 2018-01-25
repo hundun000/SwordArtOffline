@@ -21,7 +21,7 @@ deleteRoleFromWorld(diedRole);
 
 
 //check game over
-if(diedRole==global.kirito){
+if(diedRole==global.instanceManager.ins_kirito){
 	show_message("lead die");
 	addSceneChangeRoom(room_mainMenu,InputReceiver.mainMenu);//lock input for debug
 }

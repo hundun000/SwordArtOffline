@@ -5,7 +5,7 @@
 var role=argument0;
 
 ds_list_add(global.playerWorldTeam,role);
-
+addToDefaultTeamPos(role);
 
 
 
