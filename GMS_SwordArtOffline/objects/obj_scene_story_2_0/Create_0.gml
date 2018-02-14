@@ -12,5 +12,5 @@ addSceneMovement("cursor",5,9,16);
 addSceneTextBox("kirito","看来得由我们两人来解决boss了。",0);
 addSceneTextBox("asuna","好的。",1);
 
-addSceneChangeRoom(room_battle_2_1,InputReceiver.cursor);
+addSceneChangeRoom(room_battle_2_1,InputReceiver.CURSOR);
 

@@ -2,7 +2,7 @@
 ///@argument1 speaker
 
 var lastReceiver=global.inputReceiver;
-global.inputReceiver=InputReceiver.textBox;
+global.inputReceiver=InputReceiver.TEXT_BOX;
 with(obj_textBox_manager){
 	//wake up for handle scene
 	scenceState=ScenceState.nextElement;

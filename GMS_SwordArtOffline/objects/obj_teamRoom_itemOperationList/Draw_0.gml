@@ -6,6 +6,7 @@ var x_text=x;
 var y_text=y;
 var space=20;
 
+/*
 if(manager.teamRoomState==TeamRoomState.selectingRoleOperation){
 	var size=array_length_1d(manager.roleOperationName);
 	for(i=0;i<size;i++){
@@ -25,7 +26,9 @@ if(manager.teamRoomState==TeamRoomState.selectingRoleOperation){
 		}
 	}	
 }
-else if(manager.teamRoomState!=TeamRoomState.selectingRole){
+else */
+if(manager.teamRoomState!=TeamRoomState.selectingRole){
+
 	var size=array_length_1d(manager.itemOperationName);
 	for(i=0;i<size;i++){
 

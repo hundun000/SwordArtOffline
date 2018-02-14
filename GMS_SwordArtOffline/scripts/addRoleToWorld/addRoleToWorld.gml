@@ -1,4 +1,4 @@
-/// @function addRoleToFront
+/// @function role
 /// @description add Role To Front
 /// @argument0 roleName
 

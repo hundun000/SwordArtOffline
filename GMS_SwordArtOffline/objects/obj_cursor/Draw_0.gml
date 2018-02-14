@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(global.inputReceiver==InputReceiver.cursor)
+if(global.inputReceiver==InputReceiver.CURSOR)
 	draw_self();
 
 

@@ -12,7 +12,7 @@ var drawnSprite;
 
 
 var role=manager.selectedTeamRole;
-drawnSprite=spr_role_photo;
+drawnSprite=spr_playerRole_photo;
 imageIndex=getPhotoIndexByName(role.name);
 
 

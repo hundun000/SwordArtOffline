@@ -9,10 +9,12 @@ var imageLength=128;
 
 var drawnSprite;
 
+/*
 if(manager.teamRoomState==TeamRoomState.selectingRoleOperation){
 	drawnSprite=spr_teamPos;
 }
 else{
+*/
 	if(manager.selectedBagItemIndex!=-1){
 		var itemName=ds_grid_get(manager.selectedTeamRole.items,manager.selectedBagItemIndex,INDEX_ITEM_NAME);
 		var itemIns=getItemInstanceByName(itemName);
@@ -20,7 +22,7 @@ else{
 	}
 	else
 		drawnSprite=spr_item;
-}
+//}
 
 
 

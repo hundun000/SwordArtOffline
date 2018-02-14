@@ -26,4 +26,22 @@ var weaponName;
 weaponName=getRoleCurWeaponName(playerRole);
 draw_text(text_left[1],y-1*text_top_space-90,weaponName);	
 weaponName=getRoleCurWeaponName(enemyRole);
-draw_text(text_left[0],y+4*text_top_space-90,weaponName);	
+draw_text(text_left[0],y+4*text_top_space-90,weaponName);
+
+draw_text(text_left[1],y-2*text_top_space-90,playerRole.name);
+draw_text(text_left[0],y+5*text_top_space-90,enemyRole.name);
+
+var photoSize=64;
+var xscale;
+var yscale;
+
+var photoSprite=spr_playerRole_photo;
+xscale=photoSize/sprite_get_width(photoSprite);
+yscale=photoSize/sprite_get_height(photoSprite);
+draw_sprite_ext(photoSprite,getPhotoIndexByName(playerRole.name),text_left[0],y-0.5*text_top_space-90,xscale,yscale,0,c_white,1);
+
+var photoSprite=spr_enemyRole_photo;
+xscale=photoSize/sprite_get_width(photoSprite);
+yscale=photoSize/sprite_get_height(photoSprite);
+draw_sprite_ext(photoSprite,getPhotoIndexByName(enemyRole.name),text_left[1],y+6.5*text_top_space-90,xscale,yscale,0,c_white,1);
+

@@ -9,7 +9,7 @@
 
 
 
-if(global.inputReceiver!=InputReceiver.fightRoom) return;
+if(global.inputReceiver!=InputReceiver.FIGHT_ROOM) return;
 
 switch(fightState){
 

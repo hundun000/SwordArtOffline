@@ -20,9 +20,26 @@ for(i=0;i<global.curNumPublicBoxItem;i++){
 	ds_grid_set(global.publicBox,i,INDEX_ITEM_QUALITY,itemProperty);
 }
 
+
+sectionName="Team Data";
+ds_list_clear(global.thisGame.teamLayoutManager.teamLayoutSlots);
+var size=NUM_TEAM_SLOT;
+for(i=0;i<size;i++){
+	var keyName="teamLayoutSlot"+string(i);	
+	
+	var roleName=ini_read_string(sectionName,keyName,defultValue);	
+	var roleAtSlot;
+	if(roleName!="noone")
+		roleAtSlot=getRoleByName(roleName);
+	else
+		roleAtSlot=noone;
+		
+	ds_list_add(global.thisGame.teamLayoutManager.teamLayoutSlots,roleAtSlot)	
+}
+
+
 sectionName="Role Data";
 ds_list_clear(global.playerWorldTeam);
-
 var num_playerWorldTeam=ini_read_real(sectionName,"num_playerWorldTeam",defultValue);
 for(i=0;i<num_playerWorldTeam;i++){
 	var keyName="role"+string(i)+"_";	
@@ -48,7 +65,7 @@ for(i=0;i<num_playerWorldTeam;i++){
 		itemProperty=ini_read_real(sectionName,keyName+"item_"+string(j)+"_quality",defultValue);
 		ds_grid_set(role.items,j,INDEX_ITEM_QUALITY,itemProperty);
 	}
-	
+	role.curWeaponIndex=ini_read_real(sectionName,keyName+"curWeaponIndex",defultValue);
 }
 
 ini_close();

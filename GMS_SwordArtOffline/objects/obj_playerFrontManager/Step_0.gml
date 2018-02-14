@@ -3,7 +3,7 @@
 
 
 
-if(global.inputReceiver!=InputReceiver.cursor)	return;
+if(global.inputReceiver!=InputReceiver.CURSOR)	return;
 
 
 //for test fuction button

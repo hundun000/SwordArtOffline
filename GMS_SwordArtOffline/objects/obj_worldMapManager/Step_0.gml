@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(global.inputReceiver!=InputReceiver.worldMapManager) return;
+if(global.inputReceiver!=InputReceiver.WORLD_MAP) return;
 
 var isU=input_dy==-1;
 var isD=input_dy==1;
@@ -12,9 +12,13 @@ switch(worldMapState){
 	
 	case WorldMapState.worldMapFree:
 		if(isA){
-				worldMapState=WorldMapState.worldMapWantIntoBattle;
+			worldMapState=WorldMapState.worldMapWantIntoBattle;
 		}
-		else{
+		else if(isB){
+			room_goto(room_home);
+			return;
+		}
+		else if(input_dy!=0||input_dx!=0){
 			switch(curWorldPos){
 				case 0:	
 					if(isU||isL){
@@ -33,7 +37,10 @@ switch(worldMapState){
 						toWorldPos=1;
 					break;
 				default:	
-			}	
+			}
+			
+			if(curWorldPos!=toWorldPos)
+				worldMapState=WorldMapState.worldMapWaitMoving;
 		}
 		break;
 	
@@ -50,25 +57,15 @@ switch(worldMapState){
 		if(isWorldPosHasBattle(curWorldPos,storyLine)){
 			switch(curWorldPos){
 				case 0:
-					//handle battle front init
-					//*** kiroto add to world when resetWorldData	
-					addRoleToFront(global.instanceManager.ins_kirito,room_battle_1_1,0);
-				
+					addTeamToFront(room_battle_1_1);
 					room_goto(room_fake_1_0);
 					break;
 				case 1:
-					//flag handle battle front init
-					addRoleToWorld(global.instanceManager.ins_asuna);
-					addRoleToFront(global.instanceManager.ins_kirito,room_battle_2_1,0);
-					addRoleToFront(global.instanceManager.ins_asuna,room_battle_2_1,1);
-			
+					addTeamToFront(room_battle_2_1);
 					room_goto(room_fake_2_0);
 					break;
-				case 2:
-					addRoleToWorld(global.instanceManager.ins_silica);
-					addRoleToFront(global.instanceManager.ins_kirito,room_battle_3_1,0);
-					addRoleToFront(global.instanceManager.ins_silica,room_battle_3_1,1);				
-				
+				case 2:			
+					addTeamToFront(room_battle_3_1);
 					room_goto(room_fake_3_0);
 					break;
 

@@ -9,14 +9,14 @@
 #macro BTN_R vk_right
 
 enum InputReceiver{
-	cursor,
-	worldMapManager,
-	textBox,
-	mainMenu,
-	teamRoomManager,
-	fightRoom,
-	homeManager
-
+	CURSOR,
+	WORLD_MAP,
+	TEXT_BOX,
+	MAIN_MENU,
+	TEAM_MENBER,
+	FIGHT_ROOM,
+	HOME,
+	TEAM_LAYOUT
 
 }
 
@@ -28,22 +28,25 @@ var dy_game=keyboard_check_pressed(BTN_D)-keyboard_check_pressed(BTN_U);
 
 var reciever;
 switch(global.inputReceiver){
-	case InputReceiver.worldMapManager:
+	case InputReceiver.WORLD_MAP:
 		reciever=worldMapManager;
 		break;
-	case InputReceiver.cursor:
+	case InputReceiver.CURSOR:
 		reciever=playerFrontManager;
 		break;
-	case InputReceiver.textBox:
+	case InputReceiver.TEXT_BOX:
 		reciever=textBoxManager;
 		break;	
-	case InputReceiver.mainMenu:
+	case InputReceiver.MAIN_MENU:
 		reciever=mainMenu;
 		break;	
-	case InputReceiver.teamRoomManager:
+	case InputReceiver.TEAM_MENBER:
 		reciever=teamRoomManager;
 		break;
-	case InputReceiver.homeManager:
+	case InputReceiver.TEAM_LAYOUT:
+		reciever=teamLayoutManager;
+		break;		
+	case InputReceiver.HOME:
 		reciever=homeManager;
 		break;
 	default:

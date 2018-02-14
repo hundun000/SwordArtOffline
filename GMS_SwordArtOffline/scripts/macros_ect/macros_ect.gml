@@ -1,6 +1,7 @@
 #macro UNIT 64
 #macro VIEW_WIDTH 640
 #macro VIEW_HEIGHT 448
+#macro MY_GAMESPEED_FPS 60
 
 #macro NUM_DOMORE_OPTION 5
 #macro OPTION_FIGHT 0

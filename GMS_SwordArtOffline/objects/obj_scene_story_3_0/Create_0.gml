@@ -15,5 +15,5 @@ addSceneMovement("cursor",14,9,16);
 //addSceneMovement("cursor",14,9,16);
 addSceneTextBox("kirito","好像有人遇到麻烦了。",0);
 
-addSceneChangeRoom(room_battle_3_1,InputReceiver.cursor);
+addSceneChangeRoom(room_battle_3_1,InputReceiver.CURSOR);
 

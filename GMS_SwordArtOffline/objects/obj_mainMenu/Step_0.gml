@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(global.inputReceiver!=InputReceiver.mainMenu) return;
+if(global.inputReceiver!=InputReceiver.MAIN_MENU) return;
 
 if(input_dy!=0){
 		targetOptionIndex=(numOption+targetOptionIndex+input_dy)%numOption;

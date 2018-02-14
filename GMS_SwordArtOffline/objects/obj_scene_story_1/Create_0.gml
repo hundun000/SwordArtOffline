@@ -16,5 +16,5 @@ event_inherited();
 //addSceneTextBox("kirito","让我来给你示范战斗技巧吧。",1);
 //addSceneMovement("kirito",1,-1,4);
 
-addSceneChangeRoom(room_battle_1_1,InputReceiver.cursor);
+addSceneChangeRoom(room_battle_1_1,InputReceiver.CURSOR);
 

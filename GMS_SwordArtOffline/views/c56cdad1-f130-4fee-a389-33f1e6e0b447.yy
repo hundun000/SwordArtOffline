@@ -13,8 +13,7 @@
         "eb4240fe-743e-41e5-bd51-0fd1dcc772c7",
         "a3164a66-a7c7-4a45-9095-ef07a379ff7f",
         "49732717-e94e-4e18-bf35-39c20b6913f4",
-        "675c5aa4-6e98-4b28-a9af-a6c271a149e2",
-        "e2b9a17f-01ef-40a2-81ba-6c707608d92c"
+        "675c5aa4-6e98-4b28-a9af-a6c271a149e2"
     ],
     "filterType": "GMObject",
     "folderName": "TeamRoom",

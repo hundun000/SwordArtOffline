@@ -273,7 +273,7 @@ switch(enemyManagerState){
 					x=clamp(x,follower.x-h_border,follower.x+h_border);
 					y=clamp(y,follower.y-v_border,follower.y+v_border);
 			}
-			global.inputReceiver=InputReceiver.cursor;
+			global.inputReceiver=InputReceiver.CURSOR;
 			break;
 	case  EnemyManagerState.waitPlayerWinAnimation:
 		if(!instance_exists(obj_playerWin)){

@@ -6,6 +6,7 @@ enum WorldMapState{
 	worldMapWantIntoBattle,
 	worldMapFinishMoving
 }
+TEAM_FLAG_SPEED=4;
 
 curWorldPos=-1;
 storyLine=-1;

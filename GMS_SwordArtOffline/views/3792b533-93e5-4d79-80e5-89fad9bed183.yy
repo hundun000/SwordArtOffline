@@ -11,7 +11,8 @@
         "700215e6-878a-4e44-b4ad-ccc55f44b134",
         "e2293b9f-8ad0-4e53-a524-1c7ccd58d1bd",
         "36e45d12-c40f-471e-8100-4f0baaef9c20",
-        "ec1c5116-04a6-4222-aad3-cc6e8a75c6c2"
+        "ec1c5116-04a6-4222-aad3-cc6e8a75c6c2",
+        "93d9a8d4-8f6e-4917-b4a3-8b000818d675"
     ],
     "filterType": "GMSprite",
     "folderName": "Role",

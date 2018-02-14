@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(global.inputReceiver!=InputReceiver.teamRoomManager)	return;
+if(global.inputReceiver!=InputReceiver.TEAM_MENBER)	return;
 
 if(isA||isB||input_dx!=0||input_dy!=0)
 	textOperationInfo="";
@@ -9,11 +9,15 @@ switch(teamRoomState){
 	
 	case TeamRoomState.selectingRole:
 		if(isA){
-			teamRoomState=TeamRoomState.selectingRoleOperation;
-			selectedRoleOperationIndex=0;
+			teamRoomState=TeamRoomState.selectingBagItem;
+			if(selectedTeamRole.curNumItem>0)
+				selectedBagItemIndex=0;
+			else
+				selectedBagItemIndex=-1;
 		}
 		else if(isB){
 			room_goto(room_home);	
+			return;
 		}
 		else if(input_dy!=0){
 			var curRoleIndex=ds_list_find_index(global.playerWorldTeam,selectedTeamRole);
@@ -21,49 +25,14 @@ switch(teamRoomState){
 			selectedTeamRole=ds_list_find_value(global.playerWorldTeam,nextRoleIndex);
 		}
 		break;
-	case TeamRoomState.selectingRoleOperation:
-		if(isA){
-			switch(selectedRoleOperationIndex){
-				case ROLE_OPERATE_TO_ITEM:
-					teamRoomState=TeamRoomState.selectingBagItem;			
-					if(selectedTeamRole.curNumItem>0)
-						selectedBagItemIndex=0;
-					else
-						selectedBagItemIndex=-1;
-					break;
-				case ROLE_OPERATE_LEAVE:
-					if(selectedTeamRole==global.instanceManager.ins_kirito)
-						textOperationInfo="主角无法离开出击队伍1号位。";
-					else{
-						var pos=ds_list_find_index(roleInTeamPos,selectedTeamRole);	
-						if(pos==-1){
-							textOperationInfo="该角色不在出击队伍中。";
-						}
-						else{
-							ds_list_replace(roleInTeamPos,pos,noone);
-							textOperationInfo=selectedTeamRole.name+"已从出击队伍中撤出。";
-						}
-						
-					}
-			}
-		}
-		else if(isB){
-			teamRoomState=TeamRoomState.selectingRole;
-			selectedRoleOperationIndex=-1;
-		}
-		else if(input_dy!=0){
-			selectedRoleOperationIndex=clamp(selectedRoleOperationIndex+input_dy,0,array_length_1d(roleOperationName)-1);
-		}
-		
-		
-		break;
+	
 	case TeamRoomState.selectingBagItem:
 		if(isA){
 			teamRoomState=TeamRoomState.selectingItemOperation;
 			selectedItemOperationIndex=0;
 		}
 		else if(isB){
-			teamRoomState=TeamRoomState.selectingRoleOperation;
+			teamRoomState=TeamRoomState.selectingRole
 			selectedBagItemIndex=-1;
 			selectedBoxItemIndex=-1;
 			//textItemInfo="";

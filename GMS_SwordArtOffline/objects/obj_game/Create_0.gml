@@ -2,7 +2,7 @@
 // You can write your code in this editor
 macros_ect();
 
-
+game_set_speed(MY_GAMESPEED_FPS, gamespeed_fps);
 
 global.thisGame=id;
 
@@ -16,7 +16,7 @@ teamRoomManager=noone;
 homeManager=noone;
 worldMapManager=noone;
 fightManager=noone;
-
+teamLayoutManager=noone;
 
 global.font_CN_textBox=font_add("ARIALUNI_fixed.ttf",32,0,0,32,128);
 global.font_CN_teamRoom=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
@@ -29,7 +29,7 @@ global.font_CN_fightRoom=font_add("ARIALUNI_fixed.ttf",30,0,0,32,128);
 					
 
 //********* data init*************
-global.inputReceiver=InputReceiver.mainMenu;
+global.inputReceiver=InputReceiver.MAIN_MENU;
 
 
 

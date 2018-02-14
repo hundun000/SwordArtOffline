@@ -6,7 +6,8 @@
     "children": [
         "d0782ca4-cc99-4f84-9448-d491917d8b55",
         "f8937754-8c8f-4d7b-9b54-c2f1dd45fc67",
-        "ff8a6e4b-d397-4066-a16b-998dbab30644"
+        "ff8a6e4b-d397-4066-a16b-998dbab30644",
+        "e4710987-c092-4476-b8f1-664721c7b889"
     ],
     "filterType": "GMSprite",
     "folderName": "Manager",

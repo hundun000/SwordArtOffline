@@ -6,6 +6,7 @@ switch(name){
 		return 0;
 	
 	case "asuna":
+	case "boar":
 		return 1;
 		
 	case "kirito":

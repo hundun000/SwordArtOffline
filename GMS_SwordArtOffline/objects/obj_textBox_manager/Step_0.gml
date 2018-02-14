@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-if(global.inputReceiver!=InputReceiver.textBox)	return;
+if(global.inputReceiver!=InputReceiver.TEXT_BOX)	return;
 
 
 switch(scenceState){
@@ -46,7 +46,7 @@ switch(scenceState){
 				
 				case ScenceElement.textBox:			
 
-					global.inputReceiver=InputReceiver.textBox;
+					global.inputReceiver=InputReceiver.TEXT_BOX;
 	
 					isSerie=(curText!="");
 	
@@ -87,7 +87,7 @@ switch(scenceState){
 				
 					/*
 					switch(backInputReciever){
-						case InputReceiver.cursor:
+						case InputReceiver.CURSOR:
 								
 							break;
 								

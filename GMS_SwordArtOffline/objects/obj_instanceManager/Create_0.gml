@@ -31,4 +31,5 @@ with(global.thisGame){
 	homeManager=instance_create_depth(0,0,0,obj_homeManager);
 	worldMapManager=instance_create_depth(0,0,0,obj_worldMapManager);
 	fightManager=instance_create_depth(0,0,0,obj_fightManager);
+	teamLayoutManager=instance_create_depth(0,0,0,obj_teamLayoutManager);
 }

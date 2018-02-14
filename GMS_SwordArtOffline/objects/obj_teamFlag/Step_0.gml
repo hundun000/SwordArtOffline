@@ -9,13 +9,13 @@ switch(teamFlagState){
 			toWorldY=manager.worldY[manager.toWorldPos];
 		
 			//add motion to go
-			move_towards_point(toWorldX,toWorldY,TEAM_FLAG_SPEED);
+			move_towards_point(toWorldX,toWorldY,manager.TEAM_FLAG_SPEED);
 			
 			teamFlagState=TeamFlagState.flagMoving;
 		}
 		break;
 	case TeamFlagState.flagMoving:
-		if(distance_to_point(toWorldX,toWorldY)<TEAM_FLAG_SPEED){
+		if(distance_to_point(toWorldX,toWorldY)<manager.TEAM_FLAG_SPEED){
 			x=toWorldX;
 			y=toWorldY;
 			speed=0;

@@ -10,7 +10,14 @@ global.playerWorldTeam=ds_list_create();
 global.curNumPublicBoxItem=0;
 global.publicBox=ds_grid_create(NUM_BOX_ITEM,NUM_ITEM_PROPERTY);
 
+
 var role;
+
+role=getRoleByName("asuna");
+addRoleToWorld(role);
+role=getRoleByName("silica");
+addRoleToWorld(role);
+
 role=getRoleByName("kirito");
 addRoleToWorld(role);
 

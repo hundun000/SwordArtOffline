@@ -15,7 +15,7 @@ if(scenceState==ScenceState.showText){
 		
 	
 		//draw role photo
-		draw_sprite(spr_role_photo,subImageIndex,rolePhotoX[rolePhotoSide],box_top_y);
+		draw_sprite(spr_playerRole_photo,subImageIndex,rolePhotoX[rolePhotoSide],box_top_y);
 
 		//draw box
 		draw_sprite(spr_textBox,0,view_x,box_top_y);

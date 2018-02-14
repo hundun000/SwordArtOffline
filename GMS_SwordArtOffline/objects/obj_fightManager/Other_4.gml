@@ -2,7 +2,7 @@
 // You can write your code in this editor
 //printRolePropertiesForDebug(global.fighter_L);
 if(room==room_fight){
-	global.inputReceiver=InputReceiver.fightRoom;
+	global.inputReceiver=InputReceiver.FIGHT_ROOM;
 
 	fightState=FightState.preFight;
 

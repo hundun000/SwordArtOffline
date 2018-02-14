@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(global.inputReceiver!=InputReceiver.homeManager)	return;
+if(global.inputReceiver!=InputReceiver.HOME)	return;
 
 
 if(isA){
@@ -9,9 +9,12 @@ if(isA){
 		case HOME_GOTO_MAP:
 			room_goto(room_world);	
 			break;
-		case HOME_EDIT_TEAM:
+		case HOME_EDIT_TEAM_MENBER:
 			room_goto(room_team);
 			break;
+		case HOME_EDIT_TEAM_LAYUOT:
+			room_goto(room_teamLayout);
+			break;	
 		case HOME_LOAD:
 			loadGame();
 			show_message("Game load");
