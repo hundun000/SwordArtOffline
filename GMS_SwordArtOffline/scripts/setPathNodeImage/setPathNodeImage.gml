@@ -50,7 +50,7 @@ var len=path_get_number(var_path);
 					case 10: 
 						image_index=R_D;
 						break;
-					default:
+
 					}
 				}
 			}

@@ -40,6 +40,6 @@ switch(teamLayoutState){
 			var nextRoleIndex=clamp(curRoleIndex+input_dy,0,ds_list_size(global.playerWorldTeam)-1);
 			selectedTeamRole=ds_list_find_value(global.playerWorldTeam,nextRoleIndex);
 		}
-	default:
+
 
 }

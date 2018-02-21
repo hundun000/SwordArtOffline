@@ -2,10 +2,10 @@
 // You can write your code in this editor
 var lastReceiver=global.inputReceiver;
 global.inputReceiver=InputReceiver.TEXT_BOX;
-with(obj_textBox_manager){
-	//wake up for handle scene
-	scenceState=ScenceState.nextElement;
-}
+
+//wake up for handle scene
+global.thisGame.textBoxManager.scenceState=ScenceState.nextElement;
+
 
 //add scene element
 addSceneDelay(60);

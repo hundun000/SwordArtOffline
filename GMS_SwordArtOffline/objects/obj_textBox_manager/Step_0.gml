@@ -81,28 +81,12 @@ switch(scenceState){
 					scenceState=ScenceState.delayCountDown;
 					break;
 				
-				case ScenceElement.changeRoom:
-
-						
-				
-					/*
-					switch(backInputReciever){
-						case InputReceiver.CURSOR:
-								
-							break;
-								
-						default:						
-						
-					}
-					*/
-				
-				
+				case ScenceElement.changeRoom:				
 					leaveScene();
 						
 
 					break;
 				
-				default:
 				
 			}
 		}
@@ -131,7 +115,6 @@ switch(scenceState){
 		noscene=1;//set a useless statement for test
 		break;
 			
-	default:	
 			
 
 }

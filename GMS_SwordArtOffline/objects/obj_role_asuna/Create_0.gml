@@ -17,7 +17,7 @@ xp=80;
 lv=1;
 curWeapon=noone;
 
-mateIndex=1;
+homeMateSpriteIndex=1;
 
 /*
 spawnRoom=-1;

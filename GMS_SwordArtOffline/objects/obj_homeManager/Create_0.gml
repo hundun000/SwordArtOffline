@@ -17,4 +17,4 @@ ds_list_set(menuOption,HOME_LOAD,"load game");
 num_option=ds_list_size(menuOption);
 
 #macro MATE_POS 0
-homeMateIndex=-1;
+curHomeMateSpriteIndex=-1;

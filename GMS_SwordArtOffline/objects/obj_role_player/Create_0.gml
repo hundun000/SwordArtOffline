@@ -6,6 +6,7 @@
 items=ds_grid_create(NUM_ITEM_PROPERTY,NUM_ROLE_ITEM);
 curNumItem=0;
 curWeaponIndex=-1;
+
 isFront=false;
 
 visible=false;
@@ -24,6 +25,7 @@ curHp=-1;
 xp=-1;
 lv=-1;
 
-mateIndex=-1;
+homeMateSpriteIndex=-1;
+skillName=noone;
 
 

@@ -1,7 +1,10 @@
 
 switch(argument0){
-	default:
+	case "kirito":
 		return "...";
+		
+	default	:
+		return noone;
 }
 	
 	

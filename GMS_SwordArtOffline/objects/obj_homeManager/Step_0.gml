@@ -23,7 +23,6 @@ if(isA){
 			saveGame();
 			show_message("Game save");	
 			break;
-		default:
 	}
 }
 else if(input_dy!=0){

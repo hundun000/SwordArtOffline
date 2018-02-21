@@ -49,9 +49,9 @@ switch(global.inputReceiver){
 	case InputReceiver.HOME:
 		reciever=homeManager;
 		break;
-	default:
-		//something ignore input
+	case InputReceiver.FIGHT_ROOM:
 		reciever=noone;
+		break;
 }
 
 //only set the reciever

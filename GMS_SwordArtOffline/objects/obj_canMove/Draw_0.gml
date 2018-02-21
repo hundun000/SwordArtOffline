@@ -9,17 +9,7 @@ if(instance_exists(obj_doMoreMemu)){
 	
 	if(image_index==CAN_ATTACK){
 		
-		if(doMoreMenu.doMoreSelectIndex==OPTION_TALK)
-			image_index=CAN_FRIEND;
-		else if(doMoreMenu.doMoreSelectIndex!=OPTION_FIGHT)
-			isDrawSelf=false;
-			
-	}
-	else if(image_index==CAN_FRIEND){
-		
-		if(doMoreMenu.doMoreSelectIndex==OPTION_FIGHT)
-			image_index=CAN_ATTACK;
-		else if(doMoreMenu.doMoreSelectIndex!=OPTION_TALK)
+		if(doMoreMenu.doMoreSelectIndex!=OPTION_FIGHT)
 			isDrawSelf=false;
 			
 	}

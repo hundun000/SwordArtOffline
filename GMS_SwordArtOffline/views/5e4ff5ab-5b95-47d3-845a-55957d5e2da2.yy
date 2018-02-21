@@ -8,7 +8,7 @@
         "e11eeb71-81d0-4899-b8ca-c72a5ac04c85"
     ],
     "filterType": "GMScript",
-    "folderName": "registerEnemyRole",
+    "folderName": "registerRole",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

@@ -17,14 +17,9 @@ xp=80;
 lv=1;
 curWeapon=noone;
 
-mateIndex=2;
+homeMateSpriteIndex=2;
 
-/*
-spawnRoom=-1;
-spawnX=-1;
-spawnY=-1;
-*/
-
+skillName="召唤兽·治疗";
 addItemToRole(id,"伤药",3);
 addItemToRole(id,"伤药",3);
 addItemToRole(id,"伤药",3);

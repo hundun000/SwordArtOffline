@@ -12,20 +12,18 @@ switch(targetRoom){
 		origin_x=2*UNIT;
 		origin_y=7*UNIT;				
 		break;		
-	default:
-		origin_x=0;
-		origin_y=0;
+
 }
 origin_x+=0.5*UNIT;
 origin_y+=0.5*UNIT;
 
-var manager=global.thisGame.teamLayoutManager
+var manager=global.thisGame.teamLayoutManager;
 var size=ds_list_size(manager.teamLayoutSlots);
 for(var i=0;i<size;i++){
 	var role=ds_list_find_value(manager.teamLayoutSlots,i);
 	if(role!=noone){
-		role.x=origin_x+manager.posShift_x[i];
-		role.y=origin_y+manager.posShift_y[i];
+		role.x=origin_x+manager.posShift_x[i]*UNIT;
+		role.y=origin_y+manager.posShift_y[i]*UNIT;
 		role.visible=true;
 		role.isFront=true; //use flag to sign role is in TeamFront
 		ds_list_add(global.playerFrontTeam,role);

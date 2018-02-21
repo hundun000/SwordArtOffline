@@ -6,8 +6,7 @@
 /*
 A call should likes this{
 
-with(obj_textBox_manager)
-	backInputReciever=InputReceiver.CURSOR;
+global.thisGame.textBoxManager.backInputReciever=InputReceiver.CURSOR;
 addSceneTextBox("asuna","Nice to meet you.",0);
 addSceneTextBox("kirito","Nice to meet you,too.",1);
 addSceneTextBox("asuna","My name is Asuna.",0);

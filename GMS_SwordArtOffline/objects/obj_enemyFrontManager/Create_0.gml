@@ -5,11 +5,7 @@ globalvar frontEnemies;
 global.frontEnemies=ds_list_create();
 
 
-ii=-1;
-
-//for room event,room_enter_counter==2 mean the timeing that goto fight room,then back here
-room_enter_counter=-1;
-
+curProcessIndex=-1;
 
 enemyManagerState=EnemyManagerState.waitPlayer;
 

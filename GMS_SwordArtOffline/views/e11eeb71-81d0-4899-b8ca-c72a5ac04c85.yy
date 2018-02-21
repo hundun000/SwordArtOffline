@@ -8,7 +8,8 @@
         "2f3f6932-977a-401d-afd2-a63fedbfa3cc",
         "9ed5ffdf-bdc2-4de6-aa8d-e10a02287093",
         "9704d663-e80c-49b7-b9fc-7226a7518fc1",
-        "7a57e4ef-3795-4a1e-a1c3-75a6439573df"
+        "7a57e4ef-3795-4a1e-a1c3-75a6439573df",
+        "a9a1f987-bc6d-4871-a867-bc18e8b3fa18"
     ],
     "filterType": "GMScript",
     "folderName": "getSprite",

@@ -22,7 +22,7 @@ if(isA){
 		case 2:
 			game_end();
 			break;
-		default:	
+
 	}
 }
 

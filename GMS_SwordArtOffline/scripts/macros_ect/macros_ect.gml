@@ -5,8 +5,9 @@
 
 #macro NUM_DOMORE_OPTION 5
 #macro OPTION_FIGHT 0
-#macro OPTION_BAG 1
-#macro OPTION_TALK 3
+#macro OPTION_SKILL 1
+#macro OPTION_BAG 2
+
 #macro OPTION_END 4
 
 

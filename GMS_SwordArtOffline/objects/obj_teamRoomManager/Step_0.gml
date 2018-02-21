@@ -102,7 +102,7 @@ switch(teamRoomState){
 					else
 						selectedBoxItemIndex=-1;
 					break;
-				default:
+
 			}
 		}
 		else if(isB){
@@ -112,7 +112,7 @@ switch(teamRoomState){
 		else if(input_dy!=0){
 			selectedItemOperationIndex=clamp(selectedItemOperationIndex+input_dy,0,array_length_1d(itemOperationName)-1);
 		}	
-	default:
+
 	
 	
 	

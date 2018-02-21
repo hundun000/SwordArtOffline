@@ -6,7 +6,6 @@
 global.instanceManager=id;
 list_instances=ds_list_create();
 
-
 ins_kirito=instance_create_depth(0,0,0,obj_role_kirito);
 ds_list_add(list_instances,ins_kirito);
 ins_asuna=instance_create_depth(0,0,0,obj_role_asuna);
@@ -18,10 +17,14 @@ ins_woodenSword=instance_create_depth(0,0,0,obj_wooden_sword);
 ds_list_add(list_instances,ins_woodenSword);
 ins_sharpClaw=instance_create_depth(0,0,0,obj_sharpClaw);
 ds_list_add(list_instances,ins_sharpClaw);
+
 ins_coverDrug=instance_create_depth(0,0,0,obj_coverDrug);
 ds_list_add(list_instances,ins_coverDrug);
 ins_goodCoverDrug=instance_create_depth(0,0,0,obj_goodCoverDrug);
 ds_list_add(list_instances,ins_goodCoverDrug);
+
+ins_petStone_heal=instance_create_depth(0,0,0,obj_petStone_heal);
+ds_list_add(list_instances,ins_petStone_heal);
 
 with(global.thisGame){
 	textBoxManager=instance_create_depth(0,0,0,obj_textBox_manager); 

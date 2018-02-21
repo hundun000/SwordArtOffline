@@ -14,54 +14,59 @@ if(global.inputReceiver!=InputReceiver.FIGHT_ROOM) return;
 switch(fightState){
 
 	case FightState.preFight:
-		//show_("into preFight");
-		//mean found side
 		
-		if(curAttackSide==FIGHT_L)
-			var ans_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);			
-		else
-			var ans_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
+		if(fightType==FightType.ATTACK){
+			if(curAttackSide==FIGHT_L)
+				var fightInfo_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);			
+			else
+				var fightInfo_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
 			
-		//!!!!!!!!!!!!!!!!!!! curAttackSide<=>founder<=>ans[0] !!!!!!!!!!!!!!!
+			//!!!!!!!!!!!!!!!!!!! curAttackSide<=>founder<=>fightInfo_list[0] !!!!!!!!!!!!!!!		
+		
+			//init turnTimes
+			turnTimes[curAttackSide]=fightInfo_list[0];
+			turnTimes[!curAttackSide]=fightInfo_list[1];
 		
 		
-		//init turnTimes
-		turnTimes[curAttackSide]=ans_list[0];
-		turnTimes[!curAttackSide]=ans_list[1];
-		
-		
-		var side=curAttackSide;
-		//let two side use the same codes by the two-times loop
-		for(var i=0;i<2;i++){
-
-			//hitRate range in (33,100)% ,线性增加
-			hitRate[side]=ans_list[2+i]; 
-
-			preDamage[side]=ans_list[4+i];
+			var side=curAttackSide;
+			//let two side use the same codes by the two-times loop
+			for(var i=0;i<2;i++){
+				//hitRate range in (33,100)% ,线性增加
+				hitRate[side]=fightInfo_list[2+i]; 
+				preDamage[side]=fightInfo_list[4+i];	
+				//criticalRate range in (0,50)% ,线性增加
+				criticalRate[side]=fightInfo_list[6+i];	
+				//toggle side
+				side=!side;
+			}
 	
-			//criticalRate range in (0,50)% ,线性增加
-			criticalRate[side]=ans_list[6+i];
-	
-			//toggle side
-			side=!side;
+			//init animation
+			attackAnimation[FIGHT_L].sprite_index=getAttackSpriteByRole(fighter[FIGHT_L]);
+			attackAnimation[FIGHT_R].sprite_index=getAttackSpriteByRole(fighter[FIGHT_R]);
+			attackAnimation[FIGHT_L].image_xscale*=-1;
+			attackAnimation[FIGHT_L].image_speed=0;
+			attackAnimation[FIGHT_R].image_speed=0;
+		
+
 		}
-		
-		
-		
-		
-		
-		
-		//init animation
-		attackAnimation[FIGHT_L].sprite_index=getAttackSpriteByRole(fighter[FIGHT_L]);
-		attackAnimation[FIGHT_R].sprite_index=getAttackSpriteByRole(fighter[FIGHT_R]);
-		attackAnimation[FIGHT_L].image_xscale*=-1;
-		attackAnimation[FIGHT_L].image_speed=0;
-		attackAnimation[FIGHT_R].image_speed=0;
+		else if(fightType==FightType.STRENGEN){
+			hitRate[curAttackSide]=100; 
+			preDamage[curAttackSide]=0;
+			criticalRate[curAttackSide]=0;	
+			hitRate[!curAttackSide]=0; 
+			preDamage[!curAttackSide]=0;
+			criticalRate[!curAttackSide]=0;
+			//init animation
+			attackAnimation[curAttackSide].sprite_index=getStrengthenSpriteByRole(fighter[curAttackSide]);
+			attackAnimation[!curAttackSide].sprite_index=getAttackSpriteByRole(fighter[!curAttackSide]);
+			attackAnimation[FIGHT_L].image_xscale*=-1;
+			attackAnimation[FIGHT_L].image_speed=0;
+			attackAnimation[FIGHT_R].image_speed=0;
+		}
 		
 		startDelay=STEP_reduceHpAnimation;
 		reduceHpAnimationCountDown=-1; //distinguish countdown==0 and init==-1
 		fightState=FightState.waitStartDelay;
-		
 		randomise();
 		
 		break;
@@ -72,9 +77,22 @@ switch(fightState){
 			startDelay--;
 		}
 		else{
-			fightState=FightState.startAttackAnimation;
+			if(fightType==FightType.ATTACK)
+				fightState=FightState.startAttackAnimation;
+			else if(fightType==FightType.STRENGEN)
+				fightState=FightState.startStrengthenAnimation;
 		}
+		break;
 		
+	case FightState.startStrengthenAnimation:			
+
+		attackAnimation[curAttackSide].image_speed=1;			
+
+		var curDepth=attackAnimation[curAttackSide].depth;
+		attackAnimation[curAttackSide].depth=curDepth-1;
+		attackAnimation[!curAttackSide].depth=curDepth;
+						
+		fightState=FightState.waitAttackAnimationEnd;
 		break;
 		
 	case FightState.startAttackAnimation:
@@ -189,10 +207,18 @@ switch(fightState){
 		
 		
 		break;
+		
 	case FightState.waitAttackAnimationEnd:
 		//when animation finished,the content object will change the state
+		break;	
+		
+	case FightState.processStrengthen:
+		show_message("processStrengthen");
+		fightState=FightState.processXp;
 		break;
+		
 	case FightState.startResultAnimation:
+		//this if_statement should certain happen
 		if(flag_enemy_die||flag_player_die){
 			//*******************process die animation****************
 			//must be other side die
@@ -220,16 +246,21 @@ switch(fightState){
 		
 		if(waitAddXp==-1){
 		//if waitAddXp not init		
-			if(flag_enemy_die){
-				//died must be other side
-				waitAddXp=clamp(fighter[!curAttackSide].xp
-							*(5-(fighter[!curAttackSide].lv-fighter[curAttackSide].lv))
-							,10,100);	
+			if(fightType==FightType.ATTACK){
+				if(flag_enemy_die){
+					//died must be other side
+					waitAddXp=clamp(fighter[!curAttackSide].xp
+								*(5-(fighter[!curAttackSide].lv-fighter[curAttackSide].lv))
+								,10,100);	
 							
+				}
+				else{
+					waitAddXp=3;
+				}	
 			}
-			else{
+			else if(fightType==FightType.STRENGEN){
 				waitAddXp=3;
-			}	
+			}
 		}
 
 
@@ -298,13 +329,11 @@ switch(fightState){
 			if(flag_enemy_die){
 				//destroy the died enemy
 				ds_list_delete(global.frontEnemies,ds_list_find_index(global.frontEnemies,fighter[!curAttackSide])); 
-				with(obj_enemyManager){
-					//after delete a enemy,next enemy should be the same index
-					ii--;
-				}
-				//destroy in room end
-				deadRole=fighter[!curAttackSide];
 				
+				//after delete a enemy,next enemy should be the same index
+				global.thisGame.enemyFrontManager.curProcessIndex--;
+
+				deadEnemyRole=fighter[!curAttackSide];
 			}	
 
 			//not handle plyer role die here
@@ -319,8 +348,7 @@ switch(fightState){
 		}
 		break;
 		
-	default:
-		show_debug_message("enter swtich default");
+
 }
 
 

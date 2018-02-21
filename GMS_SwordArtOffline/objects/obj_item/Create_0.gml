@@ -4,6 +4,7 @@
 enum ItemType{
 	normal,
 	weapon_sword,
+	skill_strengthen,
 	defaultType
 	
 	

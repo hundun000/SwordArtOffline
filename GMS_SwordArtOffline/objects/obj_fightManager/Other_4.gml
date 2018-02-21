@@ -10,6 +10,7 @@ if(room==room_fight){
 	flag_player_die=false;
 	flag_lv_up=false;
 
+	//obj_fightRole is not persistent
 	attackAnimation[FIGHT_L]=instance_find(obj_fightRole,0);
 	attackAnimation[FIGHT_R]=instance_find(obj_fightRole,1);
 
@@ -17,9 +18,6 @@ if(room==room_fight){
 	waitAddXp=-1;
 	lv_up_countDown=-1;
 
-
-
-	hitRate[FIGHT_R]=70;//!!!!!!!!!!!!for test!!!!!!!!!!!!!!!!
 }
 
 

@@ -9,10 +9,9 @@ if(target_x!=-1){
 		
 		target_x=-1;
 		
-		with(obj_textBox_manager){
-			delay=10;
-			scenceState=ScenceState.delayCountDown;
-		}
+		global.thisGame.textBoxManager.delay=10;
+		global.thisGame.textBoxManager.scenceState=ScenceState.delayCountDown;
+
 	}
 
 }

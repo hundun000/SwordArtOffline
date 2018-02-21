@@ -37,7 +37,7 @@ if(movement>=0&&myX>0&&myX<room_width&&myY>0&&myY<room_height){
 		case RoleType.walker:
 		if(position_meeting(myX,myY,obj_tile_hill)||position_meeting(myX,myY,obj_tile_water))
 			return;
-		default:
+
 	}
 	
 	//handle rival caused cann't move

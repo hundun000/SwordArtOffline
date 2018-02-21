@@ -36,7 +36,6 @@ switch(worldMapState){
 					if(isR)
 						toWorldPos=1;
 					break;
-				default:	
 			}
 			
 			if(curWorldPos!=toWorldPos)
@@ -69,7 +68,6 @@ switch(worldMapState){
 					room_goto(room_fake_3_0);
 					break;
 
-				default:
 			}
 		}
 	
@@ -77,7 +75,7 @@ switch(worldMapState){
 		
 		
 		
-	default:
+
 }
 
 

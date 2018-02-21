@@ -16,9 +16,7 @@ var isSP=keyboard_check_pressed(BTN_SP);
 	
 switch(cursorState){
 	case CursorState.turnStart:
-		show_debug_message("cursor turn start");
-		
-		
+				
 		for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
 			
 			setRoleState(ds_list_find_value(global.playerFrontTeam,i),RoleState.idle);
@@ -97,7 +95,7 @@ switch(cursorState){
 			cursorState=CursorState.roleDoMore;
 		
 			deletePath(playerPath);
-			deleteCanMove();
+			if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 			
 			var center=getCameraCenter(view_camera[0]);
 			var menuSide=sign(center[0]-global.cursor_pointer.x+1);
@@ -119,7 +117,7 @@ switch(cursorState){
 			global.cursor_pointer.y=tempRoleY;
 					
 			deletePath(playerPath);
-			deleteCanMove();
+			if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 		
 			setRoleState(operatedRole,RoleState.idle);
 		}
@@ -130,13 +128,43 @@ switch(cursorState){
 	
 		if(input_dy!=0){
 			ins_doMoreMemu.doMoreSelectIndex=(NUM_DOMORE_OPTION+ins_doMoreMemu.doMoreSelectIndex+input_dy)%(NUM_DOMORE_OPTION);
+						
+			if(ins_doMoreMemu.doMoreSelectIndex==OPTION_SKILL){
+				if(!instance_exists(obj_canSkill)){
+					createCanSkillTile(operatedRole)
+				}
+			}
+			else
+			{
+				if(instance_exists(obj_canSkill))
+					instance_destroy(obj_canSkill);
+			}
+			
 		}
 		else if(isA){
 			//do more menu option
-			var doMoreMemu=instance_find(obj_doMoreMemu,0);
-			switch(doMoreMemu.doMoreSelectIndex){
-				case OPTION_FIGHT:
-					target=noone;
+			switch(ins_doMoreMemu.doMoreSelectIndex){
+				case OPTION_FIGHT:	
+					targetTypeObj=obj_role_enemy;
+					targetTileObj=obj_canMove;
+					
+					targetIns=initCursorTarget(targetTileObj,targetTypeObj);
+					if(targetIns!=noone){
+						var center=getCameraCenter(view_camera[0]);
+						var menuSide=sign(center[0]-global.cursor_pointer.x+1);
+						var board_top=center[1];
+						var board_left=center[0]+menuSide*center[2];
+						var board_x=center[0]+menuSide*center[2];
+						var board_y=center[1];
+				
+						ins_fightForecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
+						ins_fightForecast.enemyRole=targetIns;
+						ins_fightForecast.playerRole=operatedRole;
+						ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);
+					}
+					else
+						ins_fightForecast=noone;
+					
 					cursorState=CursorState.selectingEnemy;
 					ins_doMoreMemu.visible=false;
 					break;
@@ -151,25 +179,23 @@ switch(cursorState){
 
 					ins_doMoreMemu.visible=false;
 					break;
-				case OPTION_TALK:
-					createSingleMessage("This function has not been implemented",operatedRole.name);
-					isA=false;
+				case OPTION_SKILL:
+					targetTypeObj=obj_role_player;
+					targetTileObj=obj_canSkill;
+					
+					targetIns=initCursorTarget(targetTileObj,targetTypeObj);
+					cursorState=CursorState.selectingSkillTarget;
 					ins_doMoreMemu.visible=false;
-					return;
+					break;
 					
 				case OPTION_END:
 					cursorState=CursorState.nextPlayer;
 				
-					deleteCanMove();				
+					if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);				
 					instance_destroy(ins_doMoreMemu);
-				
-				default:
-			
-			}
-			
+					break;
 
-			
-			
+			}			
 		}	
 		else if(isB){
 			cursorState=CursorState.free;
@@ -182,8 +208,10 @@ switch(cursorState){
 			global.cursor_pointer.y=tempRoleY;
 			
 			
-			deleteCanMove();
-			
+			if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
+			if(instance_exists(obj_canSkill))
+					instance_destroy(obj_canSkill);
+					
 			instance_destroy(ins_doMoreMemu);
 		
 			setRoleState(operatedRole,RoleState.idle);
@@ -211,7 +239,7 @@ switch(cursorState){
 				if(usable==true){
 					cursorState=CursorState.nextPlayer;				
 					useItemAtFront(operatedRole,itemSelectIndex);								
-					deleteCanMove();							
+					if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);							
 					instance_destroy(ins_doMoreMemu);				
 					instance_destroy(ins_itemMenu);
 				}
@@ -230,96 +258,80 @@ switch(cursorState){
 			
 			ins_doMoreMemu.visible=true;
 		}
-		
 		break;	
-	case CursorState.selectingEnemy:
-			
-		//if not target a enmey,try to auto target
-		if(target==noone){	
-			//target the canAttackTile with a enemy
-			var temp_for_with=noone;
-			with(obj_canMove){//this state only can attack tile,so no need to check
-				var pos_ins=instance_position(x,y,obj_role_enemy);
-				if(pos_ins!=noone){
-					temp_for_with=pos_ins;
-				}	
-			}
-			target=temp_for_with;
-			//if have,set cursor to there
-			if(target!=noone){		
-				
-				global.cursor_pointer.x=target.x;
-				global.cursor_pointer.y=target.y;
-				
-				var center=getCameraCenter(view_camera[0]);
-				var menuSide=sign(center[0]-global.cursor_pointer.x+1);
-				var board_top=center[1];
-				var board_left=center[0]+menuSide*center[2];
-				var board_x=center[0]+menuSide*center[2];
-				var board_y=center[1];
-				
-				ins_fightForecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
-				ins_fightForecast.enemyRole=target;
-				ins_fightForecast.playerRole=operatedRole;
-				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);
-				
-
+	
+	case CursorState.selectingSkillTarget:
+	
+		if((input_dx!=0||input_dy!=0)){
+			if(targetIns!=noone){
+				targetIns=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
 			}
 		}
-		
-		//switch target
-		if((input_dx!=0||input_dy!=0)){
-			var cursoX=global.cursor_pointer.x;
-			var cursoY=global.cursor_pointer.y;
-			var intoWith_input_dx=input_dx;
-			var intoWith_input_dy=input_dy;
-			//search at inputted direction
-			var temp_for_with=noone;
-			with(obj_canMove){//this state only can attack tile,so no need to check
-				var pos_ins=instance_position(x,y,obj_role_enemy);
-				if(!(x==cursoX&&y==cursoY) //no current
-					&&(sign(intoWith_input_dx)==sign(x-cursoX)||sign(intoWith_input_dy)==sign(y-cursoY)) //inputted direction
-					&&pos_ins!=noone){
-					temp_for_with=pos_ins;
-				}	
-			}
-			if(temp_for_with!=noone)
-				target=temp_for_with;
-			/*
-			//not found at inputted direction,search at all direction
-			if(target==noone){
-				with(obj_canMove){
-					if(!(x==cursoX&&y==cursoY) //no current
-					&&position_meeting(x,y,obj_role_enemy)){
-						target=id;
-					}
-				}	
-			}
-			*/
+		else if(isA){
 			
-			//if have another,change cursor to there
-			if(target!=noone){
-				global.cursor_pointer.x=target.x;
-				global.cursor_pointer.y=target.y;
+			if(targetIns!=noone){ 	
 				
+				room_persistent=true;
+				
+				//set front persistent role disvisible
+				for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
+					var frontRole=ds_list_find_value(global.playerFrontTeam, i);
+					frontRole.visible=false;
+				}		
+				
+				var fightManager=global.thisGame.fightManager;
+				fightManager.fighter[FIGHT_L]=targetIns;
+				fightManager.fighter[FIGHT_R]=operatedRole;			
+				fightManager.curAttackSide=FIGHT_R;
+				fightManager.fightBackRoom=room;
+		
+				global.thisGame.fightManager.fightType=FightType.STRENGEN;
+				room_goto(room_fight);
+			
+				//reset cursor to role
+				global.cursor_pointer.x=operatedRole.x;
+				global.cursor_pointer.y=operatedRole.y;
+				
+				cursorState=CursorState.nextPlayer;
+				if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
+				instance_destroy(obj_canSkill);
+			}
+		}
+		else if(isB){
+			cursorState=CursorState.roleDoMore;			
+			
+			//reset cursor to role
+			global.cursor_pointer.x=operatedRole.x;
+			global.cursor_pointer.y=operatedRole.y;
+			
+			ins_doMoreMemu.visible=true;
+			instance_destroy(obj_canSkill);
+		}
+		
+		break;
+		
+	case CursorState.selectingEnemy:
+		
+		if((input_dx!=0||input_dy!=0)){
+			if(targetIns!=noone){
+				targetIns=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
+			
 				//fightForecastInfo need change targrt
-				ins_fightForecast.enemyRole=target;
-				ins_fightForecast.playerRole=operatedRole;
+				ins_fightForecast.enemyRole=targetIns;
 				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);		
 			}
-
 		}
 		else if(isA){
 		
 		//into fight room , unfight role should be away!
 
-			if(global.cursor_pointer.x!=operatedRole.x||global.cursor_pointer.y!=operatedRole.y){  //means truely target to a enemy ,not player role
-
-				room_persistent=true;
+			if(targetIns!=noone){ 
 			
+				room_persistent=true;
+				
 				//temporary set persistent for use it in fight room
 				//enemy's room start event will reset persistent
-				target.persistent=true;
+				targetIns.persistent=true;
 			
 				//set front persistent role disvisible
 				for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
@@ -328,34 +340,33 @@ switch(cursorState){
 				}		
 				
 				var fightManager=global.thisGame.fightManager;
-				fightManager.fighter[FIGHT_L]=target;
+				fightManager.fighter[FIGHT_L]=targetIns;
 				fightManager.fighter[FIGHT_R]=operatedRole;			
 				fightManager.curAttackSide=FIGHT_R;
 				fightManager.fightBackRoom=room;
 			
-				deleteCanMove();
-			
+				global.thisGame.fightManager.fightType=FightType.ATTACK;
 				room_goto(room_fight);
 			
-				room_enter_counter=0;
-				cursorState=CursorState.nextPlayer;
+				//reset cursor to role
+				global.cursor_pointer.x=operatedRole.x;
+				global.cursor_pointer.y=operatedRole.y;
 				
+				cursorState=CursorState.nextPlayer;
+				if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 				instance_destroy(ins_fightForecast);
 			}
 		}
 		else if(isB){
-			cursorState=CursorState.roleDoMore;
-			//global.cursor_pointer.visible=false;
-			
+			cursorState=CursorState.roleDoMore;		
 
-			//for have into selectingEnemy state,cursor will set to enemy,now reset to role
+			//reset cursor to role
 			global.cursor_pointer.x=operatedRole.x;
 			global.cursor_pointer.y=operatedRole.y;
 			
 			ins_doMoreMemu.visible=true;
 			
 			instance_destroy(ins_fightForecast);
-
 		}
 			
 
@@ -392,9 +403,7 @@ switch(cursorState){
 	case CursorState.playerSideEnd:	
 		show_debug_message("player team done");
 		cursorState=CursorState.waitEnemy;
-		with(obj_enemyManager){
-			enemyManagerState=EnemyManagerState.turnStart;
-		}
+		global.thisGame.enemyFrontManager.enemyManagerState=EnemyManagerState.turnStart;
 		break;
 	case  CursorState.waitPlayerWinAnimation:
 		if(!instance_exists(obj_playerWin)){
@@ -402,7 +411,7 @@ switch(cursorState){
 			processPlayerWin(room);
 		}
 		break;
-	default:
+
 }	
 
 

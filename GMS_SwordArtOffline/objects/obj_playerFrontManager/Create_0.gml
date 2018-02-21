@@ -11,24 +11,27 @@ enum CursorState{
 	selectingBagItem,
 	selectingEnemy,
 	nextPlayer,
-	
+
 	moved,
 	playerSideEnd,
 	waitEnemy,
 	notInBattle,
-	waitPlayerWinAnimation
+	waitPlayerWinAnimation,
+	
+	selectingSkillTarget,
 }
 
 
 cursorState=noone;
 
 playerPath=noone;
-target=noone;
+targetIns=noone;
+targetTypeObj=noone;
+targetTileObj=noone;
 
 fightForecastInfo=noone;
 
-//globalvar playerTeamDone;
-//global.playerTeamDone=false;
+operatedRole=noone;
 
 
 

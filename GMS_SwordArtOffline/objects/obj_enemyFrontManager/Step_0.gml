@@ -2,7 +2,7 @@
 // You can write your code in this editor
 switch(enemyManagerState){
 	case EnemyManagerState.turnStart:
-		ii=0;
+		curProcessIndex=0;
 		//turn start animation
 		var view_x=camera_get_view_x(view_camera[0]);
 		var view_y=camera_get_view_y(view_camera[0]);
@@ -19,9 +19,8 @@ switch(enemyManagerState){
 
 	case EnemyManagerState.initTarget:
 
-		show_debug_message("initTarget for ii="+string(ii));
 		//****************** process one enemy ***************************
-		enemy=ds_list_find_value(global.frontEnemies, ii);
+		enemy=ds_list_find_value(global.frontEnemies, curProcessIndex);
 
 		newPourWater(enemy.x,enemy.y,enemy.roleType,enemy.MAX_MOVEMENT
 			,enemy.roleAttackRangFrom,enemy.roleAttackRangTo,ControlType.enemy,true);
@@ -189,7 +188,7 @@ switch(enemyManagerState){
 		break;
 	case EnemyManagerState.moved:
 
-		deleteCanMove();
+		if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 		//a can't one step attack enemy will not move ,and into EnemyManagerState.moved with attackTarget==noone
 		if(attackTarget!=noone){
 		
@@ -213,11 +212,11 @@ switch(enemyManagerState){
 			fightManager.fightBackRoom=room;
 			//global.fight_found_side=FIGHT_L;
 			
-			deleteCanMove();
+			if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 			
+			global.thisGame.fightManager.fightType=FightType.ATTACK;
 			room_goto(room_fight);
 			
-			room_enter_counter=0;
 			enemy.enemyState=EnemyState.fighting;
 			enemyManagerState=EnemyManagerState.fighting;
 		}
@@ -248,9 +247,9 @@ switch(enemyManagerState){
 
 		}
 		else{		
-			if(ii+1<ds_list_size(global.frontEnemies)){	
+			if(curProcessIndex+1<ds_list_size(global.frontEnemies)){	
 				enemyManagerState=EnemyManagerState.initTarget;
-				ii++;
+				curProcessIndex++;
 			}
 			else{
 				//show_message("enemy done");
@@ -262,9 +261,7 @@ switch(enemyManagerState){
 	case EnemyManagerState.enemySideEnd:
 			show_debug_message("enemy team done");
 			enemyManagerState=EnemyManagerState.waitPlayer;
-			with(obj_playerFrontManager){
-				cursorState=CursorState.turnStart;
-			}
+			global.thisGame.playerFrontManager.cursorState=CursorState.turnStart;
 			//set cursor to leader
 			global.cursor_point_to.x=global.instanceManager.ins_kirito.x;
 			global.cursor_point_to.y=global.instanceManager.ins_kirito.y;
@@ -281,7 +278,10 @@ switch(enemyManagerState){
 			processPlayerWin(room);
 		}
 		break;
-	default:
+	case EnemyManagerState.notInBattle:
+	case EnemyManagerState.waitPlayer:	
 		break;
+
+
 
 }

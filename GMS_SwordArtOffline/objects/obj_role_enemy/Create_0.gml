@@ -14,17 +14,10 @@ list_canAttack=ds_list_create();
 list_worth=ds_list_create();
 list_tileForAttack=ds_list_create();
 
-
-
 rolePath=noone;
 gridMap=noone;
 
-
-
 enemyState=EnemyState.waitPath;
-
-//for room event,room_enter_counter==2 mean the timeing that goto fight room,then back here
-room_enter_counter=0;
 
 enum EnemyState{
 	waitPath,

@@ -43,5 +43,5 @@ draw_sprite_ext(photoSprite,getPhotoIndexByName(playerRole.name),text_left[0],y-
 var photoSprite=spr_enemyRole_photo;
 xscale=photoSize/sprite_get_width(photoSprite);
 yscale=photoSize/sprite_get_height(photoSprite);
-draw_sprite_ext(photoSprite,getPhotoIndexByName(enemyRole.name),text_left[1],y+6.5*text_top_space-90,xscale,yscale,0,c_white,1);
+draw_sprite_ext(photoSprite,getPhotoIndexByName(enemyRole.name),text_left[1],y+5.5*text_top_space-90,xscale,yscale,0,c_white,1);
 

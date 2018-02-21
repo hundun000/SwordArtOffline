@@ -25,7 +25,7 @@ switch(teamFlagState){
 			teamFlagState=TeamFlagState.flagFree;
 		}
 		break;
-	default:
+
 	
 }
 

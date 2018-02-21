@@ -7,20 +7,32 @@ enum FightState{
 	noInFightRoom,
 	preFight,
 	waitStartDelay,
+	
 	startAttackAnimation,
 	waitAttackAnimationEnd,
 	startResultAnimation,
 	waitResultAnimation,
+	
+	startStrengthenAnimation,
+	processStrengthen,
+	
 	processXp,
 	fightEnd,
+}
+
+enum FightType{
+	ATTACK,
+	STRENGEN,
+	ACTION	
 }
 
 fighter[FIGHT_L]=noone;
 fighter[FIGHT_R]=noone;
 fightBackRoom=noone;
 fightState=FightState.noInFightRoom;
+fightType=noone;
 
-deadRole=noone;
+deadEnemyRole=noone;
 
 //******** HP bar data ***********
 rate_remainHp[FIGHT_L]=-1;
@@ -31,5 +43,3 @@ num_remainHp[FIGHT_R]=-1;
 
 attackAnimation[FIGHT_L]=noone;
 attackAnimation[FIGHT_R]=noone;
-
-random_set_seed(4);

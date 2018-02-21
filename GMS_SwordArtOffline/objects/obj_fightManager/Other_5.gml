@@ -3,6 +3,8 @@
 if(room==room_fight){
 	global.inputReceiver=InputReceiver.CURSOR;
 	
-	if(deadRole!=noone)
-		instance_destroy(deadRole);
+	fightType=noone;
+	
+	if(deadEnemyRole!=noone)
+		instance_destroy(deadEnemyRole);
 }

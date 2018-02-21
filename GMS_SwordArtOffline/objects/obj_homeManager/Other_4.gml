@@ -8,7 +8,7 @@ if(room==room_home){
 	
 	var mateRole=ds_list_find_value(global.thisGame.teamLayoutManager.teamLayoutSlots,MATE_POS);
 	if(mateRole!=noone)
-		homeMateIndex=mateRole.mateIndex;
+		curHomeMateSpriteIndex=mateRole.homeMateSpriteIndex;
 	else
-		homeMateIndex=0;
+		curHomeMateSpriteIndex=0;
 }

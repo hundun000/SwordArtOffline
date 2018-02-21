@@ -14,7 +14,7 @@ switch(argument0){
 		global.thisGame.worldMapManager.storyLine=3;
 		break;			
 
-	default:
+
 
 }
 

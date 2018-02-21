@@ -51,15 +51,13 @@ switch(enemyState){
 		
 		break;			
 	case EnemyState.moved:	
-		//show_message("moved done");
-		with(obj_enemyManager){
-			enemyManagerState=EnemyManagerState.moved;
-		}
-		
+
+		global.thisGame.enemyFrontManager.enemyManagerState=EnemyManagerState.moved;
 		break;
 
-		
-	default:
+	case EnemyState.waitPath:
+		break;
+
 
 
 }
