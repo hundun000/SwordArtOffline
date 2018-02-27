@@ -16,10 +16,8 @@ switch(fightState){
 	case FightState.preFight:
 		
 		if(fightType==FightType.ATTACK){
-			if(curAttackSide==FIGHT_L)
-				var fightInfo_list=getFightInfo(fighter[FIGHT_L],fighter[FIGHT_R],false);			
-			else
-				var fightInfo_list=getFightInfo(fighter[FIGHT_R],fighter[FIGHT_L],false);
+
+			var fightInfo_list=getFightInfo(fighter[curAttackSide],fighter[!curAttackSide],false);			
 			
 			//!!!!!!!!!!!!!!!!!!! curAttackSide<=>founder<=>fightInfo_list[0] !!!!!!!!!!!!!!!		
 		
@@ -39,6 +37,9 @@ switch(fightState){
 				//toggle side
 				side=!side;
 			}
+			//that is say,curAttackSide always get fightInfo_list's odd index data;
+			//			otherSide always get fightInfo_list's prime index data;
+			
 	
 			//init animation
 			attackAnimation[FIGHT_L].sprite_index=getAttackSpriteByRole(fighter[FIGHT_L]);
@@ -49,7 +50,7 @@ switch(fightState){
 		
 
 		}
-		else if(fightType==FightType.STRENGEN){
+		else if(fightType==FightType.SKILL){
 			hitRate[curAttackSide]=100; 
 			preDamage[curAttackSide]=0;
 			criticalRate[curAttackSide]=0;	
@@ -57,7 +58,7 @@ switch(fightState){
 			preDamage[!curAttackSide]=0;
 			criticalRate[!curAttackSide]=0;
 			//init animation
-			attackAnimation[curAttackSide].sprite_index=getStrengthenSpriteByRole(fighter[curAttackSide]);
+			attackAnimation[curAttackSide].sprite_index=getSkillSpriteByRole(fighter[curAttackSide]);
 			attackAnimation[!curAttackSide].sprite_index=getAttackSpriteByRole(fighter[!curAttackSide]);
 			attackAnimation[FIGHT_L].image_xscale*=-1;
 			attackAnimation[FIGHT_L].image_speed=0;
@@ -79,12 +80,12 @@ switch(fightState){
 		else{
 			if(fightType==FightType.ATTACK)
 				fightState=FightState.startAttackAnimation;
-			else if(fightType==FightType.STRENGEN)
-				fightState=FightState.startStrengthenAnimation;
+			else if(fightType==FightType.SKILL)
+				fightState=FightState.startSkillAnimation;
 		}
 		break;
 		
-	case FightState.startStrengthenAnimation:			
+	case FightState.startSkillAnimation:			
 
 		attackAnimation[curAttackSide].image_speed=1;			
 
@@ -212,8 +213,9 @@ switch(fightState){
 		//when animation finished,the content object will change the state
 		break;	
 		
-	case FightState.processStrengthen:
-		show_message("processStrengthen");
+	case FightState.processSkill:	
+		handleSkill(fighter[!curAttackSide],fighter[curAttackSide].skillName);
+			
 		fightState=FightState.processXp;
 		break;
 		
@@ -258,7 +260,7 @@ switch(fightState){
 					waitAddXp=3;
 				}	
 			}
-			else if(fightType==FightType.STRENGEN){
+			else if(fightType==FightType.SKILL){
 				waitAddXp=3;
 			}
 		}

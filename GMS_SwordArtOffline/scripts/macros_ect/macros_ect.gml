@@ -11,7 +11,7 @@
 #macro OPTION_END 4
 
 
-#macro NUM_ROLE_ITEM 3
+#macro NUM_ROLE_ITEM 4
 #macro NUM_BOX_ITEM 6
 #macro NUM_ITEM_PROPERTY 3
 

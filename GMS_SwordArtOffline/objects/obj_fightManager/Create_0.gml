@@ -13,8 +13,8 @@ enum FightState{
 	startResultAnimation,
 	waitResultAnimation,
 	
-	startStrengthenAnimation,
-	processStrengthen,
+	startSkillAnimation,
+	processSkill,
 	
 	processXp,
 	fightEnd,
@@ -22,8 +22,7 @@ enum FightState{
 
 enum FightType{
 	ATTACK,
-	STRENGEN,
-	ACTION	
+	SKILL	
 }
 
 fighter[FIGHT_L]=noone;
@@ -34,11 +33,17 @@ fightType=noone;
 
 deadEnemyRole=noone;
 
+ROOM_FONT=global.font_CN_fightRoom;
+
 //******** HP bar data ***********
 rate_remainHp[FIGHT_L]=-1;
 rate_remainHp[FIGHT_R]=-1;
 num_remainHp[FIGHT_L]=-1;
 num_remainHp[FIGHT_R]=-1;	
+
+
+
+
 
 
 attackAnimation[FIGHT_L]=noone;

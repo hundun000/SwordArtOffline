@@ -11,9 +11,6 @@ if(!isPropertiesInit){
 	
 	curHp=hp;
 	
-	
-	
-	
 	isPropertiesInit=true;
 }
 

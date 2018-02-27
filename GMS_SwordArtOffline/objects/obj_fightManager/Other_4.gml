@@ -18,6 +18,8 @@ if(room==room_fight){
 	waitAddXp=-1;
 	lv_up_countDown=-1;
 
+	draw_set_color(c_black);
+	draw_set_font(ROOM_FONT);
 }
 
 

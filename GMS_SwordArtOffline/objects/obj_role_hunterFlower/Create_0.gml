@@ -4,8 +4,7 @@ event_inherited();
 
 
 name="hunterFlower";
-curHp=-1;
 
 roleType=RoleType.walker;
 MAX_MOVEMENT=3; 
-curWeapon=noone;
+

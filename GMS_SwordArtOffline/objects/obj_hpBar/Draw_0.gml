@@ -6,10 +6,10 @@ var color_HpBar;
 var left_x=x;
 var top_y=y;
 var bottom_y=top_y+font_get_size(global.font_CN_fightRoom);
-var lengthFullHp =200;
+var lengthFullHp =400;
 
 //***************draw Hp text and Hp bar**********************
-draw_set_font(global.font_CN_fightRoom);
+
 if(rate_remainHp>0.5)
 	color_HpBar=c_green;
 else if(rate_remainHp>0.25)

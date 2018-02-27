@@ -10,7 +10,8 @@
         "2885556d-5a59-40ff-b30c-680ffad74159",
         "bd535772-6556-46bb-b4c3-53b054695012",
         "2b1a9fbb-feed-47f0-95a6-39baea8683a7",
-        "e7695fee-a85f-4de7-9bda-8c8e47ecd4c2"
+        "e7695fee-a85f-4de7-9bda-8c8e47ecd4c2",
+        "5749ad8f-d692-4083-8ffb-71d5b267f9d2"
     ],
     "filterType": "GMSprite",
     "folderName": "attack",

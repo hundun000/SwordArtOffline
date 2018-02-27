@@ -11,4 +11,6 @@ if(room==room_home){
 		curHomeMateSpriteIndex=mateRole.homeMateSpriteIndex;
 	else
 		curHomeMateSpriteIndex=0;
+		
+	draw_set_font(ROOM_FONT);	
 }

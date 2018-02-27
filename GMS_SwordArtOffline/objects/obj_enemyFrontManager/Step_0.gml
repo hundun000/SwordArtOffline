@@ -22,8 +22,21 @@ switch(enemyManagerState){
 		//****************** process one enemy ***************************
 		enemy=ds_list_find_value(global.frontEnemies, curProcessIndex);
 
-		newPourWater(enemy.x,enemy.y,enemy.roleType,enemy.MAX_MOVEMENT
-			,enemy.roleAttackRangFrom,enemy.roleAttackRangTo,ControlType.enemy,true);
+
+		var weaponIns=getRoleCurWeaponInstance(enemy);
+		var attackRangFrom;
+		var attackRangTo;
+		if(weaponIns!=noone){
+			attackRangFrom=weaponIns.weaponAttackRangFrom;
+			attackRangTo=weaponIns.weaponAttackRangTo;			
+		}
+		else{
+			attackRangFrom=0;
+			attackRangTo=0;
+		}
+		if(attackRangFrom!=0)		
+			newPourWater(enemy.x,enemy.y,enemy.roleType,enemy.MAX_MOVEMENT
+				,attackRangFrom,attackRangTo,ControlType.enemy,true);
 	
 	
 		var i;
@@ -130,7 +143,20 @@ switch(enemyManagerState){
 						var dx=ins_canMove.x-attackTarget.x;
 						var dy=ins_canMove.y-attackTarget.y;
 						var Manhattan_distance=(abs(dx)+abs(dy)) div UNIT;
-						if(Manhattan_distance>=enemy.roleAttackRangFrom&&Manhattan_distance<=enemy.roleAttackRangTo){
+						
+						var weaponIns=getRoleCurWeaponInstance(enemy);
+						var attackRangFrom;
+						var attackRangTo;
+						if(weaponIns!=noone){
+							attackRangFrom=weaponIns.weaponAttackRangFrom;
+							attackRangTo=weaponIns.weaponAttackRangTo;			
+						}
+						else{
+							attackRangFrom=0;
+							attackRangTo=0;
+						}
+						
+						if(Manhattan_distance>=attackRangFrom&&Manhattan_distance<=attackRangTo){
 							ds_list_add(enemy.list_tileForAttack,ins_canMove);
 							show_debug_message("list_tileForAttack add "+string(getTileIndex(ins_canMove.x))+" "+string(getTileIndex(ins_canMove.y)));
 						}
@@ -263,8 +289,8 @@ switch(enemyManagerState){
 			enemyManagerState=EnemyManagerState.waitPlayer;
 			global.thisGame.playerFrontManager.cursorState=CursorState.turnStart;
 			//set cursor to leader
-			global.cursor_point_to.x=global.instanceManager.ins_kirito.x;
-			global.cursor_point_to.y=global.instanceManager.ins_kirito.y;
+			global.cursor_pointer.x=global.instanceManager.ins_kirito.x;
+			global.cursor_pointer.y=global.instanceManager.ins_kirito.y;
 			//view camera should move immidiately
 			with(obj_camera){
 					x=clamp(x,follower.x-h_border,follower.x+h_border);

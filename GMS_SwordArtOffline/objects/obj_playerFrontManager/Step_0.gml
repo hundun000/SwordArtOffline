@@ -5,14 +5,6 @@
 
 if(global.inputReceiver!=InputReceiver.CURSOR)	return;
 
-
-//for test fuction button
-#macro BTN_SP ord("Q")
-var isSP=keyboard_check_pressed(BTN_SP);
-
-
-
-
 	
 switch(cursorState){
 	case CursorState.turnStart:
@@ -63,10 +55,6 @@ switch(cursorState){
 				}
 			}	
 		}
-		else if(isSP){	
-			room_persistent=true;	
-			room_goto(room_world);
-		}
 		break;
 		
 	case CursorState.selectedRole:
@@ -84,12 +72,12 @@ switch(cursorState){
 		
 		else if(isA){
 			//if tile have player role,operatRole can move at,but can stop to do more,so check this.
-			var stop_at_hold_tile=false;
+			var isTileCannotMoveTo=false;
 			with(operatedRole){
 				if(collision_point(x,y,obj_role_player,false,true))
-					stop_at_hold_tile=true;
+					isTileCannotMoveTo=true;
 			}
-			if(stop_at_hold_tile)
+			if(isTileCannotMoveTo)
 				return;
 				
 			cursorState=CursorState.roleDoMore;
@@ -157,37 +145,55 @@ switch(cursorState){
 						var board_x=center[0]+menuSide*center[2];
 						var board_y=center[1];
 				
-						ins_fightForecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
-						ins_fightForecast.enemyRole=targetIns;
-						ins_fightForecast.playerRole=operatedRole;
-						ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);
+						ins_forecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_fightForecast);
+						ins_forecast.enemyRole=targetIns;
+						ins_forecast.playerRole=operatedRole;
+						ins_forecast.fightForecastInfo=getFightInfo(ins_forecast.playerRole,ins_forecast.enemyRole,false);
 					}
 					else
-						ins_fightForecast=noone;
+						ins_forecast=noone;
 					
 					cursorState=CursorState.selectingEnemy;
 					ins_doMoreMemu.visible=false;
 					break;
-				case OPTION_BAG:
+
+				case OPTION_SKILL:
+					if(operatedRole.skillName!=noone){
+						targetTypeObj=obj_role_player;
+						targetTileObj=obj_canSkill;
+					
+						targetIns=initCursorTarget(targetTileObj,targetTypeObj);
+						if(targetIns!=noone){
+							var center=getCameraCenter(view_camera[0]);
+							var menuSide=sign(center[0]-global.cursor_pointer.x+1);
+							var board_top=center[1];
+							var board_left=center[0]+menuSide*center[2];
+							var board_x=center[0]+menuSide*center[2];
+							var board_y=center[1];
+				
+							ins_forecast=instance_create_depth(board_x,board_y,DEPTH_FIGHT_FORECAST,obj_strengthenForecast);
+							ins_forecast.targetRole=targetIns;
+							ins_forecast.skillRole=operatedRole;
+							ins_forecast.strengthenForecastInfo=getStrengthenInfo(ins_forecast.skillRole);
+						}
+						else
+							ins_forecast=noone;
+					
+						cursorState=CursorState.selectingSkillTarget;
+						ins_doMoreMemu.visible=false;
+					}
+					break;
+			case OPTION_BAG:
 					cursorState=CursorState.selectingBagItem;
 				
 					var center=getCameraCenter(view_camera[0]);
 					var menuSide=sign(center[0]-global.cursor_pointer.x+1);
 					
-					ins_itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_itemMenu);
+					ins_itemMenu=instance_create_layer(center[0]+menuSide*center[2],center[1],"Layer_menuBoard",obj_boxMenu);
 					itemSelectIndex=0;
 
 					ins_doMoreMemu.visible=false;
-					break;
-				case OPTION_SKILL:
-					targetTypeObj=obj_role_player;
-					targetTileObj=obj_canSkill;
-					
-					targetIns=initCursorTarget(targetTileObj,targetTypeObj);
-					cursorState=CursorState.selectingSkillTarget;
-					ins_doMoreMemu.visible=false;
-					break;
-					
+					break;	
 				case OPTION_END:
 					cursorState=CursorState.nextPlayer;
 				
@@ -227,9 +233,13 @@ switch(cursorState){
 			var itemName=ds_grid_get(operatedRole.items,itemSelectIndex,INDEX_ITEM_NAME);
 			
 			if(isWeapon(itemName)){
-				curWeaponIndex=itemSelectIndex;
-				
-				createSingleMessage("已切换至该武器。","system");				
+				var isSuccess=switchCurWeapon(operatedRole,itemSelectIndex);
+				if(isSuccess){
+					createSingleMessage("已切换至该武器。","system");				
+				}
+				else{
+					createSingleMessage("该角色无法使用该武器。","system");
+				}
 				cursorState=CursorState.roleDoMore;			
 				instance_destroy(ins_itemMenu);			
 				ins_doMoreMemu.visible=true;
@@ -264,7 +274,12 @@ switch(cursorState){
 	
 		if((input_dx!=0||input_dy!=0)){
 			if(targetIns!=noone){
-				targetIns=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
+				var switchTo=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
+				if(switchTo!=noone){
+					targetIns=switchTo;
+				
+					ins_forecast.targetRole=targetIns;
+				}
 			}
 		}
 		else if(isA){
@@ -285,7 +300,7 @@ switch(cursorState){
 				fightManager.curAttackSide=FIGHT_R;
 				fightManager.fightBackRoom=room;
 		
-				global.thisGame.fightManager.fightType=FightType.STRENGEN;
+				global.thisGame.fightManager.fightType=FightType.SKILL;
 				room_goto(room_fight);
 			
 				//reset cursor to role
@@ -295,6 +310,7 @@ switch(cursorState){
 				cursorState=CursorState.nextPlayer;
 				if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
 				instance_destroy(obj_canSkill);
+				instance_destroy(ins_forecast);
 			}
 		}
 		else if(isB){
@@ -305,7 +321,7 @@ switch(cursorState){
 			global.cursor_pointer.y=operatedRole.y;
 			
 			ins_doMoreMemu.visible=true;
-			instance_destroy(obj_canSkill);
+			instance_destroy(ins_forecast);
 		}
 		
 		break;
@@ -314,11 +330,14 @@ switch(cursorState){
 		
 		if((input_dx!=0||input_dy!=0)){
 			if(targetIns!=noone){
-				targetIns=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
+				var switchTo=switchCursorTarget(input_dx,input_dy,targetTileObj,targetTypeObj);
+				if(switchTo!=noone){
+					targetIns=switchTo;
 			
-				//fightForecastInfo need change targrt
-				ins_fightForecast.enemyRole=targetIns;
-				ins_fightForecast.fightForecastInfo=getFightInfo(ins_fightForecast.playerRole,ins_fightForecast.enemyRole,false);		
+					//fightForecastInfo need change targrt
+					ins_forecast.enemyRole=targetIns;
+					ins_forecast.fightForecastInfo=getFightInfo(ins_forecast.playerRole,ins_forecast.enemyRole,false);		
+				}
 			}
 		}
 		else if(isA){
@@ -354,7 +373,7 @@ switch(cursorState){
 				
 				cursorState=CursorState.nextPlayer;
 				if(instance_exists(obj_canMove)) instance_destroy(obj_canMove);
-				instance_destroy(ins_fightForecast);
+				instance_destroy(ins_forecast);
 			}
 		}
 		else if(isB){
@@ -366,7 +385,7 @@ switch(cursorState){
 			
 			ins_doMoreMemu.visible=true;
 			
-			instance_destroy(ins_fightForecast);
+			instance_destroy(ins_forecast);
 		}
 			
 

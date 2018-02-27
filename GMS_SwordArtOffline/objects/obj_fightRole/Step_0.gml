@@ -25,11 +25,11 @@ if(manager.fightType==FightType.ATTACK){
 		}	
 	}	
 }
-else if(manager.fightType==FightType.STRENGEN){
+else if(manager.fightType==FightType.SKILL){
 	if(image_index>image_number-1){
 	//animation end
 		image_speed=0;
 		image_index=0;
-		manager.fightState=FightState.processStrengthen;
+		manager.fightState=FightState.processSkill;
 	}
 }

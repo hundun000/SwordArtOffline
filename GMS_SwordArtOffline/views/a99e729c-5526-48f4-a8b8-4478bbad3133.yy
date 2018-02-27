@@ -10,7 +10,8 @@
         "9844b1c7-23e1-41e1-9a1c-f27e40907e07",
         "132ab8b8-36f2-4264-b2c2-be7af6bd791c",
         "1282a53a-5aba-43eb-a58f-085416e9d873",
-        "04a80547-5f07-4200-a66c-018badc0c265"
+        "04a80547-5f07-4200-a66c-018badc0c265",
+        "9770cf47-1291-4837-b104-5235a2567feb"
     ],
     "filterType": "GMObject",
     "folderName": "FightRoom",

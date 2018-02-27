@@ -13,10 +13,14 @@ global.publicBox=ds_grid_create(NUM_BOX_ITEM,NUM_ITEM_PROPERTY);
 
 var role;
 
+//test
 role=getRoleByName("asuna");
 addRoleToWorld(role);
 role=getRoleByName("silica");
 addRoleToWorld(role);
+role=getRoleByName("yuna");
+addRoleToWorld(role);
+
 
 role=getRoleByName("kirito");
 addRoleToWorld(role);

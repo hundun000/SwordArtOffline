@@ -24,7 +24,7 @@ global.font_CN_homeMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 global.font_CN_mainMenu=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 global.font_CN_fightForecast=font_add("ARIALUNI_fixed.ttf",15,0,0,32,128);
 global.font_CN_fightRoom=font_add("ARIALUNI_fixed.ttf",30,0,0,32,128);
-
+global.font_CN_frontBox=font_add("ARIALUNI_fixed.ttf",20,0,0,32,128);
 
 					
 

@@ -5,13 +5,14 @@ event_inherited();
 name="kirito";
 roleType=RoleType.walker;
 MAX_MOVEMENT=8; 
-weaponProfession=Weapon.sword;
+weaponProfession=ItemType.weapon_sword;
+
 hp=40;
 atk=22;
 def=6;
 dex=10;  //for test
 curHp=hp;
-xp=0;
+xp=80;
 lv=1;
 
 visible=false;
@@ -19,4 +20,4 @@ visible=false;
 addItemToRole(id,"好伤药",5);
 addItemToRole(id,"伤药",4);
 
-addItemToRole(id,"木剑",1);
+addItemToRole(id,"重铁剑",1);

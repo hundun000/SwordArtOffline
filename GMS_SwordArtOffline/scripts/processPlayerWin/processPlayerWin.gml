@@ -22,7 +22,7 @@ switch(argument0){
 for(var i=0;i<ds_list_size(global.playerFrontTeam);i++){
 	var frontRole=ds_list_find_value(global.playerFrontTeam, i);
 	frontRole.isFront=false;
-	frontRole.curHp=frontRole.hp;
+
 }
 
 

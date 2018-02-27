@@ -7,5 +7,6 @@ switch(name){
 		return global.instanceManager.ins_asuna;
 	case "silica":
 		return global.instanceManager.ins_silica;
-		
+	case "yuna":
+		return global.instanceManager.ins_yuna;	
 }

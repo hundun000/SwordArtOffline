@@ -20,7 +20,7 @@ for(i=0;i<size;i++){
 	else{
 		draw_set_color(c_black);
 	}
-	draw_text(x_text,y_text+i*(font_get_size(global.font_CN_homeMenu)+space),ds_list_find_value(manager.menuOption,i));
+	draw_text(x_text,y_text+i*(font_get_size(manager.ROOM_FONT)+space),ds_list_find_value(manager.menuOption,i));
 		
 
 

@@ -6,25 +6,26 @@
 global.instanceManager=id;
 list_instances=ds_list_create();
 
-ins_kirito=instance_create_depth(0,0,0,obj_role_kirito);
-ds_list_add(list_instances,ins_kirito);
-ins_asuna=instance_create_depth(0,0,0,obj_role_asuna);
-ds_list_add(list_instances,ins_asuna);
-ins_silica=instance_create_depth(0,0,0,obj_role_silica);
-ds_list_add(list_instances,ins_silica);
+//********** role ***************
+ins_kirito=instanceObject(obj_role_kirito,list_instances);
+ins_asuna=instanceObject(obj_role_asuna,list_instances);
+ins_silica=instanceObject(obj_role_silica,list_instances);
+ins_yuna=instanceObject(obj_role_yuna,list_instances);
 	
-ins_woodenSword=instance_create_depth(0,0,0,obj_wooden_sword);
-ds_list_add(list_instances,ins_woodenSword);
-ins_sharpClaw=instance_create_depth(0,0,0,obj_sharpClaw);
-ds_list_add(list_instances,ins_sharpClaw);
+//****** weapon *******************
+ins_weapon_null=instanceObject(obj_weapon_null,list_instances);
+	
+ins_woodenSword=instanceObject(obj_wooden_sword,list_instances);
+ins_lightIronySword=instanceObject(obj_lightIrony_sword,list_instances);
+ins_heavyIronySword=instanceObject(obj_heavyIrony_sword,list_instances);
 
-ins_coverDrug=instance_create_depth(0,0,0,obj_coverDrug);
-ds_list_add(list_instances,ins_coverDrug);
-ins_goodCoverDrug=instance_create_depth(0,0,0,obj_goodCoverDrug);
-ds_list_add(list_instances,ins_goodCoverDrug);
+ins_sharpClaw=instanceObject(obj_sharpClaw,list_instances);
 
-ins_petStone_heal=instance_create_depth(0,0,0,obj_petStone_heal);
-ds_list_add(list_instances,ins_petStone_heal);
+ins_coverDrug=instanceObject(obj_coverDrug,list_instances);
+ins_goodCoverDrug=instanceObject(obj_goodCoverDrug,list_instances);
+
+ins_petHeal_skill=instanceObject(obj_petHeal_skill,list_instances);
+ins_songAction_skill=instanceObject(obj_songAction_skill,list_instances);
 
 with(global.thisGame){
 	textBoxManager=instance_create_depth(0,0,0,obj_textBox_manager); 

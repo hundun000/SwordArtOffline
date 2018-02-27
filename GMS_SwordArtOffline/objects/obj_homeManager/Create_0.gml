@@ -18,3 +18,5 @@ num_option=ds_list_size(menuOption);
 
 #macro MATE_POS 0
 curHomeMateSpriteIndex=-1;
+
+ROOM_FONT=global.font_CN_homeMenu;

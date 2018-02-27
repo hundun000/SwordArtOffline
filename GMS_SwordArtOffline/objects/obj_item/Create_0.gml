@@ -3,8 +3,12 @@
 
 enum ItemType{
 	normal,
+	weapon_null,
 	weapon_sword,
+	weapon_knife,
+	weapon_enemy,
 	skill_strengthen,
+	skill_action,
 	defaultType
 	
 	

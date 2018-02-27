@@ -27,5 +27,12 @@ for(var i=0;i<size;i++){
 		role.visible=true;
 		role.isFront=true; //use flag to sign role is in TeamFront
 		ds_list_add(global.playerFrontTeam,role);
+		
+		//heal to full hp and clear buff
+		role.curHp=role.hp;
+		role.buffAtk=0;
+		role.buffDef=0;
+		role.buffDex=0;
+	
 	}
 }

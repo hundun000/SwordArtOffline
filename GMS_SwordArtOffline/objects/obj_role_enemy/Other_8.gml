@@ -5,6 +5,8 @@
 
 enemyState=EnemyState.moved;
 
+
+
 path_delete(rolePath);
 depth=DEPTH_ROLE_IDLE;
 
